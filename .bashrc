@@ -40,9 +40,12 @@ then PATH="$HOME/bin:$PATH"
 fi
 
 # The prompt should name the system on which the shell is running, in
-# bold so the eye can easily find prompts when scrolling.
+# bold so the eye can easily find prompts when scrolling, and also a
+# non-zero exit status for the previous command in red.
 
-PS1="$(tput setaf 0)$(tput bold)$HOSTNAME\$$(tput sgr0) "
+PS1a="$(tput setaf 0)$(tput bold)$HOSTNAME$(tput setaf 1)"
+PS1b="$(tput setaf 0)\$$(tput sgr0) "
+PROMPT_COMMAND='PS1="$PS1a${?#0}$PS1b"'
 
 # Bash should wait forever at its prompt and never time out.
 
