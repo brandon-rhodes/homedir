@@ -79,7 +79,9 @@ alias ,coreoff="ulimit -c 0"
 # Bash should update the LINES and COLUMNS environment variables each
 # time the terminal window gets resized, for programs that care.
 
-shopt -s checkwinsize
+if [ -n "$BASH" ]
+then shopt -s checkwinsize
+fi
 
 # The tty should not intercept Control-S (stop) or Control-Q (start).
 
@@ -92,7 +94,9 @@ ulimit -c 0
 # Prevent Ubuntu from doing a painstaking search of its package database
 # every time I misspell a command.
 
-unset -f command_not_found_handle
+if [ -n "$BASH" ]
+then unset -f command_not_found_handle
+fi
 
 # Turn off history expansion; I use interactive search and quick Emacs
 # edits instead, so I only ever invoke the history syntax accidentally!
@@ -108,7 +112,7 @@ fi
 
 # Load bash completion customization, if available.
 
-if [ -f /etc/bash_completion ]
+if [ -n "$BASH" -a -f /etc/bash_completion ]
 then
     source /etc/bash_completion
 fi
