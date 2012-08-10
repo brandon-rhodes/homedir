@@ -1,0 +1,4 @@
+# Home directories are big, so, by default, ignore everything that I do
+# not explicitly "git add".
+
+*
