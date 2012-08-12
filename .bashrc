@@ -12,10 +12,6 @@ export GREP_OPTIONS='--color=auto'
 
 unset HISTFILE
 
-# A single control-D should not convince the shell to exit.
-
-IGNOREEOF=1
-
 # An excellent pager is of the utmost importance to the Unix experience.
 
 export LESS="-i -j.49 -M -z-2"
