@@ -43,9 +43,12 @@ fi
 # bold so the eye can easily find prompts when scrolling, and also a
 # non-zero exit status for the previous command in red.
 
-PS1a="$(tput setaf 0)$(tput bold)$HOSTNAME$(tput setaf 1)"
-PS1b="$(tput setaf 0)\$$(tput sgr0) "
-PROMPT_COMMAND='PS1="$PS1a${?#0}$PS1b"'
+if [ -n "$TERM" ]
+then
+    PS1a="\[$(tput setaf 0)$(tput bold)\]$HOSTNAME\[$(tput setaf 1)\]"
+    PS1b="\[$(tput setaf 0)\]\$\[$(tput sgr0)\] "
+    PROMPT_COMMAND='[ $? = 0 ] && PS1="$PS1a$PS1b" || PS1="$PS1a($?)$PS1b"'
+fi
 
 # Bash should wait forever at its prompt and never time out.
 
