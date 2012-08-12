@@ -1,0 +1,11 @@
+#!/bin/bash
+# Attach to my persistent Gnus session.
+
+if [ "$(hostname)" != "asaph" ]
+then
+    echo error: Please log on to asaph
+    exit
+fi
+
+exec emacsclient --socket-name ~/.emacs.d/.socket-gnw \
+                 --alternate-editor="" --tty --eval "(gnus)"
