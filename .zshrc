@@ -3,6 +3,10 @@
 
 source ~/.bashrc
 
+# Use my own zsh completion logic, where provided.
+
+fpath=(~/.zsh-completion $fpath)
+
 # Force the cache of existing commands to be rebuilt each time the
 # prompt is displayed.
 
@@ -64,6 +68,11 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}*"
 # -------- End of Oh-my-zsh configuration
 
 # Even though our .bashrc unsets this, by this point it has been set again:
+
 unset HISTFILE
+
+# Autocorrection keeps trying to correct subcommand names to filenames.
+
+unsetopt correct_all
 
 fi
