@@ -3,6 +3,15 @@
 
 source ~/.bashrc
 
+# Force the cache of existing commands to be rebuilt each time the
+# prompt is displayed.
+
+precmd() {
+    rehash
+}
+
+# -------- Oh-my-zsh!
+
 if [ -d ~/.oh-my-zsh ]
 then
 
@@ -51,5 +60,10 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg_no_bold[yellow]%}%B"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%b%{$fg_bold[blue]%})%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}*"
+
+# -------- End of Oh-my-zsh configuration
+
+# Even though our .bashrc unsets this, by this point it has been set again:
+unset HISTFILE
 
 fi
