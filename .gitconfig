@@ -1,0 +1,25 @@
+[user]
+name = Brandon Rhodes
+email = brandon@rhodesmill.org
+
+[alias]
+br = branch
+ci = commit -v
+co = checkout
+d = diff
+lg = log -p
+locate = ls-tree --name-only -r HEAD
+st = status
+
+[core]
+pager = less -FRX
+excludesfile = ~/.gitexcludes
+
+[color]
+branch = auto
+diff = auto
+interactive = auto
+status = auto
+
+[commit]
+template = ~/.gitmessage.txt
