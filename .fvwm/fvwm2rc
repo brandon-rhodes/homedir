@@ -1,0 +1,305 @@
+# Create a virtual desktop several times the size of the physical
+# screen, and immediately jump an entire screen over when the mouse
+# reaches an edge of the screen.
+
+DeskTopSize 3x3
+EdgeResistance 0
+EdgeScroll 100 100
+
+# Allow windows to be dragged between screens with no resistance.
+
+Style * EdgeMoveDelay 0
+Style * EdgeMoveResistance 0
+
+# Moving and resizing windows should affect the live window, instead of
+# leaving the window alone (and just displaying a rectangle) until the
+# operation is complete.
+
+OpaqueMoveSize unlimited
+Style * ResizeOpaque
+
+# Add a special window title that I can give to windows that I want to
+# remain on top, that never get obscured by other windows.
+
+Style StayOnTop StaysOnTop, !Borders, !Title
+
+# Autoraise windows if the mouse stays in them for 0.3 seconds, unless
+# the window is nethack-qt, which will thereby overlay its own dratted
+# dialog boxes.  Maybe I should find an alternative to nethack-qt.
+
+DestroyFunc MaybeRaise
+AddToFunc MaybeRaise
++ I Current (!nethack-qt) Raise
+
+FvwmAuto 300 MaybeRaise Nop
+
+# Windows should get focus when the mouse enters them, and retain focus
+# until the mouse enters another window.
+
+Style * SloppyFocus
+
+# Menu appearance.
+
+MenuStyle * fvwm, Foreground white, Background red4, Greyed grey20
+MenuStyle * Font "xft:Inconsolata:Regular:pixelsize=24:minispace=True:antialias=True"
+
+# Minimalist windows: no handles or buttons.
+
+Style * Font "xft:Ubuntu:Regular:pixelsize=14:minispace=True:antialias=True"
+Style * IconFont "xft:Ubuntu:Regular:pixelsize=14:minispace=True:antialias=True"
+Style * HilightFore black, HilightBack palevioletred
+Style * BorderWidth 6, HandleWidth 6
+Style * Icon unknown1.xpm, Color lightgrey/dimgrey
+Style * MwmBorder, MWMFunctions, MWMDecor, HintOverride
+Style * DecorateTransient, NoPPosition
+Style * !Button 1, !Button 2, !Button 4, !Button 6
+Style * MinOverlapPlacement
+
+BorderStyle -- HiddenHandles
+
+# Speed up window operations at the expense of a bit of RAM.
+
+Style * BackingStore, SaveUnder
+
+# Styles for various Fvwm modules.
+
+Style Fvwm*       NoTitle,  Sticky, WindowListSkip
+Style Fvwm*       BorderWidth 2, CirculateSkipIcon, CirculateSkip
+
+# Styles for various programs.
+
+Style *lock           NoTitle, NoHandles, Sticky, WindowListSkip, ClickToFocus
+Style unity-2d-panel  NoTitle, BorderWidth 0, HandleWidth 0, WindowListSkip
+Style Desktop         WindowListSkip
+
+# Make the cursor look good along window edges.
+
+CursorStyle TOP top_side
+
+# Key bindings!  It would consume too much of my day to target and click
+# an icon or menu every time I need a browser or xterm for a few-second
+# operation, so I launch everything via keyboard shortcuts instead,
+# using the otherwise useless "Windows" key ("A" means "in any context"
+# and "4" means "the Windows key").
+
+Key a A 4  Menu Applications Nop
+Key b A 4  Menu BrowserBookmarks Nop
+Key c A 4  Exec exec xterm -geometry 60x16 -T 'Desktop Calculator' -e 'units'
+Key e A 4  Exec exec emacs
+Key n A 4  Exec exec chromium-browser --enable-webgl
+Key p A 4  Menu Projects Nop
+Key s A 4  Menu SshDestinations Nop
+Key t A 4  Exec exec xterm
+Key w A 4  Menu MenuFvwmWindowOps Nop
+
+# Vertical maximize with Windows+Tab, full maximize with Windows+F.
+
+Key f   A 4  FuncMaximizeBorderlessly
+Key Tab A 4  Maximize 0 100
+
+# Windows key plus an arrow key moves between windows without the mouse.
+
+Key Up    A 4  Direction North Flipfocus
+Key Down  A 4  Direction South Flipfocus
+Key Right A 4  Direction East Flipfocus
+Key Left  A 4  Direction West Flipfocus
+
+# For occasions when I want to be sitting back in front of a desktop and
+# am far from a mouse, I have emergency keystrokes to let me move to new
+# screens on my desktop.
+
+Key KP_Up    A 4  Scroll 0 -100
+Key KP_Down  A 4  Scroll 0 100
+Key KP_Right A 4  Scroll 100 0
+Key KP_Left  A 4  Scroll -100 0
+
+# Mouse Bindings.
+
+Mouse 1 S    A  FuncFvwmResizeOrRaise
+Mouse 1 T    A  FuncFvwmMoveOrRaise
+Mouse 1 I    A  Iconify
+Mouse 2 TSIF A  Menu MenuFvwmWindowOps Nop
+Mouse 3 TSF  A  RaiseLower
+
+# Rescue Chrome's usability by capturing and neutering Alt+mousewheel.
+
+Mouse 4 A    C  Nop
+Mouse 5 A    C  Nop
+
+# Menus.
+
+DestroyMenu Applications
+AddToMenu Applications "Applications" Title
++ "&d. Dropbox"   Exec exec dropbox start
++ "&f. Firefox"   Exec exec firefox
++ "&g. Gimp"      Exec exec gimp
++ "&n. Nautilus"  Exec exec nautilus
++ "&s. Skype"     Exec exec skype
++ "&x. XChat"     Exec exec xchat
+
+DestroyMenu SshDestinations
+AddToMenu SshDestinations "Remote Shells" Title
++ "&a. asaph"      Exec exec xterm -e ssh asaph
++ "&k. kenaniah"   Exec exec xterm -e ssh kenaniah
++ "&w. webfaction" Exec exec xterm -e ssh wf-rhodesmill
+
+DestroyMenu BrowserBookmarks
+AddToMenu BrowserBookmarks "Bookmark" Title
++ "&c. Calendar" Exec exec chromium-browser "http://google.com/calendar/render"
++ "&d. Docs"     Exec exec chromium-browser "http://docs.google.com/"
++ "&g. GitHub"   Exec exec chromium-browser "http://github.com/"
++ "&m. Maps"     Exec exec chromium-browser "http://maps.google.com/"
++ "&r. Reader"   Exec exec chromium-browser "http://www.google.com/reader/view/"
++ "&w. Weather"  Exec exec chromium-browser "http://weatherspark.com/#!dashboard;a=USA/OH/Bluffton;dt=11;mspp=720000;m=39.216,-85.528,42.530,-82.254;fcs=0;msl=temperatureC;mol=radar;units=temperature:f;graphs=humidity:0,stidpg:0,precipitation:0,windDirection:0,pressure:0,precipitationAmount:0,windIcons:1,saf:0,precipitationRate:0,windSpeed:0,sdpitg:0,solarPosition:0,temperature:1,subZero2:0,smeisg:1,spaitg:1,clouds:0,siitg:1,dewPoint:0"
++ ""                Nop
++ "   Mercedes EPC"  Exec exec chromium-browser "https://epc.startekinfo.com/epc/"
++ "   Mercedes List" Exec exec chromium-browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
++ "   Newfoundland"  Exec exec chromium-browser "http://www.gad.net/Cosette/5Weeks/sitting.JPG"
++ ""                Nop
++ "   Amazon AWS"   Exec exec chromium-browser "http://aws.amazon.com/console/"
++ "   WebFaction"   Exec exec chromium-browser "http://panel.webfaction.com/"
+
+DestroyMenu MenuFvwmWindowOps
+AddToMenu MenuFvwmWindowOps
++ "$[gt.Window Manager]" Title
++ "$[gt.&Close]"         Close
++ "" Nop
++ "$[gt.&Move]"          Move
++ "$[gt.Resize]"         Resize
++ "$[gt.Raise]"          Raise
++ "$[gt.Lower]"          Lower
++ "$[gt.(De)Iconify]"    Iconify
++ "$[gt.(Un)Stick]"      Stick
++ "$[gt.(Un)Ma&ximize]"  Maximize
++ "$[gt.Destroy]"        Destroy
++ "" Nop
++ "$[gt.&L Reload fvwm2rc]"  Read fvwm2rc
++ "$[gt.&R Restart fvwm2rc]" Restart
++ "$[gt.Log off]"        Quit
++ "" Nop
++ "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
++ "$[gt.&S Suspend]"   Exec gnome-screensaver-command -a && dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+
+# "Projects" live under the "Projects" menu, and allow Window+P followed
+# by another keystroke to fill an empty screen with the terminals and
+# editors and browser needed to work on a project.
+
+DestroyMenu Projects
+AddToMenu Projects "Bookmark" Title
++ "&b. Blog"        BlogProject
++ "&e. Ephem"       EphemProject
++ "&n. NEWFS"       NEWFSProject
++ "&t. Tetra"       TetraProject
+
+DestroyFunc BlogProject
+AddToFunc   BlogProject
++ I Exec PRERUN="cd ~/blog; . _v/bin/activate; git st" exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/blog; . _v/bin/activate; blogofile serve' exec xterm -geometry 80x11+0-0
++ I Exec exec emacs -geometry -0+24 ~/blog/_posts
++ I Exec sleep 2; chromium-browser; sleep 2; exec chromium-browser http://localhost:8080/brandon/
+
+DestroyFunc EphemProject
+AddToFunc   EphemProject
++ I Exec PRERUN="cd ~/pyephem; . venv/bin/activate; git st" exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/pyephem; . venv/bin/activate; cd src/ephem/doc' exec xterm -geometry 80x11+0-0
++ I Exec exec emacs -geometry -0+24 ~/pyephem/setup.py ~/pyephem/src/ephem/__init__.py
++ I Exec sleep 2; chromium-browser; sleep 1; exec chromium-browser file:///home/brandon/pyephem/src/ephem/doc/_build/html/index.html
+
+DestroyFunc NEWFSProject
+AddToFunc   NEWFSProject
++ I Exec PRERUN="cd ~/newfs/gobotany-deploy" exec xterm -geometry 80x24+0+24 -T "Gobotany Deploy"
++ I Exec PRERUN="cd ~/newfs/gobotany-app" exec xterm -geometry 80x24+0-0 -T "Gobotany App"
++ I Exec exec emacs -geometry -0+24 ~/newfs/gobotany-deploy ~/newfs/gobotany-app/gobotany
++ I Exec sleep 3; chromium-browser; sleep 2; exec chromium-browser http://localhost:8000/
+
+# Common FVWM functions used in several of the directives above.
+
+DestroyFunc FuncFvwmMoveOrRaise
+AddToFunc FuncFvwmMoveOrRaise
++ I Raise
++ M Move
++ D Lower
+
+DestroyFunc FuncMaximizeBorderlessly
+AddToFunc FuncMaximizeBorderlessly
++ I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I UpdateStyles
++ I Maximize Toggle 100 100
+
+DestroyFunc FuncFvwmResizeOrRaise
+AddToFunc FuncFvwmResizeOrRaise
++ I Raise
++ M Resize
++ D Lower
+
+# Read config files for modules.
+
+read ConfigFvwmBacker
+# read ConfigFvwmButtons
+read ConfigFvwmIconBox
+read ConfigFvwmIconMan
+read ConfigFvwmIdent
+read ConfigFvwmPager
+read ConfigFvwmScroll
+read ConfigFvwmTaskBar
+read ConfigFvwmWinList
+
+# Prevent applications from grabbing focus (xchat, this means you!).
+
+DestroyFunc UrgencyFunc
+
+# Allow local per-account customization in a separate file.
+
+Read fvwm2rc-local
+
+# Allow the Pager to be brought up with Window+Space.
+
+Key Space        A       4       TogglePager
+
+AddToFunc InitFunction
++ I SetEnv pager_state down
+
+DestroyFunc TogglePager
+AddToFunc   TogglePager
++ I Test   (EnvMatch pager_state down) Module FvwmPager *
++ I TestRc (Match) SetEnv pager_state up
++ I TestRc (NoMatch) KillModule FvwmPager
++ I TestRc (NoMatch) SetEnv pager_state down
+
+Style FvwmPager StaysOnTop, BorderWidth 0
+*FvwmPager: UseSkipList
+
+# Run all of the other programs that I need to be happy in Ubuntu.
+# There are customizations for particular machines here, like "guinness"
+# which is my cantankerous Dell Latitude laptop.  Ubuntu does not seem
+# to always set the dpi correctly on my laptops, so I do it here.
+
+AddToFunc InitFunction
+
++ I Exec [ "$(hostname)" == "guinness" ] && xrandr --dpi 106 && sleep 4 && xrandr --dpi 106
++ I Exec [ "$(hostname)" == "guinness" ] && exec xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Device Accel Velocity Scaling" 32.0
+
++ I Exec [ "$(hostname)" == "oldrasputin" ] && xrandr --dpi 110
+
++ I Exec exec gnome-settings-daemon
++ I Exec exec gdu-notification-daemon
++ I Exec exec geoclue-master
+
++ I Exec exec unity-2d-panel
+
++ I Exec exec gnome-fallback-mount-helper
++ I Exec exec nautilus --no-default-window
++ I Exec exec nm-applet
++ I Exec exec bluetooth-applet
++ I Exec exec gnome-power-manager
+
+# Utter magic: why did I wait so many years before looking for a utility
+# to unify the two different cut-and-paste buffers under X Windows?
+
++ I Exec exec autocutsel
+
+# Sleep before loading .Xresources in case Ubuntu tries futzing with
+# them first.
+
++ I Exec sleep 3; exec xrdb .Xresources

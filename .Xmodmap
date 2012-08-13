@@ -1,0 +1,20 @@
+! Turn "Caps Lock" into Compose for typing fancy UTF-8 characters.
+! To see all of the characters that you can type, run the command:
+!     less $(locate en_US.UTF-8/Compose)
+
+keycode 66 = Multi_key
+clear lock
+
+! Turn left "Alt" into Control so that Control and Alt are both
+! accessible using my thumbs and without moving any of my fingers from
+! home row - otherwise, Emacs will be the end of my wrists.
+
+keycode 64 = Control_L
+clear control
+clear mod1
+add Control = Control_L Control_R
+add mod1 = Alt_L Alt_R
+
+! Reverse scroll wheel direction. RIP, Steve Jobs.
+
+pointer = 1 2 3 5 4 7 6 8 9 10 11 12
