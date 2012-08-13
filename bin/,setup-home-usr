@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Build a Python virtual environment in ~/usr.
+
+set -e
+
+SYSPY=/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
+if [ ! -x $SYSPY ]; then
+    SYSPY=/usr/bin/python2.7
+fi
+if [ ! -x $SYSPY ]; then
+    # for Webfaction
+    SYSPY=/usr/local/bin/python2.7
+fi
+
+$SYSPY ~/usr/src/virtualenv/virtualenv.py --clear --unzip-setuptools ~/usr
+
+. ~/usr/bin/activate
+
+# These "-U" ("update") options mean that when this script is run again
+# later it will make sure that all of these packages are at their most
+# recent version.  Note that we update the packaging programs themselves
+# first, so that it is their latest version which is then used to
+# install the subsequent packages.
+
+pip install -U pip
+pip install -U distribute
+pip install -U virtualenv
+
+pip install -U bpython
+pip install -U docutils
+pip install -U grin
+pip install -U mercurial
+pip install -U uncommitted
