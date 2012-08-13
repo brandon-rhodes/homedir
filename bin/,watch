@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Watch one or more files, exiting when a program finishes writing to
+# one of them (useful in "for" loops at the command line).
+
+exec inotifywait -e close_write "$@"
