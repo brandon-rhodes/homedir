@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Run a full-screen remote desktop at exactly our current screen
+# dimensions, and with a special title that tells our FVWM config never
+# to let another window or toolbar get in the way of the remote desktop
+# session, so that it fully owns the screen in which it runs.
+
+geometry=$(xdpyinfo | grep dimensions: | awk '{print$2}')
+rdesktop -f -g $geometry -T "StayOnTop" "$@"
