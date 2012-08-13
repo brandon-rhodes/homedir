@@ -1,7 +1,7 @@
 [ui]
 username = Brandon Rhodes <brandon@rhodesmill.org>
 ignore = ~/.hgignorerc
-editor = ~/bin/hgeditor
+editor = ~/bin/,hgeditor
 
 [extensions]
 hgext.extdiff =

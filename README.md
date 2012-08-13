@@ -18,6 +18,12 @@ I carefully log in using `ssh` in another terminal window — to make sure
 that the dotfiles leave me able to connect — and then change my default
 shell to `/bin/zsh` with `chsh` and am off and running.
 
+Note that most custom commands in `~/bin` have names that start with a
+comma, to keep them orthogonal from real commands and prevent future
+name collisions with any new binaries that might come along in the Unix
+world.  Plus, I can press comma-Tab in my shell and see a list of all of
+the scripts, in case I have forgotten the name of one of them.
+
 For years I kept the contents of my version-controlled home directory
 dotfiles a closely-guarded secret.  Which was probably not a bad idea.
 At the time, my shell scripts and dotfiles did contain quite a few hints
