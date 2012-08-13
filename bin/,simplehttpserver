@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# To use: cd to a directory you want to browse, and run this script.
+#
+# This lets you skip finding a free TCP port on your system and
+# running SimpleHTTPServer on that port and pointing your browser there.
+# Instead, we ask the SimpleHTTPServer to run at whichever free port the
+# operating system would like to assign, we watch its output to see what
+# port was in fact assigned, and then we open a new tab in the browser
+# (in this case, Google Chrome) automatically.
+
+ANY_PORT=0
+
+exec python -u -m SimpleHTTPServer $ANY_PORT |
+    while read -r line
+    do
+        if echo $line | grep -q '^Serving'
+        then
+            PORT=$(echo $line | awk '{print$6}')
+            chromium-browser http://localhost:$PORT/
+        fi
+    done
