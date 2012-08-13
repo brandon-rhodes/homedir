@@ -1,0 +1,34 @@
+[ui]
+username = Brandon Rhodes <brandon@rhodesmill.org>
+ignore = ~/.hgignorerc
+editor = ~/bin/hgeditor
+
+[extensions]
+hgext.extdiff =
+hgext.graphlog =
+hgext.record =
+hgext.hgk =
+bookmarks =
+color =
+convert =
+pager =
+rebase =
+
+[color]
+status.modified = cyan bold
+status.deleted = red bold
+diff.hunk = magenta bold
+diff.deleted = red bold
+diff.inserted = green bold
+diff.changed = white bold
+
+[hgk]
+path = /usr/share/mercurial/hgk
+vdiff = vdiff
+
+[pager]
+pager = LESS=$LESS' -FRX' less
+ignore = version, help, update, serve, record
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt
