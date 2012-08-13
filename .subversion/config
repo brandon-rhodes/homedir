@@ -1,0 +1,5 @@
+### Custom Subversion "config" file for Brandon Rhodes.
+
+[auth]
+password-stores =
+store-passwords = no
