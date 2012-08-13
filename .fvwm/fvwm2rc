@@ -303,3 +303,8 @@ AddToFunc InitFunction
 # them first.
 
 + I Exec sleep 3; exec xrdb .Xresources
+
+# Essential environment variables that need to be seen by X
+# applications, so setting them in my .profile is not enough.
+
+SetEnv LC_COLLATE C
