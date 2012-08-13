@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e
+
+# Always use "aptitude" since "apt-get" cannot remember later which
+# packages I asked for, versus which are sitting around because they
+# were dependencies of some other package that was once installed.
+# Aptitude knows the difference, and will remove the latter!
+
+if ! which aptitude
+then sudo apt-get install aptitude
+fi
+
+sudo aptitude update
+
+# Install happy packages.
+
+sudo aptitude install -y \
+    wamerican-huge   `: from which to power my Emacs spellchecker` \
+    apt-file         `: to find where files come from` \
+    autocutsel       `: unifies the X Windows clipboard and selection` \
+    chromium-browser `: browser-of-choice` \
+    emacs23          `: editor-of-choice` \
+    emacs23-el       `: readable LISP source` \
+    fvwm             `: window manager` \
+    git              `: distributed version control` \
+    gnucash          `: accounting` \
+    gnumeric         `: spreadsheet` \
+    groff            `: for processing old documents` \
+    gscan2pdf pdftk  `: scanning to PDF` \
+    inkscape         `: SVG editing` \
+    inotify-tools    `: for waiting on files to change` \
+    mplayer2         `: for media` \
+    pwgen            `: random passwords` \
+    python3.2 python3.2-dev `: for when I feel modern` \
+    python-dev       `: necessity` \
+    sqlite3          `: for command line access to its databases` \
+    subversion       `: for outdated projects` \
+    ttf-inconsolata  `: favorite console font` \
+    units            `: desk calculator` \
+    wireshark        `: primarily for debugging TCP` \
+    xca              `: x509 Certification Authority management tool` \
+    xchat            `: IRC for software support` \
+    zsh              `: favorite shell` \
+    \
+    `: Mount remote filesystems` \
+    bindfs encfs smbnetfs sshfs \
+    \
+    `: Python modules I would rather not compile myself` \
+    python-matplotlib python-lxml \
+    \
+    `: for lxml` \
+    libxml2-dev libxslt1-dev \
+    \
+    `: for SASS and Compass` \
+    librb-inotify-ruby \
+    \
+    `: further tools for web development` \
+    yui-compressor
+
+# Run "apt-file update" for the first time if necessary.
+
+if ! ls /var/cache/apt/apt-file | grep -q .
+then
+    sudo apt-file update
+fi
+
+# Thwart Unity by moving menus back into their application windows.
+
+sudo aptitude purge -y appmenu-gtk indicator-applet-appmenu indicator-appmenu
