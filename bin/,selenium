@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Download Selenium if its JAR file is not already present in ~/usr/src,
+# and then run it attached to a captive X Windows sub-display so that
+# the browser windows it constantly pops up cannot overlay the actual
+# screen that the developer is trying to use.  Since most x.org installs
+# use DISPLAY :0 by default, the sub-display that Selenium uses is :1.
+
+JAR=selenium-server-standalone-2.25.0.jar
+
+if ! dpkg -l openjdk-6-jre xserver-xephyr >/dev/null
+then
+    sudo aptitude install openjdk-6-jre xserver-xephyr
+fi
+
+if [ ! -f ~/usr/src/$JAR ]
+then
+    mkdir -p ~/usr/src
+    cd /tmp
+    wget -c http://selenium.googlecode.com/files/$JAR
+    mv $JAR ~/usr/src
+fi
+
+cd ~/usr/src
+Xephyr -screen 1024x768 :1 &
+DISPLAY=:1 exec java -jar $JAR
