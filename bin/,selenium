@@ -21,6 +21,15 @@ then
     mv $JAR ~/usr/src
 fi
 
+if ! [ -f ~/bin/chromedriver ]
+then
+    cd /tmp
+    wget -c http://chromium.googlecode.com/files/chromedriver_linux32_16.0.902.0.zip
+    unzip chromedriver_linux32_16.0.902.0.zip
+    mv chromedriver ~/bin
+    rm chromedriver_linux32_16.0.902.0.zip
+fi
+
 cd ~/usr/src
 Xephyr -screen 1024x768 :1 &
 DISPLAY=:1 exec java -jar $JAR
