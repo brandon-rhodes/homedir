@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Push the local changes in this git repository to heroku temporarily,
+# then roll everything back as though nothing happened, as described in:
+# http://rhodesmill.org/brandon/2012/quietly-pushing-to-heroku/
+
+set -e
+
+git ci . -m 'Heroku temporary commit'
+git push heroku master --force
+
+echo
+echo "Press Enter once you have tested the app on Heroku"
+read
+
+echo "Resetting..."
+git reset --soft HEAD~1
+echo "Reset"
+git push heroku master --force
+
+echo
+echo "Okay, the app is restored to where it was before"
+echo
