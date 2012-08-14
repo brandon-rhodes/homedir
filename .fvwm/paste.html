@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <style>
+      body { background-color: #eee; }
+      form { margin: 6em auto; font: 14pt Inconsolata, mono; }
+      input { font: 14pt Inconsolata, mono; }
+    </style>
+    <title>Backslash Remover</title>
+  </head>
+  <body onload="document.f.url.focus();">
+    <form name="f"
+          onSubmit="window.location = document.f.url.value.replace(/[\\ ]/g, ''); return false;"
+          >
+      <p>
+        Paste an Emacs URL,
+        that can contain whitespace and backslashes
+        where Emacs has split it across lines in your terminal,
+        then press Enter:
+      </p>
+      <br>
+      <input name="url" size="60">
+    </form>
+  </body>
+</html>
