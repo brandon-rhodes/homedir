@@ -18,6 +18,10 @@ I carefully log in using `ssh` in another terminal window — to make sure
 that the dotfiles leave me able to connect — and then change my default
 shell to `/bin/zsh` with `chsh` and am off and running.
 
+Note that my Emacs configuration is kept in a separate repository:
+
+  https://github.com/brandon-rhodes/dot-emacs
+
 Note that most custom commands in `~/bin` have names that start with a
 comma, to keep them orthogonal from real commands and prevent future
 name collisions with any new binaries that might come along in the Unix
