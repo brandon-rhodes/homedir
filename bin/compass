@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Run compass, first installing it in ~/usr in a Ruby "virtual
+# environment" if it is not installed already.
+
+set -e
+
+BASE=$HOME/usr/compass
+export GEM_HOME="$BASE/Gem"
+export RUBYLIB="$BASE/Gem/lib"
+
+if [[ ! -d $BASE/Gem ]]
+then
+    if ! which gem >/dev/null ;then
+        cat >&2 <<EOT
+No "gem" command; please "sudo aptitude install ruby1.9.1"
+EOT
+        exit 1
+    fi
+    echo
+    echo "Installing compass in $BASE/Gem"
+    echo
+    gem install -i $BASE/Gem susy --pre
+    echo
+    echo "Install complete"
+    echo
+fi
+
+exec ~/usr/compass/Gem/bin/compass "$@"
