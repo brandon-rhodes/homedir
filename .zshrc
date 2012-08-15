@@ -1,8 +1,6 @@
 # Load oh-my-zsh if available
 # git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-source ~/.bashrc
-
 # Use my own zsh completion logic, where provided.
 
 fpath=(~/.zsh-completion $fpath)
@@ -76,3 +74,7 @@ unset HISTFILE
 unsetopt correct_all
 
 fi
+
+# Install my other customizations.
+
+source ~/.bashrc
