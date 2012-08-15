@@ -14,7 +14,7 @@ unset HISTFILE
 
 # An excellent pager is of the utmost importance to the Unix experience.
 
-export LESS="-i -j.49 -M -z-2"
+export LESS="-i -j.49 -M -R -z-2"
 export PAGER=less
 
 # One Unicode feature is unfortunate: its official collation method
