@@ -59,10 +59,13 @@ export VIRTUALENV_USE_DISTRIBUTE=1
 # to very early versions of Unix, where you could hard-link "ls" to
 # either of those names and get the associated option automatically!
 
+if [ -x /usr/bin/colordiff ] ;then DIFF=colordiff ;else DIFF=diff ;fi
+
 alias la="/bin/ls -aCF"
 alias lf="/bin/ls -CF"
 alias ll="/bin/ls -l"
 alias lla="/bin/ls -la"
+alias d="$DIFF -ur"
 alias g="grep"
 alias m="less"
 alias s="ssh"
