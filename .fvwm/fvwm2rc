@@ -200,10 +200,10 @@ AddToFunc   BlogProject
 
 DestroyFunc EphemProject
 AddToFunc   EphemProject
-+ I Exec PRERUN="cd ~/pyephem; . venv/bin/activate; git st" exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN='cd ~/pyephem; . venv/bin/activate; cd src/ephem/doc' exec xterm -geometry 80x11+0-0
-+ I Exec exec emacs -geometry -0+24 ~/pyephem/setup.py ~/pyephem/src/ephem/__init__.py
-+ I Exec sleep 2; chromium-browser; sleep 1; exec chromium-browser file:///home/brandon/pyephem/src/ephem/doc/_build/html/index.html
++ I Exec PRERUN="cd ~/ephem2; . venv/bin/activate; git st" exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/ephem2; . venv/bin/activate; cd src/ephem/doc' exec xterm -geometry 80x11+0-0
++ I Exec exec emacs -geometry -0+24 ~/ephem2/setup.py ~/ephem2/src/ephem/__init__.py
++ I Exec sleep 2; chromium-browser; sleep 1; exec chromium-browser file:///home/brandon/ephem2/src/ephem/doc/_build/html/index.html
 
 DestroyFunc NEWFSProject
 AddToFunc   NEWFSProject
