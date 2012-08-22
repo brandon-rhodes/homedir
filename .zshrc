@@ -69,6 +69,11 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}*"
 
 unset HISTFILE
 
+# Oh-my-zsh sets M-l so that it runs the "ls" command.  Emacs disagrees,
+# and so my fingers disagree as well.
+
+bindkey "\el" down-case-word
+
 # Autocorrection keeps trying to correct subcommand names to filenames.
 
 unsetopt correct_all
