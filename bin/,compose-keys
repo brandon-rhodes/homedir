@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# List the "Compose" keystrokes on a Linux laptop for when I forget how
+# to type a particular Unicode character.
+
+exec less $(locate en_US.UTF-8/Compose)
