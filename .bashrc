@@ -69,7 +69,7 @@ alias d="$DIFF -ur"
 alias g="grep"
 alias m="less"
 alias s="ssh"
-clone() {git clone}  # see ~/.zsh-completions/_clone for the magic
+clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
 
 # A convenient way to turn core dumping on and off.  Note the leading
 # comma, which keeps these one-off commands completely orthogonal to
