@@ -89,6 +89,16 @@ unsetopt correct_all
 
 unsetopt list_ambiguous
 
+# The default oh-my-zsh "matcher-list" does crazy things like try to
+# complete the end of the current word even if my cursor is still in the
+# middle of an ambiguous part of the string. And its attempt to go ahead
+# and fill in the common suffix shared by all current completions tends
+# to just produce a broken word, such that pressing TAB again produces
+# no further valid completions. So I here restore "matcher-list" to its
+# plain default value.
+
+zstyle ':completion:*' matcher-list ''
+
 fi
 
 # Install my other customizations.
