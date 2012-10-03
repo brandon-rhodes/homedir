@@ -78,6 +78,17 @@ bindkey "\el" down-case-word
 
 unsetopt correct_all
 
+# If TAB can complete at least a partial word, then zsh by default is
+# quite lazy and makes *me* hit TAB again to then see the options that
+# remain following the characters it fills in. With this option, it will
+# always respond to my TAB by showing the list of completions, whether
+# there were a few characters that it went ahead and filled in, or not.
+# I noticed this when using my new "clone" command, because typing
+# "clone <TAB>" was filling in the common prefix "git@github.com:name/"
+# and then making me hit TAB all over again to see the repository names.
+
+unsetopt list_ambiguous
+
 fi
 
 # Install my other customizations.
