@@ -74,6 +74,12 @@ unset HISTFILE
 
 bindkey "\el" down-case-word
 
+# Prevent "!" characters from being special on the command line, since I
+# always use Ctrl-R searching and Emacs command-line editing if I want
+# to adjust and re-run a previous command.
+
+unsetopt bang_hist
+
 # Autocorrection keeps trying to correct subcommand names to filenames.
 
 unsetopt correct_all
@@ -104,3 +110,6 @@ fi
 # Install my other customizations.
 
 source ~/.bashrc
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
