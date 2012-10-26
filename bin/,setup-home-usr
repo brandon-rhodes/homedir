@@ -25,7 +25,6 @@ $SYSPY ~/usr/src/virtualenv/virtualenv.py --clear --unzip-setuptools ~/usr
 
 pip install -U pip
 pip install -U distribute
-pip install -U virtualenv
 
 pip install -U bpython
 pip install -U docutils
