@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Run virtualenv from the pristine system-wide Python, so that it can
+# see the system site packages (in case these are requested with
+# --system-site-packages).
+
+exec /usr/bin/python2.7 ~/usr/src/virtualenv/virtualenv.py "$@"
