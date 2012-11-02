@@ -13,7 +13,8 @@ if [ ! -x $SYSPY ]; then
     SYSPY=/usr/local/bin/python2.7
 fi
 
-$SYSPY ~/usr/src/virtualenv/virtualenv.py --clear --unzip-setuptools ~/usr
+$SYSPY ~/usr/src/virtualenv/virtualenv.py --clear --unzip-setuptools \
+    --system-site-packages ~/usr
 
 . ~/usr/bin/activate
 
