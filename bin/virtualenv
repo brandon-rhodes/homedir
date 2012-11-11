@@ -4,4 +4,13 @@
 # see the system site packages (in case these are requested with
 # --system-site-packages).
 
-exec /usr/bin/python2.7 ~/usr/src/virtualenv/virtualenv.py "$@"
+for PYTHON in \
+    /usr/bin/python2.7 \
+    /Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
+
+do
+    if [ -x $PYTHON ]
+    then
+        exec $PYTHON ~/usr/src/virtualenv/virtualenv.py "$@"
+    fi
+done
