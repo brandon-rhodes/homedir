@@ -5,10 +5,11 @@
 # that this requires Emacs >= 23, as the older "emacsclient" does not
 # understand how to spawn an Emacs daemon the first time it is run.
 
-if hostname | grep -q webfaction
+if hostname | grep -q webfaction || [ "$(uname -s)" = "Darwin" ]
 then
     # Run Emacs normally, refusing to leave an Emacs daemon running on a
-    # shared host.
+    # shared host like webfaction, and abandoning any attempt to run
+    # Emacs as a server on a Mac since Emacs is often quite old there.
     exec emacs -nw "$@"
 fi
 
