@@ -1,3 +1,9 @@
+# Assure that all subprocesses aborb our umask and other settings that
+# are defined in our shell startup files.
+
+ExecUseShell /bin/bash
+SetEnv BASH_ENV $HOME/.bashenv
+
 # Create a virtual desktop several times the size of the physical
 # screen, and immediately jump an entire screen over when the mouse
 # reaches an edge of the screen.
