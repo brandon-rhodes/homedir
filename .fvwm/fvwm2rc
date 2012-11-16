@@ -95,7 +95,7 @@ Key w A 4  Menu MenuFvwmWindowOps Nop
 # Vertical maximize with Windows+Tab, full maximize with Windows+F.
 
 Key f   A 4  FuncMaximizeBorderlessly
-Key Tab A 4  Maximize 0 100
+Key Tab A 4  FuncMaximizeBorderlesslyY
 
 # Windows key plus an arrow key moves between windows without the mouse.
 
@@ -226,6 +226,12 @@ AddToFunc FuncMaximizeBorderlessly
 + I ThisWindow (Maximized) WindowStyle BorderWidth 6, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 100 100
+
+DestroyFunc FuncMaximizeBorderlesslyY
+AddToFunc FuncMaximizeBorderlesslyY
++ I WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I UpdateStyles
++ I Maximize Toggle 0 100
 
 DestroyFunc FuncFvwmResizeOrRaise
 AddToFunc FuncFvwmResizeOrRaise
