@@ -55,6 +55,14 @@ unset TMOUT
 
 export VIRTUALENV_USE_DISTRIBUTE=1
 
+# A quick way to put all of the Python versions compiled under ~/battery
+# on to my PATH, with their shared libraries also visible.
+
+,battery () {
+    PATH=~/battery/usr/bin:$PATH
+    export LD_LIBRARY_PATH=~/battery/usr/lib
+}
+
 # Various shell aliases, some quite traditional: "la" and "ll" go back
 # to very early versions of Unix, where you could hard-link "ls" to
 # either of those names and get the associated option automatically!
