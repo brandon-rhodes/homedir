@@ -69,6 +69,13 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}*"
 
 unset HISTFILE
 
+# Moving forward by one word should land at the end of the next word,
+# not at its beginning.
+
+bindkey "\eF" emacs-forward-word
+bindkey "\ef" emacs-forward-word
+
+
 # Oh-my-zsh sets M-l so that it runs the "ls" command.  Emacs disagrees,
 # and so my fingers disagree as well.
 
