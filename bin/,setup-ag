@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Install "ag" recursive search tool.
+
+cd /tmp
+curl -OL https://github.com/downloads/ggreer/the_silver_searcher/the_silver_searcher-0.13.1.tar.gz
+tar xvfz the_silver_searcher-0.13.1.tar.gz
+
+cd the_silver_searcher-0.13.1
+./build.sh
+./configure --prefix=$HOME/usr
+make
+make install
+
+cd /tmp
+rm -r the_silver*
