@@ -36,15 +36,37 @@ then PATH="$HOME/bin:$PATH"
 fi
 
 # The prompt should name the system on which the shell is running, in
-# bold so the eye can easily find prompts when scrolling, and also a
-# non-zero exit status for the previous command in red.
+# bold so the eye can easily find prompts when scrolling, and also turn
+# red if it is a root prompt.
+
+if [ -n "$HOST" ]
+then
+    bash_prompt="$HOST"
+else
+    bash_prompt="$HOSTNAME"
+fi
+
+if [ "$USER" = "root" ]
+then
+    bash_prompt=${bash_prompt}"# "
+else
+    bash_prompt=${bash_prompt}"\$ "
+fi
 
 if [ -n "$TERM" ]
 then
-    PS1a="\[$(tput setaf 0)$(tput bold)\]$HOSTNAME\[$(tput setaf 1)\]"
-    PS1b="\[$(tput setaf 0)\]\$\[$(tput sgr0)\] "
-    PROMPT_COMMAND='[ $? = 0 ] && PS1="$PS1a$PS1b" || PS1="$PS1a($?)$PS1b"'
+    # Everyone gets bold.
+    bash_prompt="\[$(tput bold)\]$bash_prompt\[$(tput sgr0)\]"
+
+    if [ "$(id -u)" = "0" ]
+    then
+        # Root additionally gets red.
+        bash_prompt="\[$(tput setaf 1)\]$bash_prompt"
+    fi
 fi
+
+# Bash-only feature.
+PROMPT_COMMAND='PS1="$bash_prompt"'
 
 # Bash should wait forever at its prompt and never time out.
 
