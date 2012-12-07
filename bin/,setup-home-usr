@@ -29,6 +29,5 @@ pip install -U distribute
 
 pip install -U bpython
 pip install -U docutils
-pip install -U grin
 pip install -U mercurial
 pip install -U uncommitted
