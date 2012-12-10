@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Install "ag" recursive search tool.
 
 cd /tmp
