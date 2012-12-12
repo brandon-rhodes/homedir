@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+TGZ=heroku-client.tgz
+URL=http://assets.heroku.com.s3.amazonaws.com/heroku-client/$TGZ
+
+if [ ! -d $HOME/usr/heroku ]
+then
+    cd /tmp
+    wget $URL
+    mkdir -p $HOME/usr/heroku
+    cd $HOME/usr/heroku
+    tar xzf /tmp/$TGZ
+    rm /tmp/$TGZ
+fi
+
+exec $HOME/usr/heroku/heroku-client/bin/heroku "$@"
