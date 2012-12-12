@@ -1,10 +1,15 @@
 homedir
 =======
 
-The home directory dotfiles and customizations of Brandon Rhodes.
+This repository contains the home directory dotfiles and customizations
+of Brandon Rhodes.  You might also be interested in taking a look at his
+version controlled `.emacs.d` directory at:
 
-I check this out into a new home directory and set it up like this
-(omitting the "ubuntu" step if I am on another operating system):
+https://github.com/brandon-rhodes/dot-emacs
+
+When I am setting up a shell account on a new machine, I check this
+`homedir` repository out into my new home directory and set it up like
+this (omitting the "ubuntu" step if I am on another operating system):
 
     $ cd
     $ git co https://github.com/brandon-rhodes/homedir.git
@@ -51,7 +56,7 @@ dotfiles on public machines, like my Webfaction account.
 
 So I decided to make my dotfiles public — I myself will be able to get
 to them more easily, and anyone else who might be curious can mine them
-for hints and tibits of wisdom about smoothing away the rough edges of
+for hints and tidbits of wisdom about smoothing away the rough edges of
 the Unix environment.
 
 Enjoy, and please consider all of these files to be MIT-licensed: take
