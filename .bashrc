@@ -12,6 +12,13 @@ export GREP_OPTIONS='--color=auto'
 
 unset HISTFILE
 
+# Use Unicode if available.
+
+if LANG=en_US.UTF-8 locale charmap 2>/dev/null | grep -q '^UTF-8$'
+then
+    export LANG=en_US.UTF-8
+fi
+
 # An excellent pager is of the utmost importance to the Unix experience.
 
 export LESS="-i -j.49 -M -R -z-2"
