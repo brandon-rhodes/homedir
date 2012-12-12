@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Groups expected: base base-devel xorg
+
+pacman -S --needed \
+    pkgfile ecryptfs-utils \
+    b43-fwcutter networkmanager network-manager-applet \
+    polkit-gnome gnome-keyring libgnome-keyring xfce4-notifyd \
+    emacs git mosh openssh sshfs wget zsh \
+    lsof strace \
+    python2 python3 sqlite \
+    autocutsel fvwm geeqie gimp redshift slim trayer \
+    ttf-inconsolata ttf-ubuntu-font-family \
+    chromium flashplugin
+
+systemctl enable gnome-keyring.service
+systemctl enable NetworkManager.service
+systemctl enable slim.service
+
+if [ "$1" = "dev" ]
+then
+    pacman -S --needed \
+        libmemcached python2-lxml postgresql postgresql-libs ruby tk
+
+    if [ ! -d /var/lib/postgres/data ]
+    then
+        chown postgres.postgres /var/lib/postgres
+        su - postgres -c \
+            "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+        systemctl start postgresql.service
+        su - postgres -c "createuser -d -r brandon"
+    fi
+
+    systemctl enable postgresql.service
+fi
