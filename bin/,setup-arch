@@ -6,16 +6,25 @@ pacman -S --needed \
     pkgfile ecryptfs-utils \
     b43-fwcutter networkmanager network-manager-applet \
     polkit-gnome gnome-keyring libgnome-keyring xfce4-notifyd \
-    emacs git mosh openssh sshfs wget zsh \
-    lsof strace \
+    blueman bluez \
+    pulseaudio pulseaudio-alsa \
+    aspell aspell-en emacs zsh \
+    git perl-term-readkey subversion \
+    apache curl mosh openssh sshfs wget \
+    lsof mlocate strace \
     python2 python3 sqlite \
     autocutsel fvwm geeqie gimp redshift slim trayer \
     ttf-inconsolata ttf-ubuntu-font-family \
     chromium flashplugin
 
-systemctl enable gnome-keyring.service
+# add pam lines about encrypted homedir
+
+# automatically switch to newly-connected devices
+# load-module module-switch-on-connect
+
 systemctl enable NetworkManager.service
 systemctl enable slim.service
+usermod -a -G rfkill brandon
 
 if [ "$1" = "dev" ]
 then
