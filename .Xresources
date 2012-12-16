@@ -8,6 +8,12 @@ NetHack*map*columns: 64
 XEphem.Sitename: Atlanta, Georgia
 XEphem*Tips.No.set: True
 
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
 XTerm*internalBorder:  2
 XTerm*highlightSelection: true
 XTerm*metaSendsEscape: true
