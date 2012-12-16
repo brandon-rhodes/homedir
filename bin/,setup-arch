@@ -10,10 +10,11 @@ pacman -S --needed \
     pulseaudio pulseaudio-alsa \
     aspell aspell-en emacs zsh \
     git perl-term-readkey subversion \
-    apache curl mosh openssh sshfs wget \
+    apache curl wget \
+    encfs mosh openssh sshfs \
     lsof mlocate strace \
-    python2 python3 sqlite \
-    autocutsel fvwm geeqie gimp redshift slim trayer \
+    python2 python3 sqlite swig \
+    autocutsel evince fvwm geeqie gimp redshift slim trayer i3lock \
     ttf-inconsolata ttf-ubuntu-font-family \
     chromium flashplugin
 
