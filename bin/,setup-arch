@@ -8,15 +8,16 @@ pacman -S --needed \
     polkit-gnome gnome-keyring libgnome-keyring xfce4-notifyd \
     blueman bluez \
     pulseaudio pulseaudio-alsa \
-    aspell aspell-en emacs zsh \
+    aspell aspell-en emacs \
     git perl-term-readkey subversion \
     apache curl wget \
     encfs mosh openssh sshfs \
-    lsof mlocate strace \
+    lsof mlocate strace units zsh \
     python2 python3 sqlite swig \
-    autocutsel evince fvwm geeqie gimp redshift slim trayer i3lock \
+    autocutsel fvwm redshift slim trayer i3lock \
     ttf-inconsolata ttf-ubuntu-font-family \
-    chromium flashplugin
+    chromium flashplugin firefox \
+    evince geeqie gimp gnumeric libreoffice-writer mplayer
 
 # add pam lines about encrypted homedir
 
