@@ -98,10 +98,12 @@ Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
 Key w A 4  Menu MenuFvwmWindowOps Nop
 
-# Vertical maximize with Windows+Tab, full maximize with Windows+F.
+# Vertical maximize with Windows+Tab, full maximize with Windows+F,
+# and 1024x768 borderless "presentation maximize" with Windows+Shift+F.
 
 Key f   A 4  FuncMaximizeBorderlessly
-Key Tab A 4  FuncMaximizeBorderlesslyY
+Key f   A 4S FuncMaximizeBorderlessly1024
+Key Tab A 4  FuncMaximizeY
 
 # Windows key plus an arrow key moves between windows without the mouse.
 
@@ -233,8 +235,15 @@ AddToFunc FuncMaximizeBorderlessly
 + I UpdateStyles
 + I Maximize Toggle 100 100
 
-DestroyFunc FuncMaximizeBorderlesslyY
-AddToFunc FuncMaximizeBorderlesslyY
+DestroyFunc FuncMaximizeBorderlessly1024
+AddToFunc FuncMaximizeBorderlessly1024
++ I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I UpdateStyles
++ I Maximize Toggle 1024p 768p
+
+DestroyFunc FuncMaximizeY
+AddToFunc FuncMaximizeY
 + I WindowStyle BorderWidth 6, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 0 100
