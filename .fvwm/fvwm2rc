@@ -28,6 +28,7 @@ Style * ResizeOpaque
 # remain on top, that never get obscured by other windows.
 
 Style StayOnTop StaysOnTop, !Borders, !Title
+Style "Mayavi Scene *" StaysOnTop
 
 # Autoraise windows if the mouse stays in them for 0.3 seconds, unless
 # the window is nethack-qt, which will thereby overlay its own dratted
