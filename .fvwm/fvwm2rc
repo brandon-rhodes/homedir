@@ -28,7 +28,6 @@ Style * ResizeOpaque
 # remain on top, that never get obscured by other windows.
 
 Style StayOnTop StaysOnTop, !Borders, !Title
-Style "Mayavi Scene *" StaysOnTop
 
 # Autoraise windows if the mouse stays in them for 0.3 seconds, unless
 # the window is nethack-qt, which will thereby overlay its own dratted
@@ -175,11 +174,9 @@ AddToMenu MenuFvwmWindowOps
 + "" Nop
 + "$[gt.&Move]"          Move
 + "$[gt.Resize]"         Resize
-+ "$[gt.Raise]"          Raise
-+ "$[gt.Lower]"          Lower
-+ "$[gt.(De)Iconify]"    Iconify
 + "$[gt.(Un)Stick]"      Stick
 + "$[gt.(Un)Ma&ximize]"  Maximize
++ "$[gt.(Un)On Top]"     ToggleLayer
 + "$[gt.Destroy]"        Destroy
 + "" Nop
 + "$[gt.&L Reload fvwm2rc]"  Read fvwm2rc
@@ -254,6 +251,11 @@ AddToFunc FuncFvwmResizeOrRaise
 + I Raise
 + M Resize
 + D Lower
+
+DestroyFunc ToggleLayer
+AddToFunc   ToggleLayer
++ I ThisWindow (Layer 6) Layer
++ I TestRc (NoMatch) Layer 0 6
 
 # Read config files for modules.
 
