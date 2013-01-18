@@ -10,14 +10,15 @@ pacman -S --needed \
     pulseaudio pulseaudio-alsa \
     aspell aspell-en emacs \
     git perl-term-readkey subversion \
-    apache curl unzip wget \
-    encfs mosh openssh sshfs \
+    apache cabextract curl gnu-netcat unzip wget \
+    encfs mosh openssh pwgen sshfs \
     inotify-tools lsof mlocate strace units zsh \
-    python2 python3 sqlite swig vtk wxpython \
+    python2 python3 swig wxpython \
+    blas gcc-fortran lapack sqlite vtk \
     autocutsel fvwm redshift slim trayer i3lock \
     ttf-gentium ttf-inconsolata ttf-ubuntu-font-family \
     chromium flashplugin firefox \
-    evince geeqie gimp gnumeric libreoffice-writer mplayer
+    cups evince geeqie gimp gnumeric libreoffice-writer mplayer sane
 
 # add pam lines about encrypted homedir
 
