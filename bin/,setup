@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# This file helps me remember how to install the various useful tools
+# that I like being able to use, but that I might not need installed on
+# every login account everywhere, so they do not belong in one of the
+# other ,set-* scripts but here where I can opt to run them separately.
+
+set -e
+
+# "ag" recursive search tool.
+
+if [ "$1" = "ag" ]
+then
+    cd /tmp
+    curl -OL https://github.com/downloads/ggreer/the_silver_searcher/the_silver_searcher-0.13.1.tar.gz
+    tar xvfz the_silver_searcher-0.13.1.tar.gz
+
+    cd the_silver_searcher-0.13.1
+    ./build.sh
+    ./configure --prefix=$HOME/usr
+    make
+    make install
+
+    cd /tmp
+    rm -r the_silver*
+fi
+
+# "git flow"
+
+if [ "$1" = "flow" ]
+then
+    cd ~/usr
+    git clone --recursive git://github.com/nvie/gitflow.git
+    cd gitflow
+    make install prefix=$HOME/usr
+    cd ..
+    rm -rf gitflow
+fi
