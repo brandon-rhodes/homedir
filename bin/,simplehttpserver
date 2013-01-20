@@ -17,6 +17,8 @@ exec python -u -m SimpleHTTPServer $ANY_PORT |
         if echo $line | grep -q '^Serving'
         then
             PORT=$(echo $line | awk '{print$6}')
-            chromium-browser http://localhost:$PORT/
+            URL=http://localhost:$PORT/
+            echo $URL
+            chromium-browser $URL
         fi
     done
