@@ -36,3 +36,15 @@ then
     cd ..
     rm -rf gitflow
 fi
+
+# "fonts"
+
+if [ "$1" = "fonts" ]
+then
+    mkdir -p ~/.fonts
+    cd ~/.fonts
+    wget http://www.fontsquirrel.com/fonts/download/Crimson
+    unzip -o Crimson
+    rm Crimson
+    rm "SIL Open Font License 1.1.txt"
+fi
