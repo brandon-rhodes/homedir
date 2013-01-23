@@ -2,30 +2,44 @@
 #
 # Groups expected: base base-devel xorg
 
-pacman -S --needed \
-    pkgfile ecryptfs-utils \
-    b43-fwcutter networkmanager network-manager-applet \
-    polkit-gnome gnome-keyring libgnome-keyring xfce4-notifyd \
-    blueman bluez \
-    pulseaudio pulseaudio-alsa \
-    aspell aspell-en emacs \
-    git perl-term-readkey subversion \
-    apache cabextract curl gnu-netcat unzip wget \
-    encfs mosh openssh pwgen sshfs \
-    inotify-tools lsof mlocate strace units zsh \
-    python2 python3 swig wxpython \
-    blas gcc-fortran lapack sqlite vtk \
-    autocutsel fvwm redshift slim trayer i3lock \
-    ttf-gentium ttf-inconsolata ttf-ubuntu-font-family \
-    chromium flashplugin firefox \
-    cups evince geeqie gimp gnumeric libreoffice-writer mplayer sane
+add () { packages="$packages $*"; }
 
-# add pam lines about encrypted homedir
+# Packages.
 
-# automatically switch to newly-connected devices
-# load-module module-switch-on-connect
+add pkgfile                                 # Arch utilities
+add encfs ecryptfs-utils sshfs              # Filesystem support
+add b43-fwcutter                            # Networking
+add networkmanager network-manager-applet     #
+add gnome-keyring libgnome-keyring            #
+add polkit-gnome xfce4-notifyd                #
+add blueman bluez                           # Bluetooth
+add pulseaudio pulseaudio-alsa              # Audio
+add cups sane                               # Printers and scanners
+add aspell aspell-en emacs                  # Editor and spellcheck
+add git perl-term-readkey subversion        # Version control
+add gnu-netcat mosh openssh pwgen           # Network tools
+add apache cabextract curl unzip wget         # ("apache" provides "ab")
+add inotify-tools lsof mlocate strace       # Monitor resources and events
+add units zsh                               # Shell
+add python2 python3 swig wxpython           # Python
+add blas gcc-fortran lapack sqlite vtk      # Support for scientific python
+add autocutsel fvwm slim trayer i3lock      # Desktop foundation
+add ttf-gentium ttf-inconsolata             # Fonts
+add ttf-ubuntu-font-family                    #
+add chromium flashplugin firefox            # Browsers
+add evince geeqie mplayer                   # File viewers
+add gimp gnumeric libreoffice-writer        # File creators
+add redshift                                # Goodnight!
+
+pacman -S --needed $packages
+
+# TODO: add pam lines about encrypted homedir
+
+# TODO: automatically switch to newly-connected devices
+#       load-module module-switch-on-connect
 
 systemctl enable NetworkManager.service
+systemctl enable cronie.service
 systemctl enable slim.service
 usermod -a -G rfkill brandon
 
