@@ -17,8 +17,10 @@ add pulseaudio pulseaudio-alsa              # Audio
 add cups sane                               # Printers and scanners
 add aspell aspell-en emacs                  # Editor and spellcheck
 add git perl-term-readkey subversion        # Version control
-add gnu-netcat mosh openssh pwgen           # Network tools
+add gnu-netcat                              # Network tools
 add apache cabextract curl unzip wget         # ("apache" provides "ab")
+add tcpdump wireshark-cli wireshark-gtk
+add mosh openssh pwgen
 add inotify-tools lsof mlocate strace       # Monitor resources and events
 add units zsh                               # Shell
 add python2 python3 swig wxpython           # Python
