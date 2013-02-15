@@ -8,6 +8,7 @@ br = branch
 ci = commit -v
 co = checkout
 d = diff
+l = log --graph --pretty=oneline --abbrev-commit
 lg = log -p
 locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
