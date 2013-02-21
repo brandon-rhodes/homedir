@@ -48,3 +48,15 @@ then
     rm Crimson
     rm "SIL Open Font License 1.1.txt"
 fi
+
+# "skype"
+
+if [ "$1" = "skype" ]
+then
+    cd ~/usr
+    wget http://download.skype.com/linux/skype-4.1.0.20.tar.bz2
+    tar xvfj skype-4.1.0.20.tar.bz2
+    rm skype-4.1.0.20.tar.bz2
+    cd ~/bin
+    ln -s ../usr/skype-4.1.0.20/skype .
+fi
