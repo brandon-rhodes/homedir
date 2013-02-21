@@ -11,7 +11,7 @@ if ! which aptitude
 then sudo apt-get install aptitude
 fi
 
-sudo aptitude update
+# sudo aptitude update
 
 # Install happy packages.
 
@@ -40,21 +40,26 @@ sudo aptitude install -y \
     ttf-inconsolata  `: favorite console font` \
     units            `: desk calculator` \
     wireshark        `: primarily for debugging TCP` \
-    xca              `: x509 Certification Authority management tool` \
     xchat            `: IRC for software support` \
     zsh              `: favorite shell` \
     \
     `: Mount remote filesystems` \
     bindfs encfs smbnetfs sshfs \
     \
-    `: Python modules I would rather not compile myself` \
-    python-matplotlib python-lxml \
+    `: Python modules I would rather not always compile myself` \
+    ipython python-matplotlib python-lxml python-scipy \
+    \
+    `: for ag` \
+    automake libpcre3-dev \
     \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
     \
     `: for SASS and Compass` \
     librb-inotify-ruby \
+    \
+    `: for Skype` \
+    libqt4-dbus libqtwebkit4 \
     \
     `: further tools for web development` \
     yui-compressor
@@ -68,4 +73,4 @@ fi
 
 # Thwart Unity by moving menus back into their application windows.
 
-sudo aptitude purge -y appmenu-gtk indicator-applet-appmenu indicator-appmenu
+#sudo aptitude purge -y appmenu-gtk indicator-applet-appmenu indicator-appmenu
