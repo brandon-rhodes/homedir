@@ -11,7 +11,7 @@ if ! which aptitude
 then sudo apt-get install aptitude
 fi
 
-# sudo aptitude update
+sudo aptitude update
 
 # Install happy packages.
 
