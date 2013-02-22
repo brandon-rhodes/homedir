@@ -23,7 +23,7 @@ sudo aptitude install -y \
     emacs23          `: editor-of-choice` \
     emacs23-el       `: readable LISP source` \
     fvwm             `: window manager` \
-    git              `: distributed version control` \
+    git gitk         `: distributed version control` \
     gnucash          `: accounting` \
     gnumeric         `: spreadsheet` \
     groff            `: for processing old documents` \
