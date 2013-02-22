@@ -1,0 +1,21 @@
+
+                 40m     41m     42m     43m     44m     45m     46m     47m
+     m [m  gYw   [m[40m  gYw  [0m [m[41m  gYw  [0m [m[42m  gYw  [0m [m[43m  gYw  [0m [m[44m  gYw  [0m [m[45m  gYw  [0m [m[46m  gYw  [0m [m[47m  gYw  [0m
+    1m [1m  gYw   [1m[40m  gYw  [0m [1m[41m  gYw  [0m [1m[42m  gYw  [0m [1m[43m  gYw  [0m [1m[44m  gYw  [0m [1m[45m  gYw  [0m [1m[46m  gYw  [0m [1m[47m  gYw  [0m
+   30m [30m  gYw   [30m[40m  gYw  [0m [30m[41m  gYw  [0m [30m[42m  gYw  [0m [30m[43m  gYw  [0m [30m[44m  gYw  [0m [30m[45m  gYw  [0m [30m[46m  gYw  [0m [30m[47m  gYw  [0m
+ 1;30m [1;30m  gYw   [1;30m[40m  gYw  [0m [1;30m[41m  gYw  [0m [1;30m[42m  gYw  [0m [1;30m[43m  gYw  [0m [1;30m[44m  gYw  [0m [1;30m[45m  gYw  [0m [1;30m[46m  gYw  [0m [1;30m[47m  gYw  [0m
+   31m [31m  gYw   [31m[40m  gYw  [0m [31m[41m  gYw  [0m [31m[42m  gYw  [0m [31m[43m  gYw  [0m [31m[44m  gYw  [0m [31m[45m  gYw  [0m [31m[46m  gYw  [0m [31m[47m  gYw  [0m
+ 1;31m [1;31m  gYw   [1;31m[40m  gYw  [0m [1;31m[41m  gYw  [0m [1;31m[42m  gYw  [0m [1;31m[43m  gYw  [0m [1;31m[44m  gYw  [0m [1;31m[45m  gYw  [0m [1;31m[46m  gYw  [0m [1;31m[47m  gYw  [0m
+   32m [32m  gYw   [32m[40m  gYw  [0m [32m[41m  gYw  [0m [32m[42m  gYw  [0m [32m[43m  gYw  [0m [32m[44m  gYw  [0m [32m[45m  gYw  [0m [32m[46m  gYw  [0m [32m[47m  gYw  [0m
+ 1;32m [1;32m  gYw   [1;32m[40m  gYw  [0m [1;32m[41m  gYw  [0m [1;32m[42m  gYw  [0m [1;32m[43m  gYw  [0m [1;32m[44m  gYw  [0m [1;32m[45m  gYw  [0m [1;32m[46m  gYw  [0m [1;32m[47m  gYw  [0m
+   33m [33m  gYw   [33m[40m  gYw  [0m [33m[41m  gYw  [0m [33m[42m  gYw  [0m [33m[43m  gYw  [0m [33m[44m  gYw  [0m [33m[45m  gYw  [0m [33m[46m  gYw  [0m [33m[47m  gYw  [0m
+ 1;33m [1;33m  gYw   [1;33m[40m  gYw  [0m [1;33m[41m  gYw  [0m [1;33m[42m  gYw  [0m [1;33m[43m  gYw  [0m [1;33m[44m  gYw  [0m [1;33m[45m  gYw  [0m [1;33m[46m  gYw  [0m [1;33m[47m  gYw  [0m
+   34m [34m  gYw   [34m[40m  gYw  [0m [34m[41m  gYw  [0m [34m[42m  gYw  [0m [34m[43m  gYw  [0m [34m[44m  gYw  [0m [34m[45m  gYw  [0m [34m[46m  gYw  [0m [34m[47m  gYw  [0m
+ 1;34m [1;34m  gYw   [1;34m[40m  gYw  [0m [1;34m[41m  gYw  [0m [1;34m[42m  gYw  [0m [1;34m[43m  gYw  [0m [1;34m[44m  gYw  [0m [1;34m[45m  gYw  [0m [1;34m[46m  gYw  [0m [1;34m[47m  gYw  [0m
+   35m [35m  gYw   [35m[40m  gYw  [0m [35m[41m  gYw  [0m [35m[42m  gYw  [0m [35m[43m  gYw  [0m [35m[44m  gYw  [0m [35m[45m  gYw  [0m [35m[46m  gYw  [0m [35m[47m  gYw  [0m
+ 1;35m [1;35m  gYw   [1;35m[40m  gYw  [0m [1;35m[41m  gYw  [0m [1;35m[42m  gYw  [0m [1;35m[43m  gYw  [0m [1;35m[44m  gYw  [0m [1;35m[45m  gYw  [0m [1;35m[46m  gYw  [0m [1;35m[47m  gYw  [0m
+   36m [36m  gYw   [36m[40m  gYw  [0m [36m[41m  gYw  [0m [36m[42m  gYw  [0m [36m[43m  gYw  [0m [36m[44m  gYw  [0m [36m[45m  gYw  [0m [36m[46m  gYw  [0m [36m[47m  gYw  [0m
+ 1;36m [1;36m  gYw   [1;36m[40m  gYw  [0m [1;36m[41m  gYw  [0m [1;36m[42m  gYw  [0m [1;36m[43m  gYw  [0m [1;36m[44m  gYw  [0m [1;36m[45m  gYw  [0m [1;36m[46m  gYw  [0m [1;36m[47m  gYw  [0m
+   37m [37m  gYw   [37m[40m  gYw  [0m [37m[41m  gYw  [0m [37m[42m  gYw  [0m [37m[43m  gYw  [0m [37m[44m  gYw  [0m [37m[45m  gYw  [0m [37m[46m  gYw  [0m [37m[47m  gYw  [0m
+ 1;37m [1;37m  gYw   [1;37m[40m  gYw  [0m [1;37m[41m  gYw  [0m [1;37m[42m  gYw  [0m [1;37m[43m  gYw  [0m [1;37m[44m  gYw  [0m [1;37m[45m  gYw  [0m [1;37m[46m  gYw  [0m [1;37m[47m  gYw  [0m
+
