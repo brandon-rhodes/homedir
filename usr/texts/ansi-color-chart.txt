@@ -1,3 +1,4 @@
+From https://gist.github.com/dzubi/2157470
 
                  40m     41m     42m     43m     44m     45m     46m     47m
      m [m  gYw   [m[40m  gYw  [0m [m[41m  gYw  [0m [m[42m  gYw  [0m [m[43m  gYw  [0m [m[44m  gYw  [0m [m[45m  gYw  [0m [m[46m  gYw  [0m [m[47m  gYw  [0m
