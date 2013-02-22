@@ -19,6 +19,7 @@ sudo aptitude install -y \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     chromium-browser `: browser-of-choice` \
+    colordiff wdiff  `: for the occasional need to diff outside of git ` \
     emacs23          `: editor-of-choice` \
     emacs23-el       `: readable LISP source` \
     fvwm             `: window manager` \
