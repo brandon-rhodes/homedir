@@ -16,7 +16,6 @@ fi
 # Install happy packages.
 
 sudo aptitude install -y \
-    wamerican-huge   `: from which to power my Emacs spellchecker` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     chromium-browser `: browser-of-choice` \
