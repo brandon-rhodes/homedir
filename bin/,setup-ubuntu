@@ -31,6 +31,7 @@ sudo aptitude install -y \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
     mplayer2         `: for media` \
+    openssh-server   `: for when I run scp on another machine` \
     pwgen            `: random passwords` \
     python3.2 python3.2-dev `: for when I feel modern` \
     python-dev       `: necessity` \
