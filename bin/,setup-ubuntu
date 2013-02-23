@@ -48,7 +48,7 @@ sudo aptitude install -y \
     bindfs encfs smbnetfs sshfs \
     \
     `: Python modules I would rather not always compile myself` \
-    ipython python-matplotlib python-lxml python-scipy \
+    ipython ipython-notebook python-matplotlib python-lxml python-scipy \
     \
     `: for ag` \
     automake libpcre3-dev \
