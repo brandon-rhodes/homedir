@@ -18,7 +18,7 @@ EOT
     echo
     echo "Installing compass"
     echo
-    gem install susy
+    gem install --user-install susy
     echo
     echo "Install complete"
     echo
