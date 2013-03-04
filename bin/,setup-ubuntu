@@ -53,6 +53,9 @@ sudo aptitude install -y \
     `: for ag` \
     automake libpcre3-dev \
     \
+    `: for gevent` \
+    libevent1-dev \
+    \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
     \
@@ -63,7 +66,7 @@ sudo aptitude install -y \
     libqt4-dbus libqtwebkit4 \
     \
     `: further tools for web development` \
-    yui-compressor
+    redis-server yui-compressor
 
 # Run "apt-file update" for the first time if necessary.
 
