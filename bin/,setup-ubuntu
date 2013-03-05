@@ -37,6 +37,9 @@ sudo aptitude install -y \
     python-dev       `: necessity` \
     sqlite3          `: for command line access to its databases` \
     subversion       `: for outdated projects` \
+    texlive-latex-recommended `: for building PDF documentation with Sphinx` \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
     tmux             `: to leave things running in a tty overnight` \
     ttf-inconsolata  `: favorite console font` \
     units            `: desk calculator` \
