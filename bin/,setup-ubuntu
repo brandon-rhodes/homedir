@@ -33,6 +33,7 @@ sudo aptitude install -y \
     mplayer2 geeqie  `: for media` \
     openssh-server   `: for when I run scp on another machine` \
     pwgen            `: random passwords` \
+    pypy             `: for when I want to be fast` \
     python3.2 python3.2-dev `: for when I feel modern` \
     python-dev       `: necessity` \
     redshift         `: for coding past sunset` \
