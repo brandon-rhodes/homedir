@@ -35,6 +35,7 @@ sudo aptitude install -y \
     pwgen            `: random passwords` \
     python3.2 python3.2-dev `: for when I feel modern` \
     python-dev       `: necessity` \
+    redshift         `: for coding past sunset` \
     sqlite3          `: for command line access to its databases` \
     subversion       `: for outdated projects` \
     texlive-latex-recommended `: for building PDF documentation with Sphinx` \
