@@ -26,6 +26,7 @@ sudo aptitude install -y \
     git gitk         `: distributed version control` \
     gnucash          `: accounting` \
     gnumeric         `: spreadsheet` \
+    graphviz         `: Hettinger reminded me how awesome this is` \
     groff            `: for processing old documents` \
     gscan2pdf pdftk  `: scanning to PDF` \
     inkscape         `: SVG editing` \
@@ -43,6 +44,7 @@ sudo aptitude install -y \
     texlive-latex-extra \
     texlive-fonts-recommended \
     tmux             `: to leave things running in a tty overnight` \
+    tree             `: for when ls is simply not enough` \
     ttf-inconsolata  `: favorite console font` \
     units            `: desk calculator` \
     wireshark        `: primarily for debugging TCP` \
