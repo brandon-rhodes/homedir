@@ -179,6 +179,8 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.(Un)On Top]"     ToggleLayer
 + "$[gt.Destroy]"        Destroy
 + "" Nop
++ "$[gt.  Lock edgeflip]"    EdgeScroll 0 0
++ "$[gt.  Unlock edgeflip]"  EdgeScroll 100 100
 + "$[gt.&L Reload fvwm2rc]"  Read fvwm2rc
 + "$[gt.&R Restart fvwm2rc]" Restart
 + "$[gt.Log off]"        Quit
