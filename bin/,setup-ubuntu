@@ -18,6 +18,7 @@ sudo aptitude update
 sudo aptitude install -y \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
+    cabextract       `: for extracting binary Windows drivers ` \
     chromium-browser `: browser-of-choice` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     emacs23          `: editor-of-choice` \
