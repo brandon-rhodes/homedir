@@ -32,6 +32,7 @@ sudo aptitude install -y \
     gscan2pdf pdftk  `: scanning to PDF` \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
+    libreoffice-writer `: for the occasional Microsoft Word file ` \
     mplayer2 geeqie  `: for media` \
     openssh-server   `: for when I run scp on another machine` \
     pwgen            `: random passwords` \
