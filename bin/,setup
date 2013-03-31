@@ -42,6 +42,19 @@ then
     sudo chmod -R a+rX /usr/share/sane/snapscan/
 fi
 
+# dot emacs
+
+if [ "$1" = "emacs" ]
+then
+    if [ ! -d ~/.emacs.d/init.d ]
+    then
+        rm -rf ~/.emacs.d
+        git clone git@github.com:brandon-rhodes/dot-emacs.git ~/.emacs.d
+        cd ~/.emacs.d
+        ./SETUP.sh
+    fi
+fi
+
 # "git flow"
 
 if [ "$1" = "flow" ]
