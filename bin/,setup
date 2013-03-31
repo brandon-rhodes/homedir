@@ -25,6 +25,23 @@ then
     rm -r the_silver*
 fi
 
+# "drivers"
+
+if [ "$1" = "drivers" ]
+then
+    # Epson scanner.  Yes, calling the firmware the default name
+    # "your-firmwarefile.bin" is silly.  But no matter how much editing
+    # I do to the .conf files, that is always the name it looks for.
+    cd /tmp
+    wget http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/24/33/b6da6cc986f960ea5c21979f4262cbfd46e5d874/PER3490_WW_WIN_3041_41.exe
+    unzip PER3490_WW_WIN_3041_41.exe
+    cabextract PER3490_WW_WIN_3041_41/ModUsd.cab
+    chmod 644 Esfw52.bin
+    sudo mkdir -p /usr/share/sane/snapscan/
+    sudo cp Esfw52.bin /usr/share/sane/snapscan/your-firmwarefile.bin
+    sudo chmod -R a+rX /usr/share/sane/snapscan/
+fi
+
 # "git flow"
 
 if [ "$1" = "flow" ]
