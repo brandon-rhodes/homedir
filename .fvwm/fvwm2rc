@@ -1,3 +1,8 @@
+# Essential environment variables that need to be seen by X
+# applications, so setting them in my .profile is not enough.
+
+SetEnv LC_COLLATE C
+
 # Assure that all subprocesses aborb our umask and other settings that
 # are defined in our shell startup files.
 
@@ -308,17 +313,9 @@ AddToFunc InitFunction
 
 + I Exec [ "$(hostname)" == "oldrasputin" ] && xrandr --dpi 110
 
-+ I Exec exec gnome-settings-daemon
-+ I Exec exec gdu-notification-daemon
-+ I Exec exec geoclue-master
-
-+ I Exec exec unity-2d-panel
-
-+ I Exec exec gnome-fallback-mount-helper
-+ I Exec exec nautilus --no-default-window
-+ I Exec exec nm-applet
-+ I Exec exec bluetooth-applet
-+ I Exec exec gnome-power-manager
++ I Exec exec xset r rate 240 40
++ I Exec exec xmodmap .Xmodmap
++ I Exec exec xfce4-session
 
 # Utter magic: why did I wait so many years before looking for a utility
 # to unify the two different cut-and-paste buffers under X Windows?
@@ -329,8 +326,3 @@ AddToFunc InitFunction
 # them first.
 
 + I Exec sleep 3; exec xrdb .Xresources
-
-# Essential environment variables that need to be seen by X
-# applications, so setting them in my .profile is not enough.
-
-SetEnv LC_COLLATE C
