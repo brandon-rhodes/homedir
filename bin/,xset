@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xrdb ~/.Xresources
+xmodmap ~/.Xmodmap
+xset r rate 240 40
