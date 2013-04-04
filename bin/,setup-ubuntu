@@ -39,6 +39,7 @@ sudo aptitude install -y \
     pypy             `: for when I want to be fast` \
     python3.2 python3.2-dev `: for when I feel modern` \
     python-dev       `: necessity` \
+    idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     redshift         `: for coding past sunset` \
     sqlite3          `: for command line access to its databases` \
     subversion       `: for outdated projects` \
