@@ -60,11 +60,14 @@ sudo aptitude install -y \
     `: Python modules I would rather not always compile myself` \
     ipython ipython-notebook python-matplotlib python-lxml python-scipy \
     \
-    `: for ag` \
+    `: for building tools like ag and ledger` \
     automake libpcre3-dev \
     \
     `: for gevent` \
     libevent1-dev \
+    \
+    `: for ledger` \
+    cmake libboost-dev-all libgmp-dev libmpfr-dev \
     \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
