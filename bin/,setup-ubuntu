@@ -50,6 +50,7 @@ sudo aptitude install -y \
     tree             `: for when ls is simply not enough` \
     ttf-inconsolata  `: favorite console font` \
     units            `: desk calculator` \
+    whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
     xchat            `: IRC for software support` \
     zsh              `: favorite shell` \
