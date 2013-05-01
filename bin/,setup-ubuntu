@@ -67,7 +67,7 @@ sudo aptitude install -y \
     libevent1-dev \
     \
     `: for ledger` \
-    cmake libboost-dev-all libgmp-dev libmpfr-dev \
+    cmake libboost-all-dev libgmp-dev libmpfr-dev \
     \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
