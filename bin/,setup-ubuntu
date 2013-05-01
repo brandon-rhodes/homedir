@@ -27,7 +27,6 @@ sudo aptitude install -y \
     git gitk         `: distributed version control` \
     gnucash          `: accounting` \
     gnumeric         `: spreadsheet` \
-    graphviz         `: Hettinger reminded me how awesome this is` \
     groff            `: for processing old documents` \
     gscan2pdf pdftk  `: scanning to PDF` \
     inkscape         `: SVG editing` \
@@ -80,7 +79,10 @@ sudo aptitude install -y \
     libqt4-dbus libqtwebkit4 \
     \
     `: further tools for web development` \
-    redis-server yui-compressor
+    redis-server yui-compressor \
+    \
+    `: Hettinger reminded me how awesome these tools are` \
+    graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag
 
 # Run "apt-file update" for the first time if necessary.
 
