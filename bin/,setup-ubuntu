@@ -24,6 +24,7 @@ sudo aptitude install -y \
     emacs23          `: editor-of-choice` \
     emacs23-el       `: readable LISP source` \
     fvwm             `: window manager` \
+    fonts-sil-gentium `: font for presentation slides` \
     git gitk         `: distributed version control` \
     gnucash          `: accounting` \
     gnumeric         `: spreadsheet` \
