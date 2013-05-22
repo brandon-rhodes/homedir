@@ -1,0 +1,4 @@
+#!/bin/bash
+
+NAME=$(xrandr | grep '^VGA' | awk '{print $1}')
+xrandr --output $NAME --off
