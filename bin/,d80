@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p ~/d80
+rsync -av "/media/brandon/NIKON D80/DCIM/100NCD80/" ~/d80/
