@@ -164,7 +164,7 @@ AddToMenu BrowserBookmarks "Bookmark" Title
 + "&g. GitHub"   Exec exec chromium-browser "http://github.com/"
 + "&m. Maps"     Exec exec chromium-browser "http://maps.google.com/"
 + "&r. Reader"   Exec exec chromium-browser "http://www.feedly.com/home"
-+ "&w. Weather"  Exec exec chromium-browser "http://weatherspark.com/#!dashboard;a=USA/OH/Bluffton;dt=11;mspp=720000;m=39.216,-85.528,42.530,-82.254;fcs=0;msl=temperatureC;mol=radar;units=temperature:f;graphs=humidity:0,stidpg:0,precipitation:0,windDirection:0,pressure:0,precipitationAmount:0,windIcons:1,saf:0,precipitationRate:0,windSpeed:0,sdpitg:0,solarPosition:0,temperature:1,subZero2:0,smeisg:1,spaitg:1,clouds:0,siitg:1,dewPoint:0"
++ "&w. Weather"  Exec exec chromium-browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
 + ""                Nop
 + "   Mercedes EPC"  Exec exec chromium-browser "https://epc.startekinfo.com/epc/"
 + "   Mercedes List" Exec exec chromium-browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
