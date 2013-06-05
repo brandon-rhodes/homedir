@@ -313,23 +313,21 @@ Style FvwmPager StaysOnTop, BorderWidth 0
 # which is my cantankerous Dell Latitude laptop.  Ubuntu does not seem
 # to always set the dpi correctly on my laptops, so I do it here.
 
-AddToFunc InitFunction
+AddToFunc SessionInitFunction
 
 + I Exec [ "$(hostname)" == "guinness" ] && xrandr --dpi 106 && sleep 4 && xrandr --dpi 106
 + I Exec [ "$(hostname)" == "guinness" ] && exec xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Device Accel Velocity Scaling" 32.0
 
 + I Exec [ "$(hostname)" == "oldrasputin" ] && xrandr --dpi 110
 
-+ I Exec exec xset r rate 240 40
-+ I Exec exec xmodmap .Xmodmap
-+ I Exec exec xfce4-session
-
 # Utter magic: why did I wait so many years before looking for a utility
 # to unify the two different cut-and-paste buffers under X Windows?
 
 + I Exec exec autocutsel
 
-# Sleep before loading .Xresources in case Ubuntu tries futzing with
-# them first.
+# Reset other X windows settings that the "Xubuntu Session" startup code
+# might have loaded incorrectly.  Note that these commands are kept in a
+# separate shell script, in case they get set incorrectly again when the
+# laptop wakes from sleep: I can simply re-run the script.
 
-+ I Exec sleep 3; exec xrdb .Xresources
++ I Exec bash /home/brandon/bin/,xset
