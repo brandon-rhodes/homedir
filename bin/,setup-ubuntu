@@ -41,6 +41,7 @@ sudo aptitude install -y \
     python-dev       `: necessity` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     redshift         `: for coding past sunset` \
+    s3cmd            `: the cloud` \
     sqlite3          `: for command line access to its databases` \
     subversion       `: for outdated projects` \
     texlive-latex-recommended `: for building PDF documentation with Sphinx` \
