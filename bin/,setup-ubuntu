@@ -16,6 +16,7 @@ sudo aptitude update
 # Install happy packages.
 
 sudo aptitude install -y \
+    apache2-utils    `: provides 12 commands, especially "ab"` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     cabextract       `: for extracting binary Windows drivers ` \
