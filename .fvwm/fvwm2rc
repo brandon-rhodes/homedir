@@ -153,8 +153,8 @@ AddToMenu Applications "Applications" Title
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
-+ "&a. asaph"      Exec exec xterm -e ssh asaph
-+ "&k. kenaniah"   Exec exec xterm -e ssh kenaniah
++ "&a. asaph"      Exec exec xterm -e ,mosh-or-ssh asaph
++ "&k. kenaniah"   Exec exec xterm -e ,mosh-or-ssh kenaniah
 + "&w. webfaction" Exec exec xterm -e ssh wf-rhodesmill
 
 DestroyMenu BrowserBookmarks

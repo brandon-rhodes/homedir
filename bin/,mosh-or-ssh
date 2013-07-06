@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -x /usr/bin/mosh ] ;then
+    exec /usr/bin/mosh "$@"
+else
+    exec /usr/bin/ssh "$@"
+fi
