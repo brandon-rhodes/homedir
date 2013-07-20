@@ -62,7 +62,7 @@ sudo aptitude install -y \
     \
     `: Python modules I would rather not always compile myself` \
     ipython python-cssselect ipython-notebook python-matplotlib \
-    python-lxml python-scipy python3-scipy \
+    python-imaging python-lxml python-scipy python3-imaging python3-scipy \
     \
     `: for building tools like ag and ledger` \
     automake libpcre3-dev \
