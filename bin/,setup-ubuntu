@@ -22,8 +22,8 @@ sudo aptitude install -y \
     cabextract       `: for extracting binary Windows drivers ` \
     chromium-browser `: browser-of-choice` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
-    emacs23          `: editor-of-choice` \
-    emacs23-el       `: readable LISP source` \
+    emacs24          `: editor-of-choice` \
+    emacs24-el       `: readable LISP source` \
     fvwm             `: window manager` \
     fonts-sil-gentium `: font for presentation slides` \
     git gitk         `: distributed version control` \
