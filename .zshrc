@@ -81,6 +81,11 @@ bindkey "\ef" emacs-forward-word
 
 bindkey "\el" down-case-word
 
+# Not every change of directory should be allowed to spam my pushd/popd
+# stack.
+
+unsetopt autopushd
+
 # Prevent "!" characters from being special on the command line, since I
 # always use Ctrl-R searching and Emacs command-line editing if I want
 # to adjust and re-run a previous command.
