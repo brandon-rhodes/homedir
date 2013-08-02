@@ -51,6 +51,7 @@ sudo aptitude install -y \
     tmux             `: to leave things running in a tty overnight` \
     tree             `: for when ls is simply not enough` \
     ttf-inconsolata  `: favorite console font` \
+    ttf-mscorefonts-installer `: for browsing the web` \
     units            `: desk calculator` \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
