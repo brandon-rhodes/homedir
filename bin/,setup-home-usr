@@ -26,14 +26,8 @@ mv ~/usr/bin/pip ~/usr/bin/pip-homedir
 
 # These "-U" ("update") options mean that when this script is run again
 # later it will make sure that all of these packages are at their most
-# recent version.  Note that we update the packaging programs themselves
-# first, so that it is their latest version which is then used to
-# install the subsequent packages.
+# recent version.
 
-pip-homedir install -U pip
-pip-homedir install -U distribute
-
-pip-homedir install -U bpython
 pip-homedir install -U docutils
 pip-homedir install -U mercurial
 pip-homedir install -U uncommitted
