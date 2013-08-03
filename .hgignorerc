@@ -1,7 +1,4 @@
-(^|/)\.ropeproject/
-(^|/)\.svn/
 (^|/)\.git/
-(^|/)venv/
 \.py[co]$
 \.coverage$
 \.egg-info$
