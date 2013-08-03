@@ -122,6 +122,3 @@ fi
 # Install my other customizations.
 
 source ~/.bashrc
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
