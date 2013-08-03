@@ -5,11 +5,37 @@
 
 fpath=(~/.zsh-completion $fpath)
 
+# Activate virtual environments automatically when $PWD changes.
+
+,auto-activate-virtualenv () {
+    local relative activate
+
+    # The leading underscore in front of $OPWD prevents zsh from using
+    # $OPWD as an abbreviation for the current directory in my prompt.
+
+    if [ "_$PWD" = "${OPWD}" ] ;then return ;fi  # Still in same directory.
+    OPWD="_$PWD"
+
+    # We have just changed directories, so consider auto-activating a
+    # virtual environment.
+
+    relative="${PWD#$HOME}"
+    if [ "$relative" = "$PWD" ] ;then return ;fi  # Outside of $HOME.
+    VENV="$HOME/.v/${${relative#/}//\//-}"        # "~/a/b/c" => "~/.v/a-b-c"
+    activate="$VENV/bin/activate"
+    if [ -f "$activate" ] ;then source "$activate" ;fi
+}
+,virtualenv () {
+    mkdir -p "$HOME/.v"
+    virtualenv "$@" "$VENV"
+}
+
 # Force the cache of existing commands to be rebuilt each time the
 # prompt is displayed.
 
 precmd() {
     rehash
+    ,auto-activate-virtualenv
 }
 
 # -------- Oh-my-zsh!
