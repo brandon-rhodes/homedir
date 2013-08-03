@@ -28,6 +28,7 @@ fpath=(~/.zsh-completion $fpath)
 ,virtualenv () {
     mkdir -p "$HOME/.v"
     virtualenv "$@" "$VENV"
+    source "$VENV/bin/activate"
 }
 
 # Force the cache of existing commands to be rebuilt each time the
