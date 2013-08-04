@@ -7,8 +7,6 @@
 
 set -e
 
-# "ag" recursive search tool.
-
 if [ "$1" = "ag" ]
 then
     cd /tmp
@@ -25,8 +23,6 @@ then
     rm -r the_silver*
 fi
 
-# "drivers"
-
 if [ "$1" = "drivers" ]
 then
     # Epson scanner.  Yes, calling the firmware the default name
@@ -42,9 +38,7 @@ then
     sudo chmod -R a+rX /usr/share/sane/snapscan/
 fi
 
-# dot emacs
-
-if [ "$1" = "emacs" ]
+if [ "$1" = "emacs" ]  # check out and set up ~/.emacs.d
 then
     if [ ! -d ~/.emacs.d/init.d ]
     then
@@ -55,9 +49,7 @@ then
     fi
 fi
 
-# "git flow"
-
-if [ "$1" = "flow" ]
+if [ "$1" = "flow" ]  # provides "git flow"
 then
     cd ~/usr
     git clone --recursive git://github.com/nvie/gitflow.git
@@ -66,8 +58,6 @@ then
     cd ..
     rm -rf gitflow
 fi
-
-# "fonts"
 
 if [ "$1" = "fonts" ]
 then
@@ -79,7 +69,15 @@ then
     rm "SIL Open Font License 1.1.txt"
 fi
 
-# "skype"
+if [ "$1" = "ledger" ]
+then
+    mkdir -p ~/usr/src
+    cd ~/usr/src
+    git clone git://github.com/ledger/ledger.git
+    cd ledger
+    ./acprep --python --prefix=$HOME/usr update
+fi
+
 
 if [ "$1" = "skype" ]
 then
