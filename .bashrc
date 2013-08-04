@@ -4,6 +4,18 @@
 
 export EDITOR=$HOME/bin/enw
 
+# There should also be a quick way to launch the most graphical version
+# of Emacs available.  A job spawned from a sub-shell neither gets
+# enrolled in our jobs table, nor dies with the shell's terminal.
+
+e () {
+    if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
+        (/usr/bin/emacs24-x "$@" &)
+    else
+        $HOME/bin/enw "$@"
+    fi
+}
+
 # Grep should use color to draw my eye to matches.
 
 export GREP_OPTIONS='--color=auto'
