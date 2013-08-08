@@ -78,7 +78,6 @@ then
     ./acprep --python --prefix=$HOME/usr update
 fi
 
-
 if [ "$1" = "skype" ]
 then
     cd ~/usr
@@ -87,4 +86,23 @@ then
     rm skype-4.1.0.20.tar.bz2
     cd ~/bin
     ln -s ../usr/skype-4.1.0.20/skype .
+fi
+
+if [ "$1" = "xephem" ]
+then
+    sudo aptitude install libxext-dev libxmu-dev libxp-dev libxt-dev \
+        x11proto-print-dev
+    cd ~/usr/src
+    wget -c http://97.74.56.125/free/xephem-3.7.6.tar.gz
+    tar xvfz xephem-3.7.6.tar.gz
+    cd xephem-3.7.6/GUI/xephem
+    make MOTIF=../../libXm/linux86
+    cd ~/bin
+    ln -s ../usr/src/xephem-3.7.6/GUI/xephem/xephem .
+    cd ~
+    if [ ! -d .xephem ] ;then
+        mkdir .xephem
+        echo "XEphem.ShareDir: $HOME/usr/src/xephem-3.7.6/GUI/xephem" \
+            > .xephem/XEphem
+    fi
 fi
