@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -x /usr/bin/mosh ] ;then
-    exec /usr/bin/mosh "$@"
+    /usr/bin/mosh "$@" || exec /usr/bin/ssh "$@"
 else
     exec /usr/bin/ssh "$@"
 fi
