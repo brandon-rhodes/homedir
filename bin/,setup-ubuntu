@@ -41,6 +41,7 @@ sudo aptitude install -y \
     python3 python3-dev `: for when I feel modern` \
     python-dev       `: necessity` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
+    rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
     sqlite3          `: for command line access to its databases` \
