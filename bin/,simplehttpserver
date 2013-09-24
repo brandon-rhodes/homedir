@@ -1,24 +1,34 @@
-#!/bin/bash
+#!/usr/bin/env python2.7
 #
-# To use: cd to a directory you want to browse, and run this script.
-#
-# This lets you skip finding a free TCP port on your system and
-# running SimpleHTTPServer on that port and pointing your browser there.
-# Instead, we ask the SimpleHTTPServer to run at whichever free port the
-# operating system would like to assign, we watch its output to see what
-# port was in fact assigned, and then we open a new tab in the browser
-# (in this case, Google Chrome) automatically.
+# To use: cd to a directory you want to browse, and run this script; the
+# simple HTTP server will run from that directory on the first free port
+# beyond 8000.
 
-ANY_PORT=0
+import socket
+import webbrowser
+from BaseHTTPServer import HTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
 
-exec python -u -m SimpleHTTPServer $ANY_PORT |
-    while read -r line
-    do
-        if echo $line | grep -q '^Serving'
-        then
-            PORT=$(echo $line | awk '{print$6}')
-            URL=http://localhost:$PORT/
-            echo $URL
-            chromium-browser $URL
-        fi
-    done
+def main():
+    port = 8002
+
+    while True:
+        server_address = ('', port)
+        try:
+            httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+        except socket.error:
+            port += 1
+        else:
+            break
+
+    print 'Serving HTTP on', server_address[0], 'port', server_address[1]
+    url = 'http://localhost:{}/'.format(port)
+    webbrowser.open(url)
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    print 'Exiting'
+
+if __name__ == '__main__':
+    main()
