@@ -1,0 +1,4 @@
+#!/bin/bash
+# Because I keep needing to look up the man page to chromium-browser!
+# First run: ssh -D 3333 some_server
+exec chromium-browser --proxy-server="socks5://localhost:3333"
