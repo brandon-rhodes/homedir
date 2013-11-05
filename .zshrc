@@ -41,6 +41,8 @@ precmd() {
 
 # -------- Oh-my-zsh!
 
+DISABLE_AUTO_UPDATE="true"
+
 if [ -d ~/.oh-my-zsh ]
 then
 
