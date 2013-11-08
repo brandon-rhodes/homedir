@@ -54,6 +54,12 @@ if [[ ":$PATH:" != *":$HOME/bin:"* ]]
 then PATH="$HOME/bin:$PATH"
 fi
 
+if [[ -s $HOME/.pythonz/etc/bashrc ]]
+then
+    source $HOME/.pythonz/etc/bashrc
+    PATH=$PATH:$(pythonz list -p | awk 'BEGIN {ORS=":"} /^ / {print $2"/bin"}')
+fi
+
 # The prompt should name the system on which the shell is running, in
 # bold so the eye can easily find prompts when scrolling, and also turn
 # red if it is a root prompt.
