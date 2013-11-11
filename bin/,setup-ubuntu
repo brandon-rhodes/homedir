@@ -66,6 +66,9 @@ sudo aptitude install -y \
     ipython python-cssselect ipython-notebook python-matplotlib \
     python-imaging python-lxml python-scipy python3-imaging python3-scipy \
     \
+    `: for building matplotlib myself in case I need recent features` \
+    libfreetype6-dev libpng12-dev \
+    \
     `: for building tools like ag and ledger` \
     automake libpcre3-dev \
     \
