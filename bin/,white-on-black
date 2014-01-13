@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xrdb -merge - <<EOF
+
+*background:            white
+*foreground:            black
+
+EOF
