@@ -12,9 +12,14 @@ clear lock
 keycode 64 = Control_L
 clear control
 clear mod1
-add Control = Control_L Control_R
+add Control = Control_L
 add mod1 = Alt_L Alt_R
 
-! Reverse scroll wheel direction. RIP, Steve Jobs.
+! Turn right-Ctrl, which I never use anyway, into a Greek key so that
+! typing mathematics becomes easier.
+
+keycode 105 = dead_greek
+
+! Reverse scroll wheel direction. RIP, Steve Jobs; you taught us so much.
 
 pointer = 1 2 3 5 4 7 6 8 9 10 11 12
