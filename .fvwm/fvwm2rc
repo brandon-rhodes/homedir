@@ -57,17 +57,18 @@ MenuStyle * Font "xft:Inconsolata:Regular:pixelsize=24:minispace=True:antialias=
 
 # Minimalist windows: no handles or buttons.
 
-Style * Font "xft:Ubuntu:Regular:pixelsize=14:minispace=True:antialias=True"
-Style * IconFont "xft:Ubuntu:Regular:pixelsize=14:minispace=True:antialias=True"
-Style * HilightFore black, HilightBack palevioletred
-Style * BorderWidth 6, HandleWidth 6
+Style * Font "xft:Ubuntu:Regular:pixelsize=18:minispace=True:antialias=True"
+Style * IconFont "xft:Ubuntu:Regular:pixelsize=18:minispace=True:antialias=True"
+Style * HilightFore white, HilightBack black
+Style * BorderWidth 1, !Handles
 Style * Icon unknown1.xpm, Color lightgrey/dimgrey
 Style * MwmBorder, MWMFunctions, MWMDecor, HintOverride
 Style * DecorateTransient, NoPPosition
 Style * !Button 1, !Button 2, !Button 4, !Button 6
 Style * MinOverlapPlacement
 
-BorderStyle -- HiddenHandles
+TitleStyle RightJustified
+BorderStyle -- HiddenHandles, Flat
 
 # Speed up window operations at the expense of a bit of RAM.
 
@@ -132,7 +133,7 @@ Key KP_Left  A 4  Scroll -100 0
 Mouse 1 S    A  FuncFvwmResizeOrRaise
 Mouse 1 T    A  FuncFvwmMoveOrRaise
 Mouse 1 I    A  Iconify
-Mouse 2 TSIF A  Menu MenuFvwmWindowOps Nop
+Mouse 2 TSIF A  Resize
 Mouse 3 TSF  A  RaiseLower
 
 # Rescue Chrome's usability by capturing and neutering Alt+mousewheel.
@@ -243,20 +244,20 @@ AddToFunc FuncFvwmMoveOrRaise
 DestroyFunc FuncMaximizeBorderlessly
 AddToFunc FuncMaximizeBorderlessly
 + I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
-+ I ThisWindow (Maximized) WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 100 100
 
 DestroyFunc FuncMaximizeBorderlessly1024
 AddToFunc FuncMaximizeBorderlessly1024
 + I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
-+ I ThisWindow (Maximized) WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 1024p 768p
 
 DestroyFunc FuncMaximizeY
 AddToFunc FuncMaximizeY
-+ I WindowStyle BorderWidth 6, HandleWidth 6, Title
++ I WindowStyle BorderWidth 1, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 0 100
 
