@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Live-tail my web logs.
+
+ssh wf-rhodesmill bash <<EOF
+exec tail -f logs/frontend/access_rhodesmill.log | grep --line-buffered "$@"
+EOF
