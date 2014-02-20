@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# An Emacs that sits outside of the upper-left 1024x768 pixels of the
+# screen, and that will therefore not be visible on the projector during
+# a talk or during training.
+
+exec emacs -geometry 46x50-0+24 -fg "#000000" -T "Borderless" \
+ --eval '(set-default-font "DejaVu Sans Mono 8")' \
+ "$@"
