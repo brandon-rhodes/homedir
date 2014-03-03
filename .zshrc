@@ -26,8 +26,8 @@ fpath=(~/.zsh-completion $fpath)
     if [ -f "$activate" ] ;then source "$activate" ;fi
 }
 ,virtualenv () {
-    mkdir -p "$HOME/.v"
-    virtualenv "$@" "$VENV"
+    mkdir -p "$HOME/.v" &&
+    virtualenv "$@" "$VENV" &&
     source "$VENV/bin/activate"
 }
 
