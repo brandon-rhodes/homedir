@@ -7,7 +7,7 @@ fpath=(~/.zsh-completion $fpath)
 
 # Activate virtual environments automatically when $PWD changes.
 
-,auto-activate-virtualenv () {
+,,auto-activate-virtualenv () {
     local relative activate
 
     # The leading underscore in front of $OPWD prevents zsh from using
@@ -21,9 +21,29 @@ fpath=(~/.zsh-completion $fpath)
 
     relative="${PWD#$HOME}"
     if [ "$relative" = "$PWD" ] ;then return ;fi  # Outside of $HOME.
+    if [ "$relative" = "" ] ;then return ;fi      # In $HOME itself.
     VENV="$HOME/.v/${${relative#/}//\//-}"        # "~/a/b/c" => "~/.v/a-b-c"
-    activate="$VENV/bin/activate"
-    if [ -f "$activate" ] ;then source "$activate" ;fi
+    if [ -d "$VENV" ]
+    then
+        activate="$VENV/bin/activate"
+        if [ -f "$activate" ]
+        then
+            source "$activate"
+        else
+            ,,anaconda-activate
+        fi
+    fi
+}
+,,anaconda-activate () {
+    local OLD_PS1=$PS1
+    source ~/.anaconda/bin/activate "$VENV" &&
+    PS1="($(basename $VENV))$OLD_PS1"
+}
+,anaconda-virtualenv () {
+    mkdir -p "$HOME/.v" &&
+    ~/.anaconda/bin/conda create -n "$VENV" \
+        --file =(~/.anaconda/bin/conda list -e | grep -v conda) &&
+    ,,anaconda-activate
 }
 ,virtualenv () {
     mkdir -p "$HOME/.v" &&
@@ -36,7 +56,7 @@ fpath=(~/.zsh-completion $fpath)
 
 precmd() {
     rehash
-    ,auto-activate-virtualenv
+    ,,auto-activate-virtualenv
 }
 
 # -------- Oh-my-zsh!
