@@ -1,0 +1,7 @@
+#!/bin/bash
+rm -f index.html
+python -m SimpleHTTPServer 9731 &
+sleep 1
+curl http://127.0.0.1:9731/ > new-index.html
+mv new-index.html index.html
+kill %python
