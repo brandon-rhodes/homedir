@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Destroy the index.html file in the current directory, and regenerate a
+# plain old-fashioned Apache-style index.html in its place that lists
+# all of the files in the current directory.
+
 rm -f index.html
 python -m SimpleHTTPServer 9731 &
 sleep 1
