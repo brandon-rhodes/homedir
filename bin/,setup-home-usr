@@ -29,6 +29,5 @@ mv ~/usr/bin/pip ~/usr/bin/pip-homedir
 # later it will make sure that all of these packages are at their most
 # recent version.
 
-pip-homedir install -U docutils
-pip-homedir install -U mercurial
-pip-homedir install -U uncommitted
+pip-homedir install -U docutils mercurial uncommitted
+,emacs-setup
