@@ -37,14 +37,17 @@ fpath=(~/.zsh-completion $fpath)
 ,,conda-activate () {
     local OLD_PS1=$PS1
     source ~/.anaconda/bin/activate "$VENV" &&
+    alias conda="~/.anaconda/bin/conda"
     alias deactivate="source ~/.anaconda/bin/deactivate && unalias deactivate"
     PS1="($(basename $VENV))$OLD_PS1"
 }
 ,conda-virtualenv () {
     mkdir -p "$HOME/.v" &&
     ~/.anaconda/bin/conda create -n "$VENV" \
-        --file =(~/.anaconda/bin/conda list -e | grep -v conda) &&
+        ipython jinja2 matplotlib pip pyzmq tornado \
+        "$@" &&
     ,,conda-activate
+    # --file =(~/.anaconda/bin/conda list -e | grep -v conda)
 }
 ,virtualenv () {
     mkdir -p "$HOME/.v" &&
