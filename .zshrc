@@ -30,20 +30,20 @@ fpath=(~/.zsh-completion $fpath)
         then
             source "$activate"
         else
-            ,,anaconda-activate
+            ,,conda-activate
         fi
     fi
 }
-,,anaconda-activate () {
+,,conda-activate () {
     local OLD_PS1=$PS1
     source ~/.anaconda/bin/activate "$VENV" &&
     PS1="($(basename $VENV))$OLD_PS1"
 }
-,anaconda-virtualenv () {
+,conda-virtualenv () {
     mkdir -p "$HOME/.v" &&
     ~/.anaconda/bin/conda create -n "$VENV" \
         --file =(~/.anaconda/bin/conda list -e | grep -v conda) &&
-    ,,anaconda-activate
+    ,,conda-activate
 }
 ,virtualenv () {
     mkdir -p "$HOME/.v" &&
