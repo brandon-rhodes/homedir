@@ -101,11 +101,6 @@ PROMPT_COMMAND='PS1="$bash_prompt"'
 
 unset TMOUT
 
-# The virtualenv Python tool should always use "distribute" as its
-# packaging back-end.
-
-export VIRTUALENV_USE_DISTRIBUTE=1
-
 # A quick way to put all of the Python versions compiled under ~/battery
 # on to my PATH, with their shared libraries also visible.
 
