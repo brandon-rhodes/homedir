@@ -37,6 +37,7 @@ fpath=(~/.zsh-completion $fpath)
 ,,conda-activate () {
     local OLD_PS1=$PS1
     source ~/.anaconda/bin/activate "$VENV" &&
+    alias deactivate="source ~/.anaconda/bin/deactivate && unalias deactivate"
     PS1="($(basename $VENV))$OLD_PS1"
 }
 ,conda-virtualenv () {
