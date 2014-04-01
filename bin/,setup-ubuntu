@@ -55,6 +55,7 @@ sudo aptitude install -y \
     ttf-inconsolata  `: favorite console font` \
     ttf-mscorefonts-installer `: for browsing the web` \
     units            `: desk calculator` \
+    virtualbox       `: for various virtualization tasks` \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
     xchat            `: IRC for software support` \
