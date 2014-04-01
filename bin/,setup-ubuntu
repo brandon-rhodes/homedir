@@ -115,6 +115,7 @@ sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.
 sudo apt-get update
 sudo apt-get install lxc-docker
 sudo docker pull ubuntu
+sudo adduser brandon docker
 
 # Shut down the oneconf service to avoid various error messages.
 
