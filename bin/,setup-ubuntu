@@ -105,3 +105,20 @@ fi
 # Thwart Unity by moving menus back into their application windows.
 
 #sudo aptitude purge -y appmenu-gtk indicator-applet-appmenu indicator-appmenu
+
+# Docker
+
+sudo apt-get install linux-image-extra-`uname -r`
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+
+sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install lxc-docker
+sudo docker pull ubuntu
+
+# Shut down the oneconf service to avoid various error messages.
+
+sudo chmod a-x /usr/share/oneconf/oneconf-service
+sudo chmod a-x /usr/share/oneconf/oneconf-query
+sudo chmod a-x /usr/share/oneconf/oneconf-update
+killall -q oneconf-service
