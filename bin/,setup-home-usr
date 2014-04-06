@@ -21,8 +21,7 @@ $SYSPY ~/usr/src/virtualenv/virtualenv.py --clear --unzip-setuptools \
 # Prevent myself from accidentally forgetting to activate a virtualenv
 # and running my home directory's "pip" instead.
 
-rm ~/usr/bin/pip-2.7
-rm -f ~/usr/bin/pip-homedir
+rm -f ~/usr/bin/pip2 ~/usr/bin/pip2.7 ~/usr/bin/pip-2.7 ~/usr/bin/pip-homedir
 mv ~/usr/bin/pip ~/usr/bin/pip-homedir
 
 # These "-U" ("update") options mean that when this script is run again
