@@ -120,7 +120,7 @@ alias lf="/bin/ls -CF"
 alias ll="/bin/ls -l"
 alias lla="/bin/ls -la"
 alias d="$DIFF -ur"
-alias g="grep"
+alias g="grep -P"
 alias m="less"
 alias s="ssh"
 clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
