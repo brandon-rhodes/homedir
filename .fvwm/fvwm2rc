@@ -178,23 +178,24 @@ AddToMenu BrowserBookmarks "Bookmark" Title
 DestroyMenu MenuFvwmWindowOps
 AddToMenu MenuFvwmWindowOps
 + "$[gt.Window Manager]" Title
-+ "$[gt.&Close]"         Close
++ "$[gt.&S Screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "" Nop
-+ "$[gt.&Move]"          Move
-+ "$[gt.Resize]"         Resize
-+ "$[gt.(Un)Stick]"      Stick
-+ "$[gt.(Un)Ma&ximize]"  Maximize
-+ "$[gt.(Un)On Top]"     ToggleLayer
-+ "$[gt.Destroy]"        Destroy
++ "$[gt.&M Move]"          Move
++ "$[gt.  Resize]"         Resize
++ "$[gt.  (Un)Stick]"      Stick
++ "$[gt.  (Un)Ma&ximize]"  Maximize
++ "$[gt.  (Un)On Top]"     ToggleLayer
++ "$[gt.&C Close]"         Close
++ "$[gt.  Destroy]"        Destroy
 + "" Nop
 + "$[gt.&L Lock edgeflip]"    EdgeScroll 0 0
 + "$[gt.&U Unlock edgeflip]"  EdgeScroll 100 100
 + "$[gt.  Reload fvwm2rc]"  Read fvwm2rc
 + "$[gt.&R Restart fvwm2rc]" Restart
-+ "$[gt.Log off]"        Quit
++ "$[gt.  Log off]"        Quit
 + "" Nop
 + "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-+ "$[gt.&S Suspend]"   Exec xscreensaver-command -lock && dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
++ "$[gt.  Suspend]"   Exec xscreensaver-command -lock && dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
 
 # "Projects" live under the "Projects" menu, and allow Window+P followed
 # by another keystroke to fill an empty screen with the terminals and
