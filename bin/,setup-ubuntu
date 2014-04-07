@@ -42,10 +42,12 @@ sudo aptitude install -y \
     python3 python3-dev `: for when I feel modern` \
     python-dev       `: necessity` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
+    libssl-dev       `: foo` \
     rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
     sqlite3          `: for command line access to its databases` \
+    swig             `: for occasional ancient Python dependencies` \
     subversion       `: for outdated projects` \
     texlive-latex-recommended `: for building PDF documentation with Sphinx` \
     texlive-latex-extra \
@@ -112,8 +114,8 @@ sudo apt-get install linux-image-extra-`uname -r`
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
 sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-sudo apt-get update
-sudo apt-get install lxc-docker
+sudo chmod a+r /etc/apt/sources.list.d/docker.list
+sudo aptitude install lxc-docker
 sudo docker pull ubuntu
 sudo adduser brandon docker
 
