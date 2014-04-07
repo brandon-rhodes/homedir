@@ -137,6 +137,13 @@ wd() {
 alias ,coreon="ulimit -c unlimited"
 alias ,coreoff="ulimit -c 0"
 
+# Read AWS credentials for Boto from our ~/.s3cfg file.
+
+,aws() {
+    export AWS_ACCESS_KEY_ID=$(awk '/^access_key / {print $3}' ~/.s3cfg)
+    export AWS_SECRET_ACCESS_KEY=$(awk '/^secret_key / {print $3}' ~/.s3cfg)
+}
+
 # Bash should update the LINES and COLUMNS environment variables each
 # time the terminal window gets resized, for programs that care.
 
