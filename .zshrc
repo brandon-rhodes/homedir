@@ -42,10 +42,14 @@ fpath=(~/.zsh-completion $fpath)
     PS1="($(basename $VENV))$OLD_PS1"
 }
 ,conda-virtualenv () {
+    if [ "$#" = "0" ]
+    then
+        packages="ipython jinja2 matplotlib pyzmq tornado"
+    else
+        packages="$@"
+    fi
     mkdir -p "$HOME/.v" &&
-    ~/.anaconda/bin/conda create -n "$VENV" \
-        ipython jinja2 matplotlib pip pyzmq tornado \
-        "$@" &&
+    ~/.anaconda/bin/conda create -n "$VENV" pip $packages &&
     ,,conda-activate
     # --file =(~/.anaconda/bin/conda list -e | grep -v conda)
 }
