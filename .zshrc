@@ -44,12 +44,12 @@ fpath=(~/.zsh-completion $fpath)
 ,conda-virtualenv () {
     if [ "$#" = "0" ]
     then
-        packages="ipython jinja2 matplotlib pyzmq tornado"
+        packages=( ipython jinja2 matplotlib pyzmq tornado )
     else
-        packages="$@"
+        packages=( "$@" )
     fi
     mkdir -p "$HOME/.v" &&
-    ~/.anaconda/bin/conda create -n "$VENV" pip $packages &&
+    ~/.anaconda/bin/conda create -n "$VENV" pip ${packages[*]} &&
     ,,conda-activate
     # --file =(~/.anaconda/bin/conda list -e | grep -v conda)
 }
