@@ -184,7 +184,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.  Resize]"         Resize
 + "$[gt.  (Un)Stick]"      Stick
 + "$[gt.  (Un)Ma&ximize]"  Maximize
-+ "$[gt.  (Un)On Top]"     ToggleLayer
++ "$[gt.&T (Un)On Top]"     ToggleLayer
 + "$[gt.&C Close]"         Close
 + "$[gt.  Destroy]"        Destroy
 + "" Nop
