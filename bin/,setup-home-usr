@@ -28,5 +28,4 @@ mv ~/usr/bin/pip ~/usr/bin/pip-homedir
 # later it will make sure that all of these packages are at their most
 # recent version.
 
-pip-homedir install -U docutils mercurial uncommitted
-,emacs-setup
+pip-homedir install -U docutils mercurial uncommitted epc jedi pyflakes
