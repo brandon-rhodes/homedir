@@ -23,23 +23,20 @@ fpath=(~/.zsh-completion $fpath)
     if [ "$relative" = "$PWD" ] ;then return ;fi  # Outside of $HOME.
     if [ "$relative" = "" ] ;then return ;fi      # In $HOME itself.
     VENV="$HOME/.v/${${relative#/}//\//-}"        # "~/a/b/c" => "~/.v/a-b-c"
-    if [ -d "$VENV" ]
+    if [ ! -d "$VENV" ]
     then
-        activate="$VENV/bin/activate"
-        if [ -f "$activate" ]
-        then
-            source "$activate"
-        else
-            ,,conda-activate
-        fi
+        return
+    fi
+    if [ -f "$VENV/bin/conda" ]
+    then
+        ,,conda-activate
+    else
+        source "$VENV/bin/activate"
     fi
 }
 ,,conda-activate () {
-    local OLD_PS1=$PS1
-    source ~/.anaconda/bin/activate "$VENV" &&
-    alias conda="~/.anaconda/bin/conda"
-    alias deactivate="source ~/.anaconda/bin/deactivate && unalias deactivate && unalias conda"
-    PS1="($(basename $VENV))$OLD_PS1"
+    source ~/.anaconda/bin/activate "$VENV"
+    alias deactivate="source deactivate && unalias deactivate"
 }
 ,conda-env () {
     if [ "$#" = "0" ]
