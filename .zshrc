@@ -41,7 +41,7 @@ fpath=(~/.zsh-completion $fpath)
     alias deactivate="source ~/.anaconda/bin/deactivate && unalias deactivate && unalias conda"
     PS1="($(basename $VENV))$OLD_PS1"
 }
-,conda-virtualenv () {
+,conda-env () {
     if [ "$#" = "0" ]
     then
         packages=( ipython jinja2 matplotlib pandas pyzmq tornado )
