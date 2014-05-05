@@ -38,11 +38,11 @@ sudo aptitude install -y \
     mplayer2 geeqie  `: for media` \
     openssh-server   `: for when I run scp on another machine` \
     pwgen            `: random passwords` \
+    python-dev       `: necessity` \
     pypy             `: for when I want to be fast` \
     python3 python3-dev `: for when I feel modern` \
-    python-dev       `: necessity` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
-    libssl-dev       `: foo` \
+    libssl-dev       `: for compiling things that need cryptography` \
     rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
@@ -66,13 +66,6 @@ sudo aptitude install -y \
     `: Mount remote filesystems` \
     bindfs encfs smbnetfs sshfs \
     \
-    `: Python modules I would rather not always compile myself` \
-    ipython python-cssselect ipython-notebook python-matplotlib \
-    python-imaging python-lxml python-scipy python3-imaging python3-scipy \
-    \
-    `: for building matplotlib myself in case I need recent features` \
-    libfreetype6-dev libpng12-dev \
-    \
     `: for building tools like ag and ledger` \
     automake libpcre3-dev \
     \
@@ -81,12 +74,6 @@ sudo aptitude install -y \
     \
     `: for ledger` \
     cmake libboost-all-dev libgmp-dev libmpfr-dev \
-    \
-    `: for lxml` \
-    libxml2-dev libxslt1-dev \
-    \
-    `: for SASS and Compass` \
-    librb-inotify-ruby \
     \
     `: for Skype` \
     libqt4-dbus libqtwebkit4 \
