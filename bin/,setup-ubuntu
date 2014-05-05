@@ -97,14 +97,14 @@ fi
 
 # Docker
 
-sudo apt-get install linux-image-extra-`uname -r`
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+#sudo apt-get install linux-image-extra-`uname -r`
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
-sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-sudo chmod a+r /etc/apt/sources.list.d/docker.list
-sudo aptitude install lxc-docker
-sudo docker pull ubuntu
-sudo adduser brandon docker
+#sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+#sudo chmod a+r /etc/apt/sources.list.d/docker.list
+#sudo aptitude install lxc-docker
+#sudo docker pull ubuntu
+#sudo adduser brandon docker
 
 # Shut down the oneconf service to avoid various error messages.
 
