@@ -44,7 +44,7 @@ fpath=(~/.zsh-completion $fpath)
 ,conda-virtualenv () {
     if [ "$#" = "0" ]
     then
-        packages=( ipython jinja2 matplotlib pyzmq tornado )
+        packages=( ipython jinja2 matplotlib pandas pyzmq tornado )
     else
         packages=( "$@" )
     fi

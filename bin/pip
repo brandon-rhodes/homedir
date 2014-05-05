@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cat >&2 <<'EOF'
+Error: Activate a virtualenv or conda environment before running pip.
+       If you really want to install into your home directory, run pip-homedir.
+EOF
+exit 2

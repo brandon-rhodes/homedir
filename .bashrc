@@ -10,7 +10,7 @@ export EDITOR=$HOME/bin/enw
 
 e () {
     if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
-        (/usr/bin/emacs24-x "$@" &)
+        (,emacs-x "$@" &)
     else
         $HOME/bin/enw "$@"
     fi
