@@ -7,53 +7,58 @@ fpath=(~/.zsh-completion $fpath)
 
 # Activate virtual environments automatically when $PWD changes.
 
-,,auto-activate-virtualenv () {
-    local relative activate
-
+__compute_environment_name () {
+    local relative="${PWD#$HOME}"
+    if [ "$relative" = "$PWD" ] ;then return 1 ;fi # Ignore dirs outside $HOME.
+    if [ "$relative" = "" ] ;then return 1 ;fi     # Ignore $HOME itself.
+    __environment_name="${${relative#/}//\//-}"    # "a/b/c" -> "a-b-c"
+}
+__detect_cd_and_activate_environment () {
     # The leading underscore in front of $OPWD prevents zsh from using
     # $OPWD as an abbreviation for the current directory in my prompt.
 
     if [ "_$PWD" = "${OPWD}" ] ;then return ;fi  # Still in same directory.
-    OPWD="_$PWD"
+    OPWD="_$PWD"                                 # Save for next time.
 
-    # We have just changed directories, so consider auto-activating a
-    # virtual environment.
+    if ! __compute_environment_name; then return ;fi
 
-    relative="${PWD#$HOME}"
-    if [ "$relative" = "$PWD" ] ;then return ;fi  # Outside of $HOME.
-    if [ "$relative" = "" ] ;then return ;fi      # In $HOME itself.
-    VENV="$HOME/.v/${${relative#/}//\//-}"        # "~/a/b/c" => "~/.v/a-b-c"
-    if [ ! -d "$VENV" ]
+    if [ -d "$HOME/.anaconda/envs/$__environment_name" ]
     then
-        return
-    fi
-    if [ -f "$VENV/bin/conda" ]
+        __conda_activate
+    elif [ -d "$HOME/.v/$__environment_name" ]
     then
-        ,,conda-activate
-    else
-        source "$VENV/bin/activate"
+        source $HOME/.v/$__environment_name/bin/activate
     fi
 }
-,,conda-activate () {
-    source ~/.anaconda/bin/activate "$VENV"
+__conda_activate () {
+    source ~/.anaconda/bin/activate "$__environment_name"
     alias deactivate="source deactivate && unalias deactivate"
 }
 ,conda-env () {
+    if ! __compute_environment_name
+    then
+        echo "Error: must be in a directory beneath your home directory" >&2
+        return 1
+    fi
     if [ "$#" = "0" ]
     then
-        packages=( ipython jinja2 matplotlib pandas pyzmq tornado )
+        packages=( ipython jinja2 matplotlib pandas pip pyzmq tornado )
     else
-        packages=( "$@" )
+        packages=( "$@" pip )
     fi
     mkdir -p "$HOME/.v" &&
-    ~/.anaconda/bin/conda create -n "$VENV" pip ${packages[*]} &&
-    ,,conda-activate
-    # --file =(~/.anaconda/bin/conda list -e | grep -v conda)
+    ~/.anaconda/bin/conda create -n "$__environment_name" ${packages[*]} &&
+    __conda_activate
 }
 ,virtualenv () {
+    if ! __compute_environment_name
+    then
+        echo "Error: must be in a directory beneath your home directory" >&2
+        return 1
+    fi
     mkdir -p "$HOME/.v" &&
-    virtualenv "$@" "$VENV" &&
-    source "$VENV/bin/activate"
+    virtualenv "$@" "$HOME/.v/$__environment_name" &&
+    source "$HOME/.v/$__environment_name/bin/activate"
 }
 
 # Force the cache of existing commands to be rebuilt each time the
@@ -61,7 +66,7 @@ fpath=(~/.zsh-completion $fpath)
 
 precmd() {
     rehash
-    ,,auto-activate-virtualenv
+    __detect_cd_and_activate_environment
 }
 
 # -------- Oh-my-zsh!
