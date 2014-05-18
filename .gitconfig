@@ -29,4 +29,4 @@ status = auto
 [commit]
 template = ~/.gitmessage.txt
 [push]
-	default = current
+	default = simple
