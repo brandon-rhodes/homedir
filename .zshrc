@@ -22,16 +22,17 @@ __detect_cd_and_activate_environment () {
 
     if ! __compute_environment_name; then return ;fi
 
-    if [ -d "$HOME/.anaconda/envs/$__environment_name" ]
+    if [ -x ~/.v/"$__environment_name"/bin/conda ]
     then
         __conda_activate
-    elif [ -d "$HOME/.v/$__environment_name" ]
+    elif [ -f ~/.v/"$__environment_name"/bin/activate ]
     then
-        source $HOME/.v/$__environment_name/bin/activate
+        source ~/.v/"$__environment_name"/bin/activate
     fi
 }
 __conda_activate () {
-    source ~/.anaconda/bin/activate "$__environment_name"
+    source ~/.anaconda/bin/activate ~/.v/$__environment_name
+    PS1=${PS1/\/*\//}                           # Remove full path from PS1
     alias deactivate="source deactivate && unalias deactivate"
 }
 ,conda-env () {
@@ -46,8 +47,8 @@ __conda_activate () {
     else
         packages=( "$@" pip )
     fi
-    mkdir -p "$HOME/.v" &&
-    ~/.anaconda/bin/conda create -n "$__environment_name" ${packages[*]} &&
+    mkdir -p ~/.v &&
+    ~/.anaconda/bin/conda create -p ~/.v/$__environment_name ${packages[*]} &&
     __conda_activate
 }
 ,virtualenv () {
