@@ -2,5 +2,6 @@
 #
 # A Chromium for use when connected to a public projector.
 
+cd
 rm -rf .config/chromium-pyclass
 exec chromium-browser --user-data-dir=.config/chromium-pyclass
