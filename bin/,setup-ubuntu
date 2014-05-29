@@ -111,4 +111,9 @@ fi
 sudo chmod a-x /usr/share/oneconf/oneconf-service
 sudo chmod a-x /usr/share/oneconf/oneconf-query
 sudo chmod a-x /usr/share/oneconf/oneconf-update
-killall -q oneconf-service
+sudo killall -q oneconf-service || true
+
+# Outlaw Ubuntu's terrible "Sorry the application X has stopped
+# unexpectedly" popups.
+
+sudo aptitude purge -y whoopsie
