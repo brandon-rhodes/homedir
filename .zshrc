@@ -44,10 +44,6 @@ __conda_activate () {
     # re-reading the shell substitution documentation.
 
     PS1=${PS1/\/*\//}
-
-    # Read the comments in the condafix scripts for details.
-
-    PATH=$HOME/.condafix:$PATH
 }
 ,conda-env () {
     if ! __compute_environment_name
