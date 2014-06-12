@@ -33,7 +33,47 @@ __detect_cd_and_activate_environment () {
 __conda_activate () {
     source ~/.anaconda/bin/activate ~/.v/$__environment_name
     PS1=${PS1/\/*\//}                           # Remove full path from PS1
-    alias deactivate="source deactivate && unalias deactivate"
+    alias deactivate="source deactivate && unalias deactivate && unset LD_LIBRARY_PATH"
+    #alias ,conda-upgrade="conda list -c
+
+    # Okay, this is interesting.
+    #
+    # Every time I ran virtualenv inside a conda environment, it would
+    # almost immediately sputter out with "ValueError: failed to parse
+    # CPython sys.version".  For a long time I simply avoided calling
+    # "virtualenv" while Anaconda was active.  But I now need to use the
+    # virtualenv-powered "tox" tool in a project - my hand has been
+    # forced.
+    #
+    # So I looked at the virtual environment's "bin/python2.7" and found
+    # the tiny 8,106-byte Python binary that Anaconda ships.  It usually
+    # links to their own "libpython2.7.so" and therefore gains their
+    # crazy non-standard (what were they thinking?) sys.version string
+    # that is a perfect match for the regular expression in their crazy
+    # non-standard "platform.py" that virtualenv also copies in.  But
+    # running "ldd" on the environment's "bin/python2.7" showed it
+    # linking to the Ubuntu "libpython2.7.so" instead, which explains
+    # the problem: the virtualenv makes a mismatch of the normal
+    # "libpython2.7.so" with the non-standard Anaconda "platform.py".
+    #
+    # How does the Anaconda Python binary usually wind up linking to
+    # their "libpython2.7.so" instead of Ubuntu's?  By, it turns out,
+    # having a relative RPATH that only works if their Python binary is
+    # sitting right next to the "lib" directory containing libpython:
+    #
+    # $ readelf -d anaconda/bin/python2.7 | grep RPATH
+    # 0x0000000f (RPATH)                      Library rpath: [$ORIGIN/../lib]
+    #
+    # When Anaconda is active, I suppose that I could replace
+    # "virtualenv" with a shell script of my own that first copies in
+    # their "libpython2.7.so" and only then lets "virtualenv" start up
+    # and copy in and invoke their Python binary.  But first I am going
+    # to try a simpler solution: telling the dynamic linker to make the
+    # Anaconda "lib" directory a higher priority than the system ones.
+    # This should also let "virtualenv" and thus "tox" operate, but
+    # without requiring any wrapping or extra files or symlinks:
+
+    export LD_LIBRARY_PATH=$HOME/.anaconda/lib
 }
 ,conda-env () {
     if ! __compute_environment_name
