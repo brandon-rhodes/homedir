@@ -41,9 +41,11 @@
 # discovering and linking to the system "libpythonX.Y.so".
 #
 # This shell script intends to provide a remedy.  Run it once a conda
-# environment has been created and activated, and it will make sure that
-# "virtualenv.py" has been edited to copy Anaconda libpython libraries
-# across to new environments.
+# environment has been (a) created and (b) activated and (c) has had
+# "pip install virtualenv" freshly run inside of it, and this script
+# will make sure that the "virtualenv.py" file is edited so that it
+# copies the Anaconda libpython libraries across to each new environment
+# that it creates.
 
 if ! python -c 'import virtualenv' 2>/dev/null
 then
