@@ -18,5 +18,5 @@ fi
 while true
 do
     make $target
-    exec inotifywait -e close_write "$@"
+    inotifywait -e close_write "$@"
 done
