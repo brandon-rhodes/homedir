@@ -1,4 +1,4 @@
-personal_ws-1.1 en 39 
+personal_ws-1.1 en 40 
 Hipparcos
 Lawrenceville
 Nuitka
@@ -34,6 +34,7 @@ runtimes
 sexagesimal
 stateful
 subclasses
+thrusters
 timestamp
 tracebacks
 uncompromised
