@@ -46,6 +46,7 @@ sudo aptitude install -y \
     rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
+    stellarium       `: to quickly answer what-is-that-over-there questions` \
     sqlite3          `: for command line access to its databases` \
     swig             `: for occasional ancient Python dependencies` \
     subversion       `: for outdated projects` \
