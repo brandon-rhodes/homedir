@@ -24,6 +24,7 @@ sudo aptitude install -y \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     emacs24          `: editor-of-choice` \
     emacs24-el       `: readable LISP source` \
+    enscript         `: turn text into PostScript` \
     fvwm             `: window manager` \
     fonts-sil-gentium `: font for presentation slides` \
     git gitk         `: distributed version control` \
