@@ -64,6 +64,10 @@ fi
 
 export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 
+# Create neither *.pyc files nor __pycache__ directories.
+
+export PYTHONDONTWRITEBYTECODE=PLEASE
+
 # The prompt should name the system on which the shell is running, in
 # bold so the eye can easily find prompts when scrolling, and also turn
 # red if it is a root prompt.
