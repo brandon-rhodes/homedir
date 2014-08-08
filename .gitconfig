@@ -3,6 +3,7 @@ name = Brandon Rhodes
 email = brandon@rhodesmill.org
 
 [alias]
+a = add -A .
 amend = commit --amend
 br = branch
 ci = commit -v
