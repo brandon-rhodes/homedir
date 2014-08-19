@@ -21,6 +21,7 @@ sudo aptitude install -y \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     cabextract       `: for extracting binary Windows drivers ` \
     chromium-browser `: browser-of-choice` \
+    chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     emacs24          `: editor-of-choice` \
     emacs24-el       `: readable LISP source` \
