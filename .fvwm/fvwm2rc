@@ -195,7 +195,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.  Log off]"        Quit
 + "" Nop
 + "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-+ "$[gt.&S Suspend]"   Exec xscreensaver-command -lock && dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
++ "$[gt.&S Suspend]"   Exec light-locker-command -l && dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
 
 # "Projects" live under the "Projects" menu, and allow Window+P followed
 # by another keystroke to fill an empty screen with the terminals and
