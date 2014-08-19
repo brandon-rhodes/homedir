@@ -238,9 +238,10 @@ AddToFunc   BookProject
 
 DestroyFunc SkyfieldProject
 AddToFunc   SkyfieldProject
-+ I Exec PRERUN='cd ~/skyfield; git st' exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN='cd ~/skyfield/skyfield/documentation; source ~/.v/skyfield/bin/activate' exec xterm -geometry 80x24+0-0
-+ I Exec cd ~/skyfield && exec $HOME/bin/,emacs-x -geometry -0+24 ~/novas/Cdist/novas.c skyfield/documentation .
++ I Exec PRERUN='cd ~/skyfield; e -geometry -0+24 ~/novas/Cdist/novas.c skyfield/documentation .; git st' exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/skyfield; cd skyfield/documentation' exec xterm -geometry 80x24+0-0
++ I Exec PRERUN='cd ~/skyfield; cd skyfield/documentation; ,simplehttpserver' exec xterm -geometry 80x4+0-0
+# + I Exec cd ~/skyfield && exec $HOME/bin/,emacs-x -geometry -0+24 ~/novas/Cdist/novas.c skyfield/documentation .
 
 DestroyFunc TalksProject
 AddToFunc   TalksProject
