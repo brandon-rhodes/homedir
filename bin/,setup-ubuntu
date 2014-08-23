@@ -39,6 +39,7 @@ sudo aptitude install -y \
     libreoffice-writer `: for the occasional Microsoft Word file ` \
     mplayer2 geeqie  `: for media` \
     openssh-server   `: for when I run scp on another machine` \
+    pandoc           `: requirement of nbconvert for the IPython notebook` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
     pypy             `: for when I want to be fast` \
