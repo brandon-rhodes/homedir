@@ -9,6 +9,7 @@ br = branch
 ci = commit -v
 co = checkout
 d = diff
+incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit
 lg = log -p
 locate = ls-tree --name-only -r HEAD
