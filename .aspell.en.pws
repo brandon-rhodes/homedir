@@ -1,4 +1,4 @@
-personal_ws-1.1 en 43 
+personal_ws-1.1 en 44 
 Canonicalization
 Hipparcos
 Lawrenceville
@@ -12,6 +12,7 @@ barycentric
 cleartext
 datagram
 datagrams
+denormalization
 else's
 encodings
 ephemerides
