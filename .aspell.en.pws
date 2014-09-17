@@ -1,4 +1,4 @@
-personal_ws-1.1 en 44 
+personal_ws-1.1 en 52 
 Canonicalization
 Hipparcos
 Lawrenceville
@@ -10,17 +10,23 @@ astrometric
 attaches
 barycentric
 cleartext
+dataframe
+dataframes
 datagram
 datagrams
 denormalization
+denormalized
 else's
 encodings
 ephemerides
 ephemeris
 filename
+filesystem
+hashable
 hostname
 hostnames
 interoperate
+lossy
 masse
 mixins
 multiclassing
@@ -40,6 +46,8 @@ subclasses
 thrusters
 timestamp
 tracebacks
+tuple
+tuples
 uncompromised
 unhobbitlike
 whitespace
