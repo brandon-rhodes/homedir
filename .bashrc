@@ -119,6 +119,7 @@ unset TMOUT
 
 if [ -x /usr/bin/colordiff ] ;then DIFF=colordiff ;else DIFF=diff ;fi
 
+alias a="ag -iz"
 alias la="/bin/ls -aCF"
 alias lf="/bin/ls -CF"
 alias ll="/bin/ls -l"
