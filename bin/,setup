@@ -14,7 +14,7 @@ then
 
     cd /tmp
     curl -OL https://github.com/ggreer/the_silver_searcher/archive/$V.tar.gz
-    tar xvfz $V
+    tar xvfz $V.tar.gz
 
     cd the_silver_searcher-$V
     ./build.sh
