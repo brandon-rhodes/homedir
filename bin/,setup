@@ -9,18 +9,21 @@ set -e
 
 if [ "$1" = "ag" ]
 then
-    cd /tmp
-    curl -OL https://github.com/downloads/ggreer/the_silver_searcher/the_silver_searcher-0.13.1.tar.gz
-    tar xvfz the_silver_searcher-0.13.1.tar.gz
+    V=0.24.1
+    sudo aptitude install -y liblzma-dev zlib1g-dev
 
-    cd the_silver_searcher-0.13.1
+    cd /tmp
+    curl -OL https://github.com/ggreer/the_silver_searcher/archive/$V.tar.gz
+    tar xvfz $V
+
+    cd the_silver_searcher-$V
     ./build.sh
     ./configure --prefix=$HOME/usr
     make
     make install
 
     cd /tmp
-    rm -r the_silver*
+    rm -r $V.tar.gz the_silver*
 fi
 
 if [ "$1" = "drivers" ]
