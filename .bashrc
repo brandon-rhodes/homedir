@@ -120,10 +120,10 @@ unset TMOUT
 if [ -x /usr/bin/colordiff ] ;then DIFF=colordiff ;else DIFF=diff ;fi
 
 alias a="ag -iz"
-alias la="/bin/ls -aCF"
-alias lf="/bin/ls -CF"
-alias ll="/bin/ls -l"
-alias lla="/bin/ls -la"
+alias la="/bin/ls -avCF"
+alias lf="/bin/ls -vCF"
+alias ll="/bin/ls -lv"
+alias lla="/bin/ls -alv"
 alias d="$DIFF -ur"
 alias g="grep -P"
 alias m="less"
