@@ -7,30 +7,36 @@ fpath=(~/.zsh-completion $fpath)
 
 # Activate virtual environments automatically when $PWD changes.
 
-__compute_environment_name () {
-    local relative="${PWD#$HOME}"
+__compute_environment_slug () {
+    local relative="${PWD#$HOME}"                  # Remove any $HOME prefix
     if [ "$relative" = "$PWD" ] ;then return 1 ;fi # Ignore dirs outside $HOME.
     if [ "$relative" = "" ] ;then return 1 ;fi     # Ignore $HOME itself.
-    __environment_name="${${relative#/}//\//-}"    # "a/b/c" -> "a-b-c"
+    __environment_slug="${${relative#/}//\//-}"    # "a/b/c" -> "a-b-c"
 }
-__detect_cd_and_activate_environment () {
+__detect_cd_and_possibly_activate_environment () {
     # The leading underscore in front of $OPWD prevents zsh from using
     # $OPWD as an abbreviation for the current directory in my prompt.
 
     if [ "_$PWD" = "${OPWD}" ] ;then return ;fi  # Still in same directory.
     OPWD="_$PWD"                                 # Save for next time.
-
-    if ! __compute_environment_name; then return ;fi
-
-    if [ -x ~/.v/"$__environment_name"/bin/conda ]
-    then
-        __conda_activate
-    elif [ -f ~/.v/"$__environment_name"/bin/activate ]
-    then
-        source ~/.v/"$__environment_name"/bin/activate
-    fi
+    __activate_environment
 }
-__conda_activate () {
+__activate_environment () {
+    if ! __compute_environment_slug; then return ;fi
+    if [ "$__environment_slug" = "$__environment_name" ] ;then return ;fi
+
+    if [ ! -x ~/.v/"$__environment_slug"/bin/conda ]
+    then
+        if [ -f ~/.v/"$__environment_slug"/bin/activate ]
+        then
+            __environment_name="$__environment_slug"
+            source ~/.v/"$__environment_name"/bin/activate
+        fi
+        return
+    fi
+
+    __environment_name="$__environment_slug"
+
     # Note that the Anaconda "deactivate" cannot quite be trusted to put
     # the $PATH variable back where it was, so we do it ourselves.
 
@@ -46,7 +52,7 @@ __conda_activate () {
     PS1=${PS1/\/*\//}
 }
 ,conda-env () {
-    if ! __compute_environment_name
+    if ! __compute_environment_slug
     then
         echo "Error: must be in a directory beneath your home directory" >&2
         return 1
@@ -58,18 +64,18 @@ __conda_activate () {
         packages=( "$@" pip )
     fi
     mkdir -p ~/.v &&
-    ~/.anaconda/bin/conda create -p ~/.v/$__environment_name ${packages[*]} &&
-    __conda_activate
+    ~/.anaconda/bin/conda create -p ~/.v/$__environment_slug ${packages[*]} &&
+    __activate_environment
 }
 ,virtualenv () {
-    if ! __compute_environment_name
+    if ! __compute_environment_slug
     then
         echo "Error: must be in a directory beneath your home directory" >&2
         return 1
     fi
-    mkdir -p "$HOME/.v" &&
-    virtualenv "$@" "$HOME/.v/$__environment_name" &&
-    source "$HOME/.v/$__environment_name/bin/activate"
+    mkdir -p ~/.v &&
+    virtualenv "$@" ~/.v/"$__environment_slug" &&
+    __activate_environment
 }
 
 # Force the cache of existing commands to be rebuilt each time the
@@ -77,7 +83,7 @@ __conda_activate () {
 
 precmd() {
     rehash
-    __detect_cd_and_activate_environment
+    __detect_cd_and_possibly_activate_environment
 }
 
 # -------- Oh-my-zsh!
