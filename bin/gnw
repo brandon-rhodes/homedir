@@ -3,8 +3,8 @@
 
 if [ "$(hostname)" != "asaph" ]
 then
-    echo error: Please log on to asaph
-    exit
+    echo Connecting to asaph
+    exec ,mosh-or-ssh asaph gnw
 fi
 
 exec emacsclient --socket-name ~/.emacs.d/.socket-gnw \
