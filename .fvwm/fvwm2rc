@@ -274,8 +274,6 @@ AddToFunc FuncMaximizeBorderlessly1024
 
 DestroyFunc FuncMaximizeY
 AddToFunc FuncMaximizeY
-+ I WindowStyle BorderWidth 1, HandleWidth 6, Title
-+ I UpdateStyles
 + I Maximize Toggle 0 100
 
 DestroyFunc FuncFvwmResizeOrRaise
