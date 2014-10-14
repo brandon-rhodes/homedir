@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Remove all state from the Chromium that I use during demonstrations.
+
+rm -rf .cache/chromium-impersonal .config/chromium-impersonal
