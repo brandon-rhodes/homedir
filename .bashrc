@@ -72,34 +72,37 @@ export PYTHONDONTWRITEBYTECODE=PLEASE
 # bold so the eye can easily find prompts when scrolling, and also turn
 # red if it is a root prompt.
 
-if [ -n "$HOST" ]
+if [ -t 0 ]
 then
-    bash_prompt="$HOST"
-else
-    bash_prompt="$HOSTNAME"
-fi
-
-if [ "$USER" = "root" ]
-then
-    bash_prompt=${bash_prompt}"# "
-else
-    bash_prompt=${bash_prompt}"\$ "
-fi
-
-if [ -n "$TERM" ]
-then
-    # Everyone gets bold.
-    bash_prompt="\[$(tput bold)\]$bash_prompt\[$(tput sgr0)\]"
-
-    if [ "$(id -u)" = "0" ]
+    if [ -n "$HOST" ]
     then
-        # Root additionally gets red.
-        bash_prompt="\[$(tput setaf 1)\]$bash_prompt"
+        bash_prompt="$HOST"
+    else
+        bash_prompt="$HOSTNAME"
     fi
-fi
 
-# Bash-only feature.
-PROMPT_COMMAND='PS1="$bash_prompt"'
+    if [ "$USER" = "root" ]
+    then
+        bash_prompt=${bash_prompt}"# "
+    else
+        bash_prompt=${bash_prompt}"\$ "
+    fi
+
+    if [ -n "$TERM" -a "$TERM" != "dumb" ]
+    then
+        # Everyone gets bold.
+        bash_prompt="\[$(tput bold)\]$bash_prompt\[$(tput sgr0)\]"
+
+        if [ "$(id -u)" = "0" ]
+        then
+            # Root additionally gets red.
+            bash_prompt="\[$(tput setaf 1)\]$bash_prompt"
+        fi
+    fi
+
+    # Bash-only feature.
+    PROMPT_COMMAND='PS1="$bash_prompt"'
+fi
 
 # Bash should wait forever at its prompt and never time out.
 
@@ -158,7 +161,9 @@ fi
 
 # The tty should not intercept Control-S (stop) or Control-Q (start).
 
-stty -ixon
+if [ -t 0 ]
+then stty -ixon
+fi
 
 # Do not produce core dumps by default.
 
