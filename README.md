@@ -3,7 +3,7 @@ homedir
 
 This repository contains the home directory dotfiles and customizations
 of Brandon Rhodes.  You might also be interested in taking a look at his
-version controlled `.emacs.d` directory at:
+version-controlled `.emacs.d` directory at:
 
 https://github.com/brandon-rhodes/dot-emacs
 
@@ -23,43 +23,19 @@ I carefully log in using `ssh` in another terminal window — to make sure
 that the dotfiles leave me able to connect — and then change my default
 shell to `/bin/zsh` with `chsh` and am off and running.
 
-Note that my Emacs configuration is kept in a separate repository:
+Note that many custom commands in `~/bin` have names that start with a
+comma, as do most of my shell aliases.  This unique leading character
+keeps them orthogonal from real system commands, preventing any future
+name collisions as new commands are invented in the Unix world.  Plus, I
+can type a comma and then press Tab in my shell to see a list of all of
+my custom scripts.
 
-  https://github.com/brandon-rhodes/dot-emacs
-
-Note that most custom commands in `~/bin` have names that start with a
-comma, to keep them orthogonal from real commands and prevent future
-name collisions with any new binaries that might come along in the Unix
-world.  Plus, I can press comma-Tab in my shell and see a list of all of
-the scripts, in case I have forgotten the name of one of them.
-
-For years I kept the contents of my version-controlled home directory
-dotfiles a closely-guarded secret.  Which was probably not a bad idea.
-At the time, my shell scripts and dotfiles did contain quite a few hints
-about how I secured the various connections that I could make between
-all of the systems to which I had access at Georgia Tech.  But over the
-last decade my digital life has become streamlined, simplified, and far
-more standard — I now get to use `ssh` for every single off-machine
-connection that I make!
-
-So when the moment came last week that I wanted to create a shell
-account on my wife's desktop Mac, I looked over the files that I was
-about to check out into `~` and realized two things.
-
-First, none of them really contained secrets any more, or at least could
-be easily edited to remove them.
-
-Second, it was a hassle to set up the credentials on the Mac that would
-make it possible to access the private repository where my dotfiles were
-hidden away.  This had also been a problem when wanting to check out my
-dotfiles on public machines, like my Webfaction account.
-
-So I decided to make my dotfiles public — I myself will be able to get
-to them more easily, and anyone else who might be curious can mine them
-for hints and tidbits of wisdom about smoothing away the rough edges of
-the Unix environment.
+I have made all of these dotfiles public so I can download them more
+easily, and so that anyone else who is curious can mine them for hints
+and tidbits of wisdom about smoothing away the rough edges of the Unix
+environment.
 
 Enjoy, and please consider all of these files to be MIT-licensed: take
 whatever you can use, and good luck!
 
-*— Brandon Rhodes, August 2012*
+*— Brandon Rhodes*
