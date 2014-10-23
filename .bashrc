@@ -152,6 +152,15 @@ alias ,coreoff="ulimit -c 0"
     export AWS_SECRET_ACCESS_KEY=$(awk '/^secret_key / {print $3}' ~/.s3cfg)
 }
 
+# Auto-detect whether I have any Go applications in my home directory
+# (such as boot2docker).
+
+if [ -d $HOME/go ]
+then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
+fi
+
 # Bash should update the LINES and COLUMNS environment variables each
 # time the terminal window gets resized, for programs that care.
 
