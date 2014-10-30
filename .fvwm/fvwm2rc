@@ -163,7 +163,7 @@ AddToMenu SshDestinations "Remote Shells" Title
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmark" Title
 + "&c. Calendar" Exec exec chromium-browser "http://google.com/calendar/render"
-+ "&d. Docs"     Exec exec chromium-browser "http://docs.google.com/"
++ "&d. Drive"    Exec exec chromium-browser "http://drive.google.com/"
 + "&g. GitHub"   Exec exec chromium-browser "http://github.com/"
 + "&m. Maps"     Exec exec chromium-browser "http://maps.google.com/"
 + "&r. Reader"   Exec exec chromium-browser "http://www.feedly.com/home"
