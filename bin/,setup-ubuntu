@@ -42,7 +42,7 @@ sudo aptitude install -y \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
-    pypy             `: for when I want to be fast` \
+    pypy pypy-dev    `: for when I want to be fast` \
     python3 python3-dev `: for when I feel modern` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
