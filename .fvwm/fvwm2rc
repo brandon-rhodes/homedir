@@ -99,7 +99,7 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'Desktop Calculator' -e 'units'
 Key e A 4  Exec exec $HOME/bin/,emacs-x
-Key n A 4  Exec exec chromium-browser --enable-webgl
+Key n A 4  Exec exec browser --enable-webgl
 Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
@@ -162,19 +162,19 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmark" Title
-+ "&c. Calendar" Exec exec chromium-browser "http://google.com/calendar/render"
-+ "&d. Drive"    Exec exec chromium-browser "http://drive.google.com/"
-+ "&g. GitHub"   Exec exec chromium-browser "http://github.com/"
-+ "&m. Maps"     Exec exec chromium-browser "http://maps.google.com/"
-+ "&r. Reader"   Exec exec chromium-browser "http://www.feedly.com/home"
-+ "&w. Weather"  Exec exec chromium-browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
++ "&c. Calendar" Exec exec browser "http://google.com/calendar/render"
++ "&d. Drive"    Exec exec browser "http://drive.google.com/"
++ "&g. GitHub"   Exec exec browser "http://github.com/"
++ "&m. Maps"     Exec exec browser "http://maps.google.com/"
++ "&r. Reader"   Exec exec browser "http://www.feedly.com/home"
++ "&w. Weather"  Exec exec browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
 + ""                Nop
-+ "   Mercedes EPC"  Exec exec chromium-browser "https://epc.startekinfo.com/epc/"
-+ "   Mercedes List" Exec exec chromium-browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
-+ "   Newfoundland"  Exec exec chromium-browser "http://www.gad.net/Cosette/5Weeks/sitting.JPG"
++ "   Mercedes EPC"  Exec exec browser "https://epc.startekinfo.com/epc/"
++ "   Mercedes List" Exec exec browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
++ "   Newfoundland"  Exec exec browser "http://www.gad.net/Cosette/5Weeks/sitting.JPG"
 + ""                Nop
-+ "   Amazon AWS"   Exec exec chromium-browser "http://aws.amazon.com/console/"
-+ "   WebFaction"   Exec exec chromium-browser "http://panel.webfaction.com/"
++ "   Amazon AWS"   Exec exec browser "http://aws.amazon.com/console/"
++ "   WebFaction"   Exec exec browser "http://panel.webfaction.com/"
 
 DestroyMenu MenuFvwmWindowOps
 AddToMenu MenuFvwmWindowOps
@@ -216,21 +216,21 @@ AddToFunc   BlogProject
 + I Exec PRERUN="cd ~/blog; . _v/bin/activate; git st" exec xterm -geometry 80x24+0+24
 + I Exec PRERUN='cd ~/blog; . _v/bin/activate; blogofile serve' exec xterm -geometry 80x11+0-0
 + I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/blog/_posts
-+ I Exec sleep 2; chromium-browser; sleep 2; exec chromium-browser http://localhost:8080/brandon/
++ I Exec sleep 2; browser; sleep 2; exec browser http://localhost:8080/brandon/
 
 DestroyFunc EphemProject
 AddToFunc   EphemProject
 + I Exec PRERUN="cd ~/ephem4; git st" exec xterm -geometry 80x24+0+24
 + I Exec PRERUN='cd ~/ephem4/src/ephem/doc' exec xterm -geometry 80x11+0-0
 + I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/ephem4/setup.py ~/ephem4/src/ephem/__init__.py
-+ I Exec sleep 2; chromium-browser; sleep 1; exec chromium-browser file:///home/brandon/ephem4/src/ephem/doc/_build/html/index.html
++ I Exec sleep 2; browser; sleep 1; exec browser file:///home/brandon/ephem4/src/ephem/doc/_build/html/index.html
 
 DestroyFunc NEWFSProject
 AddToFunc   NEWFSProject
 + I Exec PRERUN="cd ~/newfs/gobotany-app; git st" exec xterm -geometry 80x24+0+24
 + I Exec PRERUN="cd ~/newfs/gobotany-app" exec xterm -geometry 80x24+0-0
 + I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/newfs/gobotany-app/gobotany
-+ I Exec sleep 3; chromium-browser; sleep 2; exec chromium-browser http://localhost:8000/
++ I Exec sleep 3; browser; sleep 2; exec browser http://localhost:8000/
 
 DestroyFunc BookProject
 AddToFunc   BookProject
@@ -246,7 +246,7 @@ AddToFunc   SkyfieldProject
 
 DestroyFunc TalksProject
 AddToFunc   TalksProject
-+ I Exec chromium-browser
++ I Exec browser
 + I Exec PRERUN='cd ~/talks; git st' exec xterm -geometry 80x24+0+24
 + I Exec PRERUN='cd ~/talks; ,simplehttpserver' exec xterm -geometry 80x8-0+24
 + I Exec cd ~/talks && exec $HOME/bin/,emacs-x -geometry -0+24 ~/talks
