@@ -1,15 +1,27 @@
-personal_ws-1.1 en 53 
+personal_ws-1.1 en 70 
 Canonicalization
+Django
 Hipparcos
 Lawrenceville
 Nuitka
 Polymorphism
+SEP
+SQLAlchemy
 Silmarillion
 accuracies
+admin
+anonymizing
+app
 astrometric
+async
 attaches
 barycentric
+blog
+bytecode
+cacheable
+callables
 cleartext
+clickable
 dataframe
 dataframes
 datagram
@@ -26,14 +38,18 @@ hashable
 hostname
 hostnames
 interoperate
+iterable
 lossy
 masse
+metadata
+middleware
 mixins
 multiclassing
 multicore
 multiprocess
 nameservers
 pluggability
+pluggable
 prepends
 proxying
 refactor
@@ -49,6 +65,8 @@ traceback
 tracebacks
 tuple
 tuples
+uncacheable
 uncompromised
 unhobbitlike
+virtualization
 whitespace
