@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Add this to the Ubuntu "Session and Startup" menu.  The "sleep 3" is
+# intended to give the normal window manager and login scripts time to
+# start up and get things configured before we step in to take over.
 
 cd $HOME
 
@@ -6,11 +10,11 @@ cd $HOME
 
 source .bashrc
 
+sleep 3
+
 xmodmap .Xmodmap
 xrdb .Xresources
 xset r rate 240 40
-
-sleep 1
 
 autocutsel &
 exec fvwm -r
