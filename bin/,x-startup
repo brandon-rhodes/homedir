@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd $HOME
+
+&>.x-startup.log
+
+source .bashrc
+
+xmodmap .Xmodmap
+xrdb .Xresources
+xset r rate 240 40
+
+sleep 1
+
+autocutsel &
+exec fvwm -r
