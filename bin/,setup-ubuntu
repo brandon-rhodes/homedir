@@ -23,6 +23,7 @@ sudo aptitude install -y \
     chromium-browser `: browser-of-choice` \
     chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
+    cscope           `: for that rare trawl through code ` \
     emacs24          `: editor-of-choice` \
     emacs24-el       `: readable LISP source` \
     enscript         `: turn text into PostScript` \
