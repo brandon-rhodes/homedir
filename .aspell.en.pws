@@ -1,13 +1,15 @@
-personal_ws-1.1 en 70 
+personal_ws-1.1 en 75 
 Canonicalization
 Django
 Hipparcos
 Lawrenceville
+Muzetto
 Nuitka
 Polymorphism
 SEP
 SQLAlchemy
 Silmarillion
+Zealand
 accuracies
 admin
 anonymizing
@@ -17,6 +19,7 @@ async
 attaches
 barycentric
 blog
+bytearray
 bytecode
 cacheable
 callables
@@ -48,6 +51,7 @@ multiclassing
 multicore
 multiprocess
 nameservers
+nutation
 pluggability
 pluggable
 prepends
