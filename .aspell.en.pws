@@ -1,4 +1,4 @@
-personal_ws-1.1 en 75 
+personal_ws-1.1 en 76 
 Canonicalization
 Django
 Hipparcos
@@ -25,6 +25,7 @@ cacheable
 callables
 cleartext
 clickable
+composable
 dataframe
 dataframes
 datagram
