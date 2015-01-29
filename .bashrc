@@ -44,6 +44,17 @@ export PAGER=less
 
 export LC_COLLATE=C
 
+# Put Emacs for Mac OS X in front of its terrible ancient Emacs.
+
+if [ -d /Applications/Emacs.app/Contents/MacOS/bin ]
+then
+    if [[ ":$PATH:" != *":/Applications/Emacs.app/Contents/MacOS/bin:"* ]]
+    then
+        PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
+        PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+    fi
+fi
+
 # Prepend my home bin directories to the path if not there already.
 
 if [[ ":$PATH:" != *":$HOME/usr/bin:"* ]]
