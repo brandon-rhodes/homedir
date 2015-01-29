@@ -1,0 +1,8 @@
+
+ITERM2=~/Library/Preferences/com.googlecode.iterm2.plist
+
+defaults write $ITERM2 Control 7
+defaults write $ITERM2 LeftCommand 1
+defaults write $ITERM2 RightCommand 3
+
+# defaults write ~/Library/Preferences/com.googlecode.iterm2.plist 'NSTableView Columns KeyBingingTable' '( <040b7374 7265616d 74797065 6481e803 84014084 8484084e 53537472 696e6701 8484084e 534f626a 65637400 8584012b 013086>, 198, <040b7374 7265616d 74797065 6481e803 84014084 8484084e 53537472 696e6701 8484084e 534f626a 65637400 8584012b 013186>, 302 )'
