@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -x /usr/bin/google-chrome ]
+then
+    exec /usr/bin/google-chrome "$@"
+else
+    exec /usr/bin/chromium-browser "$@"
+fi
