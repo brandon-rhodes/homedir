@@ -129,3 +129,8 @@ sudo aptitude purge -y apport apport-gtk apport-symptoms python3-apport \
 sudo aptitude install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
 sudo ln -sf libsndfile.so.1 /usr/lib/i386-linux-gnu/libsndfile.so
 sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so
+
+# Cleanup.
+
+rmdir --ignore-fail-on-non-empty \
+    ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos
