@@ -39,6 +39,7 @@ sudo aptitude install -y \
     inotify-tools    `: for waiting on files to change` \
     libreadline-dev  `: for compiling Python from source` \
     libreoffice-writer `: for the occasional Microsoft Word file ` \
+    mosh             `: like SSH but that can survive poor hotel Wifi` \
     mplayer2 geeqie  `: for media` \
     openssh-server   `: for when I run scp on another machine` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
