@@ -28,6 +28,7 @@ sudo aptitude install -y \
     emacs24-el       `: readable LISP source` \
     enscript         `: turn text into PostScript` \
     fvwm             `: window manager` \
+    fonts-inconsolata `: favorite console font` \
     fonts-sil-gentium `: font for presentation slides` \
     git gitk         `: distributed version control` \
     gnucash          `: accounting` \
@@ -59,7 +60,6 @@ sudo aptitude install -y \
     texlive-fonts-recommended \
     tmux             `: to leave things running in a tty overnight` \
     tree             `: for when ls is simply not enough` \
-    ttf-inconsolata  `: favorite console font` \
     ttf-mscorefonts-installer `: for browsing the web` \
     units            `: desk calculator` \
     virtualbox       `: for various virtualization tasks` \
@@ -127,10 +127,9 @@ sudo aptitude purge -y apport apport-gtk apport-symptoms python3-apport \
 # DF.
 
 sudo aptitude install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
-sudo ln -sf libsndfile.so.1 /usr/lib/i386-linux-gnu/libsndfile.so
-sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so
+sudo ln -sf libsndfile.so.1 /usr/lib/i386-linux-gnu/libsndfile.so || true
+sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so || true
 
 # Cleanup.
 
-rmdir --ignore-fail-on-non-empty \
-    ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos
+rmdir ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos || true
