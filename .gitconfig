@@ -36,3 +36,6 @@ conflictstyle = diff3
 
 [push]
 	default = simple
+
+[include]
+path = .gitlocal
