@@ -30,5 +30,9 @@ status = auto
 
 [commit]
 template = ~/.gitmessage.txt
+
+[merge]
+conflictstyle = diff3
+
 [push]
 	default = simple
