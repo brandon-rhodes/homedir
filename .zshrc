@@ -65,7 +65,8 @@ __activate_environment () {
     fi
     mkdir -p ~/.v &&
     ~/.anaconda/bin/conda create -p ~/.v/$__environment_slug ${packages[*]} &&
-    __activate_environment
+    __activate_environment &&
+    ,setup-jedi
 }
 ,virtualenv () {
     if ! __compute_environment_slug
@@ -75,7 +76,8 @@ __activate_environment () {
     fi
     mkdir -p ~/.v &&
     virtualenv "$@" ~/.v/"$__environment_slug" &&
-    __activate_environment
+    __activate_environment &&
+    ,setup-jedi
 }
 
 # Force the cache of existing commands to be rebuilt each time the
