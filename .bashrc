@@ -71,10 +71,6 @@ then
     PATH=$PATH:$(pythonz list -p | awk 'BEGIN {ORS=":"} /^ / {print $2"/bin"}')
 fi
 
-# Avoid downloading the same large Python packages over and over again.
-
-export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
-
 # Create neither *.pyc files nor __pycache__ directories.
 
 export PYTHONDONTWRITEBYTECODE=PLEASE
