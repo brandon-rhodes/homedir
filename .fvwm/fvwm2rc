@@ -99,7 +99,7 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'Desktop Calculator' -e 'units'
 Key e A 4  Exec exec $HOME/bin/,emacs-x
-Key l A 4  Exec light-locker-command -l
+Key l A 4  Exec date >> $HOME/.lock-times && light-locker-command -l
 Key n A 4  Exec exec browser --enable-webgl
 Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
