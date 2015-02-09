@@ -9,7 +9,7 @@ set -e
 
 if [ "$1" = "ag" ]
 then
-    V=0.24.1
+    V=0.29.1
     sudo aptitude install -y liblzma-dev zlib1g-dev
 
     cd /tmp
