@@ -35,7 +35,7 @@ template = ~/.gitmessage.txt
 conflictstyle = diff3
 
 [push]
-	default = simple
+default = current
 
 [include]
 path = .gitlocal
