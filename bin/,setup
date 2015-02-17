@@ -26,6 +26,11 @@ then
     rm -r $V.tar.gz the_silver*
 fi
 
+if [ "$1" = "browser" ]
+then
+    sudo update-alternatives --config x-www-browser
+fi
+
 if [ "$1" = "drivers" ]
 then
     # Epson scanner.  Yes, calling the firmware the default name
