@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if lspci | grep -q GF108M
+then
+    # We are on my ThinkPad T430, whose display never quite recovers
+    # from a suspend.  So we hibernate instead.  No screen locking is
+    # required, since the filesystem itself will need to be password
+    # unlocked when the machine is next powered on.
+
+    dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
+
+else
+    # We are on any of my other laptops, all of which suspend and resume
+    # just fine.
+
+    date >> $HOME/.lock-times &&
+    light-locker-command -l &&
+    dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+
+fi

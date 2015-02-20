@@ -127,6 +127,25 @@ sudo killall -q oneconf-service || true
 sudo aptitude purge -y apport apport-gtk apport-symptoms python3-apport \
     whoopsie
 
+# Give normal users permission to "hibernate" because suspending on my
+# ThinkPad T430, upon resuming, results in a password dialog followed by
+# a blank display that cannot be reactivated, even with "xrandr" running
+# from a virtual terminal.  And this is true whether NVIDIA graphics or
+# the plain integrated graphics is selected in the BIOS.
+#
+# http://askubuntu.com/questions/1792/how-can-i-suspend-hibernate-from-command-line/131022
+
+HIBER=/etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+if ! sudo ls $HIBER 2>/dev/null
+then
+    sudo dd of=$HIBER <<'EOF'
+[Re-enable hibernate by default]
+Identity=unix-user:*
+Action=org.freedesktop.upower.hibernate
+ResultActive=yes
+EOF
+fi
+
 # DF.
 
 sudo aptitude install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
