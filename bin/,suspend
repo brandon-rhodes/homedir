@@ -7,6 +7,7 @@ then
     # required, since the filesystem itself will need to be password
     # unlocked when the machine is next powered on.
 
+    date >> $HOME/.lock-times &&
     dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
 
 else
