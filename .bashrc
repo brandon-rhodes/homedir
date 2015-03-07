@@ -57,13 +57,14 @@ fi
 
 # Prepend my home bin directories to the path if not there already.
 
-if [[ ":$PATH:" != *":$HOME/usr/bin:"* ]]
-then PATH="$HOME/usr/bin:$PATH"
-fi
+for p in $HOME/Dropbox*/bin $HOME/usr/bin $HOME/bin
+do
+    if [[ ":$PATH:" != *":$p:"* ]]
+    then PATH="$p:$PATH"
+    fi
+done
 
-if [[ ":$PATH:" != *":$HOME/bin:"* ]]
-then PATH="$HOME/bin:$PATH"
-fi
+unset p
 
 if [[ -s $HOME/.pythonz/etc/bashrc ]]
 then
