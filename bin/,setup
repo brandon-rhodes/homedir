@@ -83,15 +83,6 @@ then
     rm "SIL Open Font License 1.1.txt"
 fi
 
-if [ "$1" = "ledger" ]
-then
-    mkdir -p ~/usr/src
-    cd ~/usr/src
-    git clone git://github.com/ledger/ledger.git
-    cd ledger
-    ./acprep --python --prefix=$HOME/usr update
-fi
-
 if [ "$1" = "skype" ]
 then
     cd ~/usr
