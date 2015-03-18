@@ -132,7 +132,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-PROMPT='%{$fg[black]%}%B%m%(!.#.$)%b%{$reset_color%} '
+if [ "$USERNAME" = "brandon" ]
+then
+    PROMPT='%{$fg[black]%}%B%m%(!.#.$)%b%{$reset_color%} '
+else
+    PROMPT='%{$fg[yellow]%}%B%n@%{$fg[black]%}%m%(!.#.$)%b%{$reset_color%} '
+fi
 RPROMPT='$(git_prompt_info) %{$fg[blue]%}%B%~%b%{$reset_color%}'
 
 # git theming
