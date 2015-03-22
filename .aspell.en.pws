@@ -1,4 +1,4 @@
-personal_ws-1.1 en 78 
+personal_ws-1.1 en 80 
 Canonicalization
 Django
 Hipparcos
@@ -55,10 +55,12 @@ nameservers
 namespace
 namespaces
 nutation
+patterns
 pluggability
 pluggable
 prepends
 proxying
+redis
 refactor
 refactoring
 refactorings
