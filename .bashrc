@@ -20,9 +20,14 @@ e () {
 
 export GREP_OPTIONS='--color=auto'
 
-# Bash should never save command history to disk.
+# For security, bash should never save command history to disk under one
+# of my main accounts.  But saving history is okay inside a VM and,
+# actually, kind of convenient, because of how often one logs out and
+# back in and needs to run verbose and cumbersome boilerplate commands.
 
-unset HISTFILE
+if [ "$LOGNAME" != "vagrant" ]
+then unset HISTFILE
+fi
 
 # Use Unicode if available.
 
