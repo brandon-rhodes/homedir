@@ -1,6 +1,25 @@
-#!/bin/bash
-
+#!/usr/bin/env python2.7
+#
 # Watch one or more files, exiting when a program finishes writing to
 # one of them (useful in "for" loops at the command line).
 
-exec inotifywait -e close_write "$@"
+import subprocess
+import sys
+
+def main():
+    args = sys.argv[1:]
+    try:
+        i = args.index('--')
+    except ValueError:
+        print >>sys.stderr, 'usage: ,watch cmd [arg...] -- file [file...]'
+        sys.exit(2)
+
+    cmd = args[:i]
+    paths = args[i:]
+
+    while True:
+        subprocess.call(cmd)
+        subprocess.check_call(['inotifywait', '-e', 'close_write'] + paths)
+
+if __name__ == '__main__':
+    main()
