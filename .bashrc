@@ -217,13 +217,6 @@ then
     source /etc/bash_completion
 fi
 
-# Load any site-specific commands that I have defined.
-
-if [ -f ~/.localrc ]
-then
-    source ~/.localrc
-fi
-
 # Run any commands specified in the environment variable PRERUN, so that
 # FVWM can open xterms that run a command before giving me control.
 

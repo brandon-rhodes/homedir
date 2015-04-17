@@ -4,3 +4,10 @@ if [ "$(id -un)" = "$(id -gn)" ]
 then umask 027
 else umask 077
 fi
+
+# Load any site-specific commands that I have defined.
+
+if [ -f ~/.localrc ]
+then
+    source ~/.localrc
+fi
