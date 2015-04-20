@@ -1,3 +1,7 @@
+# Environment script.
+
+source $HOME/.bashenv
+
 # Command-line programs that need to invoke our editor should run our
 # quick "emacs-no-window" script, so that Emacs runs in text mode right
 # at the terminal instead of taking the time to open a separate window.
@@ -202,13 +206,6 @@ fi
 # edits instead, so I only ever invoke the history syntax accidentally!
 
 unset histchars
-
-# Set my umask depending on whether it looks like I own my group.
-
-if [ "$(id -un)" = "$(id -gn)" ]
-then umask 027
-else umask 077
-fi
 
 # Load bash completion customization, if available.
 

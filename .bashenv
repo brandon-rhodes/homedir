@@ -7,7 +7,6 @@ fi
 
 # Load any site-specific commands that I have defined.
 
-if [ -f ~/.localrc ]
-then
-    source ~/.localrc
+if [ -f "$HOME/.localrc" ]
+then source "$HOME/.localrc"
 fi
