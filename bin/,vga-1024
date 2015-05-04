@@ -1,4 +1,5 @@
 #!/bin/bash
 
-NAME=$(xrandr | grep '^VGA' | awk '{print $1}')
-xrandr --output $NAME --same-as LVDS --mode 1024x768 --rate 60.0
+LVDS=$(xrandr | grep '^LVDS.* connected ' | awk '{print $1}')
+VGA=$(xrandr | grep '^VGA' | awk '{print $1}')
+xrandr --output $VGA --same-as $LVDS --mode 1024x768 --rate 60.0
