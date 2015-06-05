@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Run enscript to a file instead of the printer.
+
+cat "$@" |
+    enscript --header="" --font="Courier12" -o - |
+    ps2pdf - -
