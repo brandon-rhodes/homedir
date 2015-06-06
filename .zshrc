@@ -59,7 +59,7 @@ __activate_environment () {
     fi
     if [ "$#" = "0" ]
     then
-        packages=( ipython jinja2 matplotlib pandas pip pyzmq tornado )
+        packages=( ipython-notebook matplotlib pandas pip )
     else
         packages=( "$@" pip )
     fi
