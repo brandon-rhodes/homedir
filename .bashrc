@@ -75,12 +75,6 @@ done
 
 unset p
 
-if [[ -s $HOME/.pythonz/etc/bashrc ]]
-then
-    source $HOME/.pythonz/etc/bashrc
-    PATH=$PATH:$(pythonz list -p | awk 'BEGIN {ORS=":"} /^ / {print $2"/bin"}')
-fi
-
 # Create neither *.pyc files nor __pycache__ directories.
 
 export PYTHONDONTWRITEBYTECODE=PLEASE
