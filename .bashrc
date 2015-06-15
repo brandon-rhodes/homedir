@@ -139,6 +139,7 @@ else alias g="grep -P"
 fi
 
 alias a="ag -iz"
+alias gi="g -i"
 alias la="/bin/ls -avCF"
 alias lf="/bin/ls -vCF"
 alias ll="/bin/ls -lv"
