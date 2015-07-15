@@ -144,10 +144,15 @@ alias la="/bin/ls -avCF"
 alias lf="/bin/ls -vCF"
 alias ll="/bin/ls -lv"
 alias lla="/bin/ls -alv"
-alias d="$DIFF -ur"
 alias m="less"
 alias s="ssh"
 clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
+d () {
+    if [ -t 1 ]
+    then $DIFF -ur "$@" 2>&1 | less
+    else $DIFF -ur "$@"
+    fi
+}
 wd() {
     diff -u "$@" | wdiff -d -n -w $'\033[1;31;47m' -x $'\033[0m' \
                                -y $'\033[1;32;47m' -z $'\033[0m'
