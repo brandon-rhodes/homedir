@@ -114,12 +114,12 @@ Key f   A 4  FuncMaximizeBorderlessly
 Key f   A 4S FuncMaximizeBorderlessly1024
 Key Tab A 4  FuncMaximizeY
 
-# Windows key plus an arrow key moves between windows without the mouse.
+# Windows key plus an arrow key moves window into tile-like positions.
 
-Key Up    A 4  Direction North Flipfocus
-Key Down  A 4  Direction South Flipfocus
-Key Right A 4  Direction East Flipfocus
-Key Left  A 4  Direction West Flipfocus
+Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
+Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
+Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
+Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
 
 # For occasions when I want to be sitting back in front of a desktop and
 # am far from a mouse, I have emergency keystrokes to let me move to new
