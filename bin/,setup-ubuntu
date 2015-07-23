@@ -71,6 +71,7 @@ sudo aptitude install -y \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
     xchat            `: IRC for software support` \
+    xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
     \
     `: Mount remote filesystems` \
