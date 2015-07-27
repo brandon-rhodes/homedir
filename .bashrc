@@ -83,36 +83,27 @@ export PYTHONDONTWRITEBYTECODE=PLEASE
 # bold so the eye can easily find prompts when scrolling, and also turn
 # red if it is a root prompt.
 
-if [ -t 0 ]
+if [ -t 0 -a -z "$ZSH_VERSION" ]
 then
-    if [ -n "$HOST" ]
-    then
-        bash_prompt="$HOST"
-    else
-        bash_prompt="$HOSTNAME"
-    fi
-
+    PS1="${HOST:-${HOSTNAME}}"
     if [ "$USER" = "root" ]
     then
-        bash_prompt=${bash_prompt}"# "
+        PS1="${PS1}#"
     else
-        bash_prompt=${bash_prompt}"\$ "
+        PS1="${PS1}\$"
     fi
-
     if [ -n "$TERM" -a "$TERM" != "dumb" ]
     then
-        # Everyone gets bold.
-        bash_prompt="\[$(tput bold)\]$bash_prompt\[$(tput sgr0)\]"
-
-        if [ "$(id -u)" = "0" ]
+        # Bold and colorful, with root in red and others in yellow.
+        PS1="$(tput bold; tput setab 7)\]$PS1\[$(tput sgr0)\]"
+        if [ "$USER" = "root" ]
         then
-            # Root additionally gets red.
-            bash_prompt="\[$(tput setaf 1)\]$bash_prompt"
+            PS1="\[$(tput setaf 1)$PS1"
+        else
+            PS1="\[$(tput setaf 3)$PS1"
         fi
     fi
-
-    # Bash-only feature.
-    PROMPT_COMMAND='PS1="$bash_prompt"'
+    PS1="${PS1} "
 fi
 
 # Bash should wait forever at its prompt and never time out.
