@@ -53,6 +53,7 @@ sudo aptitude install -y \
     python3 python3-dev `: for when I feel modern` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
+    nmap             `: for finding the IP address that my printer lives at` \
     rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
