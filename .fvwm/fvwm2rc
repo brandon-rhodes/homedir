@@ -147,13 +147,14 @@ Mouse 5 A    C  Nop
 
 DestroyMenu Applications
 AddToMenu Applications "Applications" Title
++ "&c. XChat"     Exec exec xchat
 + "&d. Dropbox"   Exec exec dropbox start
 + "&f. Firefox"   Exec exec firefox
 + "&g. Gimp"      Exec exec gimp
 + "&n. Nautilus"  Exec exec nautilus
 + "&s. Skype"     Exec exec skype
 + "&v. VirtualBox" Exec exec virtualbox
-+ "&x. XChat"     Exec exec xchat
++ "&x. Xephyr :1" Exec exec Xephyr -screen 1024x768 :1
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
