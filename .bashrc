@@ -10,13 +10,23 @@ export EDITOR=$HOME/bin/enw
 
 # There should also be a quick way to launch the most graphical version
 # of Emacs available.  A job spawned from a sub-shell neither gets
-# enrolled in our jobs table, nor dies with the shell's terminal.
+# enrolled in our jobs table, nor dies with the shell's terminal.  If
+# the current directory is listed in ~/.python-paths then the PYTHONPATH
+# value that follows it on the line is automatically set, to give me a
+# per-project ability to help Jedi find all relevant Python modules.
 
 e () {
+    local pp
+    if [ -n "$PYTHONPATH" ] ;then
+        pp="$PYTHONPATH"
+    elif [ -f $HOME/.python-paths ] ;then
+        pp="$(grep "^$PWD " $HOME/.python-paths | sed 's/^[^ ]* //')"
+    fi
+    echo p is $pp
     if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
-        (,emacs-x "$@" &)
+        (PYTHONPATH="$pp" ,emacs-x "$@" &)
     else
-        $HOME/bin/enw "$@"
+        PYTHONPATH="$pp" $HOME/bin/enw "$@"
     fi
 }
 
