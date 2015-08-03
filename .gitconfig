@@ -4,6 +4,7 @@ email = brandon@rhodesmill.org
 
 [alias]
 a = add -A .
+abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 amend = commit --amend
 br = branch
 ci = commit -v
