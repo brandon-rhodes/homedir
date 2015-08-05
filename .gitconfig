@@ -6,6 +6,7 @@ email = brandon@rhodesmill.org
 a = add -A .
 abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 amend = commit --amend
+atag = !bash -c 'git tag -a \"$1\" && git push --follow-tags' --
 br = branch
 ci = commit -v
 co = checkout
