@@ -154,7 +154,7 @@ AddToMenu Applications "Applications" Title
 + "&n. Nautilus"  Exec exec nautilus
 + "&s. Skype"     Exec exec skype
 + "&v. VirtualBox" Exec exec virtualbox
-+ "&x. Xephyr :1" Exec exec Xephyr -screen 1024x768 :1
++ "&x. Xephyr :1" Exec exec Xephyr -screen 1280x800 :1
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
