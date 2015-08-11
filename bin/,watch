@@ -3,8 +3,10 @@
 # Watch one or more files, exiting when a program finishes writing to
 # one of them (useful in "for" loops at the command line).
 
+import os
 import subprocess
 import sys
+import time
 
 def main():
     args = sys.argv[1:]
@@ -19,7 +21,13 @@ def main():
 
     while True:
         subprocess.call(cmd)
-        subprocess.check_call(['inotifywait', '-e', 'close_write'] + paths)
+        if not all(os.path.exists(p) for p in paths):
+            print '  Waiting for files to return'
+            time.sleep(1.0)
+        subprocess.check_call(['inotifywait',
+                               '-e', 'CLOSE_WRITE',
+                               '-e', 'DELETE_SELF',
+                               ] + paths)
 
 if __name__ == '__main__':
     main()
