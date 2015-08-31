@@ -1,4 +1,4 @@
-personal_ws-1.1 en 81 
+personal_ws-1.1 en 84 
 Canonicalization
 Django
 Hipparcos
@@ -41,6 +41,7 @@ filesystem
 hashable
 hostname
 hostnames
+instantiation
 interoperate
 iterable
 lossy
@@ -60,11 +61,13 @@ pluggability
 pluggable
 prepends
 proxying
+rebased
 redis
 refactor
 refactoring
 refactorings
 runtimes
+screenshot
 sexagesimal
 stateful
 subclasses
