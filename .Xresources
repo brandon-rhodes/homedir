@@ -80,30 +80,30 @@ XTerm.vt100.Translations: #override \
 *background:            S_base3
 *foreground:            S_base01
 *fading:                40
-*fadeColor:             S_base3
+*fadeColor:             S_base03
 *cursorColor:           S_base01
-*pointerColorBackground:S_base1
-*pointerColorForeground:S_base01
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
 
 !! black dark/light
 *color0:                S_base02
 *color8:                S_base03
 
 !! red dark/light
-*color1:                S_orange
-*color9:                S_red
+*color1:                S_red
+*color9:                S_orange
 
 !! green dark/light
 *color2:                S_green
-*color10:               S_green
+*color10:               S_base01
 
 !! yellow dark/light
 *color3:                S_yellow
-*color11:               S_yellow
+*color11:               S_base00
 
 !! blue dark/light
 *color4:                S_blue
-*color12:               S_base00
+*color12:               S_base0
 
 !! magenta dark/light
 *color5:                S_magenta
@@ -111,8 +111,8 @@ XTerm.vt100.Translations: #override \
 
 !! cyan dark/light
 *color6:                S_cyan
-*color14:               S_base01
+*color14:               S_base1
 
 !! white dark/light
 *color7:                S_base2
-*color15:               S_base1
+*color15:               S_base3
