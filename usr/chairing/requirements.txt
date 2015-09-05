@@ -1,2 +1,0 @@
-conda install cssselect lxml pyopenssl queuelib six twisted w3lib
-pip install --no-deps scrapy service_identity
