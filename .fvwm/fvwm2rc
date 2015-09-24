@@ -106,6 +106,7 @@ Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
 Key t A 4S Exec exec xterm -fs 6 -geometry -0-0
 Key w A 4  Menu MenuFvwmWindowOps Nop
+Key y A 4  Exec exec ,yubi
 
 # Vertical maximize with Windows+Tab, full maximize with Windows+F,
 # and 1024x768 borderless "presentation maximize" with Windows+Shift+F.
