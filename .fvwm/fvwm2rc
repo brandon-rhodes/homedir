@@ -342,7 +342,7 @@ AddToFunc SessionInitFunction
 # Utter magic: why did I wait so many years before looking for a utility
 # to unify the two different cut-and-paste buffers under X Windows?
 
-+ I Exec exec autocutsel
+# + I Exec exec autocutsel
 
 # Reset other X windows settings that the "Xubuntu Session" startup code
 # might have loaded incorrectly.  Note that these commands are kept in a
