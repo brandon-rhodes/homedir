@@ -13,7 +13,7 @@ co = checkout
 d = diff
 diff-vs-master = !git diff $(git merge-base HEAD origin/master) -- .
 incoming = remote show origin
-l = log --graph --pretty=oneline --abbrev-commit
+l = log --graph --pretty=oneline --abbrev-commit --decorate=short
 lg = log -p
 locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
