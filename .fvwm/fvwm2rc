@@ -149,7 +149,7 @@ Mouse 5 A    C  Nop
 DestroyMenu Applications
 AddToMenu Applications "Applications" Title
 + "&c. XChat"     Exec exec xchat
-+ "&d. Dropbox"   Exec exec dropbox start
++ "&d. Dropbox"   Exec exec $HOME/.dropbox-dist/dropbox-*/dropbox start
 + "&f. Firefox"   Exec exec firefox
 + "&g. Gimp"      Exec exec gimp
 + "&n. Nautilus"  Exec exec nautilus
