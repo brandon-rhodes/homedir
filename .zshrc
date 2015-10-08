@@ -127,6 +127,10 @@ WORDCHARS=
 
 unsetopt bang_hist
 
+# Prevent duplicate commands from filling history.
+
+setopt hist_ignore_dups
+
 # If TAB can complete at least a partial word, then zsh by default is
 # quite lazy and makes *me* hit TAB again to then see the options that
 # remain following the characters it fills in. With this option, it will
