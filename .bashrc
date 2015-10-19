@@ -22,7 +22,6 @@ e () {
     elif [ -f $HOME/.python-paths ] ;then
         pp="$(grep "^$PWD " $HOME/.python-paths | sed 's/^[^ ]* //')"
     fi
-    echo p is $pp
     if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
         (PYTHONPATH="$pp" ,emacs-x "$@" &)
     else
