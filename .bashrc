@@ -29,10 +29,6 @@ e () {
     fi
 }
 
-# Grep should use color to draw my eye to matches.
-
-export GREP_OPTIONS='--color=auto'
-
 # For security, bash should never save command history to disk under one
 # of my main accounts.  But saving history is okay inside a VM and,
 # actually, kind of convenient, because of how often one logs out and
