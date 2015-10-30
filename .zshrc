@@ -142,6 +142,10 @@ setopt hist_ignore_dups
 
 unsetopt list_ambiguous
 
+# During completion, allow moving through the menu with arrow keys.
+
+zstyle ':completion:*' menu select
+
 # Install my other customizations.
 
 source ~/.bashrc
