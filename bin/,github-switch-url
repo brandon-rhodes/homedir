@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Switch the URL of the current repository from using a GitHub HTTP to
+# SSH.
+
+set -e
+
+git='git@github.com:'
+https='https://github.com/'
+
+url="$(git remote -v | awk '/^origin.*fetch.$/ {print $2}')"
+echo Old url: "$url"
+
+if echo "$url" | grep -q '^git'
+then
+    url="${url/${git}/${https}}"
+else
+    url="${url/${https}/${git}}"
+fi
+
+echo New url: "$url"
+git remote set-url origin "$url"
