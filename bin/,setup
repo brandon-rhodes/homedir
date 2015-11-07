@@ -50,7 +50,8 @@ if [ "$1" = "emacs" ]  # check out and set up ~/.emacs.d
 then
     if [ ! -d ~/.emacs.d ]
     then
-	git clone git@github.com:brandon-rhodes/dot-emacs.git ~/.emacs.d
+	git clone git@github.com:brandon-rhodes/dot-emacs.git ~/.emacs.d ||
+	git clone https://github.com/brandon-rhodes/dot-emacs.git ~/.emacs.d
     elif [ ! -d ~/.emacs.d/.git ]
     then
 	echo "You seem to have an ~/.emacs.d/ of you own that is in the way"
