@@ -73,6 +73,9 @@ fi
 
 for p in $HOME/Dropbox*/bin $HOME/usr/bin $HOME/bin
 do
+    if [[ "$p" =~ \\* ]]
+    then continue  # pattern expansion failed if '*' is in the filename
+    fi
     if [[ ":$PATH:" != *":$p:"* ]]
     then PATH="$p:$PATH"
     fi
