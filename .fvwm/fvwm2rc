@@ -196,7 +196,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&L Lock edgeflip]"    EdgeScroll 0 0
 + "$[gt.&U Unlock edgeflip]"  EdgeScroll 100 100
 + "$[gt.&R Reload fvwm2rc]"  Read fvwm2rc
-+ "$[gt.  Restart fvwm2rc]" Restart
++ "$[gt.  Restart fvwm2]"  Restart
 + "$[gt.  Log off]"        Quit
 + "" Nop
 + "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
