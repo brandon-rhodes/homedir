@@ -1,3 +1,14 @@
+# Prepend my home bin directories to the path if not there already.
+
+for p in $HOME/Dropbox/bin "$HOME/Dropbox (Dropbox)/bin" $HOME/usr/bin $HOME/bin
+do
+    if [ ":$PATH:" != *":$p:"* -a -d "$p" ]
+    then PATH="$p:$PATH"
+    fi
+done
+
+unset p
+
 # Set my umask depending on whether it looks like I own my group.
 
 if [ "$(id -un)" = "$(id -gn)" ]

@@ -69,20 +69,6 @@ then
     fi
 fi
 
-# Prepend my home bin directories to the path if not there already.
-
-for p in $HOME/Dropbox*/bin $HOME/usr/bin $HOME/bin
-do
-    if [[ "$p" =~ \\* ]]
-    then continue  # pattern expansion failed if '*' is in the filename
-    fi
-    if [[ ":$PATH:" != *":$p:"* ]]
-    then PATH="$p:$PATH"
-    fi
-done
-
-unset p
-
 # Create neither *.pyc files nor __pycache__ directories.
 
 export PYTHONDONTWRITEBYTECODE=PLEASE
