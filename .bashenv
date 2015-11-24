@@ -2,7 +2,7 @@
 
 for p in $HOME/Dropbox/bin "$HOME/Dropbox (Dropbox)/bin" $HOME/usr/bin $HOME/bin
 do
-    if [ ":$PATH:" != *":$p:"* -a -d "$p" ]
+    if [[ :"$PATH": != *:"$p":* && -d "$p" ]]
     then PATH="$p:$PATH"
     fi
 done
