@@ -129,6 +129,7 @@ alias la="/bin/ls -avCF"
 alias lf="/bin/ls -vCF"
 alias ll="/bin/ls -lv"
 alias lla="/bin/ls -alv"
+alias ltr="/bin/ls -ltr"
 alias m="less"
 alias s="ssh"
 clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
