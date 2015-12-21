@@ -2,20 +2,11 @@
 
 set -e
 
-# Always use "aptitude" since "apt-get" cannot remember later which
-# packages I asked for, versus which are sitting around because they
-# were dependencies of some other package that was once installed.
-# Aptitude knows the difference, and will remove the latter!
-
-if ! which aptitude
-then sudo apt-get install aptitude
-fi
-
-sudo aptitude update
+sudo apt-get update
 
 # Install happy packages.
 
-sudo aptitude install -y \
+sudo apt-get install -y \
     apache2-utils    `: provides 12 commands, especially "ab"` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
@@ -128,7 +119,7 @@ sudo killall -q oneconf-service || true
 # Outlaw Ubuntu's terrible "Sorry the application X has stopped
 # unexpectedly" popups.
 
-sudo aptitude purge -y apport apport-gtk apport-symptoms python3-apport \
+sudo apt-get purge -y apport apport-gtk apport-symptoms python3-apport \
     whoopsie
 
 # Give normal users permission to "hibernate" because suspending on my
@@ -152,7 +143,7 @@ fi
 
 # DF.
 
-sudo aptitude install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
+sudo apt-get install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
 sudo ln -sf libsndfile.so.1 /usr/lib/i386-linux-gnu/libsndfile.so || true
 sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so || true
 
