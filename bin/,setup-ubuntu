@@ -91,7 +91,7 @@ sudo aptitude install -y \
     libqt4-dbus libqtwebkit4 \
     \
     `: further tools for web development` \
-    redis-server yui-compressor \
+    yui-compressor \
     \
     `: Hettinger reminded me how awesome these tools are` \
     graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag
