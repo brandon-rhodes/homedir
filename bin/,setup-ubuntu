@@ -78,9 +78,6 @@ sudo apt-get install -y \
     `: for ledger` \
     cmake libboost-all-dev libgmp-dev libmpfr-dev \
     \
-    `: for Skype` \
-    libqt4-dbus libqtwebkit4 \
-    \
     `: further tools for web development` \
     yui-compressor \
     \
