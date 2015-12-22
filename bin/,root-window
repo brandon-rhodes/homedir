@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Print the time, a calendar, and the battery status to the root window.
+
+RESOLUTION=$(xdpyinfo | awk '/dimensions:/ {print $2}')
+
+report () {
+    echo "  UTC          Eastern        Pacific"
+    echo "$(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
+    echo "$(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
+    echo
+    cal -3 -h | sed 's/^/  /'
+    echo
+    for bat in /sys/class/power_supply/BAT*
+    do
+        source $bat/uevent
+        echo $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
+    done
+}
+
+while true
+do
+    TEXT="$(report)"
+    convert -size $RESOLUTION -background '#839496' -fill '#eee8d5' \
+            -font "Ubuntu-Mono" -pointsize 36 -gravity center label:"$TEXT" \
+            desktop.mpc
+    display -window root desktop.mpc
+    sleep $(( 60 - $(date +%S) ))
+done

@@ -46,6 +46,8 @@ nm-applet &
 xautolock -time 5 -locker slock -notify 10 -notifier \
           "notify-send 'Idle Timeout' 'Locking screen in 10 seconds'" &
 xfce4-volumed &
-# xscreensaver -no-splash &
+~/bin/,root-window &
+
+# xfce4-power-manager ?
 
 exec fvwm
