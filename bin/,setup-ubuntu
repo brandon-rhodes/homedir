@@ -91,10 +91,6 @@ then
     sudo apt-file update
 fi
 
-# Thwart Unity by moving menus back into their application windows.
-
-#sudo aptitude purge -y appmenu-gtk indicator-applet-appmenu indicator-appmenu
-
 # Docker
 
 #sudo apt-get install linux-image-extra-`uname -r`
