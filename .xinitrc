@@ -1,15 +1,20 @@
 #
-# X Windows startup procedure under Arch Linux
+# X Windows startup file.
 #
 
-# First, make sure that all processes and their descendants carry our
-# standard environment settings.
+echo
+echo .xinitrc starting at "$(date --rfc-3339=seconds)"
+echo
+
+# Make sure that all child processes inherit my standard environment.
 
 source .bashrc
 
-# Configure hardware.
+# Establish my default X Windows settings.
 
-xset r rate 240 40
+$HOME/bin/,xset
+
+# Hardware configuration for my "guiness" laptop.
 
 if [ "$(hostname)" == "guinness" ]
 then
@@ -21,25 +26,26 @@ then
 	"Synaptics Tap Action" 0 0 0 0 0 0 0
 fi
 
-# Configure X Windows.
+# Turn off the touchpad on my ThinkPad T430, since I rely on its eraser
+# joystick and hardware buttons instead.
 
-xmodmap .Xmodmap
-xrdb .Xresources
+DEVICE="SynPS/2 Synaptics TouchPad"
 
-# Start D-Bus and GNOME Keyring.
-
-source /etc/X11/xinit/xinitrc.d/30-dbus
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
-export GPG_AGENT_INFO
-export GNOME_KEYRING_CONTROL
-export GNOME_KEYRING_PID
+if xinput --list | grep -q "$DEVICE"
+then xinput disable "$DEVICE"
+fi
 
 # Start services and applets.
 
 trayer --edge top --align right --width 6 &
-# nm-applet &
-blueman-applet &
-xscreensaver -no-splash &
+
+autocutsel &
+# blueman-applet &
+indicator-cpufreq &
+nm-applet &
+xautolock -time 5 -locker slock -notify 10 -notifier \
+          "notify-send 'Idle Timeout' 'Locking screen in 10 seconds'" &
+xfce4-volumed &
+# xscreensaver -no-splash &
 
 exec fvwm

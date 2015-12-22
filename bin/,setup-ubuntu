@@ -62,6 +62,7 @@ sudo apt-get install -y \
     virtualbox       `: for various virtualization tasks` \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
+    xautolock        `: to lock my screen` \
     xchat            `: IRC for software support` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
