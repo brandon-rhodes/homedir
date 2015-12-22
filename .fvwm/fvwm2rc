@@ -181,7 +181,7 @@ AddToMenu BrowserBookmarks "Bookmark" Title
 
 DestroyMenu MenuFvwmWindowOps
 AddToMenu MenuFvwmWindowOps
-+ "$[gt.Window Manager]" Title
++ "$[gt.Window Operations]" Title
 + "$[gt.&S Save screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "$[gt.  Copy screenshot]" Exec exec xfce4-screenshooter -w -d 0 -c
 + "" Nop
@@ -195,12 +195,19 @@ AddToMenu MenuFvwmWindowOps
 + "" Nop
 + "$[gt.&L Lock edgeflip]"    EdgeScroll 0 0
 + "$[gt.&U Unlock edgeflip]"  EdgeScroll 100 100
++ "" Nop
++ "$[gt.&W Window manager ops]"  Menu MenuFvwmWindowManagerOps Nop
+
+DestroyMenu MenuFvwmWindowManagerOps
+AddToMenu MenuFvwmWindowManagerOps
++ "$[gt.Window Manager]" Title
++ "$[gt.&L Lock screen]"  Exec exec slock
 + "$[gt.&R Reload fvwm2rc]"  Read fvwm2rc
-+ "$[gt.  Restart fvwm2]"  Restart
-+ "$[gt.  Log off]"        Quit
++ "$[gt.  Restart fvwm]"  Restart
++ "$[gt.  Quit fvwm]"    Quit
 + "" Nop
 + "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-+ "$[gt.  Suspend]"   Exec $HOME/bin/,suspend
++ "$[gt.&S Suspend]"   Exec $HOME/bin/,suspend
 
 # "Projects" live under the "Projects" menu, and allow Window+P followed
 # by another keystroke to fill an empty screen with the terminals and
