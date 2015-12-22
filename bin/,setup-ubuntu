@@ -115,6 +115,16 @@ sudo killall -q oneconf-service || true
 sudo apt-get purge -y apport apport-gtk apport-symptoms python3-apport \
     whoopsie
 
+# A desktop session that simply runs my .xinitrc like in the old days.
+
+sudo dd of=/usr/share/xsessions/xinitrc.desktop <<EOF
+[Desktop Entry]
+Name=xinitrc
+Comment=Run your .xinitrc file
+Exec=/bin/bash $HOME/.xinitrc
+Type=Application
+EOF
+
 # Give normal users permission to "hibernate" because suspending on my
 # ThinkPad T430, upon resuming, results in a password dialog followed by
 # a blank display that cannot be reactivated, even with "xrandr" running
