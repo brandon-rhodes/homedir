@@ -99,6 +99,7 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'Desktop Calculator' -e 'units'
 Key e A 4  Exec exec $HOME/bin/,emacs-x
+Key h A 4  ShowDesktop
 Key l A 4  Exec date >> $HOME/.lock-times && light-locker-command -l
 Key n A 4  Exec exec browser --enable-webgl
 Key p A 4  Menu Projects Nop
@@ -299,6 +300,20 @@ AddToFunc   ToggleLayer
 + I ThisWindow (Layer 6) Layer
 + I TestRc (NoMatch) Layer 0 6
 
+# From http://edulinux.homeunix.org/fvwm/fvwmcookbookfaq.html#WP2 page:
+
+DestroyFunc ShowDesktop
+AddToFunc   ShowDesktop
++ I All (CurrentPage, Iconic, State 1) RestoreDesktop
++ I TestRc (Match) Break
++ I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
++ I All (CurrentPage, !Iconic, State 1) Iconify
+
+DestroyFunc RestoreDesktop
+AddToFunc   RestoreDesktop
++ I All (CurrentPage, Iconic, State 1) Iconify off
++ I All (CurrentPage, State 1) ThisWindow State 1 False
+
 # Read config files for modules.
 
 read ConfigFvwmBacker
@@ -353,9 +368,8 @@ AddToFunc SessionInitFunction
 
 # + I Exec exec autocutsel
 
-# Reset other X windows settings that the "Xubuntu Session" startup code
-# might have loaded incorrectly.  Note that these commands are kept in a
-# separate shell script, in case they get set incorrectly again when the
-# laptop wakes from sleep: I can simply re-run the script.
+# Impose my standard X windows settings.  The commands are kept in a
+# stand-alone shell script, so I can re-run them in mid-session if they
+# get mangled or reset by an application.
 
 + I Exec bash /home/brandon/bin/,xset
