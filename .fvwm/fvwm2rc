@@ -118,10 +118,10 @@ Key Tab A 4  FuncMaximizeY
 
 # Windows key plus an arrow key moves window into tile-like positions.
 
-Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
-Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
-Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
-Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
+Key Up    A 4  ResizeMove frame keep 50 keep 0
+Key Down  A 4  ResizeMove frame keep 50 keep 50
+Key Right A 4  ResizeMove frame 50 100 50 0
+Key Left  A 4  ResizeMove frame 50 100 0 0
 
 # For occasions when I want to be sitting back in front of a desktop and
 # am far from a mouse, I have emergency keystrokes to let me move to new
@@ -304,15 +304,11 @@ AddToFunc   ToggleLayer
 
 DestroyFunc ShowDesktop
 AddToFunc   ShowDesktop
-+ I All (CurrentPage, Iconic, State 1) RestoreDesktop
++ I All (CurrentPage, State 1) Iconify off
++ I All (CurrentPage, State 1) State 1 False
 + I TestRc (Match) Break
-+ I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
++ I All (CurrentPage, !Iconic, !State 1) State 1 True
 + I All (CurrentPage, !Iconic, State 1) Iconify
-
-DestroyFunc RestoreDesktop
-AddToFunc   RestoreDesktop
-+ I All (CurrentPage, Iconic, State 1) Iconify off
-+ I All (CurrentPage, State 1) ThisWindow State 1 False
 
 # Read config files for modules.
 
