@@ -207,8 +207,8 @@ AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.  Restart fvwm]"  Restart
 + "$[gt.  Quit fvwm]"    Quit
 + "" Nop
-+ "$[gt.&H Hibernate]" Exec exec dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-+ "$[gt.&S Suspend]"   Exec $HOME/bin/,suspend
++ "$[gt.&H Hibernate]" Exec slock & sudo /usr/sbin/pm-hibernate
++ "$[gt.&S Suspend]"   Exec slock & sudo /usr/sbin/pm-suspend
 
 # "Projects" live under the "Projects" menu, and allow Window+P followed
 # by another keystroke to fill an empty screen with the terminals and
