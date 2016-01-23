@@ -12,6 +12,7 @@ ci = commit -v
 co = checkout
 d = diff
 diff-vs-master = !git diff $(git merge-base HEAD origin/master) -- .
+fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
 lp = log -p
