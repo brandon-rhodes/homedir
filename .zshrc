@@ -80,35 +80,41 @@ __detect_cd_and_possibly_activate_environment () {
 
 # Build a pretty prompt.
 
-autoload colors && colors
-zle_highlight=(default:fg=0,bg=7,bold)
+if [ -z "$TERM" -o "$TERM" = "dumb" ]
+then
+    # Avoid "^[[?2004h" after each prompt when running inside of Emacs.
+    unset zle_bracketed_paste
+else
+    autoload colors && colors
+    zle_highlight=(default:fg=0,bg=7,bold)
 
-PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
-RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
+    PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
+    RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
 
-precmd() {
-    local color rev status_lines
-    rehash
-    __detect_cd_and_possibly_activate_environment
-    if ! rev="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-    then
-        RPROMPT="$RPROMPT2"
-    else
-        status_lines="$(git status --porcelain)"
-        status_lines=":${status_lines//
-/:}"                            # delimit the lines with colons instead
-        if [[ "$status_lines" =~ ':[^?][^?]' ]]
+    precmd() {
+        local color rev status_lines
+        rehash
+        __detect_cd_and_possibly_activate_environment
+        if ! rev="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
         then
-            color=red
-        elif [ "$status_lines" = ':' ]
-        then
-            color=green
+            RPROMPT="$RPROMPT2"
         else
-            color=yellow
+            status_lines="$(git status --porcelain)"
+            status_lines=":${status_lines//
+/:}"                            # delimit the lines with colons instead
+            if [[ "$status_lines" =~ ':[^?][^?]' ]]
+            then
+                color=red
+            elif [ "$status_lines" = ':' ]
+            then
+                color=green
+            else
+                color=yellow
+            fi
+            RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT2"
         fi
-        RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT2"
-    fi
-}
+    }
+fi
 
 # Moving forward by one word should land at the end of the next word,
 # not at its beginning.
