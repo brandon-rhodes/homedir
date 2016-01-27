@@ -186,12 +186,12 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&S Save screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "$[gt.  Copy screenshot]" Exec exec xfce4-screenshooter -w -d 0 -c
 + "" Nop
++ "$[gt.&C Close]"         Close
 + "$[gt.&M Move]"          Move
-+ "$[gt.  Resize]"         Resize
++ "$[gt.&R Resize]"        Resize
++ "$[gt.&T (Un)On Top]"     ToggleLayer
 + "$[gt.  (Un)Stick]"      Stick
 + "$[gt.  (Un)Ma&ximize]"  Maximize
-+ "$[gt.&T (Un)On Top]"     ToggleLayer
-+ "$[gt.&C Close]"         Close
 + "$[gt.  Destroy]"        Destroy
 + "" Nop
 + "$[gt.&L Lock edgeflip]"    EdgeScroll 0 0
