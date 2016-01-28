@@ -20,6 +20,7 @@ ls = log --stat
 locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
 score = diff --shortstat
+score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
 st = status
 undo = reset --soft HEAD~1
 
