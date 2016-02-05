@@ -38,6 +38,10 @@ if [ "$LOGNAME" != "vagrant" ]
 then unset HISTFILE
 fi
 
+# Keep plenty of history to avoid having to retype commands.
+
+HISTSIZE=12000
+
 # Use Unicode if available.
 
 if LANG=en_US.UTF-8 locale charmap 2>/dev/null | grep -q '^UTF-8$'
