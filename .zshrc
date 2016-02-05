@@ -85,6 +85,12 @@ then
     # Avoid "^[[?2004h" after each prompt when running inside of Emacs.
     unset zle_bracketed_paste
 else
+    autoload -Uz bracketed-paste-magic
+    zle -N bracketed-paste bracketed-paste-magic
+
+    autoload -Uz url-quote-magic
+    zle -N self-insert url-quote-magic
+
     autoload colors && colors
     zle_highlight=(default:fg=0,bg=7,bold)
 
