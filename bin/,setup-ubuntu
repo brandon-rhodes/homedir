@@ -127,6 +127,8 @@ Exec=/bin/bash $HOME/.xinitrc
 Type=Application
 EOF
 
+chmod 644 /usr/share/xsessions/xinitrc.desktop
+
 # Give normal users permission to "hibernate" because suspending on my
 # ThinkPad T430, upon resuming, results in a password dialog followed by
 # a blank display that cannot be reactivated, even with "xrandr" running
