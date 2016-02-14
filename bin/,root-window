@@ -23,7 +23,7 @@ do
     TEXT="$(report)"
     convert -size $RESOLUTION -background '#839496' -fill '#eee8d5' \
             -font "Ubuntu-Mono" -pointsize 36 -gravity center label:"$TEXT" \
-            desktop.mpc
-    display -window root desktop.mpc
+            /tmp/desktop.mpc
+    display -window root /tmp/desktop.mpc
     sleep $(( 60 - $(date +%S | sed s/^0//) ))
 done
