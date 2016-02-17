@@ -95,6 +95,9 @@ CursorStyle TOP top_side
 # using the otherwise useless "Windows" key ("A" means "in any context"
 # and "4" means "the Windows key").
 
+Key f1 A 4  GotoDesk 0 0
+Key f2 A 4  GotoDesk 0 1
+
 Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'Desktop Calculator' -e 'units'
@@ -118,10 +121,14 @@ Key Tab A 4  FuncMaximizeY
 
 # Windows key plus an arrow key moves window into tile-like positions.
 
-Key Up    A 4  ResizeMove frame keep 50 keep 0
-Key Down  A 4  ResizeMove frame keep 50 keep 50
-Key Right A 4  ResizeMove frame 50 100 50 0
-Key Left  A 4  ResizeMove frame 50 100 0 0
+Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
+Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
+Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
+Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
+
+Key 2     A 4  Resize frame 50 100
+Key 3     A 4  ResizeMove frame 70 85 -0p -0p
+Key 4     A 4  Resize frame 50 50
 
 # For occasions when I want to be sitting back in front of a desktop and
 # am far from a mouse, I have emergency keystrokes to let me move to new
@@ -156,7 +163,7 @@ AddToMenu Applications "Applications" Title
 + "&n. Nautilus"  Exec exec nautilus
 + "&s. Skype"     Exec exec skype
 + "&v. VirtualBox" Exec exec virtualbox
-+ "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x800 -no-host-grab
++ "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x1000 -no-host-grab
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
@@ -185,6 +192,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.Window Operations]" Title
 + "$[gt.&S Save screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "$[gt.  Copy screenshot]" Exec exec xfce4-screenshooter -w -d 0 -c
++ "$[gt.  Copy region]" Exec exec xfce4-screenshooter -r -d 0 -s ~/Downloads
 + "" Nop
 + "$[gt.&C Close]"         Close
 + "$[gt.&M Move]"          Move
