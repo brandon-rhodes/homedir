@@ -10,6 +10,13 @@ echo
 
 source .bashrc
 
+# Allow local customization.
+
+if [ -f $HOME/.xinitrc-local ]
+then
+    source $HOME/.xinitrc-local
+fi
+
 # Establish my default X Windows settings.
 
 $HOME/bin/,xset
