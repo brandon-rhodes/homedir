@@ -48,6 +48,7 @@ sudo apt-get install -y \
     rdesktop         `: for accessing Windows machines in the cloud` \
     redshift         `: for coding past sunset` \
     s3cmd            `: the cloud` \
+    suckless-tools   `: simple tools to go with my simple window manager` \
     stellarium       `: to quickly answer what-is-that-over-there questions` \
     sqlite3          `: for command line access to its databases` \
     swig             `: for occasional ancient Python dependencies` \
@@ -56,6 +57,7 @@ sudo apt-get install -y \
     texlive-latex-extra \
     texlive-fonts-recommended \
     tmux             `: to leave things running in a tty overnight` \
+    trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
     ttf-mscorefonts-installer `: for browsing the web` \
     units            `: desk calculator` \
