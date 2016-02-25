@@ -94,7 +94,10 @@ else
     autoload colors && colors
     zle_highlight=(default:fg=0,bg=7,bold)
 
-    PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
+    if [ -z "$SSH_TTY" ]
+    then PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
+    else PROMPT="%{$fg_bold[black]$bold%}$HOST\$%{$reset_color%} "
+    fi
     RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
 
     precmd() {
