@@ -10,7 +10,7 @@ set -e
 if [ "$1" = "ag" ]
 then
     V=0.30.0
-    sudo aptitude install -y liblzma-dev zlib1g-dev
+    sudo apt-get install -y liblzma-dev zlib1g-dev
 
     cd /tmp
     curl -OL https://github.com/ggreer/the_silver_searcher/archive/$V.tar.gz
@@ -96,7 +96,7 @@ fi
 
 if [ "$1" = "xephem" ]
 then
-    sudo aptitude install libxext-dev libxmu-dev libxp-dev libxt-dev \
+    sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
     cd ~/usr/src
     wget -c http://97.74.56.125/free/xephem-3.7.6.tar.gz

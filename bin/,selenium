@@ -10,7 +10,7 @@ JAR=selenium-server-standalone-2.25.0.jar
 
 if ! dpkg -l openjdk-6-jre xserver-xephyr >/dev/null
 then
-    sudo aptitude install openjdk-6-jre xserver-xephyr
+    sudo apt-get install openjdk-6-jre xserver-xephyr
 fi
 
 if [ ! -f ~/usr/src/$JAR ]
