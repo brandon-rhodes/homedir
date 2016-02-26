@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Fix another shell account to be minimally usable.
+
+if [ -z "$1" ]
+then
+    echo usage: ,fix HOSTNAME >&2
+    exit 2
+fi
+
+ssh "$@" cat '>>' .bashrc <<EOF
+
+alias d="diff -ur"
+alias g="grep -P"
+alias gi="grep -iP"
+alias la="ls -avCF"
+alias lf="ls -vCF"
+alias ll="ls -lv"
+alias lla="ls -alv"
+alias ltr="ls -ltr"
+alias ltra="ls -ltra"
+alias m="less"
+alias s="ssh"
+alias ,coreon="ulimit -c unlimited"
+alias ,coreoff="ulimit -c 0"
+ulimit -c 0
+export GREP_OPTIONS='--color=auto'
+export LESS="-i -j.49 -M -R -z-2"
+export PAGER=less
+shopt -s checkwinsize
+unset TMOUT
+unset histchars
+unset -f command_not_found_handle
+EOF
