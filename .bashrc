@@ -77,6 +77,13 @@ fi
 
 export PYTHONDONTWRITEBYTECODE=PLEASE
 
+# Display my username and hostname in the xterm titlebar.
+
+if [ "$TERM" = "xterm" ]
+then
+    echo -ne "\033]0;$USER@$HOST\007"
+fi
+
 # The prompt should name the system on which the shell is running, in
 # bold so the eye can easily find prompts when scrolling, and also turn
 # red if it is a root prompt.
