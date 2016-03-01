@@ -12,6 +12,8 @@ source .bashrc
 
 # Allow local customization.
 
+LOCK_TIMEOUT=5
+
 if [ -f $HOME/.xinitrc-local ]
 then
     source $HOME/.xinitrc-local
@@ -50,7 +52,7 @@ autocutsel &
 # blueman-applet &
 indicator-cpufreq &
 nm-applet &
-xautolock -time 5 -locker slock -notify 10 -notifier \
+xautolock -time $LOCK_TIMEOUT -locker slock -notify 10 -notifier \
           "notify-send 'Idle Timeout' 'Locking screen in 10 seconds'" &
 xfce4-volumed &
 ~/bin/,root-window &
