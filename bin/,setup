@@ -84,6 +84,14 @@ then
     rm "SIL Open Font License 1.1.txt"
 fi
 
+if [ "$1" = "fzf" ]
+then
+    V=0.11.4
+    cd ~/usr/bin
+    curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_amd64.tgz | tar xvfz -
+    mv fzf-0.11.4-linux_amd64 fzf
+fi
+
 if [ "$1" = "skype" ]
 then
     cd ~/usr
