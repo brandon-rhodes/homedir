@@ -154,6 +154,16 @@ fi
 
 sudo chsh -s /bin/zsh $USER
 
+# Let everyone suspend or hibernate.
+
+if ! sudo grep -q pm-suspend /etc/sudoers
+then
+    sudo chmod +w /etc/sudoers
+    sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-suspend" >> /etc/sudoers'
+    sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-hibernate" >> /etc/sudoers'
+    sudo chmod -w /etc/sudoers
+fi
+
 # DF.
 
 sudo apt-get install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
