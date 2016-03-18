@@ -1,0 +1,9 @@
+from __future__ import division
+%pylab inline
+%load_ext autoreload
+%autoreload 2
+import numpy as np
+import pandas as pd
+import seaborn as sb
+pd.options.display.max_colwidth = 128
+pylab.rcParams['figure.figsize'] = 12, 7

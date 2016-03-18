@@ -109,6 +109,7 @@ Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
 Key t A 4S Exec exec xterm -fs 6 -geometry -0-0
+Key v A 4  Menu Pastes Nop
 Key w A 4  Menu MenuFvwmWindowOps Nop
 Key y A 4  Exec exec ,yubi
 
@@ -230,6 +231,10 @@ AddToMenu Projects "Projects" Title
 + "&o. Book"        BookProject
 + "&s. Skyfield"    SkyfieldProject
 + "&t. Talks"       TalksProject
+
+DestroyMenu Pastes
+AddToMenu Pastes "Pastes" Title
++ DynamicPopUpAction PipeRead .fvwm/paste-menu.sh
 
 DestroyFunc BlogProject
 AddToFunc   BlogProject
