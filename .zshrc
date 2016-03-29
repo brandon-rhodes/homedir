@@ -1,6 +1,11 @@
 # Load oh-my-zsh if available
 # git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
+# Quick abbreviations for very common redirections.
+
+alias -g ,1='2>&1'
+alias -g ,2='2>/dev/null'
+
 # Use my own zsh completion logic, where provided.
 
 fpath=(~/.zsh-completion $fpath)
