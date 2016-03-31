@@ -47,7 +47,6 @@ fi
 # Start services and applets.
 
 trayer --edge top --align right --width 6 &
-
 autocutsel &
 # blueman-applet &
 indicator-cpufreq &
@@ -56,6 +55,10 @@ xautolock -time $LOCK_TIMEOUT -locker slock -notify 10 -notifier \
           "notify-send 'Idle Timeout' 'Locking screen in 10 seconds'" &
 xfce4-volumed &
 ~/bin/,root-window &
+
+if -d $HOME/.dropbox-dist/
+then $HOME/.dropbox-dist/dropbox-*/dropbox start &
+fi
 
 # xfce4-power-manager ?
 
