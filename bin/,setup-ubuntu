@@ -173,3 +173,9 @@ sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so || true
 # Cleanup.
 
 rmdir ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos || true
+
+# Default browser.
+
+xdg-mime default chromium.desktop text/html
+xdg-mime default chromium.desktop x-scheme-handler/http
+xdg-mime default chromium.desktop x-scheme-handler/https
