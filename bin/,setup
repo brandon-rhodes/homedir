@@ -26,6 +26,17 @@ then
     rm -r $V.tar.gz the_silver*
 fi
 
+if [ "$1" = "anaconda" ]
+then
+    cd
+    mini=Miniconda3-latest-Linux-x86_64.sh
+    wget -c https://repo.continuum.io/miniconda/$mini
+    if ! echo b1b15a3436bb7de1da3ccc6e08c7a5df $mini | md5sum -c -
+    then exit 1
+    fi
+    bash $mini -b -p .anaconda
+fi
+
 if [ "$1" = "browser" ]
 then
     sudo update-alternatives --config x-www-browser
