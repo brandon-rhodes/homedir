@@ -98,6 +98,12 @@ case "$1" in
     mv fzf-0.11.4-linux_amd64 fzf
     ;;
 
+"notebook" )
+    cd
+    .anaconda/bin/conda create -y -p ~/usr/ipynb \
+                        python=2.7 jupyter pandas seaborn
+    ;;
+
 "skype" )
     cd ~/usr
     wget http://download.skype.com/linux/skype-4.1.0.20.tar.bz2
