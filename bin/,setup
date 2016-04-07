@@ -7,8 +7,8 @@
 
 set -e
 
-if [ "$1" = "ag" ]
-then
+case "$1" in
+"ag" )
     V=0.30.0
     sudo apt-get install -y liblzma-dev zlib1g-dev
 
@@ -24,10 +24,9 @@ then
 
     cd /tmp
     rm -r $V.tar.gz the_silver*
-fi
+    ;;
 
-if [ "$1" = "anaconda" ]
-then
+"anaconda" )
     cd
     mini=Miniconda3-latest-Linux-x86_64.sh
     wget -c https://repo.continuum.io/miniconda/$mini
@@ -35,15 +34,13 @@ then
     then exit 1
     fi
     bash $mini -b -p .anaconda
-fi
+    ;;
 
-if [ "$1" = "browser" ]
-then
+"browser" )
     sudo update-alternatives --config x-www-browser
-fi
+    ;;
 
-if [ "$1" = "drivers" ]
-then
+"drivers" )
     # Epson scanner.  Yes, calling the firmware the default name
     # "your-firmwarefile.bin" is silly.  But no matter how much editing
     # I do to the .conf files, that is always the name it looks for.
@@ -55,10 +52,10 @@ then
     sudo mkdir -p /usr/share/sane/snapscan/
     sudo cp Esfw52.bin /usr/share/sane/snapscan/your-firmwarefile.bin
     sudo chmod -R a+rX /usr/share/sane/snapscan/
-fi
+    ;;
 
-if [ "$1" = "emacs" ]  # check out and set up ~/.emacs.d
-then
+"emacs" )
+    # check out and set up ~/.emacs.d
     if [ ! -d ~/.emacs.d ]
     then
 	git clone git@github.com:brandon-rhodes/dot-emacs.git ~/.emacs.d ||
@@ -73,48 +70,44 @@ then
     then
         ./SETUP.sh
     fi
-fi
+    ;;
 
-if [ "$1" = "flow" ]  # provides "git flow"
-then
+"flow" )
+    # provides "git flow"
     cd ~/usr
     git clone --recursive git://github.com/nvie/gitflow.git
     cd gitflow
     make install prefix=$HOME/usr
     cd ..
     rm -rf gitflow
-fi
+    ;;
 
-if [ "$1" = "fonts" ]
-then
+"fonts" )
     mkdir -p ~/.fonts
     cd ~/.fonts
     wget http://www.fontsquirrel.com/fonts/download/Crimson
     unzip -o Crimson
     rm Crimson
     rm "SIL Open Font License 1.1.txt"
-fi
+    ;;
 
-if [ "$1" = "fzf" ]
-then
+"fzf" )
     V=0.11.4
     cd ~/usr/bin
     curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_amd64.tgz | tar xvfz -
     mv fzf-0.11.4-linux_amd64 fzf
-fi
+    ;;
 
-if [ "$1" = "skype" ]
-then
+"skype" )
     cd ~/usr
     wget http://download.skype.com/linux/skype-4.1.0.20.tar.bz2
     tar xvfj skype-4.1.0.20.tar.bz2
     rm skype-4.1.0.20.tar.bz2
     cd ~/bin
     ln -s ../usr/skype-4.1.0.20/skype .
-fi
+    ;;
 
-if [ "$1" = "xephem" ]
-then
+"xephem" )
     sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
     cd ~/usr/src
@@ -130,4 +123,16 @@ then
         echo "XEphem.ShareDir: $HOME/usr/src/xephem-3.7.6/GUI/xephem" \
             > .xephem/XEphem
     fi
-fi
+    ;;
+
+* )
+    cat >&2 <<EOF
+echo usage: ,setup THING
+
+where THING is one of:
+
+$(echo $(pcregrep -o1 '^"([^"]+)' "$0"))
+EOF
+    ;;
+
+esac
