@@ -136,6 +136,12 @@ fi
 bindkey "\eF" emacs-forward-word
 bindkey "\ef" emacs-forward-word
 
+# An easy keyboard shortcut to edit a long complicated command in my editor.
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^Xe" edit-command-line
+
 # And forward-word and backward-word should not consider punctuation to
 # be part of a word.
 
