@@ -2,6 +2,8 @@
 # X Windows startup file.
 #
 
+exec > $HOME/.xinitrc.log 2>&1
+
 echo
 echo .xinitrc starting at "$(date --rfc-3339=seconds)"
 echo
