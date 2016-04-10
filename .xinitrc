@@ -58,8 +58,12 @@ xautolock -time $LOCK_TIMEOUT -locker slock -notify 10 -notifier \
 xfce4-volumed &
 ~/bin/,root-window &
 
-if -d $HOME/.dropbox-dist/
+if [ -d $HOME/.dropbox-dist/ ]
 then $HOME/.dropbox-dist/dropbox-*/dropbox start &
+fi
+
+if [ -d $HOME/usr/ipynb ]
+then $HOME/usr/ipynb/bin/jupyter-notebook --no-browser -y &
 fi
 
 # xfce4-power-manager ?
