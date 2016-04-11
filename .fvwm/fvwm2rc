@@ -17,10 +17,10 @@ DeskTopSize 3x3
 EdgeResistance 0
 EdgeScroll 100 100
 
-# Allow windows to be dragged between screens with no resistance.
+# Allow windows to be dragged between screens with little resistance.
 
 Style * EdgeMoveDelay 0
-Style * EdgeMoveResistance 0
+Style * EdgeMoveResistance 64
 
 # Moving and resizing windows should affect the live window, instead of
 # leaving the window alone (and just displaying a rectangle) until the
