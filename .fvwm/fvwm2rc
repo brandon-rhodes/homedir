@@ -193,7 +193,8 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.Window Operations]" Title
 + "$[gt.&S Save screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "$[gt.  Copy screenshot]" Exec exec xfce4-screenshooter -w -d 0 -c
-+ "$[gt.  Copy region]" Exec exec xfce4-screenshooter -r -d 0 -s ~/Downloads
++ "$[gt.  Save region]" Exec exec xfce4-screenshooter -r -d 0 -s ~/Downloads
++ "$[gt.  Copy region]" Exec exec xfce4-screenshooter -r -d 0 -c
 + "" Nop
 + "$[gt.&C Close]"         Close
 + "$[gt.&M Move]"          Move
