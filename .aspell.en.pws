@@ -1,4 +1,4 @@
-personal_ws-1.1 en 86 
+personal_ws-1.1 en 93 
 Canonicalization
 Django
 Hipparcos
@@ -9,14 +9,17 @@ Polymorphism
 SEP
 SQLAlchemy
 Silmarillion
+Skyfield
 Zealand
 accuracies
 admin
 anonymizing
 app
 astrometric
+astrometry
 async
 attaches
+barycenter
 barycentric
 blog
 bytearray
@@ -32,6 +35,7 @@ datagram
 datagrams
 denormalization
 denormalized
+docstring
 else's
 encodings
 ephemerides
@@ -44,6 +48,7 @@ hostnames
 instantiation
 interoperate
 iterable
+lookup
 lossy
 masse
 metadata
@@ -60,6 +65,7 @@ nutation
 patterns
 pluggability
 pluggable
+prepend
 prepends
 proxying
 rebased
@@ -68,6 +74,7 @@ refactor
 refactored
 refactoring
 refactorings
+reproducibility
 runtimes
 screenshot
 sexagesimal
