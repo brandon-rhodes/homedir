@@ -105,7 +105,7 @@ Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
 Key e A 4  Exec exec $HOME/bin/,emacs-x
 Key h A 4  ShowDesktop
 Key l A 4  Lower
-Key n A 4  Exec exec browser --enable-webgl
+Key n A 4  Exec exec chromium-browser --enable-webgl
 Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
