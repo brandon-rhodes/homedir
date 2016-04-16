@@ -173,11 +173,12 @@ AddToMenu SshDestinations "Remote Shells" Title
 + "&w. webfaction" Exec exec xterm -e ssh wf-rhodesmill
 
 DestroyMenu BrowserBookmarks
-AddToMenu BrowserBookmarks "Bookmark" Title
+AddToMenu BrowserBookmarks "Bookmarks" Title
 + "&c. Calendar" Exec exec browser "http://google.com/calendar/render"
 + "&d. Drive"    Exec exec browser "http://drive.google.com/"
 + "&g. GitHub"   Exec exec browser "http://github.com/"
 + "&m. Maps"     Exec exec browser "http://maps.google.com/"
++ "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
 + "&r. Reader"   Exec exec browser "http://www.feedly.com/home"
 + "&w. Weather"  Exec exec browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
 + ""                Nop
