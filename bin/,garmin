@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Prepare Garmin watch GPS track for upload.
+
+gvfs-mount -m -d /dev/sdb /media/brhodes/GARMIN
+/usr/share/pytrainer/plugins/garmin-fit/bin/fit2tcx \
+    < $(find /media/brhodes/GARMIN/GARMIN/ACTIVITY | tail -1) \
+    > ~/Downloads/TMP.TCX
+gvfs-mount -u /media/brhodes/GARMIN
+
+python -m webbrowser -t https://runkeeper.com/new/activity
+python -m webbrowser -t https://www.awsmithson.com/tcx2nikeplus/
