@@ -2,6 +2,8 @@
 #
 # Prepare Garmin watch GPS track for upload.
 
+set -e
+
 gvfs-mount -m -d /dev/sdb /media/brhodes/GARMIN
 /usr/share/pytrainer/plugins/garmin-fit/bin/fit2tcx \
     < $(find /media/brhodes/GARMIN/GARMIN/ACTIVITY | tail -1) \
