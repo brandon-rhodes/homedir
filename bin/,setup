@@ -92,10 +92,16 @@ case "$1" in
     ;;
 
 "fzf" )
-    V=0.11.4
+    V=0.12.2
     cd ~/usr/bin
-    curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_amd64.tgz | tar xvfz -
-    mv fzf-0.11.4-linux_amd64 fzf
+    if [ "$(getconf LONG_BIT)" = "64" ]
+    then
+        curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_amd64.tgz | tar xvfz -
+        mv fzf-$V-linux_amd64 fzf
+    else
+        curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_386.tgz | tar xvfz -
+        mv fzf-$V-linux_386 fzf
+    fi
     ;;
 
 "notebook" )
