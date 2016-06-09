@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+#
+# I am always wanting to give people on GitHub the URL with which they
+# can "pip install" the new version of my package without my having to
+# release it before knowing if it fixes their problem.  So this script
+# will turn this:
+#
+# git@github.com:brandon-rhodes/pyephem.git
+#
+# into:
+#
+# https://github.com/brandon-rhodes/pyephem/archive/master.zip
+
+import subprocess
+
+if __name__ == '__main__':
+    url = subprocess.check_output(
+        ['git', 'config', '--get', 'remote.origin.url'],
+        )
+    assert url.startswith('git@')
+    user = url.split(':')[1].split('/')[0]
+    repo = url.split('/')[1].split('.')[0]
+    print('https://github.com/{}/{}/archive/master.zip'.format(user, repo))
