@@ -12,4 +12,3 @@ gvfs-mount -m -d /dev/sdb /media/$USER/GARMIN
 gvfs-mount -u /media/$USER/GARMIN
 
 python -m webbrowser -t https://runkeeper.com/new/activity
-python -m webbrowser -t https://www.awsmithson.com/tcx2nikeplus/
