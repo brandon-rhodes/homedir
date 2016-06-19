@@ -2,9 +2,20 @@
 # X Windows startup file.
 #
 
+cd
 echo
 echo .xinitrc starting at "$(date --rfc-3339=seconds)"
 echo
+
+# Make sure ssh-agent is an ancestor.
+
+if [ -z "$SSH_AGENT_PID" ]
+then
+    echo
+    echo '$SSH_AGENT_PID is empty - restarting as a child of a new ssh-agent'
+    echo
+    ssh-agent /bin/bash ~/.xinitrc2
+fi
 
 # Make sure that all child processes inherit my standard environment.
 
