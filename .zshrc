@@ -104,9 +104,6 @@ else
     else
         PS1="${HOST:-${HOSTNAME}}"
 
-        # Keep only the last of several newline-separated hostnames.
-        PS1="${PS1##*
-}"
         # Keep only the first component of a fully-qualified hostname.
         PS1="${PS1%%.*}"
 
