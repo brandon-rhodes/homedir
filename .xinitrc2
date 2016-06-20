@@ -4,7 +4,7 @@
 
 cd
 echo
-echo .xinitrc starting at "$(date --rfc-3339=seconds)"
+echo '~/.xinitrc2 starting at' "$(date --rfc-3339=seconds)"
 echo
 
 # Make sure ssh-agent is an ancestor.
@@ -12,7 +12,7 @@ echo
 if [ -z "$SSH_AGENT_PID" ]
 then
     echo
-    echo '$SSH_AGENT_PID is empty - restarting as a child of a new ssh-agent'
+    echo '$SSH_AGENT_PID is empty - restarting as the child of a new ssh-agent'
     echo
     ssh-agent /bin/bash ~/.xinitrc2
 fi
