@@ -101,7 +101,16 @@ else
 
     if [ -z "$SSH_TTY" ]
     then PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
-    else PROMPT="%{$fg_bold[black]$bold%}$HOST\$%{$reset_color%} "
+    else
+        PS1="${HOST:-${HOSTNAME}}"
+
+        # Keep only the last of several newline-separated hostnames.
+        PS1="${PS1##*
+}"
+        # Keep only the first component of a fully-qualified hostname.
+        PS1="${PS1%%.*}"
+
+        PROMPT="%{$fg_bold[black]$bold%}$PS1\$%{$reset_color%} "
     fi
     RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
 
