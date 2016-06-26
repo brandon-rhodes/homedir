@@ -72,6 +72,20 @@ case "$1" in
     fi
     ;;
 
+"emacs-for-macos" )
+    # https://www.gnu.org/software/emacs/download.html
+    mkdir -p ~/usr/src
+    cd ~/usr/src
+    curl -O http://mirror.thecodefactory.org/gnu/emacs/emacs-24.5.tar.gz
+    tar xzf emacs-24.5.tar.gz
+    cd emacs-24.5
+    ./configure --prefix=$HOME/usr \
+                --with-x \
+                --with-jpeg=no --with-gif=no --with-tiff=no
+    make
+    make install
+    ;;
+
 "flow" )
     # provides "git flow"
     cd ~/usr
