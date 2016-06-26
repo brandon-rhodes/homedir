@@ -24,6 +24,8 @@ e () {
     fi
     if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
         (PYTHONPATH="$pp" ,emacs-x "$@" &)
+    elif [ -n "$DISPLAY" -a -x $HOME/usr/bin/emacs ] ;then
+        (PYTHONPATH="$pp" $HOME/usr/bin/emacs "$@" &)
     else
         PYTHONPATH="$pp" $HOME/bin/enw "$@"
     fi
