@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec $HOME/usr/ipynb/bin/jupyter-notebook --no-browser -y
