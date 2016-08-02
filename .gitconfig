@@ -4,7 +4,6 @@ email = brandon@rhodesmill.org
 
 [alias]
 a = add -A
-abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 amend = commit --amend
 atag = !bash -c 'git tag -a \"$@\" && git push --follow-tags' --
 br = branch
@@ -23,6 +22,7 @@ merge-abort = merge --abort
 score = diff --shortstat
 score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
 st = status
+toss = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 undo = reset --soft HEAD~1
 
 [core]
