@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$(hostname)" == "odell" ]
+then
+    exec chromium-browser --enable-webgl \
+                          --force-device-scale-factor=1.25 "$@"
+fi
+exec chromium-browser --enable-webgl "$@"
