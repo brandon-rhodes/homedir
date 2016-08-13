@@ -4,3 +4,21 @@ xrdb ~/.Xresources
 xmodmap ~/.Xmodmap
 xset m 12/1 1
 xset r rate 240 40
+
+# Specific settings for specific machines.
+
+if [ "$(hostname)" == "guinness" ]
+then
+    xrandr --dpi 96
+
+    # Turn off touchpad taps, since they are always accidental.
+
+    xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
+	"Synaptics Tap Action" 0 0 0 0 0 0 0
+fi
+
+if [ "$(hostname)" == "odell" ]
+then
+    xrandr --dpi 160
+    echo Xft.dpi: 160 | xrdb -merge
+fi

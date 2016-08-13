@@ -37,18 +37,6 @@ echo the lock timeout is $LOCK_TIMEOUT
 
 $HOME/bin/,xset
 
-# Hardware configuration for my "guiness" laptop.
-
-if [ "$(hostname)" == "guinness" ]
-then
-    xrandr --dpi 96
-
-    # Turn off touchpad taps, since they are always accidental.
-
-    xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
-	"Synaptics Tap Action" 0 0 0 0 0 0 0
-fi
-
 # Turn off the touchpad on my ThinkPad T430, since I rely on its eraser
 # joystick and hardware buttons instead.
 

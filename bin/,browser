@@ -3,6 +3,6 @@
 if [ "$(hostname)" == "odell" ]
 then
     exec chromium-browser --enable-webgl \
-                          --force-device-scale-factor=1.25 "$@"
+                          --force-device-scale-factor=1.5 "$@"
 fi
 exec chromium-browser --enable-webgl "$@"
