@@ -107,10 +107,13 @@ fi
 
 # Shut down the oneconf service to avoid various error messages.
 
-sudo chmod a-x /usr/share/oneconf/oneconf-service
-sudo chmod a-x /usr/share/oneconf/oneconf-query
-sudo chmod a-x /usr/share/oneconf/oneconf-update
-sudo killall -q oneconf-service || true
+if [ -d /usr/share/oneconf ]
+then
+    sudo chmod a-x /usr/share/oneconf/oneconf-service
+    sudo chmod a-x /usr/share/oneconf/oneconf-query
+    sudo chmod a-x /usr/share/oneconf/oneconf-update
+    sudo killall -q oneconf-service || true
+fi
 
 # Outlaw Ubuntu's terrible "Sorry the application X has stopped
 # unexpectedly" popups.
