@@ -7,6 +7,12 @@ xset r rate 240 40
 
 # Specific settings for specific machines.
 
+if [ "$(hostname)" == "bernardus" ]
+then
+    xrandr --dpi 130
+    echo Xft.dpi: 130 | xrdb -merge
+fi
+
 if [ "$(hostname)" == "guinness" ]
 then
     xrandr --dpi 96
