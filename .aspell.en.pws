@@ -1,4 +1,4 @@
-personal_ws-1.1 en 93 
+personal_ws-1.1 en 99 
 Canonicalization
 Django
 Hipparcos
@@ -11,8 +11,10 @@ SQLAlchemy
 Silmarillion
 Skyfield
 Zealand
+accrete
 accuracies
 admin
+amidst
 anonymizing
 app
 astrometric
@@ -42,6 +44,7 @@ ephemerides
 ephemeris
 filename
 filesystem
+globals
 hashable
 hostname
 hostnames
@@ -53,6 +56,8 @@ lossy
 masse
 metadata
 middleware
+milliarcsecond
+milliarcseconds
 minification
 mixins
 multiclassing
@@ -68,6 +73,7 @@ pluggable
 prepend
 prepends
 proxying
+radians
 rebased
 redis
 refactor
