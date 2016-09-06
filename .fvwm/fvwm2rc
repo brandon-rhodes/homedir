@@ -229,8 +229,7 @@ DestroyMenu Projects
 AddToMenu Projects "Projects" Title
 + "&b. Blog"        BlogProject
 + "&e. Ephem"       EphemProject
-+ "&n. NEWFS"       NEWFSProject
-+ "&o. Book"        BookProject
++ "&p. PyCon"       PyConProject
 + "&s. Skyfield"    SkyfieldProject
 + "&t. Talks"       TalksProject
 
@@ -252,17 +251,12 @@ AddToFunc   EphemProject
 + I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/ephem4/setup.py ~/ephem4/src/ephem/__init__.py
 + I Exec sleep 2; browser; sleep 1; exec browser file:///home/brandon/ephem4/src/ephem/doc/_build/html/index.html
 
-DestroyFunc NEWFSProject
-AddToFunc   NEWFSProject
-+ I Exec PRERUN="cd ~/newfs/gobotany-app; git st" exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN="cd ~/newfs/gobotany-app" exec xterm -geometry 80x24+0-0
-+ I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/newfs/gobotany-app/gobotany
-+ I Exec sleep 3; browser; sleep 2; exec browser http://localhost:8000/
-
-DestroyFunc BookProject
-AddToFunc   BookProject
-+ I Exec PRERUN='cd ~/foundations-of-python-network-programming; git st' exec xterm -geometry 80x24+0+24
-+ I Exec exec $HOME/bin/,emacs-x -geometry -0+24 ~/foundations-of-python-network-programming
+DestroyFunc PyConProject
+AddToFunc   PyConProject
++ I Exec PRERUN="cd ~/pycon/web; git st" exec xterm -geometry 80x24+0+0
++ I Exec PRERUN="cd ~/pycon/web; vagrant up; vagrant ssh -c 'cd /vagrant; ./manage.py runserver 0.0.0.0:8000'" exec xterm -geometry 80x24+0-0
++ I Exec exec $HOME/bin/,emacs-x -geometry -0+0 ~/pycon/web
++ I Exec sleep 3; browser; sleep 2; exec browser http://localhost:8000/2017/
 
 DestroyFunc SkyfieldProject
 AddToFunc   SkyfieldProject
