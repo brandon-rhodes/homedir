@@ -9,6 +9,7 @@ atag = !bash -c 'git tag -a \"$@\" && git push --follow-tags' --
 br = branch
 ci = commit -v
 co = checkout
+cleanup = clean -dfx -e .vagrant
 d = diff
 diff-vs-master = !git diff "$@" $(git merge-base HEAD origin/master) -- .
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
