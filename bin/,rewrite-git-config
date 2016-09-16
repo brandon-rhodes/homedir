@@ -1,0 +1,5 @@
+#!/bin/bash
+
+exec sed -i \
+'s|https://github.com/brandon-rhodes/|git@github.com:brandon-rhodes/|' \
+.git/config
