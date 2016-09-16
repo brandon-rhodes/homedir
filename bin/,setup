@@ -28,9 +28,9 @@ case "$1" in
 
 "anaconda" )
     cd
-    mini=Miniconda3-latest-Linux-x86_64.sh
+    mini=Miniconda3-4.1.11-Linux-x86_64.sh
     wget -c https://repo.continuum.io/miniconda/$mini
-    if ! echo b1b15a3436bb7de1da3ccc6e08c7a5df $mini | md5sum -c -
+    if ! echo 874dbb0d3c7ec665adf7231bbb575ab2 $mini | md5sum -c -
     then exit 1
     fi
     bash $mini -b -p .anaconda
