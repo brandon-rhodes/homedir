@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set -e
+exec git clone git@github.com:brandon-rhodes/"$1".git
