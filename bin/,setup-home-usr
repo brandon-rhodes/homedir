@@ -36,4 +36,5 @@ pip-homedir install -U \
     pyflakes \
     uncommitted \
     virtualenv \
+    https://github.com/hay/xml2json/zipball/master \
 
