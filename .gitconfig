@@ -21,6 +21,7 @@ ls = log --stat --pretty=fuller
 locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
 merge-abort = merge --abort
+mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
 score = diff --shortstat
 score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
 st = status
