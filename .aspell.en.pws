@@ -1,4 +1,4 @@
-personal_ws-1.1 en 100 
+personal_ws-1.1 en 102 
 Canonicalization
 Django
 Hipparcos
@@ -51,6 +51,7 @@ hostnames
 instantiation
 interoperate
 iterable
+login
 lookup
 lossy
 masse
@@ -96,5 +97,6 @@ tuples
 uncacheable
 uncompromised
 unhobbitlike
+unquarantine
 virtualization
 whitespace
