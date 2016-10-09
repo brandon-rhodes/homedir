@@ -1,6 +1,34 @@
+# In case I ever install Go applications (such as boot2docker).
+
+export GOPATH=$HOME/go
+
+# Use Unicode if available.
+
+if LANG=en_US.UTF-8 locale charmap 2>/dev/null | grep -q '^UTF-8$'
+then
+    export LANG=en_US.UTF-8
+fi
+
+# One Unicode feature is unfortunate: its official collation method
+# mixes capitalized filenames in amongst lower-case filenames, breaking
+# the traditional Unix assumption that capitalized meta-files like
+# Makefile and README will be listed first.  So we ask programs to
+# revert to a bare 8-bit encoding when doing collation.
+
+export LC_COLLATE=C
+
+# A glibc extension, honored by Google Chrome: set my default paper size
+# to Letter.
+
+export LC_PAPER=en_US
+
+# Create neither *.pyc files nor __pycache__ directories.
+
+export PYTHONDONTWRITEBYTECODE=PLEASE
+
 # Prepend my home bin directories to the path if not there already.
 
-for p in $HOME/Dropbox/bin "$HOME/Dropbox (Dropbox)/bin" $HOME/usr/bin $HOME/bin
+for p in $HOME/go/bin $HOME/Dropbox/bin "$HOME/Dropbox (Dropbox)/bin" $HOME/usr/bin $HOME/bin
 do
     if [[ :"$PATH": != *:"$p":* && -d "$p" ]]
     then PATH="$p:$PATH"

@@ -44,25 +44,10 @@ fi
 
 HISTSIZE=12000
 
-# Use Unicode if available.
-
-if LANG=en_US.UTF-8 locale charmap 2>/dev/null | grep -q '^UTF-8$'
-then
-    export LANG=en_US.UTF-8
-fi
-
 # An excellent pager is of the utmost importance to the Unix experience.
 
 export LESS="-i -j.49 -M -R -z-2"
 export PAGER=less
-
-# One Unicode feature is unfortunate: its official collation method
-# mixes capitalized filenames in amongst lower-case filenames, breaking
-# the traditional Unix assumption that capitalized meta-files like
-# Makefile and README will be listed first.  So we ask programs to
-# revert to a bare 8-bit encoding when doing collation.
-
-export LC_COLLATE=C
 
 # Put Emacs for Mac OS X in front of its terrible ancient Emacs.
 
@@ -74,10 +59,6 @@ then
         PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
     fi
 fi
-
-# Create neither *.pyc files nor __pycache__ directories.
-
-export PYTHONDONTWRITEBYTECODE=PLEASE
 
 # Display my username and hostname in the xterm titlebar.
 
@@ -180,15 +161,6 @@ alias ,startx="exec startx"
     export AWS_ACCESS_KEY_ID=$(awk '/^access_key / {print $3}' ~/.s3cfg)
     export AWS_SECRET_ACCESS_KEY=$(awk '/^secret_key / {print $3}' ~/.s3cfg)
 }
-
-# Auto-detect whether I have any Go applications in my home directory
-# (such as boot2docker).
-
-if [ -d $HOME/go ]
-then
-    export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH/bin
-fi
 
 # Bash should update the LINES and COLUMNS environment variables each
 # time the terminal window gets resized, for programs that care.
