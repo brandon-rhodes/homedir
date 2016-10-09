@@ -4,9 +4,14 @@ export GOPATH=$HOME/go
 
 # Use Unicode if available.
 
-if LANG=en_US.UTF-8 locale charmap 2>/dev/null | grep -q '^UTF-8$'
+if [[ "$LANG" != "en_US.UTF-8" ]]
 then
-    export LANG=en_US.UTF-8
+    if [ "$(LANG=en_US.UTF-8 locale charmap 2>/dev/null)" = "UTF-8" ]
+    then
+        export LANG=en_US.UTF-8
+    else
+        export LANG=C
+    fi
 fi
 
 # One Unicode feature is unfortunate: its official collation method
