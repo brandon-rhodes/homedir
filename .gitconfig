@@ -16,7 +16,7 @@ diff-vs-master = !git diff "$@" $(git merge-base HEAD origin/master) -- .
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
-lp = log -p
+lp = log -p --pretty=fuller
 ls = log --stat --pretty=fuller
 locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
