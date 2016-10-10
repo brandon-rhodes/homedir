@@ -4,6 +4,12 @@ set -e
 
 sudo apt-get update
 
+# Avoid "perl" locale errors and the "locale" error:
+# locale: Cannot set LC_ALL to default locale: No such file or directory
+
+sudo locale-gen en_US en_US.UTF-8
+sudo dpkg-reconfigure locales
+
 # Install happy packages.
 
 sudo apt-get install -y \
