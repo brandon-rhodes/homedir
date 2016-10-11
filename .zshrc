@@ -163,6 +163,12 @@ unsetopt bang_hist
 
 setopt hist_ignore_dups
 
+# Don't complain if I paste part of a shell script into the command
+# line, and some lines start with '#'.  They are comments!  I'm not
+# trying to run the program '#'!
+
+setopt interactivecomments
+
 # If TAB can complete at least a partial word, then zsh by default is
 # quite lazy and makes *me* hit TAB again to then see the options that
 # remain following the characters it fills in. With this option, it will
