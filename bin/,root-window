@@ -13,7 +13,7 @@ report () {
     echo
     for bat in /sys/class/power_supply/BAT*
     do
-        source $bat/uevent
+        source "$bat/uevent"
         echo $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
     done
 }
@@ -21,6 +21,11 @@ report () {
 while true
 do
     TEXT="$(report)"
+    if [ -n "$1" ]
+    then
+        echo "$TEXT"
+        exit 0
+    fi
     convert -size $RESOLUTION -background '#839496' -fill '#eee8d5' \
             -font "Ubuntu-Mono" -pointsize 36 -gravity center label:"$TEXT" \
             /tmp/desktop-$UID.mpc
