@@ -71,6 +71,7 @@ sudo apt-get install -y \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
     xautolock        `: to lock my screen` \
+    xbacklight       `: so FVWM key bindings can adjust screen brightness` \
     xclip            `: let shell scripts get and set the paste buffer` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
