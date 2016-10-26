@@ -8,7 +8,7 @@ sudo apt-get update
 # locale: Cannot set LC_ALL to default locale: No such file or directory
 
 sudo locale-gen en_US en_US.UTF-8
-sudo dpkg-reconfigure locales
+sudo dpkg-reconfigure --frontend=noninteractive locales
 
 # Install happy packages.
 
