@@ -101,6 +101,12 @@ then
     sudo apt-file update
 fi
 
+# Wipe out the default Ubuntu ssh client configuration, in particular to
+# turn off its SendEnv settings that send locale variables like LC_PAPER
+# even to hosts that cannot digest it.
+
+sudo dd if=/dev/null of=/etc/ssh/ssh_config
+
 # Docker
 
 #sudo apt-get install linux-image-extra-`uname -r`
