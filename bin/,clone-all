@@ -6,6 +6,6 @@ set -e
 
 [ -d ~/repos ] || mkdir -p ~/repos
 cd ~/repos
-curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public' |
+curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public&per_page=100' |
     jq -r '.[] | select(.fork | not) | .clone_url' |
     xargs -n1 git clone
