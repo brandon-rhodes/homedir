@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Shortcut to clone all of my public repositories.
+
+set -e
+
+[ -d ~/repos ] || mkdir -p ~/repos
+cd ~/repos
+curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public' |
+    jq -r '.[] | select(.fork | not) | .clone_url' |
+    xargs -n1 git clone
