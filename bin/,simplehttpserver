@@ -4,12 +4,17 @@
 # simple HTTP server will run from that directory on the first free port
 # beyond 8000.
 
+import os
 import socket
+import sys
 import webbrowser
 from BaseHTTPServer import HTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 
 def main():
+    if len(sys.argv) > 1:
+        os.chdir(sys.argv[1])
+
     port = 8002
 
     while True:
