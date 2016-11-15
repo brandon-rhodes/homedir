@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Push changes to my web site.  The production repository has been
+# configured to auto-update when it receives a push, with:
+#
+# git config receive.denyCurrentBranch updateInstead
+
+set -e
+
+cd ~/repos/rhodesmill.org
+
+# Bail out if there are no changes staged
+if git diff-index --quiet HEAD --
+then
+    echo No changes
+    exit
+fi
+
+OPTS=
+
+while true
+do
+    # Display the current changes for me to examine.
+    git diff $OPTS || true
+    git status || true
+    echo
+    OPTS=
+
+    # Give me the chance to bail out.
+    echo -n 'Push these changes? [yes/no/retry/wdiff]'
+    read answer
+    if echo "$answer" | grep -iq '^y'
+    then
+        break
+    elif echo "$answer" | grep -iq '^w'
+    then
+        OPTS='--color-words'
+    elif ! echo "$answer" | grep -iq '^r'
+    then
+        echo 'Not pushing'
+        exit
+    fi
+done
+
+# Commit and push.
+git add -A .
+git commit -m 'Auto-commit'
+git push origin
