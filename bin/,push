@@ -16,12 +16,13 @@ then
     exit
 fi
 
+git add -A .
 OPTS=
 
 while true
 do
     # Display the current changes for me to examine.
-    git diff $OPTS || true
+    git diff --staged $OPTS || true
     git status || true
     echo
     OPTS=
@@ -43,6 +44,5 @@ do
 done
 
 # Commit and push.
-git add -A .
 git commit -m 'Auto-commit'
 git push origin
