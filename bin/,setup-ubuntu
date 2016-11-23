@@ -33,6 +33,7 @@ sudo apt-get install -y \
     groff            `: for processing old documents` \
     gscan2pdf pdftk  `: scanning to PDF` \
     html2text        `: when data is available in no better format` \
+    htop             `: much better "top" command` \
     indicator-cpufreq `: for pegging the CPU speed when I need to` \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
