@@ -8,4 +8,4 @@
     jq -r '.TrainingCenterDatabase.Activities.Activity.Lap[] | [.TotalTimeSeconds, .DistanceMeters] | @csv' =(xml2json --strip_namespace --strip_text Downloads/TMP.TCX)
 ) |
     csvsql --query 'select sum(seconds), sum(meters) from stdin' |
-    python -c 'raw_input(); s = raw_input(); f = s.split(","); print divmod(float(f[0]), 60), float(f[1]) * 0.00062137119'
+    python -c 'raw_input(); s = raw_input(); f = s.split(","); print "Minutes and seconds", divmod(float(f[0]), 60), "Miles", float(f[1]) * 0.00062137119'
