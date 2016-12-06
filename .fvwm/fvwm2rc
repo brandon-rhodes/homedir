@@ -96,7 +96,7 @@ CursorStyle TOP top_side
 # using the otherwise useless "Windows" key ("A" means "in any context"
 # and "4" means "the Windows key").
 
-Key XF86MonBrightnessUp A - Exec exec xbacklight -inc 1
+Key XF86MonBrightnessUp A - Exec exec xbacklight -inc 10
 Key XF86MonBrightnessDown A - Exec exec xbacklight -dec 1
 
 Key a A 4  Menu Applications Nop
