@@ -119,17 +119,20 @@ else
         then
             RPROMPT="$RPROMPT2"
         else
-            status_lines="$(git status --porcelain)"
-            status_lines=":${status_lines//
-/:}"                            # delimit the lines with colons instead
-            if [[ "$status_lines" =~ ':[^?][^?]' ]]
+            if [ "$PWD" = "$HOME/src/server" ]
             then
-                color=red
-            elif [ "$status_lines" = ':' ]
-            then
-                color=green
+                # Too expensive to run "status" each time.
+                color=blue
             else
-                color=yellow
+                status_lines="$(git status --porcelain)"
+                status_lines=":${status_lines//
+/:}"                            # delimit the lines with colons instead
+                if [[ "$status_lines" =~ ':[^?][^?]' ]]
+                then color=red
+                elif [ "$status_lines" = ':' ]
+                then color=green
+                else color=yellow
+                fi
             fi
             RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT2"
         fi
