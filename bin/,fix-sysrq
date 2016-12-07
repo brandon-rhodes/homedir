@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Give my keyboard back to X Windows, so that [Win]+[Right Arrow] stops
+# switching me to another virtual terminal and can be intercepted by
+# FVWM to tile the current window instead.  Based on:
+# http://unix.stackexchange.com/questions/19296/recovering-from-sys-rq-r
+
+exec sudo kbd_mode -s -C /dev/tty7
