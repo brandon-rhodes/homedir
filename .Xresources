@@ -9,8 +9,7 @@
 Emacs24.font: Ubuntu Mono-10
 Emacs.geometry: 80x28
 
-NetHack.tile_file: /usr/share/pixmaps/nethack/x11tiles
-NetHack.double_tile_size: True
+NetHack.tile_file: /home/brandon/usr/share/nethack-2x
 NetHack*map*rows: 24
 NetHack*map*columns: 64
 

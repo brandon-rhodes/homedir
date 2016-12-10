@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Run Nethack with big tiles.
+
+convert -magnify /usr/share/pixmaps/nethack/x11tiles ~/usr/share/nethack-2x
+exec nethack

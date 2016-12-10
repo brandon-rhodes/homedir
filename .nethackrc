@@ -1,0 +1,4 @@
+AUTOPICKUP_EXCEPTION=
+OPTIONS=!autopickup
+OPTIONS=!travel
+OPTIONS=windowtype:X11
