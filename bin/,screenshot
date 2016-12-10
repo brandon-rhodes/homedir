@@ -1,7 +1,0 @@
-#!/bin/bash
-
-exec xfce4-screenshooter \
-    --window \
-    --delay 2 \
-    --save ~ \
-    "$@"
