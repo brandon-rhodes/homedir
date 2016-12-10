@@ -1,3 +1,0 @@
-#!/bin/bash
-echo Launching the setup app that can be used to unbind Control-Space in Ubuntu
-exec ibus-setup

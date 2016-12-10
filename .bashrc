@@ -22,8 +22,8 @@ e () {
     elif [ -f $HOME/.python-paths ] ;then
         pp="$(grep "^$PWD " $HOME/.python-paths | sed 's/^[^ ]* //')"
     fi
-    if [ -n "$DISPLAY" -a -x /usr/bin/emacs24-x ] ;then
-        (PYTHONPATH="$pp" ,emacs-x "$@" &)
+    if [ -n "$DISPLAY" -a -x /usr/bin/emacs ] ;then
+        (PYTHONPATH="$pp" /usr/bin/emacs "$@" &)
     elif [ -n "$DISPLAY" -a -x $HOME/usr/bin/emacs ] ;then
         (PYTHONPATH="$pp" $HOME/usr/bin/emacs "$@" &)
     else
