@@ -39,9 +39,6 @@ diff = auto
 interactive = auto
 status = auto
 
-[commit]
-template = ~/.gitmessage.txt
-
 [filter "sshconfig_trailer"]
 clean = sed '/^. Everything below will be ignored by git.$/q'
 
