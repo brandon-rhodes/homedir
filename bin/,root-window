@@ -13,7 +13,7 @@ report () {
     echo
     for bat in /sys/class/power_supply/BAT*
     do
-        source "$bat/uevent"
+        source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
         echo $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
     done
 }
