@@ -6,6 +6,18 @@ set -e
 
 [ -d ~/repos ] || mkdir -p ~/repos
 cd ~/repos
-curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public&per_page=100' |
-    jq -r '.[] | select(.fork | not) | .clone_url' |
-    xargs -n1 git clone
+(
+    curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public&per_page=100'
+    curl -s 'https://api.github.com/users/skyfielders/repos?type=public&per_page=100'
+) |
+    jq -r '.[] | select(.fork | not) | .name + " " + .clone_url' |
+(
+    while read -r name url
+    do
+        name=$(echo "$name" | sed 's/python-//')
+        if [ ! -d "$name" ]
+        then
+            git clone "$url" "$name"
+        fi
+    done
+)
