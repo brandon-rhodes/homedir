@@ -86,16 +86,6 @@ case "$1" in
     make install
     ;;
 
-"flow" )
-    # provides "git flow"
-    cd ~/usr
-    git clone --recursive git://github.com/nvie/gitflow.git
-    cd gitflow
-    make install prefix=$HOME/usr
-    cd ..
-    rm -rf gitflow
-    ;;
-
 "fonts" )
     mkdir -p ~/.fonts
     cd ~/.fonts
