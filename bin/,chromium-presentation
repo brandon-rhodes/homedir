@@ -1,5 +1,5 @@
 #!/bin/bash
 
 exec chromium-browser --enable-webgl \
-     --user-data-dir=~/.config/chromium-presentation \
+     --user-data-dir="$HOME"/.config/chromium-presentation \
      --force-device-scale-factor=1.0 http://localhost:8000/
