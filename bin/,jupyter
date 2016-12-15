@@ -1,3 +1,6 @@
 #!/bin/bash
 
-exec $HOME/usr/ipynb/bin/jupyter-notebook --no-browser -y
+exec $HOME/usr/ipynb/bin/jupyter-notebook \
+     --NotebookApp.password='' \
+     --no-browser \
+     -y
