@@ -1,7 +1,23 @@
 #!/bin/bash
 
+set -e
+cd
+
 # Update my home directory setup to make sure I have the most recent
 # versions of everything.
+
+if [ -d .git ]
+then
+    git pull
+else
+    ,home
+    git pull
+    ,home
+fi
+
+pushd .emacs.d
+git pull
+popd
 
 for d in Desktop Documents Music Pictures Public Templates Videos
 do
