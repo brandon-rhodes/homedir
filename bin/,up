@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Update my home directory setup to make sure I have the most recent
+# versions of everything.
+
+for d in Desktop Documents Music Pictures Public Templates Videos
+do
+    if [ -d "$d" ]
+    then rmdir --ignore-fail-on-non-empty "$d"
+    fi
+done
