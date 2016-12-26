@@ -45,6 +45,7 @@ sudo apt-get install -y \
     openssh-server   `: for when I run scp on another machine` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
+    pytrainer        `: convert Garmin watch data to standard formats` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
     pypy pypy-dev    `: for when I want to be fast` \
