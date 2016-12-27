@@ -138,11 +138,11 @@ sudo apt-get purge -y apport apport-gtk apport-symptoms python3-apport \
 
 # A desktop session that simply runs my .xinitrc like in the old days.
 
-sudo dd of=/usr/share/xsessions/xinitrc.desktop <<EOF
+sudo dd of=/usr/share/xsessions/xinitrc.desktop <<'EOF'
 [Desktop Entry]
 Name=xinitrc
 Comment=Run your .xinitrc file
-Exec=/bin/bash $HOME/.xinitrc
+Exec=/bin/bash .xinitrc
 Type=Application
 EOF
 
