@@ -192,6 +192,11 @@ sudo apt-get install -y libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 libsndfile1
 sudo ln -sf libsndfile.so.1 /usr/lib/i386-linux-gnu/libsndfile.so || true
 sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so || true
 
+# Tell `/lib/systemd/systemd --user` to exit after I log out.
+
+sudo sed -i 's/#KillUserProcesses=no/KillUserProcesses=yes/' \
+    /etc/systemd/logind.conf
+
 # Default browser.
 
 xdg-mime default chromium.desktop text/html
