@@ -7,6 +7,12 @@
 
 set -e
 
+if [ "$(id -u)" = "0" ]
+then
+    echo 'Error: this script should not be run as root' >&2
+    exit 1
+fi
+
 case "$1" in
 "ag" )
     V=0.30.0

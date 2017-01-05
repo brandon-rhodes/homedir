@@ -4,6 +4,12 @@
 
 set -e
 
+if [ "$(id -u)" = "0" ]
+then
+    echo 'Error: this script should not be run as root' >&2
+    exit 1
+fi
+
 SYSPY=/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
 if [ ! -x $SYSPY ]; then
     SYSPY=/usr/bin/python2.7

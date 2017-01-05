@@ -2,6 +2,12 @@
 
 set -e
 
+if [ "$(id -u)" = "0" ]
+then
+    echo 'Error: this script should not be run as root' >&2
+    exit 1
+fi
+
 sudo apt-get update
 
 # Avoid "perl" locale errors and the "locale" error:
