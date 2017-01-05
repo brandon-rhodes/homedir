@@ -19,9 +19,15 @@ pushd .emacs.d
 git pull
 popd
 
+# Basic cleanup and essential settings.
+
 for d in Desktop Documents Music Pictures Public Templates Videos
 do
     if [ -d "$d" ]
     then rmdir --ignore-fail-on-non-empty "$d"
     fi
 done
+
+xdg-mime default chromium-browser.desktop text/html
+xdg-mime default chromium-browser.desktop x-scheme-handler/http
+xdg-mime default chromium-browser.desktop x-scheme-handler/https

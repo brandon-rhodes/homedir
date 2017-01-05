@@ -202,9 +202,3 @@ sudo ln -sf libopenal.so.1 /usr/lib/i386-linux-gnu/libopenal.so || true
 
 sudo sed -i 's/#KillUserProcesses=no/KillUserProcesses=yes/' \
     /etc/systemd/logind.conf
-
-# Default browser.
-
-xdg-mime default chromium.desktop text/html
-xdg-mime default chromium.desktop x-scheme-handler/http
-xdg-mime default chromium.desktop x-scheme-handler/https
