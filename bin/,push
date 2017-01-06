@@ -7,7 +7,7 @@
 
 set -e
 
-cd ~/repos/rhodesmill.org
+cd ~/src/rhodesmill.org
 
 # Bail out if there are no changes staged
 if git diff-index --quiet HEAD --

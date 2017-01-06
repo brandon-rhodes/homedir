@@ -4,8 +4,8 @@
 
 set -e
 
-[ -d ~/repos ] || mkdir -p ~/repos
-cd ~/repos
+[ -d ~/src ] || mkdir -p ~/src
+cd ~/src
 (
     curl -s 'https://api.github.com/users/brandon-rhodes/repos?type=public&per_page=100'
     curl -s 'https://api.github.com/users/skyfielders/repos?type=public&per_page=100'
