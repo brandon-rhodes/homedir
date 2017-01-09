@@ -44,7 +44,7 @@ unset p
 
 # Set my umask depending on whether it looks like I own my group.
 
-if [ "$(id -un)" = "$(id -gn)" ]
+if type id >/dev/null && [ "$(id -un)" = "$(id -gn)" ]
 then umask 027
 else umask 077
 fi
