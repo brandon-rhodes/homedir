@@ -162,11 +162,18 @@ alias ,startx="exec startx"
     export AWS_SECRET_ACCESS_KEY=$(awk '/^secret_key / {print $3}' ~/.s3cfg)
 }
 
-# Bash should update the LINES and COLUMNS environment variables each
-# time the terminal window gets resized, for programs that care.
+# Bash-specific settings.
 
 if [ -n "$BASH" ]
-then shopt -s checkwinsize
+then
+
+    # Update the LINES and COLUMNS environment variables each time the
+    # terminal window gets resized, for programs that care.
+    shopt -s checkwinsize
+
+    # The `**` pattern in a glob should match any number of directories.
+    shopt -s globstar
+
 fi
 
 # The tty should not intercept Control-S (stop) or Control-Q (start).
