@@ -76,6 +76,7 @@ sudo apt-get install -y \
     ttf-mscorefonts-installer `: for browsing the web` \
     units            `: desk calculator` \
     virtualbox       `: for various virtualization tasks` \
+    wakeonlan        `: for waking up other machines I have suspended` \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \
     xautolock        `: to lock my screen` \
