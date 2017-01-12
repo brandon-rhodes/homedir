@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# I can never remember this command, and always think that some
+# combination of "nmap" options is what gave me a convenient list of
+# subnet machine names last time.  So:
+
+exec avahi-browse -at
