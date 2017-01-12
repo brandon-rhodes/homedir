@@ -4,4 +4,4 @@
 # combination of "nmap" options is what gave me a convenient list of
 # subnet machine names last time.  So:
 
-exec avahi-browse -at
+exec avahi-browse -at --resolve
