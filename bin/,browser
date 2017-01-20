@@ -2,6 +2,11 @@
 
 scale=1.0
 
+if [ "$(hostname)" = "bernardus" ]
+then
+    scale=1.2
+fi
+
 if [ "$(hostname)" = "odell" ]
 then
     scale=1.5
