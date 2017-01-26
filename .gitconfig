@@ -19,7 +19,6 @@ incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
 lp = log -p --pretty=fuller
 ls = log --stat --pretty=fuller
-locate = ls-tree --name-only -r HEAD
 patch = commit --patch -v
 merge-abort = merge --abort
 mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
