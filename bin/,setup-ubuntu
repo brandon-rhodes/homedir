@@ -8,6 +8,7 @@ then
     exit 1
 fi
 
+umask 022
 sudo apt-get update
 
 # Avoid "perl" locale errors and the "locale" error:
@@ -107,10 +108,12 @@ sudo apt-get install -y \
 
 sudo apt-get install unattended-upgrades
 
-sudo debconf-set-selections <<'EOF'
-unattended-upgrades     unattended-upgrades/enable_auto_updates boolean true
+sudo dd of=/etc/apt/apt.conf.d/10periodic <<'EOF'
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
 EOF
-sudo dpkg-reconfigure -f non-interactive unattended-upgrades
 
 # Run "apt-file update" for the first time if necessary.
 
