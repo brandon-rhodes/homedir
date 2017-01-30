@@ -15,7 +15,7 @@ fi
 
 case "$1" in
 "ag" )
-    V=0.30.0
+    V=1.0.2
     sudo apt-get install -y liblzma-dev zlib1g-dev
 
     cd /tmp
