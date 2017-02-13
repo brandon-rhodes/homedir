@@ -178,6 +178,7 @@ then
     sudo chmod +w /etc/sudoers
     sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-suspend" >> /etc/sudoers'
     sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-hibernate" >> /etc/sudoers'
+    sudo bash -c 'echo "ALL ALL=NOPASSWD: /bin/kbd_mode" >> /etc/sudoers'
     sudo chmod -w /etc/sudoers
 fi
 
