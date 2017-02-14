@@ -163,6 +163,7 @@ AddToMenu Applications "Applications" Title
 + "&g. Gimp"      Exec exec gimp
 + "&n. Nautilus"  Exec exec nautilus
 + "&s. Skype"     Exec exec skype
++ "&t. Thunderbird" Exec exec thunderbird
 + "&v. VirtualBox" Exec exec virtualbox
 + "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x1000 -no-host-grab
 
