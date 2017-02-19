@@ -2,6 +2,13 @@
 
 # Run enscript to a file instead of the printer.
 
-cat "$@" |
-    enscript --header="" --font="Courier12" -o - |
-    ps2pdf - -
+for path in "$@"
+do
+    (echo '\pagenumbering{gobble}'; echo; cat "$path") |
+        pandoc \
+            -V fontsize=12pt \
+            -V geometry:"top=0.5in, bottom=0.5in, left=1in, right=1in" \
+            -V papersize:"a4paper" \
+            -o "$path".pdf
+    echo "$path".pdf
+done
