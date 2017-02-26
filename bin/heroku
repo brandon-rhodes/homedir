@@ -7,11 +7,13 @@ URL=http://assets.heroku.com.s3.amazonaws.com/heroku-client/$TGZ
 
 if [ ! -d $HOME/usr/heroku ]
 then
-    cd /tmp
+    pushd /tmp
     wget $URL
+    popd
     mkdir -p $HOME/usr/heroku
-    cd $HOME/usr/heroku
+    pushd $HOME/usr/heroku
     tar xzf /tmp/$TGZ
+    popd
     rm /tmp/$TGZ
 fi
 
