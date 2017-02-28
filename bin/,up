@@ -21,6 +21,11 @@ popd
 
 # Basic cleanup and essential settings.
 
+if ! [ -f .ssh/config ]
+then
+    ln -s config.default .ssh/config
+fi
+
 for d in Desktop Documents Music Pictures Public Templates Videos
 do
     if [ -d "$d" ]
