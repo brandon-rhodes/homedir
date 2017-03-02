@@ -53,8 +53,8 @@ autocutsel &
 # blueman-applet &
 indicator-cpufreq &
 nm-applet &
-xautolock -time $LOCK_TIMEOUT -locker slock -notify 10 -notifier \
-          "notify-send 'Idle Timeout' 'Locking screen in 10 seconds'" &
+xautolock -time $LOCK_TIMEOUT -locker slock -notify 60 \
+          -notifier "xset dpms force off" &
 xfce4-volumed &
 ~/bin/,root-window &
 [ -x ~/.emacs.d/pycl.sh ] && ~/.emacs.d/pycl.sh &
