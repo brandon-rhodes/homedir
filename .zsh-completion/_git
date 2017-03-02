@@ -1,5 +1,8 @@
 #compdef git git-cvsserver git-receive-pack git-upload-archive git-upload-pack git-shell gitk tig
 
+# Customized by Brandon Rhodes from:
+# /usr/share/zsh/functions/Completion/Unix/_git
+
 # Some parts of this completion's behaviour are configurable:
 #
 # Say you got your own git sub-commands (git will run a program `git-foo'
