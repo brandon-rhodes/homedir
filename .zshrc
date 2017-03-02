@@ -119,7 +119,7 @@ else
         then
             RPROMPT="$RPROMPT2"
         else
-            if [ "$PWD" = "$HOME/src/server" ]
+            if [[ "$PWD" = $HOME/src/server* ]]
             then
                 # Too expensive to run "status" each time.
                 color=blue
