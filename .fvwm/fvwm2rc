@@ -260,10 +260,10 @@ AddToFunc   PyConProject
 
 DestroyFunc SkyfieldProject
 AddToFunc   SkyfieldProject
-+ I Exec PRERUN='cd ~/skyfield; e -geometry -0+24 ~/novas/Cdist/novas.c skyfield/documentation .; git st' exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN='cd ~/skyfield; cd skyfield/documentation' exec xterm -geometry 80x24+0-0
-+ I Exec PRERUN='cd ~/skyfield; cd skyfield/documentation; ,simplehttpserver' exec xterm -geometry 80x4+0-0
-# + I Exec cd ~/skyfield && exec emacs -geometry -0+24 ~/novas/Cdist/novas.c skyfield/documentation .
++ I Exec PRERUN='cd ~/src/skyfield; e -geometry -24+0 skyfield/documentation .; git st' exec xterm -geometry 80x24+0+0
++ I Exec PRERUN='cd ~/src/skyfield/skyfield/documentation; source ~/.v/src-skyfield/bin/activate ~/.v/src-skyfield; make testloop' exec xterm -geometry 80x24+120-0
++ I Exec PRERUN='cd ~/src/skyfield/skyfield/documentation; source ~/.v/src-skyfield/bin/activate ~/.v/src-skyfield; make loop' exec xterm -geometry 80x24+240-0
++ I Exec PRERUN='cd ~/src/skyfield/skyfield/documentation; source ~/.v/src-skyfield/bin/activate ~/.v/src-skyfield; make serve' exec xterm -geometry 80x4-0-0
 
 DestroyFunc TalksProject
 AddToFunc   TalksProject
