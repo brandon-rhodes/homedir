@@ -46,3 +46,4 @@ done
 # Commit and push.
 git commit -m 'Auto-commit'
 git push origin
+git push wf-rhodesmill:webapps/rhodesmill_dot_org
