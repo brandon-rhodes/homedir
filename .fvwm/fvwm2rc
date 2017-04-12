@@ -200,7 +200,9 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&C Close]"         Close
 + "$[gt.&M Move]"          Move
 + "$[gt.&R Resize]"        Resize
-+ "$[gt.&T (Un)On Top]"     ToggleLayer
++ "$[gt.&T Title Off]"     FuncTitleOff
++ "$[gt.  Title On]"       FuncTitleOn
++ "$[gt.  (Un)On Top]"     ToggleLayer
 + "$[gt.  (Un)Stick]"      Stick
 + "$[gt.  (Un)Ma&ximize]"  Maximize
 + "$[gt.  Destroy]"        Destroy
@@ -273,6 +275,16 @@ AddToFunc   TalksProject
 + I Exec cd ~/talks && exec emacs -geometry -0+24 ~/talks
 
 # Common FVWM functions used in several of the directives above.
+
+DestroyFunc FuncTitleOn
+AddToFunc FuncTitleOn
++ I ThisWindow WindowStyle Title
+#+ I UpdateStyles
+
+DestroyFunc FuncTitleOff
+AddToFunc FuncTitleOff
++ I ThisWindow WindowStyle !Title
+#+ I UpdateStyles
 
 DestroyFunc FuncFvwmMoveOrRaise
 AddToFunc FuncFvwmMoveOrRaise
