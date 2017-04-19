@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# "Jump" to another host via SSH, running a minimal bash configuration
+# in our shell there but without modifying any remote files.  Also,
+# further invocations of SSH via "s" from that host should also
+# initialize bash wherever they land.
+
+# First, create the configuration script.
+
+read -r -d '' rc <<'EOF'
+
+# Aliases
+
+alias d="diff -ur"
+alias g="grep -P"
+alias la="ls -avCF"
+alias lf="ls -vCF"
+alias ll="ls -lv"
+alias lla="ls -alv"
+alias ltr="ls -ltr"
+alias m="less"
+alias ,coreon="ulimit -c unlimited"
+alias ,coreoff="ulimit -c 0"
+ulimit -c 0
+
+# Options for other tools besides bash
+
+export GREP_OPTIONS='--color=auto'
+export LESS="-i -j.49 -M -R -z-2"
+export PAGER=less
+
+# Bash command line behavior
+
+HISTCONTROL=erasedups
+unset histchars
+unset TMOUT
+unset -f command_not_found_handle
+
+# Allow jumping to further hosts, using my normal "s" alias for SSH,
+# carrying this configuration with us.
+
+rc="$(cat /dev/fd/3)"
+function s {
+    echo Connecting...
+    ssh -t "$1" 'exec /bin/bash --rcfile /dev/fd/3 3<<<'$(printf %q "$rc")
+}
+
+EOF
+
+# Allow local
+
+if [ -f ~/.jrc ]
+then rc="$(echo "$rc"; cat ~/.jrc)"
+fi
+
+# The "exec" avoids leaving a useless `bash` parent process hanging
+# around: the equivalent of shell script tail recursion.
+
+exec ssh -t "$1" -- 'exec /bin/bash --rcfile /dev/fd/3 3<<<'$(printf %q "$rc")
