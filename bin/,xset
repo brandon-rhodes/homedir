@@ -27,4 +27,5 @@ if [ "$(hostname)" == "odell" ]
 then
     xrandr --dpi 160
     echo Xft.dpi: 160 | xrdb -merge
+    xinput set-prop 12 "libinput Natural Scrolling Enabled" 1
 fi
