@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# Clear screen.
+printf "\033c"
+
+while true
+do
+    # Jump back to upper left corner.
+    printf "\033[1;1H"
+    echo
+    echo "         TLV            UTC          Eastern        Pacific"
+    echo "     $(TZ=Asia/Jerusalem date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
+    echo "        $(TZ=Asia/Jerusalem date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
+    echo
+    ncal -b -3 | sed 's/^/  /'
+    echo
+    for bat in /sys/class/power_supply/BAT*
+    do
+        source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
+        echo -n "                      "
+        echo $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
+    done
+    sleep $(( 60 - $(date +%S | sed s/^0//) ))
+done

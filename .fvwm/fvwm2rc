@@ -36,6 +36,10 @@ Style TOP* StaysOnTop, Borders, Title
 Style StayOnTop StaysOnTop, !Borders, !Title
 Style Borderless !Borders, !Title
 
+# Specially style the status popup that I can summon with the date etc.
+
+Style win-space-popup StaysOnTop, Borders, !Title
+
 # Autoraise windows if the mouse stays in them for 0.3 seconds, unless
 # the window is nethack-qt, which will thereby overlay its own dratted
 # dialog boxes.  Maybe I should find an alternative to nethack-qt.
@@ -103,7 +107,7 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
 Key e A 4  Exec exec emacs
-Key h A 4  ShowDesktop
+Key h A 4  Exec exec ~/.fvwm/win-space-toggle
 Key l A 4  Lower
 Key n A 4  Exec exec ,browser
 Key p A 4  Menu Projects Nop
