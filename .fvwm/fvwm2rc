@@ -181,6 +181,7 @@ AddToMenu BrowserBookmarks "Bookmarks" Title
 + "&c. Calendar" Exec exec browser "http://google.com/calendar/render"
 + "&d. Drive"    Exec exec browser "http://drive.google.com/"
 + "&g. GitHub"   Exec exec browser "http://github.com/"
++ "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
 + "&m. Maps"     Exec exec browser "http://maps.google.com/"
 + "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
 + "&r. Reader"   Exec exec browser "http://www.feedly.com/home"
