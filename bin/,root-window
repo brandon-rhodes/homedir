@@ -9,7 +9,7 @@ report () {
     echo "$(TZ=Asia/Jerusalem date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
     echo "$(TZ=Asia/Jerusalem date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
     echo
-    cal -3 -h | sed 's/^/  /'
+    ncal -b -h -3 | sed 's/^/  /'
     echo
     for bat in /sys/class/power_supply/BAT*
     do
