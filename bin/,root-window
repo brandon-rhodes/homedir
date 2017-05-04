@@ -30,5 +30,6 @@ do
             -font "Ubuntu-Mono" -pointsize 36 -gravity center label:"$TEXT" \
             /tmp/desktop-$UID.mpc
     display -window root /tmp/desktop-$UID.mpc
+    ,fix-sysrq
     sleep $(( 60 - $(date +%S | sed s/^0//) ))
 done
