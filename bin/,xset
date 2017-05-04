@@ -23,6 +23,12 @@ then
 	"Synaptics Tap Action" 0 0 0 0 0 0 0
 fi
 
+if xinput | grep -q 'TPPS/2 IBM TrackPoint'
+then
+    xinput set-prop 'TPPS/2 IBM TrackPoint' \
+           'Evdev Wheel Emulation Axes' 7 6 5 4
+fi
+
 if [ "$(hostname)" == "odell" ]
 then
     xrandr --dpi 160
