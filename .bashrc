@@ -129,7 +129,6 @@ else alias g="grep -P"
 fi
 
 alias a="ag -iz"
-alias gi="g -i"
 alias la="/bin/ls -avCF"
 alias lf="/bin/ls -vCF"
 alias ll="/bin/ls -lv"
@@ -147,7 +146,12 @@ d () {
     else $DIFF -ur "$@"
     fi
 }
-wd() {
+gi () {
+    arg1="$1"
+    shift
+    gi${arg1:0:1} ${arg1:1} "$@"
+}
+wd () {
     diff -u "$@" | wdiff -d -n -w $'\033[1;31;47m' -x $'\033[0m' \
                                -y $'\033[1;32;47m' -z $'\033[0m'
 }
