@@ -108,6 +108,7 @@ Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
 Key e A 4  Exec exec emacs
 Key l A 4  Lower
+Key m A 4  Exec exec bash $HOME/.fvwm/open-in-google-maps.sh
 Key n A 4  Exec exec ,browser
 Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
