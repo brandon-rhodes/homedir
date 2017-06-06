@@ -13,7 +13,7 @@ co = checkout
 cleanup = clean -dfx -e .vagrant
 d = diff
 diff-words = diff --color-words
-diff-vs-master = !git diff "$@" $(git merge-base HEAD origin/master) -- .
+diff-vs-master = !git diff -M "$@" $(git merge-base HEAD origin/master) -- .
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
