@@ -9,10 +9,10 @@ export NUMBER=${1:-1}
 gvfs-mount -m -d /dev/sdb /media/$USER/GARMIN
 [ -d /media/$USER/GARMIN ]  # since gvfs-mount is broken: no error code on fail
 path="$(find /media/$USER/GARMIN/GARMIN/ACTIVITY | sort | tail "-${NUMBER}" | head -1)"
-if [ -d ~/Dropbox* ]
-then
-    (cd ~/Dropbox*; mkdir -p Garmin)
-    cp $path ~/Dropbox*/Garmin
+if [ -d ~/Dropbox ]
+then cp $path ~/Dropbox/Garmin
+elif [ -d ~/Dropbox\ \(Dropbox\) ]
+then cp $path ~/Dropbox\ \(Dropbox\)/Garmin
 fi
 /usr/share/pytrainer/plugins/garmin-fit/bin/fit2tcx \
     < $path \
