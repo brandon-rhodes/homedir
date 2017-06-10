@@ -27,30 +27,27 @@ sudo apt-get install -y \
     chromium-browser `: browser-of-choice` \
     chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
-    cscope           `: for that rare trawl through code ` \
+    cscope           `: for that rare trawl through C code ` \
     emacs24          `: editor-of-choice` \
     emacs24-el       `: readable LISP source` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
     fonts-sil-gentium `: font for presentation slides` \
-    git gitk         `: distributed version control` \
-    gnucash          `: accounting` \
+    git              `: distributed version control` \
     gnumeric         `: spreadsheet` \
     groff            `: for processing old documents` \
-    gscan2pdf pdftk  `: scanning to PDF` \
     html2text        `: when data is available in no better format` \
     htop             `: much better "top" command` \
     indicator-cpufreq `: for pegging the CPU speed when I need to` \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
     libreadline-dev  `: for compiling Python from source` \
-    libreoffice-writer `: for the occasional Microsoft Word file ` \
     jq               `: like grep but for JSON` \
-    mosh             `: like SSH but that can survive poor hotel Wifi` \
     mplayer2 geeqie  `: for media` \
-    openssh-server   `: for when I run scp on another machine` \
+    openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
+    pdftk            `: perform various useful operations on PDFs` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
     pypy pypy-dev    `: for when I want to be fast` \
@@ -58,19 +55,14 @@ sudo apt-get install -y \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
     nautilus         `: for mounting and unmounting flash drives` \
-    nmap             `: for finding the IP address that my printer lives at` \
-    rdesktop         `: for accessing Windows machines in the cloud` \
-    redshift         `: for coding past sunset` \
+    nmap             `: for finding the IP address of printers on the LAN` \
     s3cmd            `: the cloud` \
     suckless-tools   `: simple tools to go with my simple window manager` \
     stellarium       `: to quickly answer what-is-that-over-there questions` \
-    sqlite3          `: for command line access to its databases` \
-    swig             `: for occasional ancient Python dependencies` \
-    subversion       `: for outdated projects` \
+    sqlite3          `: for command-line access to its databases` \
     texlive-latex-recommended `: for building PDF documentation with Sphinx` \
     texlive-latex-extra \
     texlive-fonts-recommended \
-    tmux             `: to leave things running in a tty overnight` \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
     ttf-mscorefonts-installer `: for browsing the web` \
@@ -97,22 +89,19 @@ sudo apt-get install -y \
     `: for ledger` \
     cmake libboost-all-dev libgmp-dev libmpfr-dev \
     \
-    `: further tools for web development` \
-    yui-compressor \
-    \
     `: Hettinger reminded me how awesome these tools are` \
     graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag
 
 # Arrange for packages to automatically update.
 
-sudo apt-get install unattended-upgrades
+# sudo apt-get install unattended-upgrades
 
-sudo dd of=/etc/apt/apt.conf.d/10periodic <<'EOF'
-APT::Periodic::Update-Package-Lists "1";
-APT::Periodic::Download-Upgradeable-Packages "1";
-APT::Periodic::AutocleanInterval "7";
-APT::Periodic::Unattended-Upgrade "1";
-EOF
+# sudo dd of=/etc/apt/apt.conf.d/10periodic <<'EOF'
+# APT::Periodic::Update-Package-Lists "1";
+# APT::Periodic::Download-Upgradeable-Packages "1";
+# APT::Periodic::AutocleanInterval "7";
+# APT::Periodic::Unattended-Upgrade "1";
+# EOF
 
 # Run "apt-file update" for the first time if necessary.
 
