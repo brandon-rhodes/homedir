@@ -83,7 +83,7 @@ sudo apt-get install -y \
     bindfs encfs smbnetfs sshfs \
     \
     `: for building tools like ag and ledger` \
-    automake libpcre3-dev \
+    automake libpcre3-dev pkg-config \
     \
     `: for gevent` \
     libevent1-dev \
