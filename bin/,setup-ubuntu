@@ -48,6 +48,7 @@ sudo apt-get install -y \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
     pdftk            `: perform various useful operations on PDFs` \
+    pm-utils         `: so I can suspend the machine from its command line` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
     pypy pypy-dev    `: for when I want to be fast` \
@@ -66,6 +67,7 @@ sudo apt-get install -y \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
     ttf-mscorefonts-installer `: for browsing the web` \
+    ttf-ubuntu-font-family `: default Ubuntu font family, for emacs` \
     units            `: desk calculator` \
     vagrant          `: for various virtualization tasks` \
     wakeonlan        `: for waking up other machines I have suspended` \
