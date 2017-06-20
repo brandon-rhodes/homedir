@@ -12,7 +12,7 @@ read -r -d '' rc <<'EOF'
 # Aliases
 
 alias d="diff -ur"
-alias g="grep -P"
+alias g="grep -P --color=auto"
 alias la="ls -avCF"
 alias lf="ls -vCF"
 alias ll="ls -lv"
@@ -26,7 +26,6 @@ ulimit -c 0
 
 # Options for other tools besides bash
 
-export GREP_OPTIONS='--color=auto'
 export LESS="-i -j.49 -M -R -z-2"
 export PAGER=less
 
