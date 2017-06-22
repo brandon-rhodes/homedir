@@ -16,7 +16,8 @@ fi
 case "$1" in
 "ag" )
     V=2.0.0
-    sudo apt-get install -y liblzma-dev zlib1g-dev
+    sudo apt-get install -y \
+         automake liblzma-dev libpcre3-dev pkg-config zlib1g-dev
 
     cd /tmp
     curl -OL https://github.com/ggreer/the_silver_searcher/archive/$V.tar.gz
