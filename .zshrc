@@ -77,7 +77,7 @@ __detect_cd_and_possibly_activate_environment () {
         return 1
     fi
     mkdir -p ~/.v &&
-    virtualenv "$@" ~/.v/"$slug" &&
+    ~/usr/src/virtualenv/virtualenv.py "$@" ~/.v/"$slug" &&
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment &&
     ,setup-jedi
