@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# "Jump" to another host via SSH, running a minimal bash configuration
-# in our shell there but without modifying any remote files.  Also,
-# further invocations of SSH via "s" from that host should also
-# initialize bash wherever they land.
+# Connect to another host via SSH, using a bit of magic to set up all of
+# my essential aliases without modifying any remote files.  Any further
+# invocations of SSH via "s" from that host should also initialize bash
+# and so on through as many connections as I make.
 
 # First, create the configuration script.
 
@@ -46,6 +46,23 @@ then
     export VISUAL="emacs24-nox"
 fi
 
+# Avoid needing to double-tab to get completions.
+
+bind 'set show-all-if-ambiguous on'
+
+# Custom completions.
+
+function _complete_ssh
+{
+    local curr_arg hostnames;
+    curr_arg=${COMP_WORDS[COMP_CWORD]}
+    hostnames="$(awk '/^[0-9a-f]/ {$1="";print}' /etc/hosts)"
+    [ -f ~/.ssh/config ] &&
+    hostnames="$hostnames $(awk '/Host +[a-z]/ {print $2}' ~/.ssh/config)"
+    COMPREPLY=( $(compgen -W "$hostnames" -- $curr_arg ) );
+}
+complete -F _complete_ssh s ssh
+
 # Allow jumping to further hosts, using my normal "s" alias for SSH,
 # carrying this configuration with us.
 
@@ -57,7 +74,7 @@ function s {
 
 EOF
 
-# Allow local
+# Include any local customizations.
 
 if [ -f ~/.jrc ]
 then rc="$(echo "$rc"; cat ~/.jrc)"
