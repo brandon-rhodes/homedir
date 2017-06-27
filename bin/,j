@@ -12,6 +12,8 @@ read -r -d '' rc <<'EOF'
 # Aliases
 
 alias d="diff -ur"
+alias e="emacs &"
+alias enw="emacs -nw"
 alias g="grep -P --color=auto"
 alias la="ls -avCF"
 alias lf="ls -vCF"
@@ -35,6 +37,14 @@ HISTCONTROL=erasedups
 unset histchars
 unset TMOUT
 unset -f command_not_found_handle
+
+# Editor.
+
+if hash emacs 2>/dev/null
+then
+    export EDITOR="emacs24-nox"
+    export VISUAL="emacs24-nox"
+fi
 
 # Allow jumping to further hosts, using my normal "s" alias for SSH,
 # carrying this configuration with us.
