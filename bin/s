@@ -40,11 +40,14 @@ unset -f command_not_found_handle
 
 # Editor.
 
-if hash emacs 2>/dev/null
+if hash emacs24-nox 2>/dev/null
 then
     export EDITOR="emacs24-nox"
-    export VISUAL="emacs24-nox"
+elif hash emacs 2>/dev/null
+then
+    export EDITOR="emacs"
 fi
+export VISUAL="$EDITOR"
 
 # Avoid needing to double-tab to get completions.
 
