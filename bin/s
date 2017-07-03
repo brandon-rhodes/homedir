@@ -22,6 +22,7 @@ alias lla="ls -alv"
 alias ltr="ls -ltr"
 alias ltra="ls -ltra"
 alias m="less"
+alias vs="git diff-vs-master"
 alias ,coreon="ulimit -c unlimited"
 alias ,coreoff="ulimit -c 0"
 ulimit -c 0
