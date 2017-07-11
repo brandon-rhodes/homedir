@@ -33,6 +33,9 @@ do
     fi
 done
 
-xdg-mime default chromium-browser.desktop text/html
-xdg-mime default chromium-browser.desktop x-scheme-handler/http
-xdg-mime default chromium-browser.desktop x-scheme-handler/https
+if [ -f .local/share/applications/mimeapps.list ]
+then
+    xdg-mime default chromium-browser.desktop text/html
+    xdg-mime default chromium-browser.desktop x-scheme-handler/http
+    xdg-mime default chromium-browser.desktop x-scheme-handler/https
+fi
