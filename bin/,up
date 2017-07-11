@@ -21,7 +21,7 @@ popd
 
 # Basic cleanup and essential settings.
 
-if ! [ -f .ssh/config ]
+if ! [ -f .ssh/config -o -h .ssh/config ]
 then
     ln -s config.default .ssh/config
 fi
