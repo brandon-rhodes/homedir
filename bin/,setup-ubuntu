@@ -184,3 +184,9 @@ sudo sed -i 's/^kernel.sysrq = .*/kernel.sysrq = 246/' \
 
 sudo sed -i 's/#KillUserProcesses=no/KillUserProcesses=yes/' \
     /etc/systemd/logind.conf
+
+# Arrange for a TrackPad to be set to maximum sensitivity.
+
+sudo bash -c 'cat > /etc/udev/rules.d/trackpoint.rules' <<'EOF'
+SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="255", ATTR{speed}="255"
+EOF
