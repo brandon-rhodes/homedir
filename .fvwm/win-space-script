@@ -12,7 +12,8 @@ do
     echo "     $(TZ=Asia/Jerusalem date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
     echo "        $(TZ=Asia/Jerusalem date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
     echo
-    ncal -b -3 | sed 's/^/  /'
+    script --quiet --command 'cal -3' ~/.fvwm/.calendar >/dev/null
+    sed '1d;s/^/  /' ~/.fvwm/.calendar
     echo
     for bat in /sys/class/power_supply/BAT*
     do
