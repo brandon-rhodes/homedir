@@ -123,11 +123,6 @@ unset TMOUT
 
 if [ -x /usr/bin/colordiff ] ;then DIFF=colordiff ;else DIFF=diff ;fi
 
-if [ -x /usr/bin/pcregrep ]
-then alias g="pcregrep --color"
-else alias g="grep -P"
-fi
-
 alias a="ag -iz"
 alias la="/bin/ls -avCF"
 alias lf="/bin/ls -vCF"
@@ -145,7 +140,11 @@ d () {
     else $DIFF -ur "$@"
     fi
 }
+function g {
+    grep -PR --color=always "$@" | less -R
+}
 gi () {
+    # Correct something like "gi tstatus" to "git status".
     arg1="$1"
     shift
     gi${arg1:0:1} ${arg1:1} "$@"
