@@ -350,10 +350,6 @@ read ConfigFvwmScroll
 read ConfigFvwmTaskBar
 read ConfigFvwmWinList
 
-# Prevent applications from grabbing focus (xchat, this means you!).
-
-DestroyFunc UrgencyFunc
-
 # Allow local per-account customization in a separate file.
 
 Read fvwm2rc-local

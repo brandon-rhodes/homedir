@@ -23,11 +23,13 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 XTerm*backarrowKeyIsErase: true
+XTerm*bellIsUrgent: true
 XTerm*internalBorder:  2
 XTerm*highlightSelection: true
 XTerm*metaSendsEscape: true
 XTerm*VT100*translations: #override <Key>BackSpace: string(0x7f)
 XTerm*ttyModes: erase ^?
+XTerm*visualBell: true
 XTerm.vt100.faceName: Inconsolata
 XTerm.vt100.faceSize: 10
 XTerm.vt100.saveLines: 1024
