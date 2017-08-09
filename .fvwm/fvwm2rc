@@ -215,6 +215,8 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&L Lock edgeflip]"    EdgeScroll 0 0
 + "$[gt.&U Unlock edgeflip]"  EdgeScroll 100 100
 + "" Nop
++ "  Window List" WindowList Root c c NoDeskSort
++ "" Nop
 + "$[gt.&W Window manager ops]"  Menu MenuFvwmWindowManagerOps Nop
 
 DestroyMenu MenuFvwmWindowManagerOps
