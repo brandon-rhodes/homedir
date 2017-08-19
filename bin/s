@@ -31,6 +31,7 @@ ulimit -c 0
 
 export LESS="-i -j.49 -M -R -z-2"
 export PAGER=less
+export PYTEST_ADDOPTS="--tb=short"
 
 # Bash command line behavior
 
