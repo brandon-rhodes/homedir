@@ -185,6 +185,25 @@ sudo sed -i 's/^kernel.sysrq = .*/kernel.sysrq = 246/' \
 sudo sed -i 's/#KillUserProcesses=no/KillUserProcesses=yes/' \
     /etc/systemd/logind.conf
 
+# Fix OpenConnect DNS.
+# http://rhodesmill.org/brandon/2017/openconnect-split-dns/
+
+sudo mkdir -p /etc/vpnc/connect.d
+sudo dd of=/etc/vpnc/connect.d/cisco_split_dns <<'EOF'
+# Take each "Cisco split domain" defined by the VPN and add
+# it to the "search" line in resolv.conf, so unqualified
+# hostnames are searched for in all the subdomains that
+# the network architects intended.
+
+if [ -n "$CISCO_SPLIT_DNS" ]; then
+    for domain in $(echo "$CISCO_SPLIT_DNS" | sed "s/,/ /g")
+    do
+        CISCO_DEF_DOMAIN="$CISCO_DEF_DOMAIN
+domain $domain"
+    done
+fi
+EOF
+
 # Arrange for a TrackPad to be set to maximum sensitivity.
 
 sudo bash -c 'cat > /etc/udev/rules.d/trackpoint.rules' <<'EOF'
