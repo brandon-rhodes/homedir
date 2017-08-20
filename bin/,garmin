@@ -14,9 +14,7 @@ then cp $path ~/Dropbox/Garmin
 elif [ -d ~/Dropbox\ \(Dropbox\) ]
 then cp $path ~/Dropbox\ \(Dropbox\)/Garmin
 fi
-/usr/share/pytrainer/plugins/garmin-fit/bin/fit2tcx \
-    < $path \
-    > ~/Downloads/TMP.TCX
+~/usr/lib/garmin/fit2tcx < $path > ~/Downloads/TMP.TCX
 gvfs-mount -u /media/$USER/GARMIN
 
 python -m webbrowser -t https://runkeeper.com/new/activity
