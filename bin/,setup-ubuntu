@@ -209,3 +209,26 @@ EOF
 sudo bash -c 'cat > /etc/udev/rules.d/trackpoint.rules' <<'EOF'
 SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="255", ATTR{speed}="255"
 EOF
+
+# Fix hung network connection after a suspend.
+
+sudo dd of=/pm/sleep.d/brandon <<'EOF'
+#!/bin/bash
+
+exec >>/tmp/brandon-sleep.log 2>&1
+
+date
+echo /etc/pm/sleep.d/brandon invoked with: "$@"
+
+case "$1" in
+    "suspend" )
+        service network-manager stop
+        ;;
+    "resume" )
+        service network-manager start
+        ;;
+esac
+
+#(date; echo /lib/systemd/system-sleep/ "$@") >> /tmp/LOG
+EOF
+sudo chmod +x /pm/sleep.d/brandon
