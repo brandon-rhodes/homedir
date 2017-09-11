@@ -212,7 +212,7 @@ EOF
 
 # Fix hung network connection after a suspend.
 
-sudo dd of=/pm/sleep.d/brandon <<'EOF'
+sudo dd of=/etc/pm/sleep.d/brandon <<'EOF'
 #!/bin/bash
 
 exec >>/tmp/brandon-sleep.log 2>&1
@@ -231,4 +231,4 @@ esac
 
 #(date; echo /lib/systemd/system-sleep/ "$@") >> /tmp/LOG
 EOF
-sudo chmod +x /pm/sleep.d/brandon
+sudo chmod +x /etc/pm/sleep.d/brandon
