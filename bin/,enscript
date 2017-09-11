@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Run enscript to a file instead of the printer.
+# Turn a text file into a PDF for printing.
 
 for path in "$@"
 do
-    (echo '\pagenumbering{gobble}'; echo; cat "$path") |
+    (echo '\pagenumbering{gobble}'; echo '```'; cat "$path"; echo '```') |
         pandoc \
-            -V fontsize=12pt \
+            -V fontsize=10pt \
             -V geometry:"top=0.5in, bottom=0.5in, left=1in, right=1in" \
-            -V papersize:"a4paper" \
+            -V papersize:"letter" \
             -o "$path".pdf
     echo "$path".pdf
 done
