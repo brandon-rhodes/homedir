@@ -372,6 +372,17 @@ AddToFunc   TogglePager
 Style FvwmPager StaysOnTop, BorderWidth 0
 *FvwmPager: UseSkipList
 
+# When I select a menu from the window list, move it to (0,0) on the
+# current screen.  My main use of the window list is to find windows
+# (PyCharm windows in particular) that decide to open somewhere entirely
+# off the desktop.
+
+DestroyFunc TogglePager
+AddToFunc WindowListFunc
++ I Iconify off
++ I Raise
++ I Move 0p 0p
+
 # Run all of the other programs that I need to be happy in Ubuntu.
 # There are customizations for particular machines here, like "guinness"
 # which is my cantankerous Dell Latitude laptop.  Ubuntu does not seem
