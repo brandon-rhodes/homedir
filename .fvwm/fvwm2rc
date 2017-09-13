@@ -384,11 +384,6 @@ AddToFunc SessionInitFunction
 
 + I Exec [ "$(hostname)" == "oldrasputin" ] && xrandr --dpi 110
 
-# Utter magic: why did I wait so many years before looking for a utility
-# to unify the two different cut-and-paste buffers under X Windows?
-
-# + I Exec exec autocutsel
-
 # Impose my standard X windows settings.  The commands are kept in a
 # stand-alone shell script, so I can re-run them in mid-session if they
 # get mangled or reset by an application.
