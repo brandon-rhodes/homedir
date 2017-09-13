@@ -377,7 +377,7 @@ Style FvwmPager StaysOnTop, BorderWidth 0
 # (PyCharm windows in particular) that decide to open somewhere entirely
 # off the desktop.
 
-DestroyFunc TogglePager
+DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I Iconify off
 + I Raise
