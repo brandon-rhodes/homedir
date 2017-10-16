@@ -248,9 +248,9 @@ AddToMenu Pastes "Pastes" Title
 
 DestroyFunc BlogProject
 AddToFunc   BlogProject
-+ I Exec PRERUN="cd ~/blog; git st" exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN='cd ~/blog; sleep 4; ./bin/serve' exec xterm -geometry 80x11+0-0
-+ I Exec exec emacs -geometry -0+24 ~/blog/_posts
++ I Exec PRERUN="cd ~/src/blog; git st" exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/src/blog; sleep 4; ./bin/serve' exec xterm -geometry 80x11+0-0
++ I Exec exec emacs -geometry -0+24 ~/src/blog/_posts
 + I Exec sleep 2; browser
 
 DestroyFunc EphemProject
