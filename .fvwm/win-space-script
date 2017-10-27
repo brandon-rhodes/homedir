@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Clear screen.
-printf "\033c"
+clear
 
 while true
 do
