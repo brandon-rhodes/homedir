@@ -1,0 +1,4 @@
+#!/bin/bash
+# "open"
+
+chromium-browser file://"$PWD"/"$@"
