@@ -7,7 +7,7 @@ from subprocess import PIPE, Popen, check_output
 def main():
     content = check_output(['xclip', '-o', '-selection', 'clipboard'])
     lcontent = content.lstrip()
-    print repr(content)
+
     if lcontent.startswith('D') and lcontent[1:].isdigit():
         write(
             '<a href="https://example.com/{}">{}</a>'
@@ -15,6 +15,7 @@ def main():
             'text/html',
         )
         return
+
     if lcontent.startswith('$'):
         # $x + y$
         with open('/tmp/tmp.tex', 'w') as f:
@@ -26,10 +27,19 @@ def main():
             data = f.read()
         write(data, 'image/png')
         return
+
     # Default: markdown
     p = Popen(['pandoc'], stdin=PIPE, stdout=PIPE)
-    # (Example of debugging problem:)
     html, stderr = p.communicate(content)
+    html = html.replace('<code', '<code style="'
+                        'background-color:#eee;'
+                        '"')
+    html = html.replace('<pre', '<pre style="'
+                        'background-color:#eee;'
+                        'padding:0.25em;'
+                        'overflow:auto;'
+                        '"')
+    #print html
     write(html, 'text/html')
 
 def write(content, content_type):
