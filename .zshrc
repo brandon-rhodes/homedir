@@ -112,14 +112,15 @@ else
     RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
 
     precmd() {
-        local color rev status_lines
+        local color rev root status_lines
         rehash
         __detect_cd_and_possibly_activate_environment
-        if ! rev="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+        root=$(git rev-parse --show-toplevel 2>/dev/null)
+        if [ -z "$root" ]
         then
             RPROMPT="$RPROMPT2"
         else
-            if [[ "$PWD" = $HOME/src/server* ]]
+            if [ -f "$root/.git/no-prompt" ]
             then
                 # Too expensive to run "status" each time.
                 color=blue
@@ -134,6 +135,7 @@ else
                 else color=yellow
                 fi
             fi
+            rev="$(git rev-parse --abbrev-ref HEAD)"
             RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT2"
         fi
     }
