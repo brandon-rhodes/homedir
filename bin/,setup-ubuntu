@@ -30,6 +30,7 @@ sudo apt-get install -y \
     cscope           `: for that rare trawl through C code ` \
     emacs24          `: editor-of-choice` \
     emacs24-el       `: readable LISP source` \
+    exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
     fonts-sil-gentium `: font for presentation slides` \
