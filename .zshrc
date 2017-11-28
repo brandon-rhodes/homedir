@@ -9,6 +9,7 @@ alias -g ,2='2>/dev/null'
 # Use my own zsh completion logic, where provided.
 
 fpath=(~/.zsh-completion $fpath)
+compdef s=ssh
 
 # Activate virtual environments automatically when $PWD changes.
 
