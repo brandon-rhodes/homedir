@@ -1,5 +1,10 @@
-.. single quote: ’
-   double quotes: x“”x
-   em-dash: —
-   vertical ellipsis: ⋮
-   arrows: ←, ↑, →, ↓, ↔, ↕, ↖, ↗, ↘, ↙
+single quote: ’
+double quotes: x“”x
+em-dash: —
+vertical ellipsis: ⋮
+arrows: ←, ↑, →, ↓, ↔, ↕, ↖, ↗, ↘, ↙
+box drawing:
+┌─┬─┐
+│ │ │
+├─┼─┤
+└─┴─┘
