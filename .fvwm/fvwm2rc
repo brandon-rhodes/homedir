@@ -278,9 +278,9 @@ AddToFunc   SkyfieldProject
 DestroyFunc TalksProject
 AddToFunc   TalksProject
 + I Exec browser
-+ I Exec PRERUN='cd ~/talks; git st' exec xterm -geometry 80x24+0+24
-+ I Exec PRERUN='cd ~/talks; ,simplehttpserver' exec xterm -geometry 80x8-0+24
-+ I Exec cd ~/talks && exec emacs -geometry -0+24 ~/talks
++ I Exec PRERUN='cd ~/src/talks; git st' exec xterm -geometry 80x24+0+24
++ I Exec PRERUN='cd ~/src/talks; ,simplehttpserver' exec xterm -geometry 80x8-0+24
++ I Exec cd ~/src/talks && exec emacs -geometry -0+24 .
 
 # Common FVWM functions used in several of the directives above.
 
