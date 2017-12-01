@@ -141,7 +141,7 @@ d () {
     fi
 }
 function g {
-    grep -PR --color=always "$@" | less -FR
+    grep -ER --color=always "$@" | less -FR
 }
 gi () {
     # Correct something like "gi tstatus" to "git status".
