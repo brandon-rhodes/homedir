@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # X Windows startup file.
 #
@@ -27,11 +28,11 @@ LOCK_TIMEOUT=5
 
 if [ -f $HOME/.xinitrc-local ]
 then
-    echo sourcing
+    echo Sourcing .xinitrc-local
     source $HOME/.xinitrc-local
 fi
 
-echo the lock timeout is $LOCK_TIMEOUT
+echo The lock timeout is $LOCK_TIMEOUT
 
 # Establish my default X Windows settings.
 
@@ -46,6 +47,10 @@ if xinput --list | grep -q "$DEVICE"
 then xinput disable "$DEVICE"
 fi
 
+# Clear the root window to a neutral color.
+
+xsetroot -solid '#839496'
+
 # Start services and applets.
 
 trayer --edge top --align right --width 6 &
@@ -56,7 +61,6 @@ nm-applet &
 xautolock -time $LOCK_TIMEOUT -locker slock -notify 60 \
           -notifier "xset dpms force off" &
 xfce4-volumed &
-~/bin/,root-window &
 [ -x ~/.emacs.d/pycl.sh ] && ~/.emacs.d/pycl.sh &
 
 if [ -d $HOME/.dropbox-dist/ ]
