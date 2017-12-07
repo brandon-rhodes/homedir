@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Recursive ls -ltr with global ordering by date.
+
+ls -ltR --time-style=long-iso "$@" |
+    grep . |
+    grep -v '^total' |
+    grep -v ':$' |
+    sed 's/  */ /g' |
+    sort -k6
