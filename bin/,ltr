@@ -2,7 +2,8 @@
 #
 # Recursive ls -ltr with global ordering by date.
 
-ls -ltR --time-style=long-iso "$@" |
+find "$@" -type f -print0 |
+    xargs -0 ls -l --time-style=long-iso |
     grep . |
     grep -v '^total' |
     grep -v ':$' |
