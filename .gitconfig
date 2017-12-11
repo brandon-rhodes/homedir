@@ -15,6 +15,7 @@ d = diff
 diff-words = diff --color-words
 diff-vs-master = !git diff -M "$@" $(git merge-base HEAD origin/master) -- .
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
+hard = reset --hard
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
 lp = -c pager.log='LESSHISTFILE=- less --pattern=^CommitDate:' log -p --pretty=fuller
@@ -24,16 +25,17 @@ merge-abort = merge --abort
 mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
 score = diff --shortstat
 score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
+soft = reset HEAD .
 squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
 undo = reset --soft HEAD~1
-undo-hard = reset --hard HEAD~1
 who = "!f () { \
     git log --date='format:%Y-%m' --format='%cd %ae' --since=1.year $@ \
         | sort | uniq -c | awk '{printf(\"%s %4s %s\\n\",$2,$1,$3)}' \
         | sort -n \
         | awk '{t=\"\";if($1!=m)m=t=$1;printf(\"%7s %4s %s\\n\",t,$2,$3)}' ; \
     }; f"
+w = diff --color-words=.
 
 [core]
 pager = less -FRX
