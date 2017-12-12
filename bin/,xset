@@ -5,6 +5,10 @@ xmodmap ~/.Xmodmap
 xset m 12/1 1
 xset r rate 240 40
 
+# Clear the root window to a neutral color.
+
+xsetroot -solid '#839496'
+
 # Specific settings for specific machines.
 
 if [ "$(hostname)" == "bernardus" -o "$(hostname)" == "old38" ]

@@ -47,10 +47,6 @@ if xinput --list | grep -q "$DEVICE"
 then xinput disable "$DEVICE"
 fi
 
-# Clear the root window to a neutral color.
-
-xsetroot -solid '#839496'
-
 # Start services and applets.
 
 trayer --edge top --align right --width 6 &
