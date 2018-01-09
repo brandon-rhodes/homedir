@@ -23,6 +23,19 @@ ls = log --stat --pretty=fuller
 patch = commit --patch -v
 merge-abort = merge --abort
 mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
+rm-branch = "!f(){ \
+  cd \"$(git rev-parse --show-toplevel)\"; \
+  cd .git/refs/heads; \
+  for b in \"$@\"; \
+  do if [ -d $b ]; then git branch --delete $b; fi; \
+  done; \
+  cd ../remotes; \
+  for d in *; \
+  do for b in \"$@\"; \
+     do if [ -f $d/$b ]; then git push --delete $d $b; fi; \
+     done; \
+  done; \
+  };f"
 score = diff --shortstat
 score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
 soft = reset HEAD .
