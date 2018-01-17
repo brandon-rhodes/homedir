@@ -60,6 +60,9 @@ diff = auto
 interactive = auto
 status = auto
 
+[diff]
+noprefix = true
+
 [filter "sshconfig_trailer"]
 clean = sed '/^. Everything below will be ignored by git.$/q'
 
