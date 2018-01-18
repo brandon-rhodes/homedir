@@ -27,7 +27,7 @@ rm-branch = "!f(){ \
   cd \"$(git rev-parse --show-toplevel)\"; \
   cd .git/refs/heads; \
   for b in \"$@\"; \
-  do if [ -f $b ]; then git branch --delete $b; fi; \
+  do if [ -f $b ]; then git branch -D $b; fi; \
   done; \
   cd ../remotes; \
   for d in *; \
