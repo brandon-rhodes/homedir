@@ -1,4 +1,5 @@
-personal_ws-1.1 en 113 
+personal_ws-1.1 en 119 
+Americano
 Bluffton
 Canonicalization
 Django
@@ -11,6 +12,7 @@ SEP
 SQLAlchemy
 Silmarillion
 Skyfield
+Twiddler
 Zealand
 accrete
 accuracies
@@ -57,6 +59,8 @@ hostnames
 instantiation
 interoperate
 iterable
+jitter
+jittering
 lifecycle
 login
 lookup
@@ -75,6 +79,7 @@ nameservers
 namespace
 namespaces
 nutation
+onboard
 patterns
 pluggability
 pluggable
@@ -91,6 +96,7 @@ refactorings
 reproducibility
 runtimes
 screenshot
+searchable
 sexagesimal
 stateful
 subclasses
