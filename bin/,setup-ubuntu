@@ -28,8 +28,8 @@ sudo apt-get install -y \
     chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
-    emacs24          `: editor-of-choice` \
-    emacs24-el       `: readable LISP source` \
+    emacs            `: editor-of-choice` \
+    emacs25-el       `: readable LISP source` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
@@ -44,7 +44,7 @@ sudo apt-get install -y \
     inotify-tools    `: for waiting on files to change` \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
-    mplayer2 geeqie  `: for media` \
+    mplayer geeqie   `: for media` \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
