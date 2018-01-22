@@ -39,3 +39,10 @@ then
     xdg-mime default chromium-browser.desktop x-scheme-handler/http
     xdg-mime default chromium-browser.desktop x-scheme-handler/https
 fi
+
+if ! [ -f .emacs.d/aspell-huge ]
+then
+    pushd .emacs.d
+    ./SETUP-spell.sh
+    popd
+fi
