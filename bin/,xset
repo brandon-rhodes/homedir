@@ -16,24 +16,27 @@ if [ "$DISPLAY" = ":0" ]
 then
     if [ "$(hostname)" = "bernardus" -o "$(hostname)" = "old38" ]
     then
-        xrandr --dpi 130
-        echo Xft.dpi: 130 | xrdb -merge
-    fi
+        DPI=130
 
-    if [ "$(hostname)" = "guinness" ]
+    elif [ "$(hostname)" = "guinness" ]
     then
-        xrandr --dpi 96
+        DPI=96
 
         # Turn off touchpad taps, since they are always accidental.
 
         xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
 	       "Synaptics Tap Action" 0 0 0 0 0 0 0
-    fi
-    if [ "$(hostname)" = "odell" ]
+
+    elif [ "$(hostname)" = "odell" ]
     then
-        xrandr --dpi 160
-        echo Xft.dpi: 160 | xrdb -merge
+        DPI=160
+
+    else
+        DPI=96
     fi
+    xrandr --dpi $DPI
+    echo Xft.dpi: $DPI | xrdb -merge
+
     if xinput | grep -q 'TPPS/2 IBM TrackPoint'
     then
         # Ubuntu 16
