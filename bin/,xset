@@ -9,36 +9,38 @@ xset r rate 240 40
 
 xsetroot -solid '#839496'
 
-# Specific settings for specific machines.
+# Specific settings for specific machines.  Note that we skip device
+# setup if the X display is remote.
 
-if [ "$(hostname)" == "bernardus" -o "$(hostname)" == "old38" ]
+if [ "$DISPLAY" = ":0" ]
 then
-    xrandr --dpi 130
-    echo Xft.dpi: 130 | xrdb -merge
-fi
+    if [ "$(hostname)" = "bernardus" -o "$(hostname)" = "old38" ]
+    then
+        xrandr --dpi 130
+        echo Xft.dpi: 130 | xrdb -merge
+    fi
 
-if [ "$(hostname)" == "guinness" ]
-then
-    xrandr --dpi 96
+    if [ "$(hostname)" = "guinness" ]
+    then
+        xrandr --dpi 96
 
-    # Turn off touchpad taps, since they are always accidental.
+        # Turn off touchpad taps, since they are always accidental.
 
-    xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
-	"Synaptics Tap Action" 0 0 0 0 0 0 0
-fi
-
-if xinput | grep -q 'TPPS/2 IBM TrackPoint'
-then
-    # Ubuntu 16
-    xinput set-prop 'TPPS/2 IBM TrackPoint' \
-           'Evdev Wheel Emulation Axes' 7 6 5 4
-    # Ubuntu 17.04
-    xinput set-prop 'TPPS/2 IBM TrackPoint' \
-           "libinput Natural Scrolling Enabled" 1
-fi
-
-if [ "$(hostname)" == "odell" ]
-then
-    xrandr --dpi 160
-    echo Xft.dpi: 160 | xrdb -merge
+        xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
+	       "Synaptics Tap Action" 0 0 0 0 0 0 0
+    fi
+    if [ "$(hostname)" = "odell" ]
+    then
+        xrandr --dpi 160
+        echo Xft.dpi: 160 | xrdb -merge
+    fi
+    if xinput | grep -q 'TPPS/2 IBM TrackPoint'
+    then
+        # Ubuntu 16
+        xinput set-prop 'TPPS/2 IBM TrackPoint' \
+               'Evdev Wheel Emulation Axes' 7 6 5 4
+        # Ubuntu 17.04
+        xinput set-prop 'TPPS/2 IBM TrackPoint' \
+               "libinput Natural Scrolling Enabled" 1
+    fi
 fi
