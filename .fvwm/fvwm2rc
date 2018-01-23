@@ -185,7 +185,7 @@ AddToMenu BrowserBookmarks "Bookmarks" Title
 + "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
 + "&m. Maps"     Exec exec browser "http://maps.google.com/"
 + "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
-+ "&r. Reader"   Exec exec browser "http://www.feedly.com/home"
++ "&r. Reader"   Exec exec browser "https://feedly.com/i/index"
 + "&w. Weather"  Exec exec browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
 + ""                Nop
 + "   Mercedes EPC"  Exec exec browser "https://epc.startekinfo.com/epc/"
