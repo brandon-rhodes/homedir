@@ -19,6 +19,7 @@ fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 hard = reset --hard
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
+ll = log --graph --date=short --pretty='%Cgreen%h %Cblue%cd%Creset %s'
 lp = -c pager.log='LESSHISTFILE=- less --pattern=^CommitDate:' log -p --pretty=fuller
 ls = log --stat --pretty=fuller
 patch = commit --patch -v
