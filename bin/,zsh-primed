@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Run the Z shell and have it launch a command such that the user is
+# dropped to the Z shell's prompt if they Ctrl-C the command (or if it
+# exits normally), and such that the command is the most recent item in
+# the shell's history.
+
+COMMAND="$*" \
+ZDOTDIR="$HOME/usr/lib/scripts/zsh-primed-dotfiles" \
+exec zsh

@@ -215,11 +215,3 @@ if [ -n "$BASH" -a -f /etc/bash_completion ]
 then
     source /etc/bash_completion
 fi
-
-# Run any commands specified in the environment variable PRERUN, so that
-# FVWM can open xterms that run a command before giving me control.
-
-if [ -n "$PRERUN" ]; then
-    eval "$PRERUN"
-    unset PRERUN
-fi

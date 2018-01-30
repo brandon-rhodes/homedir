@@ -1,0 +1,22 @@
+#!/bin/bash
+# "Project" launcher script.
+
+set -e
+
+# Launch the tools I need to work with the project in the current
+# directory, by introspecting the project.  (This used to be an FVWM
+# menu for which I had to write a tedious separate entry for each
+# individual project by hand.)
+
+emacs -geometry +900+0 . &
+
+for f in $(grep -l ALLSPHINXOPTS $(find -name Makefile))
+do
+    pushd $(dirname "$f") >/dev/null
+    xterm -geometry +24+480 \
+          -e "$HOME"/bin/,zsh-primed ,watch make -- '**/*.rst' &
+    popd >/dev/null
+done
+
+# TODO: tests
+# TODO: Sphinx doctests
