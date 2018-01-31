@@ -8,13 +8,15 @@ set -e
 # menu for which I had to write a tedious separate entry for each
 # individual project by hand.)
 
-emacs -geometry +900+0 . &
+emacs -geometry +960+0 . &
 
 for f in $(grep -l ALLSPHINXOPTS $(find -name Makefile))
 do
     pushd $(dirname "$f") >/dev/null
     xterm -geometry +24+480 \
-          -e "$HOME"/bin/,zsh-primed ,watch make -- '**/*.rst' &
+          -e "$HOME"/bin/,zsh-primed ,watch make -- '**/*.rst' '_templates/*' &
+    xterm -geometry 80x8-0-0 \
+          -e "$HOME"/bin/,zsh-primed ,simplehttpserver &
     popd >/dev/null
 done
 
