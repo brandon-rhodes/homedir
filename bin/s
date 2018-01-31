@@ -39,6 +39,7 @@ HISTCONTROL=erasedups
 unset histchars
 unset TMOUT
 unset -f command_not_found_handle
+echo set revert-all-at-newline on | bind -f /dev/stdin
 
 # Editor.
 
