@@ -16,6 +16,7 @@ d = diff
 diff-words = diff --color-words
 diff-vs-master = !git diff -M "$@" $(git merge-base HEAD origin/master) -- .
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
+ff = merge --ff-only
 hard = reset --hard
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
