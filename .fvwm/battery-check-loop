@@ -8,9 +8,10 @@ do
     for bat in BAT*
     do
         source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
-        if [ "$POWER_SUPPLY_STATUS" != "Charging" ]
+        if [ "$POWER_SUPPLY_STATUS" != "Charging" -a \
+             "$POWER_SUPPLY_STATUS" != "Full" ]
         then
-            if [[ "$POWER_SUPPLY_CAPACITY" < 90 ]]
+            if [[ "$POWER_SUPPLY_CAPACITY" < 10 ]]
             then
                 content="$content
 $bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
