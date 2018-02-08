@@ -50,6 +50,7 @@ fi
 # Start services and applets.
 
 trayer --edge top --align right --width 6 &
+~/.fvwm/battery-check-loop &
 autocutsel &
 # blueman-applet &
 # indicator-cpufreq &
