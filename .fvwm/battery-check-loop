@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd /sys/class/power_supply
+
+while true
+do
+    content="Battery Low:"
+    for bat in BAT*
+    do
+        source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
+        if [ "$POWER_SUPPLY_STATUS" != "Chargingm" ]
+        then
+            if [[ "$POWER_SUPPLY_CAPACITY" < 90 ]]
+            then
+                content="$content
+$bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
+            fi
+        fi
+    done
+    if [ -n "$content" ]
+    then
+        notify-send "$content"
+    fi
+    sleep 60
+done
