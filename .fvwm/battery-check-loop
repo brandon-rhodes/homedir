@@ -8,7 +8,7 @@ do
     for bat in BAT*
     do
         source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
-        if [ "$POWER_SUPPLY_STATUS" != "Chargingm" ]
+        if [ "$POWER_SUPPLY_STATUS" != "Charging" ]
         then
             if [[ "$POWER_SUPPLY_CAPACITY" < 90 ]]
             then
@@ -17,7 +17,7 @@ $bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
             fi
         fi
     done
-    if [ -n "$content" ]
+    if [ "$content" != "Battery Low:" ]
     then
         notify-send "$content"
     fi
