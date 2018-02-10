@@ -11,7 +11,7 @@ do
         if [ "$POWER_SUPPLY_STATUS" != "Charging" -a \
              "$POWER_SUPPLY_STATUS" != "Full" ]
         then
-            if [[ "$POWER_SUPPLY_CAPACITY" < 10 ]]
+            if [ "$POWER_SUPPLY_CAPACITY" -lt 10 ]
             then
                 content="$content
 $bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
