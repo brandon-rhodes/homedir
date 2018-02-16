@@ -1,4 +1,0 @@
-# Load a config file whose file name I can actually see.  Why on earth
-# does FVWM dot-hide its config file when it's already under ~/.fvwm?
-
-Read fvwm2rc
