@@ -224,7 +224,7 @@ DestroyMenu MenuFvwmWindowManagerOps
 AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.Window Manager]" Title
 + "$[gt.&L Lock screen]"  Exec exec slock
-+ "$[gt.&R Reload fvwm2rc]"  Read fvwm2rc
++ "$[gt.&R Reload fvwm2rc]"  Read config
 + "$[gt.  Restart fvwm]"  Restart
 + "$[gt.  Quit fvwm]"    Quit
 + "" Nop
