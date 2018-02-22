@@ -2,6 +2,13 @@
 #
 # Live-tail my web logs.
 
-ssh wf-rhodesmill bash <<EOF
-exec tail -f logs/frontend/access_rhodesmill.log | grep --line-buffered "$@"
+if [ -z "$1" ]
+then
+    echo 'usage: ,tail rhodesmill|python-patterns' >&2
+    exit 2
+fi
+
+exec ssh wf-rhodesmill bash <<EOF
+exec tail -n100 -f logs/frontend/access_$1.log |
+     egrep --line-buffered 'html HTTP|/ HTTP'
 EOF
