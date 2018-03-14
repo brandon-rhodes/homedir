@@ -123,6 +123,7 @@ alias lla="/bin/ls -alv"
 alias ltr="/bin/ls -ltr"
 alias ltra="/bin/ls -ltra"
 alias m="less"
+alias o="open"
 alias vs="git diff-vs-master"
 
 clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
