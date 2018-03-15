@@ -78,6 +78,7 @@ sudo apt-get install -y \
     xautolock        `: to lock my screen` \
     xbacklight       `: so FVWM key bindings can adjust screen brightness` \
     xclip            `: let shell scripts get and set the paste buffer` \
+    xdotool          `: for generating keyboard and mouse actions` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
     \
