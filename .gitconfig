@@ -42,7 +42,8 @@ rm-branch = "!f(){ \
   cd ../remotes; \
   for d in *; \
   do for b in \"$@\"; \
-     do if [ -f $d/$b ]; then git push --delete $d $b; fi; \
+     do if [ -f $d/$b ]; then git push --delete $d $b || \
+       echo "Removing orphan $d/$b" && rm $d/$b; fi; \
      done; \
   done; \
   };f"
