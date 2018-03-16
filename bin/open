@@ -1,4 +1,11 @@
 #!/bin/bash
-# "open"
+# "open" one or more files or URLs
 
-chromium-browser file://"$PWD"/"$@"
+for target in "$@"
+do
+    if ! echo "$target" | egrep -q '^[A-Za-z]+://'
+    then
+        target="file://$(realpath "$target")"
+    fi
+    chromium-browser "$target"
+done
