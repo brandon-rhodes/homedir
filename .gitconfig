@@ -27,23 +27,14 @@ patch = commit --patch -v
 merge-abort = merge --abort
 mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
 rm-branch = "!f(){ \
-  set -e; \
-  cd \"$(git rev-parse --show-toplevel)\"; \
   for b in \"$@\"; \
-  do if [ $(git rev-parse --abbrev-ref HEAD) = \"$b\" ]; \
-     then echo Leaving $(git rev-parse HEAD); \
-          git checkout master; \
-     fi; \
-  done; \
-  cd .git/refs/heads; \
-  for b in \"$@\"; \
-  do if [ -f $b ]; then git branch -D $b; fi; \
-  done; \
-  cd ../remotes; \
-  for d in *; \
-  do for b in \"$@\"; \
-     do if [ -f $d/$b ]; then git push --delete $d $b || \
-       echo "Removing orphan $d/$b" && rm $d/$b; fi; \
+  do for r in $(git show-ref $b | awk '{print $2}'); \
+     do echo $r; \
+        if echo $r | grep -q '^refs/remotes/'; \
+        then echo $r | awk -F/ '{print $3,$4}' \
+                     | xargs -n2 git push --delete ; \
+        fi; \
+        git update-ref -d $r; \
      done; \
   done; \
   };f"
