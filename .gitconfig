@@ -76,6 +76,9 @@ status = auto
 [diff]
 noprefix = true
 
+[fetch]
+prune = true
+
 [filter "sshconfig_trailer"]
 clean = sed '/^. Everything below will be ignored by git.$/q'
 
