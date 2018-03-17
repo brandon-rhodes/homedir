@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+cd /media/brhodes/6130-3434/DCIM
+find -type f -printf '%P\n' |
+    awk '{print"cp -nv "$1" ~/dropbox/personal/Photos/"gensub("/","-",1)}' |
+    bash
