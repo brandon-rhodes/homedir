@@ -31,6 +31,8 @@ def main():
     # Default: markdown
     p = Popen(['pandoc'], stdin=PIPE, stdout=PIPE)
     html, stderr = p.communicate(content)
+    if html.startswith('<p>'):
+        html = '<p style="margin-top: 0">' + html[3:]
     html = html.replace('<code', '<code style="'
                         'background-color:#eee;'
                         '"')
