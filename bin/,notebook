@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec $HOME/usr/ipynb/bin/jupyter-notebook \
-     --NotebookApp.password='' \
-     --no-browser \
-     -y
+url=$(grep 'The Jupyter Notebook is running at' ~/.xinitrc.log |
+          tail -1 |
+          awk '{print $NF}')
+exec open $url
