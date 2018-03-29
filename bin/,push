@@ -27,6 +27,11 @@ do
     echo
     OPTS=
 
+    # Exit if the user provided an argument.
+    if [ -n "$1" ]
+    then exit
+    fi
+
     # Give me the chance to bail out.
     echo -n 'Push these changes? [yes/no/retry/wdiff]'
     read answer
