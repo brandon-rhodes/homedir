@@ -1,7 +1,14 @@
 #!/bin/bash
 
-# I can never remember this command, and always think that some
-# combination of "nmap" options is what gave me a convenient list of
-# subnet machine names last time.  So:
+if [ -z "$1" ]
+then
+    # I can never remember this command, and always think that some
+    # combination of "nmap" options is what gave me a convenient list of
+    # subnet machine names last time.  So:
 
-exec avahi-browse -at --resolve
+    exec avahi-browse -at --resolve
+else
+    # But sometimes I just need nmap.
+
+    exec sudo nmap -sn "$1"
+fi
