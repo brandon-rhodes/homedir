@@ -231,6 +231,10 @@ AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.&H Hibernate]" Exec slock & sudo /usr/sbin/pm-hibernate
 + "$[gt.&S Suspend]"   Exec slock & sudo /usr/sbin/pm-suspend
 
+DestroyMenu Pastes
+AddToMenu Pastes "Pastes" Title
++ DynamicPopUpAction PipeRead .fvwm/paste-menu.sh
+
 # Common FVWM functions used in several of the directives above.
 
 DestroyFunc FuncTitleOn
