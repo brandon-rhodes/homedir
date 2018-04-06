@@ -8,7 +8,7 @@ def main():
     content = check_output(['xclip', '-o', '-selection', 'clipboard'])
     lcontent = content.lstrip()
 
-    if lcontent.startswith('D') and lcontent[1:].isdigit():
+    if lcontent.startswith(('D', 'T')) and lcontent[1:].isdigit():
         write(
             '<a href="https://example.com/{}">{}</a>'
             .format(lcontent, lcontent),
