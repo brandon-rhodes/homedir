@@ -33,7 +33,7 @@ do
     fi
 
     # Give me the chance to bail out.
-    echo -n 'Push these changes? [yes/no/retry/wdiff]'
+    echo -n 'Push these changes? [quit/yes/no/retry/wdiff]'
     read answer
     if echo "$answer" | grep -iq '^y'
     then
