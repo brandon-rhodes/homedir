@@ -1,4 +1,4 @@
-personal_ws-1.1 en 120 
+personal_ws-1.1 en 128 
 Americano
 Bluffton
 Canonicalization
@@ -8,11 +8,14 @@ Lawrenceville
 Muzetto
 Nuitka
 Polymorphism
+PyCon
 SEP
 SQLAlchemy
 Silmarillion
 Skyfield
+Tiangong
 Twiddler
+Wilshire
 Zealand
 accrete
 accuracies
@@ -27,9 +30,12 @@ async
 attaches
 backcountry
 backend
+backtest
+backtesting
 barycenter
 barycentric
 blog
+builtins
 bytearray
 bytecode
 cacheable
@@ -60,6 +66,8 @@ hostnames
 instantiation
 interoperate
 iterable
+iterable's
+iterables
 jitter
 jittering
 lifecycle
