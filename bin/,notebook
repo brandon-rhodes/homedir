@@ -3,4 +3,9 @@
 url=$(grep 'The Jupyter Notebook is running at' ~/.xinitrc.log |
           tail -1 |
           awk '{print $NF}')
-exec open $url
+if [ -n "$1" ]
+then
+    echo $url
+else
+    exec open $url
+fi
