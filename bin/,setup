@@ -118,7 +118,7 @@ case "$1" in
 "notebook" )
     cd
     .anaconda/bin/conda create -y -p ~/usr/ipynb \
-                        python=2.7 jupyter pandas seaborn
+                        python=3.6 jupyter pandas seaborn
     ;;
 
 "xephem" )
