@@ -1,8 +1,6 @@
 #!/bin/bash
 
-url=$(grep 'The Jupyter Notebook is running at' ~/.xinitrc.log |
-          tail -1 |
-          awk '{print $NF}')
+url=$(grep 'localhost:888' ~/.xinitrc.log | tail -1 | awk '{print $NF}')
 if [ -n "$1" ]
 then
     echo $url
