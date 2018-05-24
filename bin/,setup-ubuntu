@@ -42,6 +42,7 @@ sudo apt-get install -y \
     indicator-cpufreq `: for pegging the CPU speed when I need to` \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
+    intel-microcode  `: processor bugfixes, if applicable` \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
     mplayer geeqie   `: for media` \
