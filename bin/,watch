@@ -17,16 +17,19 @@ def main():
         sys.exit(2)
 
     cmd = args[:i]
-    paths = args[i:]
+    paths = args[i+1:]
 
     while True:
         subprocess.call(cmd)
         if not all(os.path.exists(p) for p in paths):
             print '  Waiting for files to return'
             time.sleep(1.0)
+        print('-' * 20)
         subprocess.check_call(['inotifywait',
                                '-e', 'CLOSE_WRITE',
                                '-e', 'DELETE_SELF',
+                               '--quiet',
+                               '--quiet',
                                ] + paths)
 
 if __name__ == '__main__':
