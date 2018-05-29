@@ -49,7 +49,7 @@ __detect_cd_and_possibly_activate_environment () {
     if [ -n "$ENV_SLUG" ]
     then tail="($ENV_SLUG)$tail"
     fi
-    RPROMPT2="%{$fg_bold[white]$bg[cyan]%} $tail %{$reset_color%}"
+    base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} $tail %{$reset_color%}"
 }
 ,conda-env () {
     local slug
@@ -101,26 +101,46 @@ else
     zle_highlight=(default:fg=0,bg=7,bold)
 
     if [ -z "$SSH_TTY" ]
-    then PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
+    then
+        base_PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
     else
         PS1="${HOST:-${HOSTNAME}}"
 
         # Keep only the first component of a fully-qualified hostname.
         PS1="${PS1%%.*}"
 
-        PROMPT="%{$fg_bold[black]$bold%}$PS1\$%{$reset_color%} "
+        base_PROMPT="%{$fg_bold[black]$bold%}$PS1\$%{$reset_color%} "
     fi
-    RPROMPT2="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
+    base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
+
+    start_time=$SECONDS
+
+    preexec() {
+        start_time=$SECONDS
+    }
 
     precmd() {
-        local color rev root status_lines
+        local color elapsed rev root status_lines
         rehash
         __detect_cd_and_possibly_activate_environment
         root=$(git rev-parse --show-toplevel 2>/dev/null)
-        if [ -z "$root" ]
+
+        PROMPT="$base_PROMPT"
+
+        if [ -n "$start_time" ]
         then
-            RPROMPT="$RPROMPT2"
-        else
+            elapsed=$(($SECONDS - $start_time))
+            unset start_time
+            if [ $(( $elapsed >= 5 )) = "1" ]
+            then
+                elapsed=$(printf "%d:%02d\n" $(($elapsed / 60)) $(($elapsed % 60)))
+                PROMPT="$elapsed $PROMPT"
+            fi
+        fi
+
+        RPROMPT="$base_RPROMPT"
+        if [ -n "$root" ]
+        then
             if [ -f "$root/.git/no-prompt" ]
             then
                 # Too expensive to run "status" each time.
@@ -137,7 +157,7 @@ else
                 fi
             fi
             rev="$(git rev-parse --abbrev-ref HEAD)"
-            RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT2"
+            RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT"
         fi
     }
 fi
