@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+w=$(xwininfo | grep 'Window id' | awk '{print $4}')
+
+recordmydesktop \
+--no-wm-check \
+--device plughw:0,0 \
+--freq 22050 --channels 2 \
+--delay 1s \
+--windowid $w
+
+f=$(ls -tr *.ogv | tail -1)
+

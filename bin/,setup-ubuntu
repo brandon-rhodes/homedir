@@ -60,6 +60,7 @@ sudo apt-get install -y \
     libssl-dev       `: for compiling things that need cryptography` \
     nautilus         `: for mounting and unmounting flash drives` \
     nmap             `: for finding the IP address of printers on the LAN` \
+    recordmydesktop  `: for screencasts` \
     s3cmd            `: the cloud` \
     suckless-tools   `: simple tools to go with my simple window manager` \
     stellarium       `: to quickly answer what-is-that-over-there questions` \
