@@ -3,6 +3,14 @@
 set -e
 cd
 
+# Support simple copy of essential setup to other machines.
+
+if [ -n "$1" ]
+then
+    scp .gitconfig .gitlocal "$1":
+    exit
+fi
+
 # Update my home directory setup to make sure I have the most recent
 # versions of everything.
 
