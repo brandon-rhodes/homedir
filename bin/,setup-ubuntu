@@ -28,6 +28,7 @@ sudo apt-get install -y \
     chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
+    dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs            `: editor-of-choice` \
     emacs25-el       `: readable LISP source` \
     exuberant-ctags  `: ancient source scanning tool` \
