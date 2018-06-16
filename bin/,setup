@@ -41,6 +41,8 @@ case "$1" in
     then exit 1
     fi
     bash $mini -b -p .anaconda
+    source .anaconda/bin/activate
+    conda upgrade --all -y
     ;;
 
 "browser" )
