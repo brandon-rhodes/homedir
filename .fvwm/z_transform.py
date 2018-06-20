@@ -35,11 +35,11 @@ def main():
         html = '<p style="margin-top: 0">' + html[3:]
     html = html.replace('<code', '<code style="'
                         'background-color:#eee;'
+                        'white-space:pre-wrap;'
                         '"')
     html = html.replace('<pre', '<pre style="'
                         'background-color:#eee;'
                         'padding:0.25em;'
-                        'overflow:auto;'
                         '"')
     #print html
     write(html, 'text/html')
