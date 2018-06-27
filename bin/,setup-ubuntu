@@ -20,6 +20,7 @@ sudo dpkg-reconfigure --frontend=noninteractive locales
 # Install happy packages.
 
 sudo apt-get install -y \
+    adb android-sdk-platform-tools-common `: for backing up an Android phone` \
     apache2-utils    `: provides 12 commands, especially "ab"` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
