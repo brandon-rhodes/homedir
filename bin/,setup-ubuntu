@@ -211,7 +211,10 @@ domain $domain"
 fi
 EOF
 
-# Arrange for a TrackPad to be set to maximum sensitivity.
+# Arrange for a TrackPad to be set to maximum sensitivity.  To check:
+#
+# cat /sys/devices/platform/i8042/serio1/serio2/sensitivity
+# cat /sys/devices/platform/i8042/serio1/serio2/speed
 
 sudo bash -c 'cat > /etc/udev/rules.d/trackpoint.rules' <<'EOF'
 SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="255", ATTR{speed}="255"
