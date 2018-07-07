@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -ex
+
+rm -f ~/Downloads/transactions.csv
+
+Xephyr :8 -screen 1024x768 -no-host-grab &
+DISPLAY=:8
+
+chromium-browser --user-data-dir=$HOME/.config/mint-chromium &
+
+sleep 1
+xdotool key ctrl+t
+sleep 1
+xdotool type mint.com
+xdotool key Return
+sleep 5
+xdotool key ctrl+f type "log in"
+xdotool key ctrl+Return
+sleep 7
+xdotool key Return
+sleep 12
+xdotool key ctrl+f type "transactions"
+xdotool key ctrl+Return
+sleep 1
+xdotool key ctrl+f type "export all"
+xdotool key ctrl+Return
+sleep 2
+xdotool key shift+ctrl+q
+sleep 2
+kill %1
+
+cd  ~/accounting
+mv ~/Downloads/transactions.csv .
+git d transactions.csv
+read -p "Commit?" yn
+if [ "$yn" = "y" ]
+then git add transactions.csv
+     git commit -C 'Downloaded new transactions.csv'
+fi
