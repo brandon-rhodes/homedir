@@ -1,6 +1,7 @@
 #!/bin/bash
 
-url=$(grep 'localhost:888' ~/.xinitrc.log | tail -1 | awk '{print $NF}')
+url=$(grep 'localhost:88' ~/.xinitrc.log | tail -1 | awk '{print $NF}')
+echo "Notebook URL: $url"
 if [ -n "$1" ]
 then
     echo $url
