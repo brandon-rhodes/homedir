@@ -40,6 +40,7 @@ def main():
     html = html.replace('<pre', '<pre style="'
                         'background-color:#eee;'
                         'padding:0.25em;'
+                        'font-size:smaller;'
                         '"')
     #print html
     write(html, 'text/html')
