@@ -8,3 +8,5 @@ import seaborn as sns
 sns.set()
 pd.options.display.max_colwidth = 128
 pylab.rcParams['figure.figsize'] = 12, 5
+# with mpl.rc_context({"figure.figsize": (5, 5)}):
+# with mpl.rc_context({"lines.linewidth": 2, "lines.color": "r"}):
