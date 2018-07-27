@@ -10,7 +10,7 @@ set -e
 
 emacs -geometry +960+0 . &
 
-for f in $(grep -l ALLSPHINXOPTS $(find -name Makefile))
+for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
 do
     pushd $(dirname "$f") >/dev/null
     xterm -geometry +24+480 \
