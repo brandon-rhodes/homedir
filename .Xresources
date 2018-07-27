@@ -24,6 +24,7 @@ Xft.hintstyle:  hintslight
 
 XTerm*backarrowKeyIsErase: true
 XTerm*bellIsUrgent: true
+XTerm*charClass: 45-47:48,58:48,63:48
 XTerm*internalBorder:  2
 XTerm*highlightSelection: true
 XTerm*metaSendsEscape: true
