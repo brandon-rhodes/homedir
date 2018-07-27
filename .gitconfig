@@ -28,7 +28,7 @@ ls = log --stat --pretty=fuller
 patch = commit --patch -v
 merge-abort = merge --abort
 mine = !git log --stat --pretty=fuller --author="$(git config user.email)"
-rm-branch = "!f(){ \
+rmb = "!f(){ \
   for b in \"$@\"; \
   do for r in $(git show-ref $b | awk '{print $2}'); \
      do echo $r; \
