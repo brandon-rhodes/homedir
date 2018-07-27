@@ -17,7 +17,7 @@ xdotool key Return
 sleep 5
 xdotool key ctrl+f type "log in"
 xdotool key ctrl+Return
-sleep 70
+sleep 10
 xdotool key Return
 sleep 12
 xdotool key ctrl+f type "transactions"
@@ -27,7 +27,7 @@ xdotool key ctrl+f type "export all"
 xdotool key ctrl+Return
 sleep 7
 xdotool key shift+ctrl+q
-sleep 7
+sleep 2
 kill %1
 
 cd  ~/accounting
@@ -37,4 +37,5 @@ read -p "Commit?" yn
 if [ "$yn" = "y" ]
 then git add transactions.csv
      git commit -m 'Downloaded new transactions.csv'
+     git push
 fi
