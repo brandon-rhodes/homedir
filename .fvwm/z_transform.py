@@ -2,6 +2,7 @@
 # Various useful transforms on the clipboard contents.
 #
 
+import os
 from subprocess import PIPE, Popen, check_output
 
 def main():
@@ -9,9 +10,11 @@ def main():
     lcontent = content.lstrip()
 
     if lcontent.startswith(('D', 'T')) and lcontent[1:].isdigit():
+        with open(os.path.expanduser('~/.phab.hostname')) as f:
+            hostname = f.read().strip()
         write(
-            '<a href="https://example.com/{}">{}</a>'
-            .format(lcontent, lcontent),
+            '<a href="https://{}/{}">{}</a>'
+            .format(hostname, lcontent, lcontent),
             'text/html',
         )
         return
