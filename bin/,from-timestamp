@@ -1,0 +1,3 @@
+#!/bin/bash
+
+date +'%Y-%b-%d %H:%M:%S' -d @"$1"
