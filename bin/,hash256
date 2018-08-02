@@ -1,0 +1,3 @@
+#!/bin/bash
+
+openssl dgst -binary -sha256 | openssl base64
