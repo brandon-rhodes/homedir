@@ -38,6 +38,7 @@ sudo apt-get install -y \
     fonts-sil-gentium `: font for presentation slides` \
     git              `: distributed version control` \
     gnumeric         `: spreadsheet` \
+    golang-go        `: for editor tools like gofmt and go language server` \
     groff            `: for processing old documents` \
     html2text        `: when data is available in no better format` \
     htop             `: much better "top" command` \
