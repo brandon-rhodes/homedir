@@ -8,6 +8,7 @@ abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git c
 abort = merge --abort
 amend = commit --amend
 atag = !bash -c 'git tag -a \"$@\" && git push --follow-tags' --
+base = merge-base HEAD origin/master
 br = "!if [ -n \"$1\" ] ;then git branch \"$@\" ;else git for-each-ref --sort=committerdate refs/heads/ --format=\"%(HEAD) %(color:yellow)%(objectname:short)%(color:reset) %(refname:short) (%(color:green)%(committerdate:relative)%(color:reset))\" ;fi ;:"
 ci = commit -v
 co = checkout
