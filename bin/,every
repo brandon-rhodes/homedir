@@ -1,0 +1,21 @@
+#!/usr/bin/python2
+
+import argparse
+import subprocess
+import sys
+import time
+
+def main(argv):
+    if len(argv) < 2 or not argv[0].isdigit():
+        print >>sys.stderr, 'usage: ,every <seconds> <command>...'
+        sys.exit(2)
+    interval = int(argv[0])
+    banner = '-' * 20
+    while True:
+        until = (-time.time()) % interval
+        print '{} sleeping {:.2f} seconds {}'.format(banner, until, banner)
+        time.sleep(until)
+        subprocess.call(argv[1:])
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
