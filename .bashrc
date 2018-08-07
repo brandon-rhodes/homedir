@@ -143,6 +143,12 @@ gi () {
     shift
     gi${arg1:0:1} ${arg1:1} "$@"
 }
+,q () {
+    if [ -z "$1" ]
+    then git commit -m 'quick commit' .
+    else git commit -m 'quick commit' "$@"
+    fi
+}
 wd () {
     diff -u "$@" | wdiff -d -n -w $'\033[1;31;47m' -x $'\033[0m' \
                                -y $'\033[1;32;47m' -z $'\033[0m'
