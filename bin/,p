@@ -14,7 +14,8 @@ for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
 do
     pushd $(dirname "$f") >/dev/null
     xterm -geometry +24+480 \
-          -e "$HOME"/bin/,zsh-primed ,watch make -- '**/*.rst' '_templates/*' &
+          -e "$HOME"/bin/,zsh-primed ,watch make \
+          -- Makefile '**/*.rst' '_templates/*' &
     xterm -geometry 80x8-0-0 \
           -e "$HOME"/bin/,zsh-primed ,simplehttpserver &
     popd >/dev/null

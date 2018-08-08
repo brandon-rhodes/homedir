@@ -9,8 +9,11 @@ set -e
 
 cd ~/rhodesmill.org
 
+git stash -u
 git checkout master
 git pull
+git stash pop
+git add -A .
 
 # Bail out if there are no changes staged
 if git diff-index --quiet HEAD --
@@ -19,7 +22,6 @@ then
     exit
 fi
 
-git add -A .
 OPTS=
 
 while true
