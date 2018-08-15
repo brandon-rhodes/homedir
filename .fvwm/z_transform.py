@@ -2,16 +2,16 @@
 # Various useful transforms on the clipboard contents.
 #
 
-import os
 from subprocess import PIPE, Popen, check_output
 
 def main():
     content = check_output(['xclip', '-o', '-selection', 'clipboard'])
     lcontent = content.lstrip()
 
+    if lcontent.startswith('https://phabricator.dropboxer.net/'):
+        lcontent = lcontent[34:].rstrip()
     if lcontent.startswith(('D', 'T')) and lcontent[1:].isdigit():
-        with open(os.path.expanduser('~/.phab.hostname')) as f:
-            hostname = f.read().strip()
+        hostname = 'phabricator.dropboxer.net'
         write(
             '<a href="https://{}/{}">{}</a>'
             .format(hostname, lcontent, lcontent),
