@@ -69,6 +69,12 @@ function _complete_ssh
 }
 complete -F _complete_ssh s ssh
 
+# Local my local commands if I defined any where.
+
+if [ -f .localrc ]
+then source .localrc
+fi
+
 # Allow jumping to further hosts, using my normal "s" alias for SSH,
 # carrying this configuration with us.
 
