@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+NAME="Yubico Yubikey NEO OTP+U2F"
+STATE=$(xinput list-props "$NAME" |
+        awk '/Device Enabled/ {print$NF}')
+
+if [ -z "$STATE" ]
+then
+    echo No Yubikey found
+    exit 1
+fi
+
+xinput enable "$NAME"
+notify-send 'Yubikey Enabled' 'For 3 seconds'
+sleep 3
+xinput disable "$NAME"
+notify-send 'Yubikey Disabled'
