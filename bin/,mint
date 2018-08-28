@@ -31,7 +31,7 @@ sleep 2
 kill %1
 
 cd  ~/accounting
-mv ~/Downloads/transactions.csv .
+grep -ivP '(\bpreauth|"auth)\b' ~/Downloads/transactions.csv > transactions.csv
 git d transactions.csv
 read -p "Commit?" yn
 if [ "$yn" = "y" ]
