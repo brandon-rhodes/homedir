@@ -111,7 +111,7 @@ Key i A 4  Direction North Flipfocus
 Key j A 4  Direction West Flipfocus
 Key k A 4  Direction South Flipfocus
 Key l A 4  Direction East Flipfocus
-Key semicolon A 4  Lower
+Key . A 4  Lower
 Key m A 4  Exec exec bash $HOME/.fvwm/open-in-google-maps.sh
 Key n A 4  Exec exec ,browser
 Key p A 4  Menu Projects Nop
