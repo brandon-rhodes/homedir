@@ -49,8 +49,8 @@ then umask 027
 else umask 077
 fi
 
-# Load any site-specific commands that I have defined.
+# Load any site-specific environment variables I have defined.
 
-if [ -f "$HOME/.localrc" ]
-then source "$HOME/.localrc"
+if [ -f "$HOME/.localenv" ]
+then source "$HOME/.localenv"
 fi

@@ -215,3 +215,9 @@ if [ -n "$BASH" -a -f /etc/bash_completion ]
 then
     source /etc/bash_completion
 fi
+
+# Load any site-specific setup I have defined.
+
+if [ -f "$HOME/.localrc" ]
+then source "$HOME/.localrc"
+fi
