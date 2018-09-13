@@ -46,7 +46,7 @@ score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- 
 soft = reset HEAD .
 squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
-undo = reset --soft HEAD~1
+undo = !git reset --soft HEAD~1 && git reset HEAD .
 up = cherry -v upstream/master
 who = "!f () { \
     git log --date='format:%Y-%m' --format='%cd %ae' --since=1.year $@ \
