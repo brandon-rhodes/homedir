@@ -14,15 +14,24 @@ xdotool key ctrl+t
 sleep 1
 xdotool type mint.com
 xdotool key Return
-sleep 5
+read -t 5 -p "Sleeping 5 seconds waiting for login form" || true
+echo
 xdotool key ctrl+f type "log in"
 xdotool key ctrl+Return
-sleep 10
+read -t 10 -p "Sleeping 10 seconds waiting for login dialog" || true
+echo
 xdotool key Return
-sleep 12
+read -t 12 -p "Sleeping 12 seconds waiting for login to complete" || true
+echo
 xdotool key ctrl+f type "transactions"
 xdotool key ctrl+Return
-sleep 5
+if [ -n "$1" ]
+then
+    # support "-i" option to allow interactive use
+    read -p "Press Enter when done interacting with transactions: "
+else
+    sleep 5
+fi
 xdotool key ctrl+f type "export all"
 xdotool key ctrl+Return
 sleep 7
