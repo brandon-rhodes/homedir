@@ -206,6 +206,10 @@ setopt interactivecomments
 
 unsetopt list_ambiguous
 
+# Don't ring the terminal bell during completion.
+
+setopt no_beep
+
 # During completion, allow moving through the menu with arrow keys.
 
 zstyle ':completion:*' menu select
