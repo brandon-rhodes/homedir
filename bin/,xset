@@ -52,9 +52,13 @@ then
         xinput set-prop 'TPPS/2 IBM TrackPoint' \
                "libinput Natural Scrolling Enabled" 1
 
+        # First number: adaptive profile on/off
+        # Second number: flat profile on/off
         xinput set-prop 'TPPS/2 IBM TrackPoint' \
-               'libinput Accel Profile Enabled' 1, 0
+               'libinput Accel Profile Enabled' 0, 1
 
+        # Maximize sensitivity to get the full benefit of the device's
+        # physical resolution.
         p=/sys/devices/platform/i8042/serio1/serio2/sensitivity
         if [ "$(cat $p)" != 255 ]
         then echo 255 | sudo dd of=$p status=none
@@ -66,6 +70,6 @@ then
         fi
 
         # See https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
-        xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' -0.4
+        xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 1
     fi
 fi
