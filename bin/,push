@@ -9,10 +9,13 @@ set -e
 
 cd ~/rhodesmill.org
 
-git stash -u
+message="$(git stash -u)"
 git checkout master
-git pull
-git stash pop
+git pull git@bitbucket.org:brandon/rhodesmill.org.git
+if [ "$message" != "No local changes to save" ]
+then
+    git stash pop
+fi
 git add -A .
 
 # Bail out if there are no changes staged
@@ -55,5 +58,5 @@ done
 
 # Commit and push.
 git commit -m 'Auto-commit'
-git push origin
+git push git@bitbucket.org:brandon/rhodesmill.org.git
 git push wf-rhodesmill:webapps/rhodesmill_dot_org
