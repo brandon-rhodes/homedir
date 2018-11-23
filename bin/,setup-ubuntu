@@ -84,6 +84,7 @@ sudo apt-get install -y \
     xbacklight       `: so FVWM key bindings can adjust screen brightness` \
     xclip            `: let shell scripts get and set the paste buffer` \
     xdotool          `: for generating keyboard and mouse actions` \
+    xfce4-screenshooter `: for taking screenshots` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
     \
