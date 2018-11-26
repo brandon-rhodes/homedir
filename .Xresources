@@ -10,7 +10,7 @@ Emacs24.font: Ubuntu Mono-10
 Emacs.font: Ubuntu Mono-10
 Emacs.geometry: 80x28
 
-NetHack.tile_file: /home/brandon/usr/share/nethack-2x
+NetHack.tile_file: /home/brandon/usr/lib/nethack/X11tiles-32-32.xpm
 NetHack*map*rows: 24
 NetHack*map*columns: 64
 
