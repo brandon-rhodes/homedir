@@ -123,6 +123,20 @@ case "$1" in
                         python=3.6 jupyter pandas seaborn
     ;;
 
+"watchman" )
+    mkdir -p ~/usr/src
+    cd ~/usr/src
+    curl -L https://github.com/facebook/watchman/archive/v4.9.0.tar.gz |
+        tar xzf -
+    cd watchman-4.9.0
+    sudo apt-get install -y autoconf automake build-essential python-dev \
+         libssl-dev libtool
+    ./autogen.sh
+    ./configure --prefix=$HOME/usr
+    make
+    make install
+    ;;
+
 "xephem" )
     sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
