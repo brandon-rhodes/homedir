@@ -71,6 +71,7 @@ sudo apt-get install -y \
     texlive-latex-recommended `: for building PDF documentation with Sphinx` \
     texlive-latex-extra \
     texlive-fonts-recommended \
+    traceroute       `: when I want something quieter than mtr` \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
     ttf-mscorefonts-installer `: for browsing the web` \
