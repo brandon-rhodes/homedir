@@ -31,7 +31,7 @@ sudo apt-get install -y \
     cscope           `: for that rare trawl through C code ` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs            `: editor-of-choice` \
-    emacs25-el       `: readable LISP source` \
+    emacs-el         `: readable LISP source` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
@@ -52,7 +52,7 @@ sudo apt-get install -y \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
-    `:pdftk             perform various useful operations on PDFs` \
+    `: pdftk            perform various useful operations on PDFs` \
     pm-utils         `: so I can suspend the machine from its command line` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
