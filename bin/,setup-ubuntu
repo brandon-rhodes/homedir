@@ -254,3 +254,15 @@ if ! grep -q news.google.com /etc/hosts
 then
     sudo bash -c 'echo 127.0.0.1 news.google.com >>/etc/hosts'
 fi
+
+# Give myself permission to set my backlight settings, since with the
+# upgrade to Ubuntu 18.10 "xbacklight" can't find the device.
+
+if [ -f /sys/class/backlight/intel_backlight/brightness ]
+then
+    echo /bin/chown brandon /sys/class/backlight/intel_backlight/brightness |
+         sudo dd of=/etc/init.d/chown-backlight.sh
+    sudo chmod 744 /etc/init.d/chown-backlight.sh
+    sudo chown root:root /etc/init.d/chown-backlight.sh
+    sudo ln -s /etc/init.d/chown-backlight.sh /etc/rc2.d/S99chown-backlight.sh
+fi
