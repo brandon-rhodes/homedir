@@ -1,0 +1,9 @@
+#!/bin/bash
+
+f=/sys/class/backlight/intel_backlight/brightness
+if [ -z $1 ]
+then
+    cat $f
+else
+    echo $1 > $f
+fi
