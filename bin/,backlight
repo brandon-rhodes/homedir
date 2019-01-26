@@ -3,7 +3,7 @@
 f=/sys/class/backlight/intel_backlight/brightness
 if [ -z $1 ]
 then
-    cat $f
+    echo $(cat $f) / $(cat /sys/class/backlight/intel_backlight/max_brightness)
 else
     echo $1 > $f
 fi
