@@ -1,0 +1,11 @@
+{
+  "Notebook": {
+    "Header": false,
+    "Toolbar": false
+  },
+  "CodeCell": {
+    "cm_config": {
+      "autoCloseBrackets": false
+    }
+  }
+}
