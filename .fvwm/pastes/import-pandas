@@ -13,3 +13,4 @@ pylab.rcParams['figure.figsize'] = 12, 5
 # with mpl.rc_context({"figure.figsize": (5, 5)}):
 # with mpl.rc_context({"lines.linewidth": 2, "lines.color": "r"}):
 # plt.legend(loc='center left', bbox_to_anchor=(1.1, 0.5))
+# ax.set_xlabel('x label')
