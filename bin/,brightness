@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -n "$1" ]
+then
+    echo "$1" > /sys/class/backlight/intel_backlight/brightness
+fi
+
+echo \
+    $(cat /sys/class/backlight/intel_backlight/brightness) \
+    / \
+    $(cat /sys/class/backlight/intel_backlight/max_brightness)
