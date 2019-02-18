@@ -4,23 +4,22 @@ cd /sys/class/power_supply
 
 while true
 do
-    content="Battery Low:"
+    content=""
     for bat in BAT*
     do
         source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
-        if [ "$POWER_SUPPLY_STATUS" != "Charging" -a \
-             "$POWER_SUPPLY_STATUS" != "Full" ]
+        if [ "$(cat AC/online)" != "1" -a \
+             "$POWER_SUPPLY_STATUS" != "Charging" -a \
+             "$POWER_SUPPLY_STATUS" != "Full" -a \
+             "$POWER_SUPPLY_CAPACITY" -lt 10 ]
         then
-            if [ "$POWER_SUPPLY_CAPACITY" -lt 10 ]
-            then
-                content="$content
+            content="$content
 $bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
-            fi
         fi
     done
-    if [ "$content" != "Battery Low:" ]
+    if [ -n "$content" ]
     then
-        notify-send "$content"
+        notify-send "Battery Low:$content"
     fi
     sleep 60
 done
