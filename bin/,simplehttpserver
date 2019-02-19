@@ -28,7 +28,13 @@ def main():
 
     print 'Serving HTTP on', server_address[0], 'port', server_address[1]
     url = 'http://localhost:{}/'.format(port)
-    webbrowser.open(url)
+
+    if os.environ.get('DISPLAY') == ':0':
+        webbrowser.open(url)
+    else:
+        hostname = socket.getfqdn()
+        print('http://{}:{}/'.format(hostname, port))
+
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
