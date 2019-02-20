@@ -65,7 +65,7 @@ __detect_cd_and_possibly_activate_environment () {
         packages=( "$@" pip )
     fi
     mkdir -p ~/.v &&
-    ~/.anaconda/bin/conda create -p ~/.v/$slug ${packages[*]} &&
+    ~/.anaconda/bin/conda create -y -p ~/.v/$slug ${packages[*]} &&
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment &&
     ,setup-jedi
