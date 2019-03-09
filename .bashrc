@@ -143,6 +143,9 @@ gi () {
     shift
     gi${arg1:0:1} ${arg1:1} "$@"
 }
+j () {
+    jq . "$@" | less
+}
 ,q () {
     if [ -z "$1" ]
     then git commit -m 'quick commit' .
