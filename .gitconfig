@@ -44,6 +44,7 @@ rmb = "!f(){ \
   };f"
 score = diff --shortstat
 score-vs-master = !git diff --shortstat $(git merge-base HEAD origin/master) -- .
+show-paths = show --pretty="" --name-only
 soft = reset HEAD .
 squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
