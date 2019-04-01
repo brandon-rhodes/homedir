@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# "Check in"
+
+exec git ci -m "$*" .
