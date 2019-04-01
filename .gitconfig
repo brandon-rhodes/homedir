@@ -10,7 +10,7 @@ amend = commit --amend
 atag = !bash -c 'git tag -a \"$@\" && git push --follow-tags' --
 base = merge-base HEAD origin/master
 br = "!if [ -n \"$1\" ] ;then git branch \"$@\" ;else git for-each-ref --sort=committerdate refs/heads/ --format=\"%(HEAD) %(color:yellow)%(objectname:short)%(color:reset) %(refname:short) (%(color:green)%(committerdate:relative)%(color:reset))\" ;fi ;:"
-cherry-apply = --no-commit --allow-empty
+cherry-apply = !git cherry-pick --no-commit --allow-empty && git reset HEAD
 ci = commit -v
 co = checkout
 cleanup = clean -dfx -e .vagrant
