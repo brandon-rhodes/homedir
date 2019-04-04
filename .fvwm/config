@@ -207,6 +207,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&C Close]"         Close
 + "$[gt.&M Move]"          Move
 + "$[gt.&R Resize]"        Resize
++ "$[gt.  Resize 16x9]"    FuncMaximizeBorderlessly16_9
 + "$[gt.&T Title Off]"     FuncTitleOff
 + "$[gt.  Title On]"       FuncTitleOn
 + "$[gt.  (Un)On Top]"     ToggleLayer
@@ -267,6 +268,13 @@ AddToFunc FuncMaximizeBorderlessly1024
 + I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
 + I UpdateStyles
 + I Maximize Toggle 1024p 768p
+
+DestroyFunc FuncMaximizeBorderlessly16_9
+AddToFunc FuncMaximizeBorderlessly16_9
++ I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
++ I UpdateStyles
++ I Maximize Toggle 1280p 720p
 
 DestroyFunc FuncMaximizeY
 AddToFunc FuncMaximizeY
