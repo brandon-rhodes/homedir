@@ -10,7 +10,7 @@ amend = commit --amend
 atag = !bash -c 'git tag -a \"$@\" && git push --follow-tags' --
 base = merge-base HEAD origin/master
 br = "!if [ -n \"$1\" ] ;then git branch \"$@\" ;else git for-each-ref --sort=committerdate refs/heads/ --format=\"%(HEAD) %(color:yellow)%(objectname:short)%(color:reset) %(refname:short) (%(color:green)%(committerdate:relative)%(color:reset))\" ;fi ;:"
-cherry-apply = !git cherry-pick --no-commit --allow-empty && git reset HEAD
+cherry-apply = !git cherry-pick --no-commit --allow-empty "$@" && git reset HEAD
 ci = commit -v
 co = checkout
 cleanup = clean -dfx -e .vagrant
@@ -50,6 +50,7 @@ squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
 undo = !git reset --soft HEAD~1 && git reset HEAD .
 up = fetch origin master:master
+vs-files = !git diff --name-only $(git merge-base HEAD origin/master) -- .
 who = "!f () { \
     git log --date='format:%Y-%m' --format='%cd %ae' --since=1.year $@ \
         | sort | uniq -c | awk '{printf(\"%s %4s %s\\n\",$2,$1,$3)}' \
