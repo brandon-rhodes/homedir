@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+#!/usr/bin/env python
+
+from __future__ import print_function
+
+import argparse
+import datetime as dt
+import sys
+import time
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('value', help='seconds since epoch')
+    args = parser.parse_args(argv)
+
+    try:
+        n = float(args.value)
+    except ValueError:
+        print(int(time.mktime(time.strptime(args.value, '%Y-%m-%d'))))
+    else:
+        d = dt.datetime.fromtimestamp(n)
+        print(d)
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
