@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+    echo usage: $0 output_dir
+    exit 2
+fi
+
+cd ~/.local/share/geeqie/trash
+NAME=$(ls | tail -1 | sed 's/.*_//;s/\..*//')
+FILES=$(ls *_$NAME.*)
+for F in $FILES
+do
+    NAME_WITHOUT_PREFIX=$(echo $F | sed 's/^[0-9]*_//')
+    echo mv $F $1/$NAME_WITHOUT_PREFIX
+    mv $F $1/$NAME_WITHOUT_PREFIX
+done
