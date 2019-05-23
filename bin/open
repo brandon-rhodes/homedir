@@ -7,5 +7,10 @@ do
     then
         target="file://$(realpath "$target")"
     fi
-    chromium-browser "$target"
+    if command -v chromium-browser >/dev/null
+    then
+        chromium-browser "$target"
+    else
+        google-chrome "$target"
+    fi
 done

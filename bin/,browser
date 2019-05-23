@@ -17,5 +17,11 @@ then
     scale=1.25
 fi
 
-exec chromium-browser --enable-webgl \
-     --force-device-scale-factor="$scale" "$@"
+if command -v chromium-browser >/dev/null
+then
+    browser=chromium-browser
+else
+    browser=google-chrome
+fi
+
+exec $browser --enable-webgl --force-device-scale-factor="$scale" "$@"
