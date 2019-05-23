@@ -36,7 +36,7 @@ rmb = "!f(){ \
   do for r in $(git show-ref $b | awk '{print $2}'); \
      do echo $r; \
         if echo $r | grep -q '^refs/remotes/'; \
-        then echo $r | awk -F/ '{print $3,$4}' \
+        then echo $r | sed 's:refs/remotes/::;s:/: :' \
                      | xargs -n2 git push --delete ; \
         fi; \
         git update-ref -d $r; \
