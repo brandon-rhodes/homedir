@@ -29,6 +29,9 @@ def main():
     print 'Serving HTTP on', server_address[0], 'port', server_address[1]
     url = 'http://localhost:{}/'.format(port)
 
+    if len(sys.argv) > 2:
+        url += sys.argv[2].lstrip('/')
+
     if os.environ.get('DISPLAY') == ':0':
         webbrowser.open(url)
     else:

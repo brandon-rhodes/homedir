@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ,simplehttpserver ~/Dropbox/Library/Manuals/W123 /Main.html
