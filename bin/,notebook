@@ -1,10 +1,66 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-url=$(grep 'localhost:88' ~/.xinitrc.log | tail -1 | awk '{print $NF}')
-echo "Notebook URL: $url"
-if [ -n "$1" ]
-then
-    echo $url
-else
-    exec open $url
-fi
+from __future__ import print_function
+
+import argparse
+import os
+import sys
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='Open the IPython Notebook')
+    parser.add_argument('path', nargs='?', help='file to open')
+    args = parser.parse_args(argv)
+
+    csv_path = ''
+    if args.path:
+        if not args.path.endswith('.csv'):
+            sys.stderr.write('Am not sure how to open this kind of file\n')
+            sys.exit(1)
+        csv_path = os.path.abspath(args.path)
+
+    os.chdir(os.environ['HOME'])
+
+    notebook_url = ''
+    with open('.xinitrc.log') as f:
+        for line in f:
+            if 'localhost:88' in line:
+                notebook_url = line.split()[-1]
+
+    if not notebook_url:
+        sys.stderr.write('Cannot find notebook URL in ~/.xinitrc.log\n')
+        sys.exit(1)
+
+    if args.path is None:
+        os.execlp('open', 'open', notebook_url)
+
+    notebook_path = create_notebook_for_csv(csv_path)
+    left, right = notebook_url.rsplit('/', 1)
+    notebook_url = left + '/notebooks/' + notebook_path + right
+    print(notebook_url)
+    os.execlp('open', 'open', notebook_url)
+
+def create_notebook_for_csv(csv_path):
+    template_path = 'usr/templates/csv_template.ipynb'
+    with open(template_path, 'rb') as f:
+        template_text = f.read()
+
+    text = template_text.replace('{{CSV_PATH}}', csv_path)
+
+    dir_path = 'Notebooks'
+    if not os.path.exists(dir_path):
+        os.mkdir(dir_path)
+
+    n = 1
+    while True:
+        notebook_path = 'Notebooks/csv{}.ipynb'.format(n)
+        if not os.path.exists(notebook_path):
+            break
+        n += 1
+
+    with open(notebook_path, 'wb') as f:
+        f.write(text)
+
+    return notebook_path
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
