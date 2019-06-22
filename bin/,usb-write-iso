@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Write an ISO to a USB drive, making it a bootable install drive if the
+# image is one of Ubuntu's bootable USB images.
+
+if [ -n "$1" ] || [ -n "$2" ]
+then
+    echo 'usage: $0 <iso-image> /dev/<usb-device>'
+    exit 2
+fi
+
+# https://superuser.com/a/1022835/19174
+sudo dd bs=4M if="$1" of="$2" conv=fdatasync status=progress
