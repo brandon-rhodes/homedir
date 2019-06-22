@@ -3,6 +3,14 @@
 
 set -e
 
+# Avoid running from random directories, like my home directory.
+
+if [ ! -d .git ]
+then
+    echo Please call this from a project directory 1>&2
+    exit 2
+fi
+
 # Launch the tools I need to work with the project in the current
 # directory, by introspecting the project.  (This used to be an FVWM
 # menu for which I had to write a tedious separate entry for each
@@ -23,3 +31,7 @@ done
 
 # TODO: tests
 # TODO: Sphinx doctests
+trap "exit" INT TERM
+trap "echo hi; kill 0" EXIT
+
+zsh
