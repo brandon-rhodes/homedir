@@ -1,27 +1,21 @@
 #!/bin/bash
 
+# if [ "$(hostname)" = "bernardus" ]
+# then
+#     scale=1.2
+# fi
+
+# if [ "$(hostname)" = "odell" ]
+# then
+#     scale=1.5
+# fi
+
 scale=1.0
 
-if [ "$(hostname)" = "bernardus" ]
+# See if the ",xset" command cached a scale factor for us to use.
+if [ -f ~/.chrome-scale ]
 then
-    scale=1.2
+    scale="$(cat ~/.chrome-scale)"
 fi
 
-if [ "$(hostname)" = "odell" ]
-then
-    scale=1.5
-fi
-
-if [ "$(hostname)" = "old38" ]
-then
-    scale=1.25
-fi
-
-if command -v chromium-browser >/dev/null
-then
-    browser=chromium-browser
-else
-    browser=google-chrome
-fi
-
-exec $browser --enable-webgl --force-device-scale-factor="$scale" "$@"
+exec google-chrome --enable-webgl --force-device-scale-factor="$scale" "$@"

@@ -29,14 +29,18 @@ set_dpi () {
     echo Xft.dpi: $1 | xrdb -merge
 }
 
+set_chrome_scale () {
+    echo "$@" > ~/.chrome-scale
+}
+
 declare -a "fields=($(lspci -m | grep VGA | head -1))"
 
 case ${fields[3]} in
     "3rd Gen Core processor Graphics Controller")
         set_dpi 130
-        echo hi
+        set_chrome_scale 1.25
         # xinput --set-prop "SynPS/2 Synaptics TouchPad" \
-	#        "Synaptics Tap Action" 0 0 0 0 0 0 0
+        #        "Synaptics Tap Action" 0 0 0 0 0 0 0
         ;;
 esac
 
