@@ -21,12 +21,9 @@ sudo dpkg-reconfigure --frontend=noninteractive locales
 
 sudo apt-get install -y \
     adb android-sdk-platform-tools-common `: for backing up an Android phone` \
-    apache2-utils    `: provides 12 commands, especially "ab"` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     cabextract       `: for extracting binary Windows drivers ` \
-    chromium-browser `: browser-of-choice` \
-    chromium-chromedriver `: and make it scriptable` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
@@ -52,7 +49,7 @@ sudo apt-get install -y \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
-    `: pdftk            perform various useful operations on PDFs` \
+    pdftk            `: perform various useful operations on PDFs` \
     pm-utils         `: so I can suspend the machine from its command line` \
     pwgen            `: random passwords` \
     python-dev       `: necessity` \
@@ -86,6 +83,7 @@ sudo apt-get install -y \
     xbacklight       `: so FVWM key bindings can adjust screen brightness` \
     xclip            `: let shell scripts get and set the paste buffer` \
     xdotool          `: for generating keyboard and mouse actions` \
+    xinput           `: set properties of keyboards, mice, trackpads` \
     xfce4-screenshooter `: for taking screenshots` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
@@ -96,17 +94,16 @@ sudo apt-get install -y \
     `: for building tools like ag and ledger` \
     automake libpcre3-dev pkg-config \
     \
-    `: for gevent` \
-    libevent1-dev \
-    \
-    `: for ledger` \
-    cmake libboost-all-dev libgmp-dev libmpfr-dev \
-    \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
     \
     `: Hettinger reminded me how awesome these tools are` \
-    graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag
+    graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag \
+    \
+    `: Verbatim list of dependencies for pyenv` \
+    make build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
 # Arrange for packages to automatically update.
 
@@ -130,7 +127,7 @@ fi
 # turn off its SendEnv settings that send locale variables like LC_PAPER
 # even to hosts that cannot digest it.
 
-sudo dd if=/dev/null of=/etc/ssh/ssh_config
+#sudo dd if=/dev/null of=/etc/ssh/ssh_config
 
 # Docker
 
@@ -188,8 +185,8 @@ fi
 
 # Enable most sysrq commands.
 
-sudo sed -i 's/^kernel.sysrq = .*/kernel.sysrq = 246/' \
-     /etc/sysctl.d/10-magic-sysrq.conf
+#sudo sed -i 's/^kernel.sysrq = .*/kernel.sysrq = 246/' \
+#     /etc/sysctl.d/10-magic-sysrq.conf
 
 # Tell `/lib/systemd/systemd --user` to exit after I log out.
 
