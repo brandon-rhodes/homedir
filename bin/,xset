@@ -42,10 +42,15 @@ esac
 
 # Pointers
 
-if xinput | grep -q 'SynPS/2 Synaptics TouchPad'
-then
-    xinput --disable 'SynPS/2 Synaptics TouchPad'
-fi
+xi () {
+    if xinput | grep -q "$2"
+    then
+        xinput "$@"
+    fi
+}
+
+xi --disable 'SynPS/2 Synaptics TouchPad'
+xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1
 
 exit
 
