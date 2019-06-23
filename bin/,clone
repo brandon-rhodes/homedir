@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# If run without arguments, print the names of all of my public GitHub
+# repositories.  If run with a repository name, clone that repository.
+
+set -e
+
+fetch () {
+    api='https://api.github.com'
+    curl -s $api'/users/brandon-rhodes/repos?type=public&per_page=100'
+    curl -s $api'/users/skyfielders/repos?type=public&per_page=100'
+}
+
+if [ -z "$1" ]
+then
+    echo $(fetch | jq -r '.[] | select(.fork | not) | .name' | sort) |
+        fold -s -w 79
+fi
+
+get_url_script='
+.[] | select(.fork | not) | select(.name == "'"$1"'") | .clone_url
+'
+url=$(fetch | jq -r "$get_url_script")
+destination="${2:-$1}"
+echo git clone $url $destination
+exec git clone $url $destination
