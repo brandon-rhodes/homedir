@@ -15,8 +15,42 @@ if xset q | fgrep -q 'Num Lock:    on'
 then xdotool key Num_Lock
 fi
 
-# Specific settings for specific machines.  Note that we skip device
-# setup if the X display is remote.
+# Skip the following device setup operations if the X display is remote.
+
+if [[ "$DISPLAY" != :* ]]
+then exit
+fi
+
+# Primitive hardware detection to guess which laptop we are running on,
+# because that survives hosts getting reinstalled and renamed.
+
+set_dpi () {
+    xrandr --dpi $1
+    echo Xft.dpi: $1 | xrdb -merge
+}
+
+declare -a "fields=($(lspci -m | grep VGA | head -1))"
+
+case ${fields[3]} in
+    "3rd Gen Core processor Graphics Controller")
+        set_dpi 130
+        echo hi
+        # xinput --set-prop "SynPS/2 Synaptics TouchPad" \
+	#        "Synaptics Tap Action" 0 0 0 0 0 0 0
+        ;;
+esac
+
+# Pointers
+
+if xinput | grep -q 'SynPS/2 Synaptics TouchPad'
+then
+    xinput --disable 'SynPS/2 Synaptics TouchPad'
+fi
+
+exit
+
+# Old approach: I used to use hostnames.  These settings will all
+# eventually be migrated to the more robust logic above.
 
 if [[ "$DISPLAY" == :* ]]
 then
