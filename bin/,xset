@@ -18,7 +18,7 @@ fi
 # Specific settings for specific machines.  Note that we skip device
 # setup if the X display is remote.
 
-if [ "$DISPLAY" = ":0" ]
+if [[ "$DISPLAY" == :* ]]
 then
     if [ "$(hostname)" = "bernardus" -o "$(hostname)" = "old38" ]
     then
