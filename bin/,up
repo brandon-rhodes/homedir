@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Make sure my basic shell and editing environments are up to date.
 
 set -e
 cd
@@ -43,9 +45,9 @@ done
 
 if [ -f .local/share/applications/mimeapps.list ]
 then
-    xdg-mime default chromium-browser.desktop text/html
-    xdg-mime default chromium-browser.desktop x-scheme-handler/http
-    xdg-mime default chromium-browser.desktop x-scheme-handler/https
+    xdg-mime default google-chrome.desktop text/html
+    xdg-mime default google-chrome.desktop x-scheme-handler/http
+    xdg-mime default google-chrome.desktop x-scheme-handler/https
 fi
 
 if ! [ -f .emacs.d/aspell-huge ]
