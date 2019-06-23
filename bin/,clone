@@ -15,6 +15,7 @@ if [ -z "$1" ]
 then
     echo $(fetch | jq -r '.[] | select(.fork | not) | .name' | sort) |
         fold -s -w 79
+    exit
 fi
 
 get_url_script='
