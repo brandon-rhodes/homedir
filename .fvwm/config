@@ -178,7 +178,7 @@ AddToMenu Applications "Applications" Title
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
-+ "&k. kenaniah"   Exec exec xterm -e bash bin/,mosh-or-ssh kenaniah
++ "&f. founders"   Exec exec xterm -e ssh founders
 + "&w. webfaction" Exec exec xterm -e ssh wf-rhodesmill
 
 DestroyMenu BrowserBookmarks
