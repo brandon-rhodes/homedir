@@ -7,7 +7,7 @@ rm -f ~/Downloads/transactions.csv
 Xephyr :8 -screen 1024x768 -no-host-grab &
 DISPLAY=:8
 
-chromium-browser --user-data-dir=$HOME/.config/mint-chromium &
+google-chrome --user-data-dir=$HOME/.config/mint-chromium &
 
 sleep 1
 xdotool key ctrl+t
