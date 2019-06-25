@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Build and run an ephemeral docker image without making me remember the
+# commands to do so.
+
+if [ ! -f /usr/bin/docker ]
+then
+    echo Error: please apt install docker.io >&2
+    exit 2
+fi
+
+docker build -t ephemeral . 1>&2 && exec docker run -i ephemeral "$@"
