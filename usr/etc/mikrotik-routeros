@@ -1,0 +1,10 @@
+MikroTik RouterOS
+
+1. Plug in power and immediately press reset button.
+2. Release once User light starts blinking.
+3. Router is now 192.168.88.1/24.
+4. Visit http://192.168.88.1/ and set password.
+5. Run:
+
+telnet 192.168.88.1
+
