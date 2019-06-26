@@ -4,7 +4,92 @@ MikroTik RouterOS
 2. Release once User light starts blinking.
 3. Router is now 192.168.88.1/24.
 4. Visit http://192.168.88.1/ and set password.
-5. Run:
+
+To renew my own DHCP lease under Linux:
+
+sudo systemctl restart systemd-networkd
+
+To configure the Mikrotik:
 
 telnet 192.168.88.1
 
+/ip dns set servers=8.8.4.4,8.8.8.8
+
+/ip dhcp-client set 0 use-peer-dns=no
+/ip dhcp-server set 0 lease-script=dhcp-update-dns
+/ip dhcp-server network set 0 domain=local
+
+/system script add name="dhcp-update-dns" source= {
+:local DHCPtag
+:set DHCPtag "#DHCP"
+
+:if ( [ :len $leaseActIP ] <= 0 ) do={ :error "empty lease address" }
+:if ( $leaseBound = 1 ) do=\
+{
+  :local ttl
+  :local domain
+  :local hostname
+  :local fqdn
+  :local leaseId
+  :local comment
+
+  /ip dhcp-server
+  :set ttl [ get [ find name=$leaseServerName ] lease-time ]
+  network
+  :set domain [ get [ find $leaseActIP in address ] domain ]
+
+  .. lease
+  :set leaseId [ find address=$leaseActIP ]
+
+# Check for multiple active leases for the same IP address. It's weird and it shouldn't be, but just in case.
+
+  :if ( [ :len $leaseId ] != 1) do=\
+  {
+   :log info "DHCP2DNS: not registering domain name for address $leaseActIP because of multiple active leases for $leaseActIP"
+   :error "multiple active leases for $leaseActIP"
+  }
+
+  :set hostname [ get $leaseId host-name ]
+  :set comment [ get $leaseId comment ]
+  /
+
+  :if ( [ :len $hostname ] <= 0 ) do={ :set hostname $comment }
+
+  :if ( [ :len $hostname ] <= 0 ) do=\
+  {
+    :log error "DHCP2DNS: not registering domain name for address $leaseActIP because of empty lease host-name or comment"
+    :error "empty lease host-name or comment"
+  }
+  :if ( [ :len $domain ] <= 0 ) do=\
+  {
+    :log error "DHCP2DNS: not registering domain name for address $leaseActIP because of empty network domain name"
+    :error "empty network domain name"
+  }
+
+  :set fqdn "$hostname.$domain"
+
+  /ip dns static
+  :if ( [ :len [ find name=$fqdn and address=$leaseActIP and disabled=no ] ] = 0 ) do=\
+  {
+    :log info "DHCP2DNS: registering static domain name $fqdn for address $leaseActIP with ttl $ttl"
+    add address=$leaseActIP name=$fqdn ttl=$ttl comment=$DHCPtag disabled=no
+  } else=\
+  {
+    :log error "DHCP2DNS: not registering domain name $fqdn for address $leaseActIP because of existing active static DNS entry with this name or address"
+  }
+  /
+} \
+else=\
+{
+  /ip dns static
+  :local dnsDhcpId
+  :set dnsDhcpId [ find address=$leaseActIP and comment=$DHCPtag ]
+
+  :if ( [ :len $dnsDhcpId ] > 0 ) do=\
+  {
+    :log info "DHCP2DNS: removing static domain name(s) for address $leaseActIP"
+    remove $dnsDhcpId
+  }
+  /
+}
+}
