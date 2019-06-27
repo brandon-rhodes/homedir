@@ -43,6 +43,7 @@ sudo apt-get install -y \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
     intel-microcode  `: processor bugfixes, if applicable` \
+    libnotify-bin    `: so my scripts can issue desktop notifications` \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
     mplayer geeqie   `: for media` \
@@ -84,6 +85,7 @@ sudo apt-get install -y \
     xclip            `: let shell scripts get and set the paste buffer` \
     xdotool          `: for generating keyboard and mouse actions` \
     xinput           `: set properties of keyboards, mice, trackpads` \
+    xfce4-notifyd    `: desktop notifications that I can click to dismiss` \
     xfce4-screenshooter `: for taking screenshots` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
     zsh              `: favorite shell` \
@@ -104,6 +106,8 @@ sudo apt-get install -y \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
+sudo apt-get purge notify-osd
 
 # Arrange for packages to automatically update.
 
