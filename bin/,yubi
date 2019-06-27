@@ -8,7 +8,7 @@ STATE=$(xinput list-props "$NAME" |
 
 if [ -z "$STATE" ]
 then
-    echo No Yubikey found
+    notify-send 'No Yubikey found'
     exit 1
 fi
 
