@@ -1,4 +1,0 @@
-#compdef clone
-compadd $(curl -s https://api.github.com/users/brandon-rhodes/repos | grep -o 'git@github.com:[^"]*')
-
-# Thanks to http://thp.io/2012/archive/

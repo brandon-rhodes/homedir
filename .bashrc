@@ -127,7 +127,6 @@ alias o="open"
 alias vl="git diff-vs-master --name-only"
 alias vs="git diff-vs-master"
 
-clone() { git clone; }  # see ~/.zsh-completions/_clone for the magic
 d () {
     if [ -t 1 ]
     then $DIFF -ur "$@" 2>&1 | less
