@@ -16,7 +16,7 @@ xdotool type mint.com
 xdotool key Return
 read -t 5 -p "Sleeping 5 seconds waiting for login form" || true
 echo
-xdotool key ctrl+f type "log in"
+xdotool key ctrl+f type "sign in"
 xdotool key ctrl+Return
 read -t 10 -p "Sleeping 10 seconds waiting for login dialog" || true
 echo
@@ -30,7 +30,7 @@ then
     # support "-i" option to allow interactive use
     read -p "Press Enter when done interacting with transactions: "
 else
-    sleep 5
+    sleep 10
 fi
 xdotool key ctrl+f type "export all"
 xdotool key ctrl+Return
