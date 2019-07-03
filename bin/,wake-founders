@@ -1,0 +1,2 @@
+#!/bin/bash
+exec wakeonlan 64:00:6a:86:de:24
