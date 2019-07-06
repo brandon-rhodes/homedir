@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -f /usr/bin/docker ]
+then
+    echo Error: please apt install docker.io >&2
+    exit 2
+fi
+
+mkdir -p ~/.dropbox-homedir
+
+docker build -t ephemeral . 1>&2
+
+exec docker run -ti \
+     --net=host \
+     -e DBOX_UID=1000 -e DBOX_GID=100 \
+     -e DISPLAY=$DISPLAY \
+     -u $(id -u):$(id -g) \
+     -v /tmp/.X11-unix:/tmp/.X11-unix \
+     -v ${HOME}/.Xauthority:/home/user/.Xauthority \
+     -v $HOME/.dropbox-homedir:/home/user \
+     ephemeral "$@"
