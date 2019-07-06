@@ -9,4 +9,4 @@ then
     exit 2
 fi
 
-docker build -t ephemeral . 1>&2 && exec docker run -i ephemeral "$@"
+docker build -t ephemeral . 1>&2 && exec docker run -ti ephemeral "$@"
