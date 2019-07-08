@@ -42,6 +42,10 @@ case ${fields[3]} in
         # xinput --set-prop "SynPS/2 Synaptics TouchPad" \
         #        "Synaptics Tap Action" 0 0 0 0 0 0 0
         ;;
+    "Skylake GT2 [HD Graphics 520]")
+        set_dpi 160
+        set_chrome_scale 1.25
+        ;;
 esac
 
 # Pointers
