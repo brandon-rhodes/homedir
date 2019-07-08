@@ -84,10 +84,6 @@ then
         xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" \
 	       "Synaptics Tap Action" 0 0 0 0 0 0 0
 
-    elif [ "$(hostname)" = "odell" ]
-    then
-        DPI=160
-
     else
         DPI=96
     fi
