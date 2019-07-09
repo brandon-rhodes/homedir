@@ -33,6 +33,16 @@ set_chrome_scale () {
     echo "$@" > ~/.chrome-scale
 }
 
+xi () {
+    if xinput | grep -q "$2"
+    then
+        xinput "$@"
+    fi
+}
+
+xi --disable 'SynPS/2 Synaptics TouchPad'
+xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1
+
 declare -a "fields=($(lspci -m | grep VGA | head -1))"
 
 case ${fields[3]} in
@@ -45,20 +55,29 @@ case ${fields[3]} in
     "Skylake GT2 [HD Graphics 520]")
         set_dpi 160
         set_chrome_scale 1.25
+
+        # First number: adaptive profile on/off
+        # Second number: flat profile on/off
+        xi set-prop 'TPPS/2 IBM TrackPoint' \
+           'libinput Accel Profile Enabled' 0, 1
+
+        # See https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
+        xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 1
+
+        # Maximize sensitivity to get the full benefit of the device's
+        # physical resolution.
+        p=/sys/devices/platform/i8042/serio1/serio2/sensitivity
+        if [ -f $p ] && [ "$(cat $p)" != 255 ]
+        then echo 255 | sudo dd of=$p status=none
+        fi
+
+        p=/sys/devices/platform/i8042/serio1/serio2/speed
+        if [ -f $p ] && [ "$(cat $p)" != 255 ]
+        then echo 255 | sudo dd of=$p status=none
+        fi
+
         ;;
 esac
-
-# Pointers
-
-xi () {
-    if xinput | grep -q "$2"
-    then
-        xinput "$@"
-    fi
-}
-
-xi --disable 'SynPS/2 Synaptics TouchPad'
-xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1
 
 exit
 
@@ -87,36 +106,8 @@ then
     else
         DPI=96
     fi
-    xrandr --dpi $DPI
-    echo Xft.dpi: $DPI | xrdb -merge
-
-    if xinput | grep -q 'TPPS/2 IBM TrackPoint'
-    then
-        # Ubuntu 16
-        xinput set-prop 'TPPS/2 IBM TrackPoint' \
-               'Evdev Wheel Emulation Axes' 7 6 5 4
-        # Ubuntu 17.04
-        xinput set-prop 'TPPS/2 IBM TrackPoint' \
-               "libinput Natural Scrolling Enabled" 1
-
-        # First number: adaptive profile on/off
-        # Second number: flat profile on/off
-        xinput set-prop 'TPPS/2 IBM TrackPoint' \
-               'libinput Accel Profile Enabled' 0, 1
-
-        # Maximize sensitivity to get the full benefit of the device's
-        # physical resolution.
-        p=/sys/devices/platform/i8042/serio1/serio2/sensitivity
-        if [ -f $p ] && [ "$(cat $p)" != 255 ]
-        then echo 255 | sudo dd of=$p status=none
-        fi
-
-        p=/sys/devices/platform/i8042/serio1/serio2/speed
-        if [ -f $p ] && [ "$(cat $p)" != 255 ]
-        then echo 255 | sudo dd of=$p status=none
-        fi
-
-        # See https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
-        xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 1
-    fi
 fi
+
+# Ubuntu 16
+# xinput set-prop 'TPPS/2 IBM TrackPoint' \
+#        'Evdev Wheel Emulation Axes' 7 6 5 4
