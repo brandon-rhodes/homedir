@@ -17,7 +17,8 @@ if __name__ == '__main__':
     url = subprocess.check_output(
         ['git', 'config', '--get', 'remote.origin.url'],
         )
-    assert url.startswith('git@')
-    user = url.split(':')[1].split('/')[0]
-    repo = url.split('/')[1].split('.')[0]
-    print('https://github.com/{}/{}/archive/master.zip'.format(user, repo))
+    print(url)
+    assert url.startswith(b'git@')
+    user = url.split(b':')[1].split(b'/')[0]
+    repo = url.split(b'/')[1].split(b'.')[0]
+    print(b'https://github.com/%s/%s/archive/master.zip' % (user, repo))
