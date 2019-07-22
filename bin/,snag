@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Move the most recent file in Downloads into the current directory.
+
+mv "$(ls -t ~/Downloads/* | head -1)" .
