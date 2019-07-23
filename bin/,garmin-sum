@@ -1,11 +1,64 @@
+#!/usr/bin/env python
+
 #!/bin/zsh
 
 # For damaged files from my Garmin Forerunner 230 that omit latitude and
 # longitude but that at least include distance and time.
 
-(
-    echo 'seconds,meters'
-    jq -r '.TrainingCenterDatabase.Activities.Activity.Lap[] | [.TotalTimeSeconds, .DistanceMeters] | @csv' =(xml2json --strip_namespace --strip_text Downloads/TMP.TCX)
-) |
-    csvsql --query 'select sum(seconds), sum(meters) from stdin' |
-    python -c 'raw_input(); s = raw_input(); f = s.split(","); print "Minutes and seconds", divmod(float(f[0]), 60), "Miles", float(f[1]) * 0.00062137119'
+# (
+#     echo 'seconds,meters'
+#     jq -r '.TrainingCenterDatabase.Activities.Activity.Lap[] | [.TotalTimeSeconds, .DistanceMeters] | @csv' =(xml2json --strip_namespace --strip_text Downloads/TMP.TCX)
+# ) |
+#     csvsql --query 'select sum(seconds), sum(meters) from stdin' |
+#     python -c 'raw_input(); s = raw_input(); f = s.split(","); print "Minutes and seconds", divmod(float(f[0]), 60), "Miles", float(f[1]) * 0.00062137119'
+
+from __future__ import print_function
+
+import argparse
+import os
+import sys
+from subprocess import PIPE, Popen
+
+import geopy.distance
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='add up mileage in .FIT file')
+    parser.add_argument('path', help='path of .FIT file')
+    args = parser.parse_args(argv)
+
+    cmd = [
+        os.environ['HOME'] + '/usr/lib/garmin/fit2tcx',
+    ]
+    p = Popen(cmd, stdin=open(args.path), stdout=PIPE)
+    out, err = p.communicate()
+
+    previous = None
+    total = 0.0
+
+    for line in out.splitlines():
+        # By using startswith(), we can match the correct indentation
+        # level to limit our attention to the distances stated inside of
+        # <Trackpoint> elements and ignore the distances in the
+        # enclosing <Lap> elements.
+
+        if line.startswith('            <DistanceMeters>'):
+            meters = float(value(line))
+
+        elif line.startswith('              <LatitudeDegrees>'):
+            lat = float(value(line))
+
+        elif line.startswith('              <LongitudeDegrees>'):
+            lon = float(value(line))
+            pos = lat, lon
+            if previous is not None:
+                total += geopy.distance.vincenty(previous, pos).km
+            previous = pos
+
+    print('Garmin:', meters, 'meters =', meters / 1609.34, 'miles')
+    print('Geo:', total, 'meters =', total / 1609.34, 'miles')
+
+def value(line):
+    return line.split('>')[1].split('<')[0]
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
