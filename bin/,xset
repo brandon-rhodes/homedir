@@ -54,7 +54,7 @@ case ${fields[3]} in
         ;;
     "Skylake GT2 [HD Graphics 520]")
         set_dpi 160
-        set_chrome_scale 1.25
+        set_chrome_scale 1.5
 
         # First number: adaptive profile on/off
         # Second number: flat profile on/off
