@@ -51,7 +51,7 @@ def main(argv):
             lon = float(value(line))
             pos = lat, lon
             if previous is not None:
-                total += geopy.distance.vincenty(previous, pos).km
+                total += geopy.distance.vincenty(previous, pos).m
             previous = pos
 
     print('Garmin:', meters, 'meters =', meters / 1609.34, 'miles')
