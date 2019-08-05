@@ -8,9 +8,9 @@ do
     # Jump back to upper left corner.
     printf "\033[1;1H"
     echo
-    echo "         TLV            UTC          Eastern        Pacific"
-    echo "     $(TZ=Asia/Jerusalem date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
-    echo "        $(TZ=Asia/Jerusalem date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
+    echo "         AUS            UTC          Eastern        Pacific"
+    echo "     $(TZ=Australia/Sydney date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
+    echo "        $(TZ=Australia/Sydney date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
     echo
     script --quiet --command 'cal -3' ~/.fvwm/.calendar >/dev/null
     sed '1d;/Script done/d;/^$/d;s/^/  /' ~/.fvwm/.calendar
