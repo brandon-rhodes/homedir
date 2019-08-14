@@ -88,6 +88,7 @@ sudo apt-get install -y \
     xfce4-notifyd    `: desktop notifications that I can click to dismiss` \
     xfce4-screenshooter `: for taking screenshots` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
+    yubikey-manager  `: command line tool` \
     zsh              `: favorite shell` \
     \
     `: Mount remote filesystems` \
@@ -268,3 +269,7 @@ then
     sudo chown root:root /etc/init.d/chown-backlight.sh
     sudo ln -s /etc/init.d/chown-backlight.sh /etc/rc2.d/S99chown-backlight.sh
 fi
+
+# Enable U2F with a Yubikey.
+
+sudo dd if=usr/etc/70-u2f.rules.txt of=/etc/udev/rules.d/70-u2f.rules.txt
