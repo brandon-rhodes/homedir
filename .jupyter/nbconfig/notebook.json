@@ -1,8 +1,8 @@
 {
   "Notebook": {
-    "Header": false, 
+    "Header": false,
     "Toolbar": false
-  }, 
+  },
   "CodeCell": {
     "cm_config": {
       "autoCloseBrackets": false
