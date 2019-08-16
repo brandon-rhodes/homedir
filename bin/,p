@@ -21,7 +21,7 @@ emacs -geometry +960+0 . &
 for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
 do
     pushd $(dirname "$f") >/dev/null
-    xterm -geometry +24+480 \
+    xterm -geometry +24-0 \
           -e "$HOME"/bin/,zsh-primed ,watch make \
           -- Makefile '**/*.rst' '_templates/*' &
     xterm -geometry 80x8-0-0 \
