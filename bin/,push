@@ -60,3 +60,4 @@ done
 git commit -m 'Auto-commit'
 git push git@bitbucket.org:brandon/rhodesmill.org.git
 git push wf-rhodesmill:webapps/rhodesmill_dot_org
+git fetch
