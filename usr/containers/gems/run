@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -f /usr/bin/docker ]
+then
+    echo Error: please apt install docker.io >&2
+    exit 2
+fi
+
+docker build -t gems . 1>&2
+
+exec docker run -ti \
+     --net=host \
+     gems "$@"
