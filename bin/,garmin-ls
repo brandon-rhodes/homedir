@@ -1,0 +1,21 @@
+#!/bin/bash
+
+find /media/$USER/GARMIN/GARMIN/ACTIVITY -type f |
+    sort |
+    #head -1 |
+    while read path
+    do
+        ~/usr/lib/garmin/fit2tcx < $path |
+            python -c '
+import lxml, re, sys
+from lxml import etree
+content = sys.stdin.read()
+content = re.sub(r" xmlns=\"[^\"]*\"", "", content)
+x = etree.fromstring(content)
+x = x.find(".//Activity")
+print x.find(".//Id").text,
+m = sum(float(e.text) for e in x.findall("./Lap/DistanceMeters"))
+print "%6.3f" % (m / 1609.34),
+print sys.argv[1].split("/")[-1]
+' $path
+    done | sort
