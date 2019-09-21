@@ -1,4 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
+#
+# When I hit the Win+Space keyboard shortcut in FVWM, a simple terminal
+# window comes up whose content is printed by this script.
 
 # Clear screen.
 clear
@@ -18,7 +21,13 @@ do
     do
         source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
         echo -n "                      "
-        echo $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
+        echo -n $POWER_SUPPLY_NAME ${POWER_SUPPLY_CAPACITY}% $POWER_SUPPLY_STATUS
+        if [ "$POWER_SUPPLY_STATUS" == "Discharging" ]
+        then
+            m=$(($POWER_SUPPLY_ENERGY_NOW * 60 / $POWER_SUPPLY_POWER_NOW + 1))
+            echo -n " $m minutes"
+        fi
+        echo
     done
     sleep $(( 60 - $(date +%S | sed s/^0//) ))
 done
