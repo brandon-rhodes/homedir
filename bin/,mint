@@ -14,7 +14,7 @@ xdotool key ctrl+t
 sleep 1
 xdotool type mint.com
 xdotool key Return
-read -t 5 -p "Sleeping 5 seconds waiting for login form" || true
+read -t 5 -p "Sleeping 5 seconds waiting for the site" || true
 echo
 xdotool key ctrl+f type "sign in"
 xdotool key ctrl+Return
