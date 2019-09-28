@@ -2,6 +2,10 @@
 
 cd /sys/class/power_supply
 
+if [ ! -d AC ]
+then exit
+fi
+
 check () {
     if [ "$(cat AC/online)" == "1" ]
     then return
