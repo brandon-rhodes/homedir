@@ -8,6 +8,8 @@ then
     exit 2
 fi
 
+cd "$(dirname $0)"
+
 mkdir -p ~/.dropbox-homedir
 
 docker build -t ephemeral . 1>&2
