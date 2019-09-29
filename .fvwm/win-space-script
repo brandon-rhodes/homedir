@@ -17,6 +17,7 @@ do
     echo
     script --quiet --command 'cal -3' ~/.fvwm/.calendar >/dev/null
     sed '1d;/Script done/d;/^$/d;s/^/  /' ~/.fvwm/.calendar
+    shopt -s nullglob
     for bat in /sys/class/power_supply/BAT*
     do
         source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
