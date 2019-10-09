@@ -26,6 +26,7 @@ sudo apt-get install -y \
     cabextract       `: for extracting binary Windows drivers ` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
+    csvkit           `: manipulate data from the command line` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs            `: editor-of-choice` \
     emacs-el         `: readable LISP source` \
@@ -56,7 +57,6 @@ sudo apt-get install -y \
     python-dev       `: necessity` \
     pypy pypy-dev    `: for when I want to be fast` \
     python3 python3-dev `: for when I feel modern` \
-    python3-csvkit   `: for the command line tools` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
     nautilus         `: for mounting and unmounting flash drives` \
