@@ -267,7 +267,7 @@ then
          sudo dd of=/etc/init.d/chown-backlight.sh
     sudo chmod 744 /etc/init.d/chown-backlight.sh
     sudo chown root:root /etc/init.d/chown-backlight.sh
-    sudo ln -s /etc/init.d/chown-backlight.sh /etc/rc2.d/S99chown-backlight.sh
+    sudo ln -fs /etc/init.d/chown-backlight.sh /etc/rc2.d/S99chown-backlight.sh
 fi
 
 # Enable U2F with a Yubikey.
