@@ -1,0 +1,266 @@
+
+======== 2019 February 07 Thursday ========
+
+Connected the Heathkit H19 to a Linux box, since it lives on my desk
+now, and it still works!  So that I don’t forget: never try to test a
+serial device with `cat` because it doesn’t set up DTR and the device
+will never send or receive.  For a quick conversation:
+
+cu -d -E '+' -e -o --nostop -l /dev/ttyS0 -s 9600 dir
+
+And for a prompt:
+
+getty -8 -h -L ttyS0 9600 h19
+
+======== 2019 January 26 Saturday ========
+
+~/usr/lib/garmin/fit2tcx < ~/dropbox/Garmin/91BA0931.FIT > ~/tmp.tcx
+
+Figured out that Garmin uses the distance field, while Runkeeper ignores
+it and re-computes the distance between the 50m waypoints using the
+latitudes and longitudes, and assuming you took a straight line between
+them.
+
+======== 2019 January 24 Thursday ========
+
+After upgrading to Ubuntu 18.10, can’t adjust the backlight brightness
+on my X260 with xbacklight.  Instead:
+
+echo 120 > /sys/class/backlight/intel_backlight/brightness
+
+======== 2019 January 15 Tuesday ========
+
+Wanted Google Earth to start working again on my Thinkpad X260 so apt
+uninstalled “xserver-xorg-video-intel” as recommended here:
+
+https://askubuntu.com/questions/965853/google-earth-doesnt-show-map
+
+Rebooted, and it worked!
+
+======== 2018 July 07 Saturday ========
+
+To run the prism.js tests for Python only:
+
+./node_modules/.bin/mocha tests --grep python
+
+	'comment': {
+		pattern: /(^[^'"]*(?:"(?:[^"]|\\")*"[^"']*|'(?:[^']|\\')*'[^"']*)*)#.*/,
+		lookbehind: true
+	},
+
+(?:"(?:[^"]|\\")*"[^"']*|'(?:[^']|\\')*'[^"']*)*
+
+"#" """a
+""" """b
+"""
+
+======== 2018 June 29 Friday ========
+
+To speed up my trackpoint that was hurting my hand by the force it required:
+
+odell# echo 255 > /sys/devices/platform/i8042/serio1/serio2/speed
+odell# echo 255 > /sys/devices/platform/i8042/serio1/serio2/sensitivity
+
+Original values were 97 and 200, despite:
+
+/etc/udev/rules.d/trackpoint.rules:SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="255", ATTR{speed}="255"
+
+======== 2018 June 21 Thursday ========
+
+To list keyframes in a video:
+
+$ ffprobe -select_streams v -show_frames \
+-show_entries frame=pict_type \
+-of csv download.mp4 \
+| grep -n I | cut -d ':' -f 1
+
+======== 2018 March 30 Friday ========
+
+Which feeds should I bother generating for my blog?  Tallying the most
+recent log file:
+
+      1 /brandon/category/zope/feed/index.xml
+      1 /brandon/feed/atom
+      9 /brandon/category/python/feed
+     10 /brandon/category/python/feed/index.xml
+     12 /brandon/feed/atom/
+     32 /brandon/category/python/feed/
+    261 /brandon/feed
+    482 /brandon/feed/
+
+Eliminating duplicates, these are the keepers:
+
+ /brandon/category/python/feed/
+ /brandon/category/python/feed/index.xml
+ /brandon/category/zope/feed/index.xml
+ /brandon/feed/
+ /brandon/feed/atom/
+
+But the Zope feed had only one fetch, so I’m retiring it anyway.
+
+======== 2018 January 01 Monday ========
+
+Topo map for our Grand Canyon hike:
+
+http://www.mytopo.com/review.cfm?mytopoid=18822625BD1
+
+From ImageMagick “convert” on a large file got:
+
+“cache resources exhausted”
+
+So edited /etc/ImageMagick-6/policy.xml to say:
+
+  <policy domain="resource" name="disk" value="10GiB"/>
+
+======== 2017 December 24 Sunday ========
+
+openssl genrsa -out developer_key.pem 4096
+openssl pkcs8 -topk8 -inform PEM -outform DER -in developer_key.pem -out developer_key.der -nocrypt
+flags
+bin/monkeyc \
+    -o test.prg \
+    -m ./samples/BackgroundTimer/manifest.xml \
+    -z %all% \
+    %src%%sample%*.mc \
+    -y developer_key.der
+
+sources=(find source -name '*.mc')
+resources=(find resources* -name '*.xml' | tr '\n' ':' | sed 's/.$$//')
+appName = `grep entry manifest.xml | sed 's/.*entry="\([^"]*\).*/\1/'`
+
+build:
+bin/monkeyc --warn \
+    --output test.prg \
+    -m samples/BackgroundTimer/manifest.xml \
+    -z $(find samples/BackgroundTimer/resources/*.xml | tr '\n' ':') \
+    -y developer_key.der \
+    samples/BackgroundTimer/**/*.mc
+
+    -d $(DEVICE)
+
+bin/connectiq
+
+bin/monkeyc --warn \
+    --output test.prg \
+    -y developer_key.der \
+    -f samples/BackgroundTimer/monkey.jungle
+
+bin/monkeyc --warn \
+    --output test.prg \
+    -y developer_key.der \
+    -f samples/SimpleDataField/monkey.jungle
+
+bin/monkeydo ./test.prg fr230
+
+0001040   W       9   4 356 202 260   4   6   '       8   .   0   4   "
+0001060  \n   N       3   8 356 202 260   5   3   '   5   2   .   3   0
+0001100   "   W       9   4 356 202 260   4   6   '       8   .   1   5
+
+======== 2016 September 21 Wednesday ========
+
+To turn the SVG of the logo into a square logo for social media:
+
+convert pycon2017.svg -bordercolor white -border 0x165 pycon2017.png
+
+And to create a rectangular version to use temporarily for the Facebook
+cover photograph:
+
+convert pycon2017.svg -bordercolor white -border 300x165 pycon2017.png
+
+======== 2016 October 02 Sunday ========
+
+To get volume buttons working on the X260:
+
+apt install pulseaudio
+
+And then had to start the daemon by hand and start xfce4-volumed and
+restart Chrome.
+
+======== 2016 November 15 Tuesday ========
+
+To see how many PyCon proposals there were on each day of the CFP:
+
+select submitted, row_number() OVER (order by submitted) from pycon_pycontutorialproposal ptp join proposals_proposalbase ppb on (ptp.proposalbase_ptr_id = ppb.id) order by submitted;
+
+select submitted, row_number() OVER (order by submitted) from pycon_pycontalkproposal ptp join proposals_proposalbase ppb on (ptp.proposalbase_ptr_id = ppb.id) order by submitted;
+
+select submitted, row_number() OVER (order by submitted) from pycon_edusummittalkproposal ptp join proposals_proposalbase ppb on (ptp.proposalbase_ptr_id = ppb.id) order by submitted;
+
+======== 2017 January 19 Thursday ========
+
+The "xbacklight" tool was giving an error trying to set the brightness
+on my X260.  Creating an /etc/X11/xorg.conf like this fixed the problem:
+
+Section "Device"
+    Identifier  "Card0"
+    Driver      "intel"
+    Option      "Backlight"  "intel_backlight"
+EndSection
+
+======== 2017 January 29 Sunday ========
+
+My own fork of vagrant-lxc, that fixes the umask problem:
+https://github.com/brandon-rhodes/vagrant-lxc
+
+Installing the plugin from source is described here:
+https://github.com/fgrehm/vagrant-lxc/wiki/Development
+
+I also created `~/bin/vagrant` as a temporary fix.
+
+======== 2017 February 06 Monday ========
+
+Signed up for G Suite for rhodesmill.org and shut down "asaph" Linode.
+First backed the machine up to S3 with:
+
+tar cSf - --one-file-system / | ./s3cmd put - s3://rhodesmill/backup-asaph.tar
+
+Then downloaded the file to one of my personal laptops, and also copied
+it on to a thumb drive.
+
+======== 2017 April 20 Thursday ========
+
+After several suspends, my Lenovo Thinkpad X260 sometimes suffers
+from flickering graphics and even freezes that show up in the kernel
+logs as:
+
+[199835.395375] drm/i915: Resetting chip after gpu hang
+[199835.395533] [drm] GuC firmware load skipped
+[199837.411851] [drm] RC6 on
+
+So, https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_T460s and thus
+I am adding i915.enable_rc6=0 to GRUB_CMDLINE_LINUX_DEFAULT in
+/etc/default/grub and then re-running: grub-mkconfig -o /boot/grub/grub.cfg
+
+======== 2017 July 11 Tuesday ========
+
+My Lenovo Thinkpad X260 wireless fails to reconnect to Wifi after I
+suspend and resume, so I have added a script to explicitly stop and
+start the network manager every time I suspend:
+
+#!/bin/bash
+
+exec >>/tmp/brandon-sleep.log 2>&1
+
+date
+echo /etc/pm/sleep.d/brandon invoked with: "$@"
+
+case "$1" in
+    "suspend" )
+        service network-manager stop
+        ;;
+    "resume" )
+        service network-manager start
+        ;;
+esac
+
+echo
+
+======== 2017 September 10 Sunday ========
+
+Calculation of how far we went each day on our 2-day hike we just
+completed of Wildcat Hollow:
+
+Minutes hiked the first day: (- (+ (* 7 60) 10) (+ (* 3 60) 24)) 226
+Minutes hiked the second day: (- (+ (* 14 60) 40) (+ (* 8 60) 50)) 350
+Fraction of distance the first day: (* 14.7 (/ 226.0 (+ 226 350))) 5.8
+Fraction of distance the second day: (* 14.7 (/ 350.0 (+ 226 350))) 8.9
