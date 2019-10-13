@@ -1,4 +1,32 @@
 
+======== 2019 October 12 Saturday ========
+
+The Lenovo ThinkPad X260, it turns out, is rather fragile under Linux,
+and does not like the fact that I upgraded to Ubuntu 19.04; it has
+started freezing every few minutes for several seconds each time, unless
+I boot into a < 4.16 kernel.  I guess I should have gotten a laptop
+built on a more robust chipset, but my research at the time didn’t
+suggest Linux would have problems.
+
+None of the mitigations in this thread:
+
+https://bugs.freedesktop.org/show_bug.cgi?id=105962
+
+seem to work; freezing still persists.  So, a big decision: do I try
+surviving 19.04 by pinning an older kernel?  Or reinstall 18.04 LTS and
+endure old versions of software for the lifetime of the laptop?
+
+It looks like some 4.15 images are included in 19.04:
+
+https://packages.ubuntu.com/disco/kernel/
+
+I am not sure why, but I'm trying 4.15.0-1056-oem and we'll see what
+happens.  After a day, no freezes yet.  For the record, here are all of
+the kernel options that did *not* work in getting a more recent kernel
+stable on the X260:
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 intel_idle.max_cstate=1 i915.enable_dc=0 i915.disable_power_well=0"
+
 ======== 2019 February 07 Thursday ========
 
 Connected the Heathkit H19 to a Linux box, since it lives on my desk
