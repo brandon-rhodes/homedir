@@ -16,7 +16,7 @@ docker build -t ephemeral . 1>&2
 
 exec docker run -ti \
      --net=host \
-     -e DBOX_UID=1000 -e DBOX_GID=100 \
+     -e DBOX_UID=1000 -e DBOX_GID=1000 \
      -e DISPLAY=$DISPLAY \
      -u $(id -u):$(id -g) \
      -v /tmp/.X11-unix:/tmp/.X11-unix \
