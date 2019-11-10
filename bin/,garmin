@@ -6,16 +6,18 @@ set -e
 
 export NUMBER=${1:-1}
 
-gvfs-mount -m -d /dev/sdb /media/$USER/GARMIN
-[ -d /media/$USER/GARMIN ]  # since gvfs-mount is broken: no error code on fail
-path="$(find /media/$USER/GARMIN/GARMIN/ACTIVITY | sort | tail "-${NUMBER}" | head -1)"
-if [ -d ~/Dropbox ]
-then cp -npv $path ~/Dropbox/Garmin
-elif [ -d ~/dropbox ]
-then cp -npv $path ~/dropbox/Garmin
-else
-    echo Nowhere to back up Garmin file
-    exit 1
-fi
-~/usr/lib/garmin/fit2tcx < $path > ~/Downloads/TMP.TCX
-gvfs-mount -u /media/$USER/GARMIN
+gio mount -m -d /dev/sdb /media/$USER/GARMIN
+src=/media/$USER/GARMIN/GARMIN/ACTIVITY
+dst=$HOME/Dropbox/Garmin
+files=( $(ls -t $src) )
+for filename in "${files[@]}"
+do
+    if [ -f $dst/$filename ]
+    then
+        echo Finished: $filename already copied
+        break
+    fi
+    echo Copying $filename
+    cp $src/$filename $dst/$filename
+done
+gio mount -u /media/$USER/GARMIN
