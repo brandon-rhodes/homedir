@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec ~/usr/containers/dropbox/run
+exec ~/usr/containers/dropbox/run "$@"
