@@ -183,6 +183,7 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
++ "&f. Feeds"  Exec exec browser "file:///home/brandon/usr/htdocs/feeds.html"
 + "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
 + "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
 + "&w. Weather"  Exec exec browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"

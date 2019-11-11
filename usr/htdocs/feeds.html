@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="feednami-client-v1.1.js"></script>
+  </head>
+  <body>
+    <p id="feed-paragraph" style="white-space: pre"></p>
+    <script>
+      const urls = [
+          'https://stackoverflow.com/feeds/tag?tagnames=pyephem&sort=newest',
+          'https://stackoverflow.com/feeds/tag?tagnames=skyfield&sort=newest'
+      ];
+      const element = document.getElementById('feed-paragraph');
+      promises = [];
+      entries = [];
+      for (let url of urls) {
+          promise = feednami.load(url).then(feed => {
+              for (let entry of feed.entries) {
+                  entries.push(entry);
+              }
+          });
+          promises.push(promise);
+      }
+      Promise.all(promises).then(function() {
+          console.log('Total entries:', entries.length);
+          entries.sort(function(a, b) {
+              if (a.date < b.date) return 1;
+              if (a.date > b.date) return -1;
+              return 0;
+          });
+          for (let entry of entries) {
+              element.innerHTML += `<b>${entry.date.substring(0,10)}</b> — ${esc(entry.title)}\n<a href="${entry.link}">${esc(entry.link)}</a>\n\n`
+          }
+      });
+      function esc(unsafe) {
+          return unsafe
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
+      }
+    </script>
