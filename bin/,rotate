@@ -1,0 +1,2 @@
+#!/bin/bash
+jpegtran -rotate 90 "$1" > /tmp/out && ls -l /tmp/out && mv /tmp/out "$1"
