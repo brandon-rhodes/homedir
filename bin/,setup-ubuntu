@@ -19,7 +19,9 @@ sudo dpkg-reconfigure --frontend=noninteractive locales
 
 # Install happy packages.
 
-sudo apt-get install -y \
+apt-cache search . | awk '{print $1}' > /tmp/all-package-names
+
+for package in \
     adb android-sdk-platform-tools-common `: for backing up an Android phone` \
     apt-file         `: to find where files come from` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
@@ -107,6 +109,14 @@ sudo apt-get install -y \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+do
+    echo $package
+done |
+    sort - /tmp/all-package-names |
+    uniq -c |
+    awk '$1 == 2 {print $2}' > /tmp/existing-packages
+
+sudo apt-get install --ignore-missing -y $(cat /tmp/existing-packages)
 
 sudo apt-get purge notify-osd
 
