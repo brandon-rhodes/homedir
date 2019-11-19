@@ -42,9 +42,10 @@ xi () {
 
 xi --disable 'SynPS/2 Synaptics TouchPad'
 xi set-prop 'Dell Dell USB Mouse' 'libinput Natural Scrolling Enabled' 1
-xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1
+xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1 ||
+    xi set-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 7 6 5 4
 
-declare -a "fields=($(lspci -m | grep VGA | head -1))"
+declare -a fields="($(lspci -m | grep VGA | head -1))"
 
 case ${fields[3]} in
     "3rd Gen Core processor Graphics Controller")
