@@ -3,6 +3,7 @@ double quotes: x“”x
 em-dash: —
 vertical ellipsis: ⋮
 arrows: ←, ↑, →, ↓, ↔, ↕, ↖, ↗, ↘, ↙
+more arrows: ↰ ↱ ↲ ↳ ⬐ ⬎ ⬑ ⬏ ↴ ↵ ⤶ ⤷ ⤴ ⤵ ⇆ ⇄ ⇅ ⇵
 box drawing:
 ┌─┬─┐
 │ │ │
