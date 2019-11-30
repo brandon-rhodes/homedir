@@ -17,6 +17,9 @@ export EDITOR=$HOME/bin/enw
 
 e () {
     local pp
+    if [ -z "$*" ] ;then
+        set .
+    fi
     if [ -n "$PYTHONPATH" ] ;then
         pp="$PYTHONPATH"
     elif [ -f $HOME/.python-paths ] ;then
