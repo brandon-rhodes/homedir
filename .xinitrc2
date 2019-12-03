@@ -68,6 +68,10 @@ if [ -d $HOME/usr/ipynb ]
 then $HOME/usr/ipynb/bin/jupyter-notebook --no-browser -y &
 fi
 
+# Turn off Yubikey before I have the chance to accidentally touch it.
+
+$HOME/bin/,yubi
+
 # xfce4-power-manager ?
 
 exec fvwm
