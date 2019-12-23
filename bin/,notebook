@@ -25,6 +25,7 @@ def main(argv):
         for line in f:
             if 'localhost:88' in line:
                 notebook_url = line.split()[-1]
+                break
 
     if not notebook_url:
         sys.stderr.write('Cannot find notebook URL in ~/.xinitrc.log\n')
