@@ -140,6 +140,7 @@ Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
 Key 2     A 4  Resize frame 50 100
 Key 3     A 4  ResizeMove frame 70 85 -0p -0p
 Key 4     A 4  Resize frame 50 50
+Key 5     A 4  Resize frame 1280p 720p
 
 # For occasions when I want to be sitting back in front of a desktop and
 # am far from a mouse, I have emergency keystrokes to let me move to new
