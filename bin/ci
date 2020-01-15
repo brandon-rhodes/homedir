@@ -4,8 +4,7 @@
 
 message="$*"
 length="${#message}"
-
-if [[ $length > 50 ]]
+if (( length > 50 ))
 then
     echo Error: a length of $length characters is too long
     exit 1
