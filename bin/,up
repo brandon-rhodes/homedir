@@ -5,6 +5,22 @@
 set -e
 cd
 
+# Prevent other users from even searching into my home directory, so my
+# umask can safely be 022 (public readable) for all the files inside.  I
+# will thus avoid building Python distributions whose files disallow
+# public reading - a problem when users install them as root.
+# https://github.com/skyfielders/python-skyfield/issues/324
+
+chmod o-rx .
+
+# If my group name is not the same as my username, also prevent my group
+# from seeing my home directory.
+
+if [ "$(id -un)" != "$(id -gn)" ]
+then
+    chmod g-rx .
+fi
+
 # Support simple copy of essential setup to other machines.
 
 if [ -n "$1" ]
