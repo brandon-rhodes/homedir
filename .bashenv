@@ -42,13 +42,6 @@ done
 
 unset p
 
-# Set my umask depending on whether it looks like I own my group.
-
-if type id &>/dev/null && [ "$(id -un)" = "$(id -gn)" ]
-then umask 027
-else umask 077
-fi
-
 # Load any site-specific environment variables I have defined.
 
 if [ -f "$HOME/.localenv" ]
