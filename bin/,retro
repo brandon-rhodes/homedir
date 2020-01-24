@@ -8,6 +8,7 @@ then
     wget -P ~/.fonts https://raw.githubusercontent.com/brandon-rhodes/unixpc-font-bdf/master/unixpc-system.8.bdf
 fi
 mkfontdir ~/.fonts
+xset fp- ~/.fonts
 xset fp+ ~/.fonts
 xset fp rehash
 exec xterm \
