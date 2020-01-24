@@ -1,10 +1,11 @@
 #!/bin/bash
 
+set -e
+
 mkdir -p ~/.fonts
 if [ ! -f ~/.fonts/unixpc-system.8.bdf ]
 then
-    echo TODO
-    exit 1
+    wget -P ~/.fonts https://raw.githubusercontent.com/brandon-rhodes/unixpc-font-bdf/master/unixpc-system.8.bdf
 fi
 mkfontdir ~/.fonts
 exec xterm \
@@ -15,4 +16,5 @@ exec xterm \
      -fg green \
      -cm \
      +bdc \
-     -xrm 'xterm*boldMode: off'
+     -xrm 'xterm*boldMode: off' \
+     /bin/bash
