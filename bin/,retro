@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mkdir -p ~/.fonts
+if [ ! -f ~/.fonts/unixpc-system.8.bdf ]
+then
+    echo TODO
+    exit 1
+fi
+mkfontdir ~/.fonts
+exec xterm \
+     -fa '' \
+     -font 'unix-pc-system-8' \
+     -fb 'unix-pc-system-8' \
+     -bg black \
+     -fg green \
+     -cm \
+     +bdc \
+     -xrm 'xterm*boldMode: off'
