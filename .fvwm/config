@@ -172,6 +172,7 @@ AddToMenu Applications "Applications" Title
 + "&f. Firefox"   Exec exec firefox
 + "&g. Gimp"      Exec exec gimp
 + "&n. Nautilus"  Exec exec nautilus
++ "&r. Retro"     Exec exec bash bin/,retro
 + "&s. Skype"     Exec exec skype
 + "&t. Thunderbird" Exec exec thunderbird
 + "&v. VirtualBox" Exec exec virtualbox
