@@ -82,14 +82,21 @@ __detect_cd_and_possibly_activate_environment () {
     ,setup-jedi
 }
 ,virtualenv () {
-    local slug
+    local slug python
     if ! slug=$(__compute_environment_slug)
     then
         echo "Error: must be in a directory beneath your home directory" >&2
         return 1
     fi
+    if [ -z "$1" ]
+    then
+        pyenv versions
+        return 1
+    fi
+    python="$(PYENV_VERSION="$1" pyenv which python)"
+    shift
     mkdir -p ~/.v &&
-    ~/usr/src/virtualenv/virtualenv.py "$@" ~/.v/"$slug" &&
+    ~/usr/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug" &&
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment &&
     ,setup-jedi
