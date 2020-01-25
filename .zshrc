@@ -98,8 +98,7 @@ __detect_cd_and_possibly_activate_environment () {
     mkdir -p ~/.v &&
     ~/usr/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug" &&
     unset OPWD &&
-    __detect_cd_and_possibly_activate_environment &&
-    ,setup-jedi
+    __detect_cd_and_possibly_activate_environment
 }
 
 # Build a pretty prompt.
