@@ -239,7 +239,7 @@ AddToMenu Pastes "Pastes" Title
 DestroyMenu MenuTransforms
 AddToMenu MenuTransforms
 + "Window Manager" Title
-+ "&G Markdown to GFM"  Exec exec xclip -o -selection clipboard | pandoc -t markdown_github | xclip -selection clipboard -t UTF8_STRING
++ "&G Markdown to GFM"  Exec exec xclip -o -selection primary | pandoc -r commonmark -t gfm --wrap=none | xclip -selection clipboard
 + "&P Paper 2xLF"  Exec exec xclip -o -selection clipboard | sed 's/$/\n/' | xclip -selection clipboard -t UTF8_STRING
 
 # Common FVWM functions used in several of the directives above.
