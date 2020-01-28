@@ -168,6 +168,7 @@ Mouse 5 A    C  Nop
 
 DestroyMenu Applications
 AddToMenu Applications "Applications" Title
++ "&a. Audacity"  Exec exec audacity
 + "&c. XChat"     Exec exec xchat
 + "&f. Firefox"   Exec exec firefox
 + "&g. Gimp"      Exec exec gimp
