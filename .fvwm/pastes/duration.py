@@ -1,2 +1,3 @@
-    t0 = __import__('time').time()
-    print(__import__('time').time() - t0)
+    time = __import__('time').time
+    t0 = time()
+    print(time() - t0)
