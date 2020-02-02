@@ -71,7 +71,7 @@ __detect_cd_and_possibly_activate_environment () {
     fi
     if [ "$#" = "0" ]
     then
-        packages=( ipython-notebook matplotlib pandas pip )
+        packages=( matplotlib notebook pandas pip )
     else
         packages=( "$@" pip )
     fi
