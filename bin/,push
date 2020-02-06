@@ -30,7 +30,7 @@ OPTS=
 while true
 do
     # Display the current changes for me to examine.
-    git diff --staged $OPTS || true
+    LESS="-S" git diff --staged $OPTS || true
     git status || true
     echo
     OPTS=
