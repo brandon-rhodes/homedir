@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # I am always wanting to give people on GitHub the URL with which they
 # can "pip install" the new version of my package without my having to
