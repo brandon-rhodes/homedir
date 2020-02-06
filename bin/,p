@@ -1,37 +1,43 @@
-#!/bin/bash
+#!/bin/zsh
 # "Project" launcher script.
 
-set -e
+if [[ $- != *i* ]]
+then
+    echo Source this script from an interactive zsh
+    exit 2
+fi
 
 # Avoid running from random directories, like my home directory.
 
 if [ ! -d .git ]
 then
     echo Please call this from a project directory 1>&2
-    exit 2
+else
+    # Inspect the project beneath the current directory, launch Emacs in
+    # the directory, and launch edit-triggered build scripts for any
+    # Sphinx documentation trees.
+
+    emacs -geometry +960+0 . &
+
+    for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
+    do
+        pushd $(dirname "$f") >/dev/null
+        xterm -geometry +24-0 \
+              -e "$HOME"/bin/,zsh-primed \
+              ,watch make -- Makefile '**/*.rst' '_templates/*' &
+        xterm -geometry 80x8-0-0 \
+              -e "$HOME"/bin/,zsh-primed \
+              ,simplehttpserver &
+        popd >/dev/null
+    done
+
+    # TODO: tests
+    # TODO: Sphinx doctests
+
+    kill_jobs_and_exit () {
+        kill ${${(v)jobstates##*:*:}%=*}
+        return $(( 128 + $1 ))
+    }
+    TRAPTERM () {kill_jobs_and_exit $1}
+    TRAPEXIT () {kill_jobs_and_exit $1}
 fi
-
-# Launch the tools I need to work with the project in the current
-# directory, by introspecting the project.  (This used to be an FVWM
-# menu for which I had to write a tedious separate entry for each
-# individual project by hand.)
-
-emacs -geometry +960+0 . &
-
-for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
-do
-    pushd $(dirname "$f") >/dev/null
-    xterm -geometry +24-0 \
-          -e "$HOME"/bin/,zsh-primed ,watch make \
-          -- Makefile '**/*.rst' '_templates/*' &
-    xterm -geometry 80x8-0-0 \
-          -e "$HOME"/bin/,zsh-primed ,simplehttpserver &
-    popd >/dev/null
-done
-
-# TODO: tests
-# TODO: Sphinx doctests
-trap "exit" INT TERM
-trap "echo hi; kill 0" EXIT
-
-zsh

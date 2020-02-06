@@ -179,6 +179,10 @@ else
     }
 fi
 
+# Automatically source ,p instead of running it in in a separate shell.
+
+alias ,p="source ~/bin/,p"
+
 # Moving forward by one word should land at the end of the next word,
 # not at its beginning.
 
