@@ -6,6 +6,16 @@
 alias -g ,1='2>&1'
 alias -g ,2='2>/dev/null'
 
+# Ignore special characters like "#" and ";" when running the "ci" command.
+
+ci-helper () {
+    local message="$history[$(print -P %h)]"
+    message="$(echo "$message" | sed 's/ci //')"
+    ~/bin/ci "$message"
+}
+
+alias ci='ci-helper #'
+
 # Use my own zsh completion logic, where provided.
 
 fpath=(~/.zsh-completion $fpath)
