@@ -1,8 +1,22 @@
 #!/bin/bash
 
 set -e
+
+# Mount the camera.
+
+gio mount -m -d /dev/sdb1
+camera=/media/brandon/3030-6331  # TODO: detect
+trap "gio mount -u $camera" EXIT
+
+# Generate a list of images currently on the camera, each prefixed with
+# the Y-M-D date of its modify time.
+
 dir="/media/br*/*/DCIM"
 (cd $dir; find -type f -printf '%TY-%Tm-%Td %P\n' > /tmp/camera-filenames)
+
+# If no argument was provided on the commandline, offer the filenames
+# found on the camera so the user can select a cut-off date for the
+# files they want to copy in.
 
 if [ -z "$1" ]
 then
@@ -10,10 +24,15 @@ then
     exit
 fi
 
+# An argument was offered!  Filter the list of images.
+
 V=$1 awk '$1 >= ENVIRON["V"] {print $2}' /tmp/camera-filenames \
  > /tmp/camera-filenames2
 
 echo Selected $(wc -l /tmp/camera-filenames2 | awk '{print $1}') out of  $(wc -l /tmp/camera-filenames | awk '{print $1}') photographs
+
+# If no second argument was given, do a dry run: merely print what we
+# would copy under these circumstances.
 
 if [ -z "$2" ]
 then
@@ -21,10 +40,4 @@ then
     exit 2
 fi
 
-(cd $dir; tar cf - -T /tmp/camera-filenames2 --transform "s|/|-|") | tar xf -
-
-    # awk '{print"cp -nv "$1" ./"gensub("/","-",1)}' |
-    # bash
-# find -type f -printf '%P\n' |
-#     awk '{print"cp -nv "$1" ~/dropbox/personal/Photos/"gensub("/","-",1)}' |
-#     bash
+(cd $dir; tar cf - -T /tmp/camera-filenames2 --transform "s|/|-|") | tar xvf -
