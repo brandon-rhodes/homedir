@@ -3,7 +3,7 @@ name = Brandon Rhodes
 email = brandon@rhodesmill.org
 
 [alias]
-a = add -A
+a = add -AN
 at = rev-parse HEAD
 abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 abort = merge --abort
