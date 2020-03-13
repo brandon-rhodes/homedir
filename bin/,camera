@@ -5,7 +5,7 @@ set -e
 # Mount the camera.
 
 gio mount -m -d /dev/sdb1
-camera=/media/brandon/3030-6331  # TODO: detect
+camera=/media/brandon/disk  # 3030-6331  # TODO: detect
 trap "gio mount -u $camera" EXIT
 
 # Generate a list of images currently on the camera, each prefixed with
@@ -36,7 +36,7 @@ echo Selected $(wc -l /tmp/camera-filenames2 | awk '{print $1}') out of  $(wc -l
 
 if [ -z "$2" ]
 then
-    echo '(Re-run with an additional argument "go" to copy the photographs)'
+    echo '(Re-run adding a "go" argument to copy into current directory)'
     exit 2
 fi
 
