@@ -1,0 +1,7 @@
+INPUTS = $(wildcard ../garmin/*.FIT)
+OUTPUTS = $(patsubst ../garmin/%.FIT, cache/%.xml, $(INPUTS))
+
+outputs: $(OUTPUTS)
+
+$(OUTPUTS): cache/%.xml: ../garmin/%.FIT
+	true $< $@
