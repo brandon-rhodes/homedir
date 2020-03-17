@@ -22,18 +22,6 @@ fi
 
 source .bashrc
 
-# Allow local customization.
-
-LOCK_TIMEOUT=5
-
-if [ -f $HOME/.xinitrc-local ]
-then
-    echo Sourcing .xinitrc-local
-    source $HOME/.xinitrc-local
-fi
-
-echo The lock timeout is $LOCK_TIMEOUT
-
 # Establish my default X Windows settings.
 
 $HOME/bin/,xset
@@ -55,8 +43,7 @@ autocutsel &
 # blueman-applet &
 # indicator-cpufreq &
 nm-applet &
-xautolock -time $LOCK_TIMEOUT -locker slock -notify 60 \
-          -notifier "xset dpms force off" &
+~/.fvwm/xautolock &
 xfce4-volumed &
 [ -x ~/.emacs.d/pycl.sh ] && ~/.emacs.d/pycl.sh &
 

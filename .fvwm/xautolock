@@ -1,0 +1,2 @@
+#!/bin/bash
+exec xautolock -time 5 -locker slock -notify 60 -notifier "xset dpms force off"
