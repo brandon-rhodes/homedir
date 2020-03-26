@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Sunrise, sunset, twilight
+
+cd
+cd skyfield
+~/.v/skyfield/bin/python -c '
+from skyfield import api
+planets = api.load("de421.bsp")
+bluffton = api.Topos("40.8939 N", "83.8917 W")
+ts = api.load.timescale(builtin=True)
+t = ts.now()
+day_start = ts.tt_jd((t.tt - 0.7) // 1.0 + 0.7)
+day_end = ts.tt_jd(day_start.tt + 1.0)
+from skyfield import almanac
+times, events = almanac.find_discrete(day_start, day_end, almanac.dark_twilight_day(planets, bluffton))
+from pytz import timezone
+z = timezone("US/Eastern")
+for t, e in zip(times, events):
+    print(t.astimezone(z), " ", almanac.TWILIGHTS[e])
+'
