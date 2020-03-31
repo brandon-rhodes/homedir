@@ -20,7 +20,7 @@ xdotool key ctrl+f type "sign in"
 xdotool key ctrl+Return
 read -t 10 -p "Sleeping 10 seconds waiting for login dialog" || true
 echo
-xdotool key Return
+xdotool key Tab Return
 read -t 12 -p "Sleeping 12 seconds waiting for login to complete" || true
 echo
 xdotool key ctrl+f type "transactions"
