@@ -1,3 +1,4 @@
 #!/bin/bash
 
-,watch wc -w "$@" -- "$@"
+read lines words chars <<< $(xclip -o -selection clipboard | wc)
+notify-send "$lines lines, $words words, $chars characters"
