@@ -49,6 +49,7 @@ for package in \
     libnotify-bin    `: so my scripts can issue desktop notifications` \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
+    mercurial        `: for running integration tests on uncommitted project` \
     mplayer geeqie   `: for media` \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
@@ -65,6 +66,7 @@ for package in \
     nmap             `: for finding the IP address of printers on the LAN` \
     recordmydesktop  `: for screencasts` \
     s3cmd            `: the cloud` \
+    subversion       `: for running integration tests on uncommitted project` \
     suckless-tools   `: simple tools to go with my simple window manager` \
     stellarium       `: to quickly answer what-is-that-over-there questions` \
     sqlite3          `: for command-line access to its databases` \
