@@ -13,16 +13,19 @@ def main():
     try:
         i = args.index('--')
     except ValueError:
-        print >>sys.stderr, 'usage: ,watch cmd [arg...] -- file [file...]'
+        print >>sys.stderr, 'usage: ,watch cmd [arg...] -- [file file...]'
         sys.exit(2)
 
     cmd = args[:i]
     paths = args[i+1:]
 
+    if not paths:
+        paths = list(python_files())
+
     while True:
         subprocess.call(cmd)
         if not all(os.path.exists(p) for p in paths):
-            print '  Waiting for files to return'
+            print('  Waiting for files to return')
             time.sleep(1.0)
         print('-' * 20)
         subprocess.check_call(['inotifywait',
@@ -31,6 +34,12 @@ def main():
                                '--quiet',
                                '--quiet',
                                ] + paths)
+
+def python_files():
+    for dirpath, dirnames, filenames in os.walk('.'):
+        for filename in filenames:
+            if filename.endswith('.py'):
+                yield os.path.join(dirpath, filename)
 
 if __name__ == '__main__':
     try:
