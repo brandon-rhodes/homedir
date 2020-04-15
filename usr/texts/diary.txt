@@ -283,6 +283,27 @@ esac
 
 echo
 
+======== 2017 December 18 Monday ========
+
+A script dating to this date involves the Twiddler:
+
+sudo apt install libxext-dev libxmu-dev libxmu-headers libxtst-dev xutils-dev
+
+cd ~/src/twiddler
+tar xvf a2x.tar.gz
+pushd pub/R6untarred/contrib/programs/a2x/
+xmkmf
+make a2x
+cp a2x ~/bin
+popd
+if ! grep -q sys/ioctl.h twidder.h
+then
+    sed -i '/sys.types/i#include <sys/ioctl.h>' twiddler.h
+fi
+sed -i 's/default:$/default: break;/' twid.c
+gcc twid.c -o twiddler
+echo 'Try: TWID_DEFAULTS=~/src/twiddler/twid_defaults.ini ./twiddler'
+
 ======== 2017 September 10 Sunday ========
 
 Calculation of how far we went each day on our 2-day hike we just
