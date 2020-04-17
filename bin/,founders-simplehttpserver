@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+directory="$1"
+port="${2:-8888}"
+
+if [ -z "$directory" ]
+then
+    echo "usage: $0 directory port" >&2
+    exit 2
+fi
+
+echo "http://127.0.0.1:$port/"
+ssh founders -L $port:127.0.0.1:$port "cd $directory && python -m SimpleHTTPServer $port"
