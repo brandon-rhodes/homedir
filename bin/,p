@@ -17,7 +17,10 @@ else
     # the directory, and launch edit-triggered build scripts for any
     # Sphinx documentation trees.
 
-    emacs -geometry +960+0 . &
+    # (I always seem to have an Emacs up already, so this one winds up
+    # being redundant.  Let's keep it commented out for a while to see
+    # whether I miss it or not.)
+    #emacs -geometry +960+0 . &
 
     for f in $(find -name Makefile | xargs grep -l ALLSPHINXOPTS)
     do
