@@ -3,7 +3,7 @@
 set -e
 
 directory="$1"
-port="${2:-8888}"
+port="${2:-8899}"
 
 if [ -z "$directory" ]
 then
