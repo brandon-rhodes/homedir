@@ -8,6 +8,7 @@
 set -e
 
 cd ~/rhodesmill.org
+find -name objects.inv -delete     # Binary cruft from Intersphinx
 find -name searchindex.js -delete  # I never offer Sphinx search fields
 
 message="$(git stash -u)"
