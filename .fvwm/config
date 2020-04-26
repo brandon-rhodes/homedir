@@ -73,7 +73,7 @@ Style * !Button 1, !Button 2, !Button 4, !Button 6
 Style * MinOverlapPlacement
 
 TitleStyle RightJustified
-BorderStyle -- HiddenHandles, Flat
+BorderStyle -- Flat
 
 # Speed up window operations at the expense of a bit of RAM.
 
@@ -100,8 +100,8 @@ CursorStyle TOP top_side
 # using the otherwise useless "Windows" key ("A" means "in any context"
 # and "4" means "the Windows key").
 
-Key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -1000"
-Key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +1000"
+# Key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -1000"
+# Key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +1000"
 Key XF86AudioMute A N Exec exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 Key XF86MonBrightnessDown A N Exec exec xbacklight -dec 1
 Key XF86MonBrightnessUp A N Exec exec xbacklight -inc 1
@@ -314,13 +314,9 @@ AddToFunc   ShowDesktop
 
 read ConfigFvwmBacker
 # read ConfigFvwmButtons
-read ConfigFvwmIconBox
 read ConfigFvwmIconMan
 read ConfigFvwmIdent
 read ConfigFvwmPager
-read ConfigFvwmScroll
-read ConfigFvwmTaskBar
-read ConfigFvwmWinList
 
 # Allow local per-account customization in a separate file.
 
