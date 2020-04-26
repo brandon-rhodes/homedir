@@ -30,7 +30,7 @@ else
               ,watch make -- Makefile '**/*.rst' '_templates/*' &
         xterm -geometry 80x8-0-0 \
               -e "$HOME"/bin/,zsh-primed \
-              ,simplehttpserver &
+              ,simplehttpserver _build/html &
         popd >/dev/null
     done
 

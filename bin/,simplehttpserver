@@ -10,16 +10,29 @@ import sys
 import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
+class MyHandler(SimpleHTTPRequestHandler):
+    directory = None
+
+    def translate_path(self, path):
+        path = super().translate_path(path)
+        path = self.directory + path
+        return path
+
 def main():
     if len(sys.argv) > 1:
         os.chdir(sys.argv[1])
+
+    # In case we are serving a directory that might get deleted and
+    # re-created, let's serve it from the filesystem root.
+    MyHandler.directory = os.getcwd()
+    os.chdir('/')
 
     port = 8002
 
     while True:
         server_address = ('', port)
         try:
-            httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+            httpd = HTTPServer(server_address, MyHandler)
         except socket.error:
             port += 1
         else:
