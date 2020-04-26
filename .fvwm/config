@@ -122,7 +122,7 @@ Key v A 4  Menu Pastes Nop
 Key w A 4  Menu MenuFvwmWindowOps Nop
 Key x A 4  Menu MenuTransforms Nop
 Key y A 4  Exec exec ,yubi
-Key z A 4  Exec exec python2.7 $HOME/.fvwm/z_transform.py
+Key z A 4  Exec exec $HOME/.fvwm/z_transform.py
 
 # Vertical maximize with Windows+Tab, full maximize with Windows+F,
 # and 1024x768 borderless "presentation maximize" with Windows+Shift+F.
