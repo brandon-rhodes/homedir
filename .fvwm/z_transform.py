@@ -8,16 +8,7 @@ def main():
     content = check_output(['xclip', '-o', '-selection', 'clipboard'])
     lcontent = content.lstrip()
 
-    if lcontent.startswith('https://phabricator.dropboxer.net/'):
-        lcontent = lcontent[34:].rstrip()
-    if lcontent.startswith(('D', 'T')) and lcontent[1:].isdigit():
-        hostname = 'phabricator.dropboxer.net'
-        write(
-            '<a href="https://{}/{}">{}</a>'
-            .format(hostname, lcontent, lcontent),
-            'text/html',
-        )
-        return
+    # Convert a TeX formula to an image displaying that formula.
 
     if lcontent.startswith('$'):
         # $x + y$
@@ -31,7 +22,8 @@ def main():
         write(data, 'image/png')
         return
 
-    # Default: markdown
+    # Default: turn plain text into HTML using Markdown.
+
     p = Popen(['pandoc'], stdin=PIPE, stdout=PIPE)
     html, stderr = p.communicate(content)
     if html.startswith('<p>'):
