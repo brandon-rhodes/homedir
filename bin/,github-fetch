@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import re
+import sys
+
+# Convert a pull request URL into the command to fetch it.
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='Fetch a pull request')
+    parser.add_argument('url', help='Pull Request URL')
+    parser.add_argument('branch', help='New branch name')
+    args = parser.parse_args(argv)
+
+    m = re.match(r'https://github.com/brandon-rhodes/(.*)/pull/(\d+)$',
+                 args.url)
+
+    if not m:
+        print('Error: Bad URL', file=sys.stderr)
+        exit(2)
+
+    os.execvp('git', ['git', 'fetch', 'origin',
+                      'pull/{}/head:{}'.format(m[2], args.branch)])
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
