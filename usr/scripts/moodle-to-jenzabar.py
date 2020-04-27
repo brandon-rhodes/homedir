@@ -4,8 +4,9 @@ import csv
 if len(sys.argv) < 2:
     exit('usage: convert.py <name of CSV file>')
 
-js = """$('span:contains("{NAME}")').closest('tr').find('.MidTermGradeColumn')
-        .find('select').val('S1;N;{GRADE}').change();"""
+js = """$('span:contains("{NAME}")').closest('tr')
+  .find('.MidTermGradeColumn, .FinalGradeColumn')
+  .find('select').val('S1;N;{GRADE}').change();"""
 
 for row in csv.DictReader(open(sys.argv[1])):
     name = row['Last name'] + ', ' + row['First name']
