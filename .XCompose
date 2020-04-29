@@ -1,0 +1,3 @@
+include "%S/en_US.UTF-8/Compose"
+<Multi_key> <t> <a> : "𝜏"
+<Multi_key> <p> <i> : "𝜋"
