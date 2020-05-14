@@ -5,7 +5,10 @@
   <body>
     <p id="feed-paragraph" style="white-space: pre"></p>
     <script>
-      const urls = [
+      promises = [];
+      entries = [];
+
+      const rss_urls = [
           'http://chuckcowdery.blogspot.com/feeds/posts/default',
           'https://www.skyandtelescope.com/astronomy-news/observing-news/feed/',
           'https://www.skyandtelescope.com/observing/sky-at-a-glance/feed/',
@@ -13,10 +16,8 @@
           'https://stackoverflow.com/feeds/tag?tagnames=skyfield&sort=newest',
           'https://astronomy.stackexchange.com/feeds/tag?tagnames=python&sort=newest'
       ];
-      const element = document.getElementById('feed-paragraph');
-      promises = [];
-      entries = [];
-      for (let url of urls) {
+
+      for (let url of rss_urls) {
           promise = feednami.load(url).then(feed => {
               for (let entry of feed.entries) {
                   entries.push(entry);
@@ -24,6 +25,32 @@
           });
           promises.push(promise);
       }
+
+      const github_urls = [
+          'https://api.github.com/search/issues?q=skyfield&sort=updated',
+      ];
+
+      for (let url of github_urls) {
+          promise = fetch(url).then(response => {
+              return response.json();
+          }).then(data => {
+              entries = [];
+              for (let item of data.items) {
+                  entries.push({
+                      date: item.updated_at,
+                      link: item.url,
+                      title: item.title
+                  });
+              }
+              console.log(data);
+              console.log(entries);
+              return entries;
+          });
+          promises.push(promise);
+      }
+
+      const element = document.getElementById('feed-paragraph');
+
       Promise.all(promises).then(function() {
           console.log('Total entries:', entries.length);
           entries.sort(function(a, b) {
@@ -35,6 +62,7 @@
               element.innerHTML += `<b>${entry.date.substring(0,10)}</b> — ${esc(entry.title)}\n<a href="${entry.link}">${esc(entry.link)}</a>\n\n`
           }
       });
+
       function esc(unsafe) {
           return unsafe
               .replace(/&/g, "&amp;")
