@@ -34,17 +34,13 @@
           promise = fetch(url).then(response => {
               return response.json();
           }).then(data => {
-              entries = [];
               for (let item of data.items) {
                   entries.push({
                       date: item.updated_at,
-                      link: item.url,
+                      link: item.html_url,
                       title: item.title
                   });
               }
-              console.log(data);
-              console.log(entries);
-              return entries;
           });
           promises.push(promise);
       }
