@@ -5,8 +5,8 @@
   <body>
     <p id="feed-paragraph" style="white-space: pre"></p>
     <script>
-      promises = [];
-      entries = [];
+      const promises = [];
+      const entries = [];
 
       const rss_urls = [
           'http://chuckcowdery.blogspot.com/feeds/posts/default',
@@ -18,7 +18,7 @@
       ];
 
       for (let url of rss_urls) {
-          promise = feednami.load(url).then(feed => {
+          const promise = feednami.load(url).then(feed => {
               for (let entry of feed.entries) {
                   entries.push(entry);
               }
@@ -31,7 +31,7 @@
       ];
 
       for (let url of github_urls) {
-          promise = fetch(url).then(response => {
+          const promise = fetch(url).then(response => {
               return response.json();
           }).then(data => {
               for (let item of data.items) {
