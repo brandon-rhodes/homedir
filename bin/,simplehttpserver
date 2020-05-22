@@ -11,20 +11,21 @@ import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 class MyHandler(SimpleHTTPRequestHandler):
-    directory = None
+    custom_directory = None
 
     def translate_path(self, path):
         path = super().translate_path(path)
-        path = self.directory + path
+        path = self.custom_directory + path
         return path
 
 def main():
+    directory = '.'
     if len(sys.argv) > 1:
-        os.chdir(sys.argv[1])
+        directory = sys.argv[1]
 
     # In case we are serving a directory that might get deleted and
     # re-created, let's serve it from the filesystem root.
-    MyHandler.directory = os.getcwd()
+    MyHandler.custom_directory = os.path.join(os.getcwd(), directory)
     os.chdir('/')
 
     port = 8002
