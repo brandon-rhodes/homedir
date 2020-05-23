@@ -1,5 +1,6 @@
 include "%S/en_US.UTF-8/Compose"
-<Multi_key> <t> <a> : "𝜏"
+<Multi_key> <p> <apostrophe> : "′"
+<Multi_key> <p> <quotedbl> : "″"
 <Multi_key> <p> <i> : "𝜋"
 <Multi_key> <bar> <asciicircum> : "↑"
 <Multi_key> <bar> <v> : "↓"
