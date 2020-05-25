@@ -5,6 +5,7 @@ t = ts.utc(2020, 4, 23)
 eph = load('de421.bsp')
 sun = eph['sun']
 earth = eph['earth']
+bluffton = earth + api.Topos('40.8939 N', '83.8917 W')
 sat = api.EarthSatellite(
     '1 25544U 98067A   20114.53491251  .00001443  00000-0  33988-4 0  9995',
     '2 25544  51.6434 258.9578 0001655 179.6828 273.6120 15.49306451223542',
