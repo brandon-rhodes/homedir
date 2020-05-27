@@ -114,6 +114,7 @@ Key e A 4  Exec exec emacs
 Key l A 4  Lower
 Key m A 4  Exec exec bash $HOME/.fvwm/open-in-google-maps.sh
 Key n A 4  Exec exec ,browser
+Key o A 4  Exec exec open $HOME/Downloads/"$(ls -tr ~/Downloads | tail -1)"
 Key p A 4  Menu Projects Nop
 Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec xterm
@@ -200,9 +201,7 @@ DestroyMenu MenuFvwmWindowOps
 AddToMenu MenuFvwmWindowOps
 + "$[gt.Window Operations]" Title
 + "$[gt.&S Save screenshot]" Exec exec xfce4-screenshooter -w -d 0 -s ~/Downloads
-+ "$[gt.  Copy screenshot]" Exec exec xfce4-screenshooter -w -d 0 -c
 + "$[gt.  Save region]" Exec exec xfce4-screenshooter -r -d 0 -s ~/Downloads
-+ "$[gt.  Copy region]" Exec exec xfce4-screenshooter -r -d 0 -c
 + "$[gt.  Timer]" Exec sleep 1 && exec xfce4-screenshooter -w -d 0 -s ~/Downloads
 + "" Nop
 + "$[gt.&C Close]"         Close
