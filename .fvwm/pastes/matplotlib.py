@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 ax.plot(t, s, label='label', linestyle='--')
 ax.set(xlabel='time (s)', ylabel='voltage (mV)', title='Title')
+ax.set_aspect(aspect=1.0)
 ax.grid()
 plt.legend()
 fig.savefig('test.png')
