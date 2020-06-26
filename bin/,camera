@@ -4,9 +4,12 @@ set -e
 
 # Mount the camera.
 
-gio mount -m -d /dev/sdb1
-camera=/media/brandon/disk  # 3030-6331  # TODO: detect
-trap "gio mount -u $camera" EXIT
+if ! [ -d /media/brandon/disk ]
+then
+    gio mount -m -d /dev/sdb1
+    camera=/media/brandon/disk  # 3030-6331  # TODO: detect
+    trap "gio mount -u $camera" EXIT
+fi
 
 # Generate a list of images currently on the camera, each prefixed with
 # the Y-M-D date of its modify time.
