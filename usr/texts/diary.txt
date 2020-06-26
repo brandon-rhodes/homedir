@@ -1,4 +1,20 @@
 
+======== 2020 June 26 Friday ========
+
+Since upgrading the Lenovo ThinkPad X260 to Ubuntu 20.04, Google Chrome
+browser tabs that attempted aggressive graphics would crash.  A search
+for the Arch Linux notes on the laptop led to:
+
+https://wiki.archlinux.org/index.php/Laptop/Lenovo#Thinkpad_X260
+https://www.reddit.com/r/archlinux/comments/gu0a8a/psa_solution_for_random_freezes_with_intel_igpu/
+
+So I have added "i915.enable_psr=0" to the GRUB_CMDLINE_LINUX_DEFAULT
+setting in /etc/default/grub and re-ran:
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+After rebooting, Chrome seems stable again!
+
 ======== 2019 October 12 Saturday ========
 
 The Lenovo ThinkPad X260, it turns out, is rather fragile under Linux,
