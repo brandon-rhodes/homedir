@@ -38,7 +38,7 @@ def main():
 def python_files():
     for dirpath, dirnames, filenames in os.walk('.'):
         for filename in filenames:
-            if filename.endswith('.py'):
+            if not filename.startswith('.#') and filename.endswith('.py'):
                 yield os.path.join(dirpath, filename)
 
 if __name__ == '__main__':
