@@ -15,8 +15,7 @@ def main(argv):
     parser.add_argument('path', nargs='+')
     args = parser.parse_args(argv)
 
-    path = os.environ['HOME'] + '/.emacs.d/usr/bin/pyflakes'
-    p = subprocess.Popen([path] + args.path, stdout=subprocess.PIPE)
+    p = subprocess.Popen(['pyflakes'] + args.path, stdout=subprocess.PIPE)
     output, _ = p.communicate()
     for line in output.splitlines():
         line = line.decode('utf-8')
