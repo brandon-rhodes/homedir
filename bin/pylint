@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import subprocess
+import sys
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='Wrapper around pyflakes')
+    parser.add_argument('--enable')
+    parser.add_argument('--disable')
+    parser.add_argument('--msg-template')
+    parser.add_argument('--output-format')
+    parser.add_argument('--reports')
+    parser.add_argument('path', nargs='+')
+    args = parser.parse_args(argv)
+
+    path = os.environ['HOME'] + '/.emacs.d/usr/bin/pyflakes'
+    p = subprocess.Popen([path] + args.path, stdout=subprocess.PIPE)
+    output, _ = p.communicate()
+    for line in output.splitlines():
+        line = line.decode('utf-8')
+        path, lineno, rest = line.split(':', 3)
+        columnno, message = rest.split(' ', 1)
+        print(args.msg_template.format(
+            category='pylint',
+            column=columnno,
+            line=lineno,
+            symbol='symbol',
+            msg=message,
+        ))
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
+
