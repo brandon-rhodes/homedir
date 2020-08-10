@@ -1,7 +1,9 @@
 #!/usr/bin/env python2.7
 #
-# Watch one or more files, exiting when a program finishes writing to
-# one of them (useful in "for" loops at the command line).
+# Enter a loop that runs a command then pauses by running "inotifywait"
+# with a list of files we want to watch.  When one of those files is
+# opened for writing and then closed, "inotifywait" exits and our loop
+# repeats.
 
 import os
 import subprocess
