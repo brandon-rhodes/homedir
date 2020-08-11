@@ -4,6 +4,8 @@
 # with a list of files we want to watch.  When one of those files is
 # opened for writing and then closed, "inotifywait" exits and our loop
 # repeats.
+#
+# Example: ,watch make html -- **/*.rst
 
 import os
 import subprocess
