@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+#
+# If the current directory's git repository contains modified files,
+# then rebuild each modified file so that none of its lines disappear
+# and only the additions in its "git diff" remain.  This is useful for
+# CSV files from financial institutions that might show data for only a
+# limited window into the past, if you want to commit the new data lines
+# without discarding the old.
+
+import argparse
+import difflib
+import os
+import sys
+from subprocess import check_output as run
+
+def main(argv):
+    parser = argparse.ArgumentParser(
+        description='Restore lines "git diff" shows are to be removed',
+    )
+    parser.parse_args(argv)
+
+    output = run(['git', 'rev-parse', '--show-toplevel'])
+    root = output.strip()
+    os.chdir(root)
+
+    output = run(['git', 'diff', '--name-only'])
+
+    for path in output.splitlines():
+        print(path.decode('utf-8'))
+        original = run(['git', 'show', b'master:' + path])
+        with open(path, 'rb') as f:
+            current = f.read()
+        original_lines = original.decode('utf-8').splitlines(True)
+        current_lines = current.decode('utf-8').splitlines(True)
+        output_lines = list(paste_together(original_lines, current_lines))
+        with open(path, 'w') as f:
+            f.write(''.join(output_lines))
+
+def paste_together(original_lines, current_lines):
+    sm = difflib.SequenceMatcher(a=original_lines, b=current_lines)
+    common_blocks = sm.get_matching_blocks()
+    lines = []
+    i = j = 0
+    for a, b, size in common_blocks:
+        lines.extend(original_lines[i:a])
+        lines.extend(current_lines[j:b])
+        lines.extend(original_lines[a:a+size])  # could also use current_lines
+        i, j = a + size, b + size
+    return lines
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
