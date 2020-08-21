@@ -7,7 +7,7 @@ set -e
 if ! [ -d /media/brandon/disk ]
 then
     gio mount -m -d /dev/sdb1
-    camera=/media/brandon/disk  # 3030-6331  # TODO: detect
+    camera=/media/brandon/*
     trap "gio mount -u $camera" EXIT
 fi
 
