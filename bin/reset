@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Override the fact that “reset” turns control flow back on, causing the
+# terminal to intercept Ctrl-S and pause all further output until Ctrl-P
+# is pressed.
+
+/usr/bin/reset && exec stty -ixon
