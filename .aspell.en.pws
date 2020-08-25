@@ -1,10 +1,12 @@
-personal_ws-1.1 en 146 
+personal_ws-1.1 en 154 
 Americano
 Bluffton
 Butchart
 Bézier
 Canonicalization
+Coconino
 Django
+GitHub
 Greatgrandfather
 Greatgrandfather's
 Hipparcos
@@ -57,10 +59,12 @@ dataframe
 dataframes
 datagram
 datagrams
+deletability
 denormalization
 denormalized
 diff
 docstring
+doesn
 drainages
 else's
 encodings
@@ -70,6 +74,7 @@ filename
 filesystem
 globals
 hashable
+hasn
 hostname
 hostnames
 inbox
@@ -110,6 +115,7 @@ prepends
 proxying
 radians
 rebased
+recurse
 redis
 refactor
 refactored
@@ -121,6 +127,7 @@ screenshot
 searchable
 sexagesimal
 skatemobiles
+skyfield
 stateful
 stylesheets
 subclasses
@@ -138,6 +145,7 @@ trailheads
 tuple
 tuples
 uncacheable
+uncompress
 uncompromised
 unhobbitlike
 unquarantine
