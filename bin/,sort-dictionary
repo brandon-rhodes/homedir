@@ -4,5 +4,6 @@
 # version-controls reasonably.  Always run this before checking in.
 
 cd ~
-(head -1 .aspell.en.pws; awk 'NR>1' .aspell.en.pws | sort) > .aspell.en.new &&
-mv .aspell.en.new .aspell.en.pws
+(head -1 .aspell.en.pws; awk 'NR>1' .aspell.en.pws | sort -u) \
+    > .aspell.en.new &&
+    mv .aspell.en.new .aspell.en.pws
