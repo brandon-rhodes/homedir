@@ -9,6 +9,7 @@ import socket
 import sys
 import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from socketserver import ThreadingMixIn
 
 class MyHandler(SimpleHTTPRequestHandler):
     custom_directory = None
@@ -17,6 +18,9 @@ class MyHandler(SimpleHTTPRequestHandler):
         path = super().translate_path(path)
         path = self.custom_directory + path
         return path
+
+class MyServer(ThreadingMixIn, HTTPServer):
+    pass
 
 def main():
     directory = '.'
@@ -33,7 +37,7 @@ def main():
     while True:
         server_address = ('', port)
         try:
-            httpd = HTTPServer(server_address, MyHandler)
+            httpd = MyServer(server_address, MyHandler)
         except socket.error:
             port += 1
         else:
@@ -47,9 +51,9 @@ def main():
 
     if os.environ.get('DISPLAY') == ':0':
         webbrowser.open(url)
-    else:
-        hostname = socket.getfqdn()
-        print('http://{}:{}/'.format(hostname, port))
+
+    hostname = socket.getfqdn()
+    print('http://{}:{}/'.format(hostname, port))
 
     try:
         httpd.serve_forever()
