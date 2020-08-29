@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path=$(git remote -v | head -1 | awk '{print$2}' | sed 's/.*://;s/.git//')
+echo https://github.com/$path
+open https://github.com/$path
