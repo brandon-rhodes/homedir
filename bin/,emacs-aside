@@ -4,6 +4,6 @@
 # screen, and that will therefore not be visible on the projector during
 # a talk or during training.
 
-exec emacs -geometry 60x52-16+24 -fg "#000000" -T "Borderless" \
- --eval '(set-default-font "DejaVu Sans Mono 5")' \
+exec emacs -geometry 55x48-0+24 -fg "#000000" -T "Borderless" \
+ --eval '(set-default-font "DejaVu Sans Mono 8")' \
  "$@"
