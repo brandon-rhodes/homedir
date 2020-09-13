@@ -49,6 +49,7 @@ show-paths = show --pretty="" --name-only
 soft = reset HEAD .
 squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
+tags = tag -l --sort=creatordate --format='%(creatordate:short)  %(refname:short)'
 undo = !git reset --soft HEAD~1 && git reset HEAD .
 up = fetch origin master:master
 who = "!f () { \
