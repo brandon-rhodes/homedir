@@ -2,6 +2,8 @@ single quote: ’
 double quotes: x“”x
 em-dash: —
 vertical ellipsis: ⋮
+equals: ≈
+minus: −
 arrows: ←, ↑, →, ↓, ↔, ↕, ↖, ↗, ↘, ↙
 more arrows: ↰ ↱ ↲ ↳ ⬐ ⬎ ⬑ ⬏ ↴ ↵ ⤶ ⤷ ⤴ ⤵ ⇆ ⇄ ⇅ ⇵
 box drawing:
