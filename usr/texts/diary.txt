@@ -1,4 +1,15 @@
 
+======== 2020 September 14 Monday ========
+
+I finally found the problem that was causing this error every time I
+started Emacs and opened a Python file:
+
+File mode specification error: (wrong-type-argument lsp-session ...
+
+The problem was a `./.emacs.d/.lsp-session-v1` file (which I did not
+even know existed) which was apparently malformed.  I removed the file
+and the error has gone away!
+
 ======== 2020 June 26 Friday ========
 
 Since upgrading the Lenovo ThinkPad X260 to Ubuntu 20.04, Google Chrome
