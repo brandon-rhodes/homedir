@@ -10,6 +10,14 @@ The problem was a `./.emacs.d/.lsp-session-v1` file (which I did not
 even know existed) which was apparently malformed.  I removed the file
 and the error has gone away!
 
+======== 2020 July 01 Wednesday ========
+
+(Am not sure why I wrote this down?  But will keep it in case it’s
+important.  Was my desktop going to sleep while I was SSH’d in from
+another room?)
+
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+
 ======== 2020 June 26 Friday ========
 
 Since upgrading the Lenovo ThinkPad X260 to Ubuntu 20.04, Google Chrome
@@ -25,6 +33,15 @@ setting in /etc/default/grub and re-ran:
 grub-mkconfig -o /boot/grub/grub.cfg
 
 After rebooting, Chrome seems stable again!
+
+======== 2020 April 24 Friday ========
+
+Compiling and testing one of my C-language Python modules with clang, so
+I remember the maneuver:
+
+gdb .tox/py37/bin/python3.7
+run -m sgp4.tests
+CC=clang python setup.py build_ext --inplace && python -m sgp4.tests -k test_all_three_gravity_models_with_sgp4init > ../OUT
 
 ======== 2019 October 12 Saturday ========
 
