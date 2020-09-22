@@ -1,4 +1,12 @@
 
+======== 2020 September 22 Tuesday ========
+
+To check my site for broken links, insisting on updating links that now
+point at redirects:
+
+$ go get -u github.com/raviqqe/muffet
+$ muffet -l 0 https://rhodesmill.org
+
 ======== 2020 September 14 Monday ========
 
 I finally found the problem that was causing this error every time I
