@@ -20,4 +20,9 @@ do
     echo Copying $filename
     cp $src/$filename $dst/$filename
 done
+if [ -n "$1" ]
+then
+    echo "Press Enter to unmount /media/$USER/GARMIN"
+    read
+fi
 gio mount -u /media/$USER/GARMIN
