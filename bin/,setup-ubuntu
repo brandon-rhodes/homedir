@@ -59,6 +59,7 @@ for package in \
     pwgen            `: random passwords` \
     pypy pypy-dev    `: for when I want to be fast` \
     python2-dev      `: for when I feel old fashioned` \
+    python-pypdf2    `: for HOME/bin/pdfnup` \
     python3 python3-dev `: for when I feel modern` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
@@ -285,3 +286,8 @@ fi
 # Enable U2F with a Yubikey.
 
 sudo dd if=usr/etc/70-u2f.rules.txt of=/etc/udev/rules.d/70-u2f.rules.txt
+
+# Prevent VS Code (as of a late September update?) from repeatedly
+# popping up a request every few minutes that I unlock a keyring.
+
+sudo rm /usr/libexec/gcr-prompter

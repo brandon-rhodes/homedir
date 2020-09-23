@@ -1,0 +1,118 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+"""Layout multiple pages per sheet of a PDF document.
+
+Pdfnup is a Python command-line tool and module for layouting multiple
+pages per sheet of a PDF document. Using it you can take a PDF document
+and create a new PDF document from it where each page contains a number
+of minimized pages from the original PDF file.
+
+This module can be considered a sample tool for the excellent
+package pyPdf by Mathieu Fenniak, see http://pybrary.net/pyPdf.
+
+For further information please look into the file README.txt!
+"""
+
+
+import re
+import sys
+import getopt
+import os.path
+
+from pdfnup import *
+
+
+__version__ = "0.4.2"
+__license__ = "GPL 3"
+__author__ = "Dinu Gherman"
+__date__ = "2012-06-19"
+
+
+# command-line usage stuff
+
+def _showVersion():
+    "Print version message and terminate."
+
+    prog = os.path.basename(sys.argv[0])
+    print "%s %s" % (prog, __version__)
+    sys.exit()
+
+
+def _showUsage():
+    "Print usage message and terminate."
+
+    prog = os.path.basename(sys.argv[0])
+    copyrightYear = __date__[:__date__.find("-")]
+    args = (prog, __version__, __author__, copyrightYear, __license__)
+    print "%s v. %s, Copyleft by %s, %s (%s)" % args
+    print "Make multiple pages per sheet into a new PDF file."
+    print "USAGE: %s [options] file1 [file2...]" % prog
+    print """\
+OPTIONS:
+  -h --help          Prints this usage message and exits.
+  -v --version       Prints version number and exits.
+  -V --verbose       Prints path of generated PDF file.
+  -n NUM             Number of pages per sheet (default: 4),
+                     n must be a square or half square number, e.g. 16 or 8.
+  -l --layout DESC   Layout descriptor composed of two different letters
+                     from "RLDU", e.g. ewith the following meaning:
+                       RD first Right then Down (default),
+                       UL first Up then Left, etc. (all combinations allowed).
+  -o --output FILE   Set output path (incl. some patterns).
+
+EXAMPLES:
+  %(prog)s -n 2 file.pdf       # 2 pages per sheet
+  %(prog)s -n 8 file.pdf       # 8 pages per sheet
+  %(prog)s -n 8 -l LD file.pdf # 8 pages per sheet, first left then down
+
+COPYLEFT:
+  see http://www.gnu.org/copyleft/gpl.html
+""" % {"prog": prog}
+
+    sys.exit()
+
+
+def _main():
+    "Main for command-line usage."
+
+    try:
+        longOpts = "help version layout= output=".split()
+        opts, args = getopt.getopt(sys.argv[1:], "hvn:l:o:V", longOpts)
+    except getopt.GetoptError:
+        print "ERROR"
+        _showUsage()
+
+    stopOptions = "-v --version -h --help --verbose"
+    stopOptions = [key for (key, val) in opts if key in stopOptions]
+    if len(args) == 0 and len(stopOptions) == 0:
+        _showUsage()
+
+    layoutDesc = "RD"
+    numPagePerSheet = 4
+    outputPat = None
+    verbose = False
+    for key, val in opts:
+        if key in ("-h", "--help"):
+            _showUsage()
+        elif key in ("-v", "--version"):
+            _showVersion()
+        elif key in ("-V", "--verbose"):
+            verbose = True
+        elif key in ("-n",):
+            numPagePerSheet = int(val)
+        elif key in ("-o", "--output"):
+            outputPat = val
+        elif key in ("-l", "--layout"):
+            layoutDesc = val
+
+    # determine paths of input files
+    paths = [a for a in args if os.path.exists(a)]
+
+    for path in paths:
+        generateNup(path, numPagePerSheet,
+            outPathPatternOrFile=outputPat, dirs=layoutDesc, verbose=verbose)
+
+
+if __name__ == '__main__':
+    _main()
