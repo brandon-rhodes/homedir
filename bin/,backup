@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+cd
+s3cmd sync Archive s3://brandon-archive/
