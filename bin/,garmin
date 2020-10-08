@@ -4,11 +4,9 @@
 
 set -e
 
-export NUMBER=${1:-1}
-
 gio mount -m -d /dev/sdb /media/$USER/GARMIN
 src=/media/$USER/GARMIN/GARMIN/ACTIVITY
-dst=$HOME/Dropbox/Garmin
+dst=$HOME/Archive/Garmin
 files=( $(ls -t $src) )
 for filename in "${files[@]}"
 do
