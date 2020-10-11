@@ -15,7 +15,7 @@ fi
 
 case "$1" in
 "ag" )
-    V=2.0.0
+    V=2.2.0
 
     cd /tmp
     curl -OL https://github.com/ggreer/the_silver_searcher/archive/$V.tar.gz
