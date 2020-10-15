@@ -22,6 +22,7 @@ h = !man gitrevisions
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 ff = merge --ff-only
 hard = reset --hard
+harder = !git hard && git clean -f -d
 incoming = remote show origin
 l = log --graph --pretty=oneline --abbrev-commit --decorate=short
 la = log --graph --pretty=oneline --abbrev-commit --decorate=short --branches --tags --remotes
