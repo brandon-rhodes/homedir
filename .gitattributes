@@ -1,1 +1,2 @@
 .ssh/config filter=sshconfig_trailer
+*.py diff=python
