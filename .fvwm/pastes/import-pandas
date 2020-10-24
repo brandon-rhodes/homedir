@@ -1,4 +1,3 @@
-from __future__ import division
 %pylab inline
 %load_ext autoreload
 %autoreload 2
