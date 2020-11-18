@@ -111,6 +111,8 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
 Key e A 4  Exec exec emacs
+Key i A 4  All (CurrentPage, !Iconic) Iconify
+Key i A 4S All (CurrentPage, Iconic) Iconify
 Key l A 4  Lower
 Key m A 4  Exec exec bash $HOME/.fvwm/open-in-google-maps.sh
 Key n A 4  Exec exec ,browser
@@ -244,6 +246,7 @@ AddToMenu Pastes "Pastes" Title
 DestroyMenu MenuTransforms
 AddToMenu MenuTransforms
 + "Window Manager" Title
+# "GFM" = "GitHub Flavored Markdown"
 + "&G Markdown to GFM"  Exec exec xclip -o -selection primary | pandoc -r commonmark -t gfm --wrap=none | xclip -selection clipboard
 + "&P Paper 2xLF"  Exec exec xclip -o -selection clipboard | sed 's/$/\n/' | xclip -selection clipboard -t UTF8_STRING
 
