@@ -8,6 +8,8 @@ then
     exit 2
 fi
 
+cd "$(dirname $0)"
+
 docker build -t gems . 1>&2
 
 exec docker run -ti \
