@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# I can never remember how to profile Python programs, so:
+
+python -m cProfile -o _profile.out "$@"
+cat <<'EOF'
+python -c '__import__("pstats").Stats("_profile.out").strip_dirs().sort_stats("tottime").print_stats()'
+EOF
