@@ -127,7 +127,6 @@ alias ltr="/bin/ls -ltr"
 alias ltra="/bin/ls -ltra"
 alias m="less"
 alias o="open"
-alias vl="git diff-vs-master --name-only"
 alias vs="git diff-vs-master"
 
 d () {
@@ -144,15 +143,6 @@ gi () {
     arg1="$1"
     shift
     gi${arg1:0:1} ${arg1:1} "$@"
-}
-j () {
-    jq . "$@" | less
-}
-,q () {
-    if [ -z "$1" ]
-    then git commit -m 'quick commit' .
-    else git commit -m 'quick commit' "$@"
-    fi
 }
 
 # A convenient way to turn core dumping on and off.  Note the leading
