@@ -154,10 +154,6 @@ j () {
     else git commit -m 'quick commit' "$@"
     fi
 }
-wd () {
-    diff -u "$@" | wdiff -d -n -w $'\033[1;31;47m' -x $'\033[0m' \
-                               -y $'\033[1;32;47m' -z $'\033[0m'
-}
 
 # A convenient way to turn core dumping on and off.  Note the leading
 # comma, which keeps these one-off commands completely orthogonal to

@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# This used to be an alias “wd” in my .bashrc, but its being an alias
+# made it less discoverable than a comma-script in ~/bin.  And I always
+# forgot its name, because (a) it didn't have "diff" in it, and (b) I
+# use the command pretty rarely.
+
+diff -u "$@" |
+    wdiff -d -n \
+          -w $'\033[1;31;47m' -x $'\033[0m' \
+          -y $'\033[1;32;47m' -z $'\033[0m' |
+    less
