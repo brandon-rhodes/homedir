@@ -29,6 +29,7 @@ for package in \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
     csvkit           `: manipulate data from the command line` \
+    dos2unix         `: for removing CR chars or, more rarely, adding them` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs            `: editor-of-choice` \
     emacs-el         `: readable LISP source` \
@@ -93,6 +94,7 @@ for package in \
     xfce4-notifyd    `: desktop notifications that I can click to dismiss` \
     xfce4-screenshooter `: for taking screenshots` \
     xserver-xephyr   `: confine apps to a recursive X server in a window` \
+    xsnow            `: tis the season` \
     yubikey-manager  `: command line tool` \
     zsh              `: favorite shell` \
     \
