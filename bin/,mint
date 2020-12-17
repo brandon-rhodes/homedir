@@ -30,7 +30,7 @@ then
     # support "-i" option to allow interactive use
     read -p "Press Enter when done interacting with transactions: "
 else
-    sleep 10
+    sleep 20
 fi
 xdotool key ctrl+f type "export all"
 xdotool key ctrl+Return
