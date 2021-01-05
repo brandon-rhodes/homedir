@@ -17,5 +17,5 @@ times, events = almanac.find_discrete(day_start, day_end, almanac.dark_twilight_
 from pytz import timezone
 z = timezone("US/Eastern")
 for t, e in zip(times, events):
-    print(t.astimezone(z), " ", almanac.TWILIGHTS[e])
+    print(t.astimezone(z).strftime("%Y-%m-%d %H:%M"), " ", almanac.TWILIGHTS[e])
 '
