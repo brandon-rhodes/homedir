@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+    echo usage: ,rst-check FILENAME [BROWSER-FLAG]
+    exit 2
+fi
+
+set -e
+
+/home/brandon/.v/skyfield/bin/rst2html.py "$1" /tmp/rst.html
+
+if [ -n "$2" ]
+then
+    python -m webbrowser -t file:///tmp/rst.html
+fi
