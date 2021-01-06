@@ -29,7 +29,8 @@ fi
 
 # An argument was offered!  Filter the list of images.
 
-V=$1 awk '$1 >= ENVIRON["V"] {print $2}' /tmp/camera-filenames \
+V=$1 awk 'substr($1, 1, length(ENVIRON["V"])) == ENVIRON["V"] {print $2}' \
+ /tmp/camera-filenames \
  > /tmp/camera-filenames2
 
 echo Selected $(wc -l /tmp/camera-filenames2 | awk '{print $1}') out of  $(wc -l /tmp/camera-filenames | awk '{print $1}') photographs
