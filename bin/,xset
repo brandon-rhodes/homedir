@@ -42,6 +42,8 @@ xi () {
 
 xi --disable 'SynPS/2 Synaptics TouchPad'
 xi set-prop 'Dell Dell USB Mouse' 'libinput Natural Scrolling Enabled' 1
+xi set-prop 'PixArt Dell MS116 USB Optical Mouse' \
+            'libinput Natural Scrolling Enabled' 1
 xi set-prop 'TPPS/2 IBM TrackPoint' 'libinput Natural Scrolling Enabled' 1 ||
     xi set-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 7 6 5 4
 
