@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Push changes to my web site.  The production repository has been
-# configured to auto-update when it receives a push, with:
-#
-# git config receive.denyCurrentBranch updateInstead
+# Push changes to my web site.
 
 set -e
 
@@ -13,7 +10,7 @@ find -name searchindex.js -delete  # I never offer Sphinx search fields
 
 message="$(git stash -u)"
 git checkout master
-git pull git@bitbucket.org:brandon/rhodesmill.org.git
+git pull
 if [ "$message" != "No local changes to save" ]
 then
     git stash pop
@@ -60,6 +57,5 @@ done
 
 # Commit and push.
 git commit -m 'Auto-commit'
-git push git@bitbucket.org:brandon/rhodesmill.org.git
-git push wf-rhodesmill:webapps/rhodesmill_dot_org
+git push
 git fetch
