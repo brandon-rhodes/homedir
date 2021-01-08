@@ -8,6 +8,18 @@ fi
 
 set -e
 
+if [[ "$1" == *.py ]]
+then
+    # Take the docstring as the RST text.
+    python3 -c"
+import ast, sys
+a = ast.parse(open(sys.argv[1]).read())
+print(ast.get_docstring(a))
+" "$1" > /tmp/rst.src
+    shift
+    set -- /tmp/rst.src "$@"
+fi
+
 /home/brandon/.v/skyfield/bin/rst2html.py "$1" /tmp/rst.html
 
 if [ -n "$2" ]
