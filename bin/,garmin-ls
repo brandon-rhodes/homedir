@@ -5,7 +5,7 @@ find /media/$USER/GARMIN/GARMIN/ACTIVITY -type f |
     #head -1 |
     while read path
     do
-        ~/usr/lib/garmin/fit2tcx < $path |
+        ~/local/lib/garmin/fit2tcx < $path |
             python -c '
 import lxml, re, sys
 from lxml import etree

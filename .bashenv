@@ -33,7 +33,7 @@ export PYTHONDONTWRITEBYTECODE=PLEASE
 
 # Prepend my home bin directories to the path if not there already.
 
-for p in $HOME/go/bin $HOME/Dropbox/bin "$HOME/Dropbox (Dropbox)/bin" $HOME/usr/bin $HOME/bin
+for p in $HOME/go/bin $HOME/local/bin $HOME/bin
 do
     if [[ :"$PATH": != *:"$p":* && -d "$p" ]]
     then PATH="$p:$PATH"

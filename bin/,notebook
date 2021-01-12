@@ -41,7 +41,7 @@ def main(argv):
     os.execlp('open', 'open', notebook_url)
 
 def create_notebook_for_csv(csv_path):
-    template_path = 'usr/templates/csv_template.ipynb'
+    template_path = 'local/templates/csv_template.ipynb'
     with open(template_path, 'rb') as f:
         template_text = f.read()
 

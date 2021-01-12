@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Download Selenium if its JAR file is not already present in ~/usr/src,
+# Download Selenium if its JAR file is not already present in ~/local/src,
 # and then run it attached to a captive X Windows sub-display so that
 # the browser windows it constantly pops up cannot overlay the actual
 # screen that the developer is trying to use.  Since most x.org installs
@@ -13,12 +13,12 @@ then
     sudo apt-get install openjdk-6-jre xserver-xephyr
 fi
 
-if [ ! -f ~/usr/src/$JAR ]
+if [ ! -f ~/local/src/$JAR ]
 then
-    mkdir -p ~/usr/src
+    mkdir -p ~/local/src
     cd /tmp
     wget -c http://selenium.googlecode.com/files/$JAR
-    mv $JAR ~/usr/src
+    mv $JAR ~/local/src
 fi
 
 if ! [ -f ~/bin/chromedriver ]
@@ -30,6 +30,6 @@ then
     rm chromedriver_linux32_16.0.902.0.zip
 fi
 
-cd ~/usr/src
+cd ~/local/src
 Xephyr -screen 1024x768 :1 &
 DISPLAY=:1 exec java -jar $JAR

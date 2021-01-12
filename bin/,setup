@@ -23,7 +23,7 @@ case "$1" in
 
     cd the_silver_searcher-$V
     ./build.sh
-    ./configure --prefix=$HOME/usr
+    ./configure --prefix=$HOME/local
     make
     make install
 
@@ -82,12 +82,12 @@ case "$1" in
 
 "emacs-for-macos" )
     # https://www.gnu.org/software/emacs/download.html
-    mkdir -p ~/usr/src
-    cd ~/usr/src
+    mkdir -p ~/local/src
+    cd ~/local/src
     curl -O http://mirror.thecodefactory.org/gnu/emacs/emacs-24.5.tar.gz
     tar xzf emacs-24.5.tar.gz
     cd emacs-24.5
-    ./configure --prefix=$HOME/usr \
+    ./configure --prefix=$HOME/local \
                 --with-x \
                 --with-jpeg=no --with-gif=no --with-tiff=no
     make
@@ -103,53 +103,26 @@ case "$1" in
     rm "SIL Open Font License 1.1.txt"
     ;;
 
-"fzf" )
-    V=0.12.2
-    cd ~/usr/bin
-    if [ "$(getconf LONG_BIT)" = "64" ]
-    then
-        curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_amd64.tgz | tar xvfz -
-        mv fzf-$V-linux_amd64 fzf
-    else
-        curl -L https://github.com/junegunn/fzf-bin/releases/download/$V/fzf-$V-linux_386.tgz | tar xvfz -
-        mv fzf-$V-linux_386 fzf
-    fi
-    ;;
-
 "notebook" )
     cd
-    .anaconda/bin/conda create -y -p ~/usr/ipynb \
-                        python=3.6 jupyter pandas seaborn
-    ;;
-
-"watchman" )
-    mkdir -p ~/usr/src
-    cd ~/usr/src
-    curl -L https://github.com/facebook/watchman/archive/v4.9.0.tar.gz |
-        tar xzf -
-    cd watchman-4.9.0
-    sudo apt-get install -y autoconf automake build-essential python-dev \
-         libssl-dev libtool
-    ./autogen.sh
-    ./configure --prefix=$HOME/usr
-    make
-    make install
+    .anaconda/bin/conda create -y -p ~/local/ipynb \
+                        python=3.8 jupyter pandas seaborn
     ;;
 
 "xephem" )
     sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
-    cd ~/usr/src
+    cd ~/local/src
     wget -c http://97.74.56.125/free/xephem-3.7.6.tar.gz
     tar xvfz xephem-3.7.6.tar.gz
     cd xephem-3.7.6/GUI/xephem
     make MOTIF=../../libXm/linux86
     cd ~/bin
-    ln -s ../usr/src/xephem-3.7.6/GUI/xephem/xephem .
+    ln -s ../local/src/xephem-3.7.6/GUI/xephem/xephem .
     cd ~
     if [ ! -d .xephem ] ;then
         mkdir .xephem
-        echo "XEphem.ShareDir: $HOME/usr/src/xephem-3.7.6/GUI/xephem" \
+        echo "XEphem.ShareDir: $HOME/local/src/xephem-3.7.6/GUI/xephem" \
             > .xephem/XEphem
     fi
     ;;

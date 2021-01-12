@@ -51,8 +51,8 @@ if [ -d $HOME/.dropbox-dist/ ]
 then $HOME/.dropbox-dist/dropbox-*/dropbox start &
 fi
 
-if [ -d $HOME/usr/ipynb ]
-then $HOME/usr/ipynb/bin/jupyter-notebook --no-browser -y &
+if [ -d $HOME/local/ipynb ]
+then $HOME/local/ipynb/bin/jupyter-notebook --no-browser -y &
 fi
 
 # Turn off Yubikey before I have the chance to accidentally touch it.

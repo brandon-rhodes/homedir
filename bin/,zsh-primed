@@ -6,5 +6,5 @@
 # the shell's history.
 
 COMMAND="$*" \
-ZDOTDIR="$HOME/usr/lib/scripts/zsh-primed-dotfiles" \
+ZDOTDIR="$HOME/local/lib/scripts/zsh-primed-dotfiles" \
 exec zsh
