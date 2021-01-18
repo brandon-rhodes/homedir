@@ -1,0 +1,4 @@
+#!/bin/bash
+# Because I never remember the name of this command.
+
+exec seq "$@"
