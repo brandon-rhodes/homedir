@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "My user stylesheets",
+  "version": "0.1.0",
+  "description": "Fix problems with various web sites",
+  "content_scripts": [{
+    "css": ["style-thepartysource.css"],
+    "js": ["content.js"],
+    "matches": ["https://thepartysource.com/*"]
+  }]
+}
