@@ -1,11 +1,12 @@
 #!/bin/bash
-
+#
 # Push changes to my web site.
 
 set -e
 
 cd ~/rhodesmill.org
-find -name objects.inv -delete     # Binary cruft from Intersphinx
+find -name .buildinfo -delete      # Sphinx cruft
+find -name objects.inv -delete     # More Sphinx cruft
 find -name searchindex.js -delete  # I never offer Sphinx search fields
 
 message="$(git stash -u)"
@@ -51,6 +52,7 @@ do
     elif ! echo "$answer" | grep -iq '^r'
     then
         echo 'Not pushing'
+        git hard
         exit
     fi
 done
