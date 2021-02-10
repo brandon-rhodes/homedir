@@ -28,9 +28,15 @@ else
         xterm -geometry +24-0 \
               -e "$HOME"/bin/,zsh-primed \
               ,watch make -- Makefile '**/*.rst' '_templates/*' &
+        if [ -d _build/html ]
+        then
+            DOC_ROOT=_build/html
+        else
+            DOC_ROOT=_build/dirhtml
+        fi
         xterm -geometry 80x8-0-0 \
               -e "$HOME"/bin/,zsh-primed \
-              ,simplehttpserver _build/html &
+              ,simplehttpserver $DOC_ROOT &
         popd >/dev/null
     done
 
