@@ -29,7 +29,8 @@ def main():
 
     # In case we are serving a directory that might get deleted and
     # re-created, let's serve it from the filesystem root.
-    MyHandler.custom_directory = os.path.join(os.getcwd(), directory)
+    directory = os.path.abspath(directory)
+    MyHandler.custom_directory = directory
     os.chdir('/')
 
     port = 8002
@@ -44,6 +45,7 @@ def main():
             break
 
     print('Serving HTTP on', server_address[0], 'port', server_address[1])
+    print('Root:', directory)
     url = 'http://localhost:{}/'.format(port)
 
     if len(sys.argv) > 2:
