@@ -136,7 +136,7 @@ d () {
     fi
 }
 function g {
-    grep -E --color=always "$@" 2>/dev/null | less -FRX
+    grep -P --color=always "$@" 2>/dev/null | less -FRX
 }
 gi () {
     # Correct something like "gi tstatus" to "git status".
