@@ -3,9 +3,16 @@
   "name": "My user stylesheets",
   "version": "0.1.0",
   "description": "Fix problems with various web sites",
-  "content_scripts": [{
-    "css": ["style-thepartysource.css"],
-    "js": ["content.js"],
-    "matches": ["https://thepartysource.com/*"]
-  }]
+  "chrome_url_overrides": {
+    "newtab": "/newtab.html"
+  },
+  "content_scripts": [
+    {
+      "css": ["style-thepartysource.css"],
+      "matches": ["https://thepartysource.com/*"]
+    }
+  ],
+  "permissions": [
+    "bookmarks"
+  ]
 }
