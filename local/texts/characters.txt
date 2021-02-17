@@ -1,5 +1,6 @@
 single quote: ’
 double quotes: x“”x
+prime and double prime: ′ ″
 em-dash: —
 vertical ellipsis: ⋮
 equals: ≈
