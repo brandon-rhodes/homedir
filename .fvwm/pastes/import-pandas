@@ -4,6 +4,8 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from math import tau, pi
+𝜏, 𝜋 = tau, pi
 sns.set()
 pd.options.display.max_colwidth = 128
 pylab.rcParams['figure.figsize'] = 12, 5
