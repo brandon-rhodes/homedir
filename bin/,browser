@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# if [ "$(hostname)" = "bernardus" ]
-# then
-#     scale=1.2
-# fi
-
-# if [ "$(hostname)" = "odell" ]
-# then
-#     scale=1.5
-# fi
-
 scale=1.0
 
 # See if the ",xset" command cached a scale factor for us to use.
@@ -18,4 +8,12 @@ then
     scale="$(cat ~/.chrome-scale)"
 fi
 
-exec google-chrome --enable-webgl --force-device-scale-factor="$scale" "$@"
+# The eventual removal of FTP from Chrome is being tracked here:
+# https://chromestatus.com/feature/6246151319715840
+
+exec google-chrome \
+     --enable-features=FtpProtocol \
+     --enable-ftp \
+     --enable-webgl \
+     --force-device-scale-factor="$scale" \
+     "$@"
