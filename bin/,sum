@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Wow! https://stackoverflow.com/a/18141152/85360
+
+paste -sd+ - | bc
