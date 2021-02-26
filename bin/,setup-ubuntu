@@ -37,6 +37,7 @@ for package in \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
     fonts-sil-gentium `: font for presentation slides` \
+    fzf              `: very well-designed interactive selection tool` \
     git              `: distributed version control` \
     gnumeric         `: spreadsheet` \
     golang-go        `: for editor tools like gofmt and go language server` \
