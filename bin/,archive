@@ -3,4 +3,12 @@
 set -e
 
 cd
-s3cmd sync Archive s3://brandon-archive/
+
+mkdir -p Archive
+
+if [ -z "$1" ]
+then
+    s3cmd sync Archive s3://brandon-archive/
+else
+    s3cmd sync s3://brandon-archive/ $HOME/
+fi
