@@ -1,0 +1,1 @@
+import bcr; __builtins__['bcr'] = bcr

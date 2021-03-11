@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Turn custom Python debugging module on and off.
+
+# TODO
+ln -s ~/local/debug/bcr.* ~/.v/skyfield/lib/python3.6/site-packages
