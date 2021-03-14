@@ -10,6 +10,10 @@
     {
       "css": ["style-thepartysource.css"],
       "matches": ["https://thepartysource.com/*"]
+    },
+    {
+      "css": ["style-twitter.css"],
+      "matches": ["https://twitter.com/*"]
     }
   ],
   "permissions": [
