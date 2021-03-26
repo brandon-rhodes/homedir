@@ -51,6 +51,7 @@ squash = !git reset --soft $(git merge-base HEAD origin/master) && git ci
 st = status
 tags = tag -l --sort=creatordate --format='%(creatordate:short)  %(refname:short)'
 undo = !git reset --soft HEAD~1 && git reset HEAD .
+unstage = restore --staged
 up = fetch origin master:master
 who = "!f () { \
     git log --date='format:%Y-%m' --format='%cd %ae' --since=1.year $@ \
