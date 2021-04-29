@@ -39,7 +39,6 @@ for package in \
     fonts-sil-gentium `: font for presentation slides` \
     fzf              `: very well-designed interactive selection tool` \
     git              `: distributed version control` \
-    gnumeric         `: spreadsheet` \
     golang-go        `: for editor tools like gofmt and go language server` \
     groff            `: for processing old documents` \
     html2text        `: when data is available in no better format` \
