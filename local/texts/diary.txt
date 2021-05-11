@@ -1,4 +1,12 @@
 
+======== 2021 May 05 Wednesday ========
+
+I always have to look up the options that tell `wget` to recursively
+capture a whole web site.  It looks like the simplest approach is
+something like:
+
+wget --mirror --reject '*.tgz' https://www.clearskyinstitute.com/xephem/
+
 ======== 2020 September 22 Tuesday ========
 
 To check my site for broken links, insisting on updating links that now
