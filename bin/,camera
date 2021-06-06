@@ -34,6 +34,8 @@ V=$1 awk 'substr($1, 1, length(ENVIRON["V"])) == ENVIRON["V"] {print $2}' \
  > /tmp/camera-filenames2
 
 echo Selected $(wc -l /tmp/camera-filenames2 | awk '{print $1}') out of  $(wc -l /tmp/camera-filenames | awk '{print $1}') photographs
+echo 'From' $(head -1 /tmp/camera-filenames2) \
+     'to' $(tail -1 /tmp/camera-filenames2)
 
 # If no second argument was given, do a dry run: merely print what we
 # would copy under these circumstances.
@@ -44,4 +46,5 @@ then
     exit 2
 fi
 
-(cd $dir; tar cf - -T /tmp/camera-filenames2 --transform "s|/|-|") | tar xvf -
+(cd $dir; tar cf - -T /tmp/camera-filenames2 --transform "s|/|-|") \
+    | tar xvkf -
