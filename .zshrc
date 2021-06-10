@@ -11,7 +11,13 @@ alias -g ,2='2>/dev/null'
 ci-helper () {
     local message="$history[$(print -P %h)]"
     message="$(echo "$message" | sed 's/ci //')"
-    ~/bin/ci "$message"
+    local length="${#message}"
+    if (( length > 50 ))
+    then
+        echo Error: a length of $length characters is too long
+        return 1
+    fi
+    git ci -m "$message" .
 }
 
 alias ci='ci-helper #'
