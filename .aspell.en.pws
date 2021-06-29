@@ -1,4 +1,4 @@
-personal_ws-1.1 en 163 
+personal_ws-1.1 en 169 
 Americano
 Astronomics
 Bluffton
@@ -16,7 +16,9 @@ JPL
 Jupyter
 Lawrenceville
 Muzetto
+Nankoweap
 Nuitka
+Pelennor
 Plössl
 Polymorphism
 PyCon
@@ -26,6 +28,7 @@ Silmarillion
 Skyfield
 Tapeats
 Tiangong
+Tirith
 Twiddler
 Wilshire
 Zealand
@@ -38,6 +41,7 @@ anonymizing
 antimeridian
 antitransit
 app
+arcminutes
 astrometric
 astrometry
 async
@@ -100,6 +104,7 @@ login
 lookup
 lossy
 masse
+memoization
 metadata
 middleware
 milliarcsecond
@@ -158,6 +163,7 @@ uncompress
 uncompromised
 unhobbitlike
 unquarantine
+upslope
 validator
 virtualization
 wayfinding
