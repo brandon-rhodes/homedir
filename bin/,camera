@@ -6,7 +6,13 @@ set -e
 
 if ! [ -d /media/brandon/disk ]
 then
-    gio mount -m -d /dev/sdb1
+    for medium in /dev/sdb1 /dev/mmcblk0p1
+    do
+        if [ -f $medium ]
+        then break
+        fi
+    done
+    gio mount -m -d $medium
     camera=/media/brandon/*
     trap "gio mount -u $camera" EXIT
 fi
