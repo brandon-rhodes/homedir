@@ -90,6 +90,7 @@ for package in \
     xbacklight       `: so FVWM key bindings can adjust screen brightness` \
     xclip            `: let shell scripts get and set the paste buffer` \
     xdotool          `: for generating keyboard and mouse actions` \
+    xiccd            `: for giving colord the same ICC profile as X atom` \
     xinput           `: set properties of keyboards, mice, trackpads` \
     xfce4-notifyd    `: desktop notifications that I can click to dismiss` \
     xfce4-screenshooter `: for taking screenshots` \

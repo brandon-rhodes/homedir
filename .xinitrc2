@@ -45,6 +45,7 @@ autocutsel &
 nm-applet &
 ~/.fvwm/xautolock &
 xfce4-volumed &
+xiccd &
 [ -x ~/.emacs.d/pycl.sh ] && ~/.emacs.d/pycl.sh &
 
 if [ -d $HOME/.dropbox-dist/ ]
