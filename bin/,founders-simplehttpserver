@@ -12,4 +12,4 @@ then
 fi
 
 echo "http://127.0.0.1:$port/"
-ssh founders -L $port:127.0.0.1:$port "cd $directory && python -m SimpleHTTPServer $port"
+ssh founders -L $port:127.0.0.1:$port "cd $directory && python3 -m http.server $port"
