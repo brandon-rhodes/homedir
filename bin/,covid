@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -s https://coronavirus.ohio.gov/static/dashboards/COVIDSummaryDataZIP.csv |
+    egrep '45801|45817|45840'
