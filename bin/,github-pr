@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$1" ]
+then
+    git remote update --prune
+    git ls-remote | grep '/pull/.*/head'
+else
+    h="$(git ls-remote -q | grep refs/pull/21/head | awk '{print$1}')"
+    git fetch origin $h
+    git checkout -b pr"$1" $h
+fi
