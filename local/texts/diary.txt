@@ -1,4 +1,18 @@
 
+======== 2021 September 02 Thursday ========
+
+To snag a few pages from an old issue of Popular Science and turn them
+into a PDF, first find the issue on Google Books, and use its hash with
+the “pysheng” tool from GitHub:
+
+$ pysheng TCEDAAAAMBAJ
+
+Then figure out which of the resulting images compose the article, and:
+
+$ convert 128.png 129.png 130.png 131.png \
+  -units pixelsperinch -density 72 -page letter \
+  ../bolometer.pdf
+
 ======== 2021 May 05 Wednesday ========
 
 I always have to look up the options that tell `wget` to recursively
