@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ~/local/containers/generic/run
