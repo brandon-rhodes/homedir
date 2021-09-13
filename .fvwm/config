@@ -164,11 +164,6 @@ Mouse 1 I    A  Iconify
 Mouse 2 TSIF A  Resize
 Mouse 3 TSF  A  RaiseLower
 
-# Rescue Chrome's usability by capturing and neutering Alt+mousewheel.
-
-Mouse 4 A    C  Nop
-Mouse 5 A    C  Nop
-
 # Menus.
 
 DestroyMenu Applications
