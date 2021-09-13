@@ -1,4 +1,12 @@
 
+======== 2021 September 06 Monday ========
+
+To browse around through archival files without the risk of accidentally
+altering them, create a read-only bind mount of that filesystem tree:
+
+$ mkdir ~/ro-dropbox
+$ sudo mount -o ro --bind ~/.dropbox-homedir/Dropbox ~/ro-dropbox
+
 ======== 2021 September 02 Thursday ========
 
 To snag a few pages from an old issue of Popular Science and turn them
