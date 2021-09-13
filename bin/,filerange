@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# For when I want to do something to a contiguous set of photographs,
+# and want to simply name the first and last photo.
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echo usage: ,filerange filename1 filename2
+    exit 2
+fi
+
+ls | A="$1" B="$2" awk '$0 >= ENVIRON["A"] && $0 <= ENVIRON["B"]'

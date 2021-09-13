@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Because I can never remember which options will simply give me the
+# date a photo was taken, which is almost always the one thing I want to
+# know.
+
+exiftool -q -p '$FileModifyDate  $FileName' "$@"

@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+#
+# After deleting a few photos with the Delete button in Geeqie, I then
+# always want to remove the orphaned .xmp sidecar files.
+
+import glob
+import os
+import sys
+
+dirs = sys.argv[1:]
+if not dirs:
+    print('usage: give me some directories')
+    sys.exit(2)
+
+for dirname in dirs:
+    for dirpath, dirnames, filenames in os.walk(dirname):
+        for filename in filenames:
+            if not filename.endswith('.xmp'):
+                continue
+            if '_' in filename:
+                continue  # TODO: probably a second version of the same image
+            path = os.path.join(dirpath, filename)
+            matches = glob.glob(path[:-4] + '*')
+            if len(matches) > 1:
+                continue
+            print(path)
