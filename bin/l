@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+    set -- .
+fi
+if [ -n "$1" ]
+then
+    if [ -d "$1" ]
+    then
+        ls -vCF "$1"
+    else
+        less -f "$1"
+    fi
+fi
