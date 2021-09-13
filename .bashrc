@@ -128,6 +128,7 @@ alias ltra="/bin/ls -ltra"
 alias m="less"
 alias o="open"
 alias vs="git diff-vs-master"
+alias xargs="xargs -d '\n'"  # I never put multiple filenames on one line
 
 d () {
     if [ -t 1 ]
