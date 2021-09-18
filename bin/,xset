@@ -83,6 +83,16 @@ case ${fields[3]} in
         ;;
 esac
 
+# TODO: takes a long 0.2 seconds to run xrandr; any alternative, if I
+# want to learn which monitor is hooked up?
+
+if xrandr --verbose | grep -q 00ffffffffffff004c2d22053032524c
+then
+    # Samsung Syncmaster, which is actually 90 DPI.  But this
+    # compensates for the greater viewing distance at my desk.
+    set_dpi 121
+fi
+
 exit
 
 # Old approach: I used to use hostnames.  These settings will all
