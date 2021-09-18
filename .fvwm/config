@@ -225,8 +225,8 @@ AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.Window Manager]" Title
 + "$[gt.&L Lock screen]"  Exec exec slock
 + "$[gt.&R Reload fvwm2rc]"  Read config
-+ "$[gt.  Kill xautolock]"  Exec exec killall xautolock
-+ "$[gt.  Run xautolock]"  Exec exec $HOME/.fvwm/xautolock
++ "$[gt.  Kill lock/saver]"  Exec xset s off -dpms && killall xautolock
++ "$[gt.  Run lock/saver]"  Exec xset s on +dpms && $HOME/.fvwm/xautolock
 + "$[gt.  Restart fvwm]"  Restart
 + "$[gt.  Quit fvwm]"    Quit
 + "" Nop
