@@ -24,6 +24,7 @@ apt-cache search . | awk '{print $1}' > /tmp/all-package-names
 for package in \
     adb android-sdk-platform-tools-common `: for backing up an Android phone` \
     apt-file         `: to find where files come from` \
+    argyll           `: to color-calibrate my displays` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     cabextract       `: for extracting binary Windows drivers ` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
