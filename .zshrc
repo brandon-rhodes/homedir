@@ -14,7 +14,7 @@ ci-helper () {
     local length="${#message}"
     if (( length > 50 ))
     then
-        echo Error: a length of $length characters is too long
+        echo 'Error: message has more than 50 characters        ^==='
         return 1
     fi
     git ci -m "$message" .
