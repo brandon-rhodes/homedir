@@ -1,4 +1,13 @@
 
+======== 2021 September 10 Friday ========
+
+It’s now time to calibrate a second monitor and after two months I’ve
+already forgotten how, so: the tool I originally used is DisplayCAL, but
+this second time I’m happier using the lower-level tools described here:
+
+https://encrypted.pcode.nl/blog/2013/11/24/display-color-profiling-on-linux/
+http://rawtherapee.com/mirror/dcamprof/argyll-display.html
+
 ======== 2021 September 06 Monday ========
 
 To browse around through archival files without the risk of accidentally
