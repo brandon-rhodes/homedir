@@ -179,6 +179,14 @@ then
 
 fi
 
+# Faster C builds.  Maybe I'll forget this is set globally, and it'll
+# get me into trouble someday?  We'll see!
+
+if [ -x /usr/bin/ccache ]
+then
+    export CC="ccache cc"
+fi
+
 # The tty should not intercept Control-S (stop) or Control-Q (start).
 
 if [ -t 0 ]
