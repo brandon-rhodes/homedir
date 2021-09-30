@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+#
+# Serve the most recent JPEG from my Photos directory hierarchy, so I
+# can Darktable-export an image and then check how it looks on my phone
+# before deciding whether to post it to social media.
+
+import os
+import socket
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+from socketserver import ThreadingMixIn
+
+PHOTOS = '/home/brandon/Dropbox/Photos'
+
+def most_recent_photo():
+    files = []
+    for dirpath, dirnames, filenames in os.walk(PHOTOS):
+        for filename in filenames:
+            if not filename.lower().endswith(('.jpg', '.jpeg')):
+                continue
+            path = os.path.join(dirpath, filename)
+            st = os.stat(path)
+            files.append((st.st_mtime, path))
+    files.sort()
+    most_recent = files[-1][1]
+    return most_recent
+
+class MyHandler(SimpleHTTPRequestHandler):
+    custom_directory = None
+
+    def do_GET(self):
+        if self.path != '/':
+            self.send_error(404, "File not found")
+            return
+
+        path = most_recent_photo()
+        ctype = self.guess_type(path)
+
+        f = open(path, 'rb')
+        fs = os.fstat(f.fileno())
+        print(f)
+        print(ctype)
+
+        self.send_response(200)
+        self.send_header("Content-type", ctype)
+        self.send_header("Content-Length", str(fs[6]))
+        self.send_header("Last-Modified", self.date_time_string(fs.st_mtime))
+        self.end_headers()
+        try:
+            self.copyfile(f, self.wfile)
+        finally:
+            f.close()
+
+    def do_HEAD(self):
+        raise NotImplementedError()
+
+class MyServer(ThreadingMixIn, HTTPServer):
+    pass
+
+def main():
+    port = 8222  # keep stable, because I make bookmarks of it on my phone
+
+    server_address = ('', port)
+    httpd = MyServer(server_address, MyHandler)
+
+    hostname = socket.getfqdn()
+    print('http://{}:{}/'.format(hostname, port))
+
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    print('Exiting')
+
+if __name__ == '__main__':
+    main()
