@@ -8,7 +8,7 @@ mkdir -p Archive
 
 if [ -z "$1" ]
 then
-    s3cmd sync Archive s3://brandon-archive/
+    s3cmd sync -v Archive s3://brandon-archive/
 else
-    s3cmd sync s3://brandon-archive/ $HOME/
+    s3cmd sync -v s3://brandon-archive/Archive/ $HOME/Archive/
 fi
