@@ -1,4 +1,6 @@
 include "%S/en_US.UTF-8/Compose"
+<Multi_key> <asciitilde> <equal> : "≈"
+<Multi_key> <asciitilde> <asciitilde> : "≈"
 <Multi_key> <d> <d> : "∆"
 <Multi_key> <p> <apostrophe> : "′"
 <Multi_key> <p> <quotedbl> : "″"
