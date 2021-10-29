@@ -8,6 +8,10 @@
   },
   "content_scripts": [
     {
+      "css": ["style-luu.css"],
+      "matches": ["https://danluu.com/*"]
+    },
+    {
       "css": ["style-thepartysource.css"],
       "matches": ["https://thepartysource.com/*"]
     },
