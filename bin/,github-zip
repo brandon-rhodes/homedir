@@ -26,7 +26,12 @@ if __name__ == '__main__':
     user = url.split(b':')[1].split(b'/')[0]
     repo = url.split(b'/')[1].split(b'.')[0]
     url2 = b'https://github.com/%s/%s/archive/%s.zip' % (user, repo, branch)
-    cmd = b'pip install -U ' + url2
+    cmd = (
+        b'To install the development version of this project, run:\n'
+        b'```\n'
+        b'pip install -U ' + url2 +
+        b'\n```\n'
+    )
     write(cmd)
     p = subprocess.Popen(
         ['xclip', '-selection', 'clipboard'],
