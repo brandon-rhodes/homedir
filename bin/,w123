@@ -1,3 +1,11 @@
 #!/bin/bash
 
-exec ,simplehttpserver ~/Dropbox/Library/Manuals/W123 /Main.html
+for d in ~/Dropbox/Library/Manuals/W123 ~/W123
+do
+    if [ -d $d ]
+    then
+        break
+    fi
+done
+
+exec ,simplehttpserver $d /Main.html
