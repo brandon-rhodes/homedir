@@ -111,6 +111,7 @@ Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
 Key e A 4  Exec exec emacs
+Key g A 4  Exec exec browser "https://github.com/notifications"
 Key i A 4  All (CurrentPage, !Iconic) Iconify
 Key i A 4S All (CurrentPage, Iconic) Iconify
 Key l A 4  Lower
