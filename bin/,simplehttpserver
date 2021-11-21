@@ -17,6 +17,8 @@ class MyHandler(SimpleHTTPRequestHandler):
     def translate_path(self, path):
         path = super().translate_path(path)
         path = self.custom_directory + path
+        if os.path.exists(path + '.html'):
+            path += '.html'
         return path
 
 class MyServer(ThreadingMixIn, HTTPServer):
