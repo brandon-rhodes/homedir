@@ -145,6 +145,9 @@ gi () {
     shift
     gi${arg1:0:1} ${arg1:1} "$@"
 }
+,w () {
+    ,watch python3 "$@" --
+}
 
 # A convenient way to turn core dumping on and off.  Note the leading
 # comma, which keeps these one-off commands completely orthogonal to
