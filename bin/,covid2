@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Quick script to see whether the county has recent fatalities.
+
+curl -s https://coronavirus.ohio.gov/static/dashboards/COVIDDeathData_CountyOfResidence.csv |
+    dos2unix | grep Allen | grep -v '0$' | sort -t, -k4 | tail -20
