@@ -7,7 +7,7 @@ a = add -AN
 at = rev-parse HEAD
 abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 abort = merge --abort
-amend = commit --amend
+amend = commit --amend --no-edit
 atag = !bash -c 'git tag -a \"$@\" && git push --tags' --
 base = merge-base HEAD origin/master
 br = "!if [ -n \"$1\" ] ;then git branch \"$@\" ;else git for-each-ref --sort=committerdate refs/heads/ --format=\"%(HEAD) %(color:yellow)%(objectname:short)%(color:reset) %(refname:short) (%(color:green)%(committerdate:relative)%(color:reset))\" ;fi ;:"
@@ -17,6 +17,7 @@ co = checkout
 cleanup = clean -dfx -e .vagrant
 d = diff
 diff-vs-master = !git diff -M "$@" $(git merge-base HEAD origin/master) -- .
+edit = commit --amend
 h = !man gitrevisions
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 ff = merge --ff-only
