@@ -1,6 +1,9 @@
-personal_ws-1.1 en 213 
+personal_ws-1.1 en 239 
 Americano
+Amroth
+Aragorn
 Astronomics
+Balrog
 Bluffton
 Bombadil
 Boromir
@@ -10,19 +13,29 @@ Butchart's
 Bézier
 Canonicalization
 Caradhras
+Caras
+Celeborn
+Cerin
 Chetwood
 Coconino
 Crickhollow
 Danette
 Denethor
 Diederich
+Dimrill
 Django
+Dol
 Dwarven
+Dwarvish
 Elrond
 Elven
 Faramir
 Frodo
+Galadhon
+Galadhrim
+Galadriel
 Gandalf
+Gimli
 GitHub
 Glorfindel
 Goldberry
@@ -30,8 +43,10 @@ Gollum
 Gondor
 Greatgrandfather
 Greatgrandfather's
+Guldur
 Gwaihir
 Hakatai
+Haldir
 Heustis
 Hipparcos
 Hobbiton
@@ -41,10 +56,14 @@ JPL
 Jupyter
 Kaibab
 Lawrenceville
+Legolas
+Lórien
 Midgewater
+Mirrormere
 Muav
 Muzetto
 Nankoweap
+Nimrodel
 Nuitka
 Orthanc
 Pelennor
@@ -58,6 +77,7 @@ SQLAlchemy
 Saruman
 Shadowfax
 Silmarillion
+Silverlode
 Skyfield
 Steck
 Tapeats
@@ -82,6 +102,7 @@ arcminutes
 astrometric
 astrometry
 async
+athelas
 attaches
 backcountry
 backend
@@ -116,6 +137,7 @@ diff
 docstring
 doesn
 drainages
+draught
 else's
 encodings
 ephemerides
@@ -123,6 +145,8 @@ ephemeris
 equants
 filename
 filesystem
+flet
+flets
 globals
 hashable
 hasn
@@ -150,6 +174,7 @@ middleware
 milliarcsecond
 milliarcseconds
 minification
+mithril
 mixin
 mixins
 multiclassing
@@ -193,6 +218,7 @@ subdomain
 subdomains
 substring
 telepresence
+texted
 thrusters
 timestamp
 traceback
