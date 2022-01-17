@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+# https://unix.stackexchange.com/questions/34242/how-to-print-unicode-glyph-names-for-input-string
+
+import sys, unicodedata
+for ch in sys.stdin.read():
+    try:
+        print(unicodedata.name(ch))
+    except ValueError:
+        print(ord(ch))
