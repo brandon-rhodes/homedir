@@ -172,6 +172,7 @@ DestroyMenu Applications
 AddToMenu Applications "Applications" Title
 + "&a. Audacity"  Exec exec audacity
 + "&c. XChat"     Exec exec xchat
++ "&e. Earth"     Exec exec google-earth-pro
 + "&f. Firefox"   Exec exec firefox
 + "&g. Gimp"      Exec exec gimp
 + "&i. Inkscape"  Exec exec inkscape
