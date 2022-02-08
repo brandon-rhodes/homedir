@@ -1,6 +1,14 @@
-#!/bin/bash
-#
-# Quick script to see whether the county has recent fatalities.
+#!/home/brandon/.v/skyfield/bin/python
 
-curl -s https://coronavirus.ohio.gov/static/dashboards/COVIDDeathData_CountyOfResidence.csv |
-    dos2unix | grep Allen | grep -v '0$' | sort -t, -k4 | tail -20
+import pandas
+import os
+
+path = '/tmp/covid_report_county_date.xlsx'
+os.system('wget -O {} https://hub.mph.in.gov/dataset/bd08cdd3-9ab1-4d70-b933-41f9ef7b809d/resource/afaa225d-ac4e-4e80-9190-f6800c366b58/download/covid_report_county_date.xlsx'.format(path))
+d = pandas.read_excel(path, engine='openpyxl')
+print(d.info())
+d = d[d['COUNTY_NAME'] == 'Elkhart']
+d = d.sort_values('DATE')
+d['COVID_RATE'] = (d['COVID_COUNT'] / 206341 * 1e5).round(1)
+d = d[['DATE', 'COVID_COUNT', 'COVID_RATE', 'COVID_DEATHS']]
+print(d.tail(30))
