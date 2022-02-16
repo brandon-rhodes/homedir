@@ -190,6 +190,7 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
++ "&g. Goshen weather"  Exec exec browser "https://forecast.weather.gov/MapClick.php?lat=41.58918&lon=-85.83695"
 + "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
 + "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
 + "&r. Read feeds"  Exec exec browser "file:///home/brandon/local/htdocs/feeds.html"
