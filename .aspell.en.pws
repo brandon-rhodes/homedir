@@ -1,4 +1,4 @@
-personal_ws-1.1 en 250 
+personal_ws-1.1 en 258 
 Americano
 Amroth
 Anduin
@@ -28,11 +28,14 @@ Diederich
 Dimrill
 Django
 Dol
+Doorward
 Dwarven
 Dwarvish
 Elrond
 Elven
+Ents
 Eorlingas
+Fangorn
 Faramir
 Frodo
 Galadhon
@@ -55,7 +58,9 @@ Haldir
 Heustis
 Hipparcos
 Hobbiton
+Huorns
 Isengard
+Isengard's
 Ithilien
 JPL
 Jupyter
@@ -63,6 +68,7 @@ Kaibab
 Lawrenceville
 Legolas
 Lórien
+Meduseld
 Midgewater
 Mirrormere
 Muav
@@ -78,6 +84,7 @@ PyCon
 Redwall
 Rivendell
 Rohan
+Rohirrim
 SEP
 SQLAlchemy
 Sarn
@@ -221,6 +228,7 @@ sexagesimal
 skatemobiles
 skyfield
 stateful
+steppeland
 stylesheets
 subclasses
 subdirectories
