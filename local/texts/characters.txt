@@ -13,6 +13,7 @@ box drawing:
 ├─┼─┤
 └─┴─┘
 
+Slightly Smiling Face: 🙂
 ☺
 
 alphabet math:
