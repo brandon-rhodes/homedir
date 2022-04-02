@@ -12,19 +12,20 @@ check () {
     fi
     for bat in BAT*
     do
-        source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
-        if [ "$POWER_SUPPLY_STATUS" == "Charging" ]
-        then return
-        fi
-        if [ "$POWER_SUPPLY_STATUS" == "Full" ]
-        then return
-        fi
-        if [ "$POWER_SUPPLY_CAPACITY" -gt 10 ]
-        then return
-        fi
-        content="$content
-$bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
+        :  # Skip to the last, and presumably biggest, battery.
     done
+    source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
+    if [ "$POWER_SUPPLY_STATUS" == "Charging" ]
+    then return
+    fi
+    if [ "$POWER_SUPPLY_STATUS" == "Full" ]
+    then return
+    fi
+    if [ "$POWER_SUPPLY_CAPACITY" -gt 10 ]
+    then return
+    fi
+    content="$content
+$bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
     return 1
 }
 
