@@ -4,4 +4,4 @@
 
 path="$(ls -t ~/Downloads/* | head -1)"
 echo $(basename "$path")
-mv --no-clobber "$path" .
+mv --no-clobber --verbose "$path" .
