@@ -30,21 +30,21 @@ then
     # support "-i" option to allow interactive use
     read -p "Press Enter when done interacting with transactions: "
 else
-    sleep 20
+    sleep 40
 fi
 xdotool key ctrl+f type "export all"
 xdotool key ctrl+Return
-sleep 7
+sleep 20
 xdotool key shift+ctrl+q
 sleep 2
 kill %1
 
-cd  ~/accounting
-grep -ivP '(\bpreauth|"auth)\b' ~/Downloads/transactions.csv > transactions.csv
-git d transactions.csv
-read -p "Commit?" yn
-if [ "$yn" = "y" ]
-then git add transactions.csv
-     git commit -m 'Downloaded new transactions.csv'
-     git push
-fi
+# cd  ~/accounting
+# grep -ivP '(\bpreauth|"auth)\b' ~/Downloads/transactions.csv > transactions.csv
+# git d transactions.csv
+# read -p "Commit?" yn
+# if [ "$yn" = "y" ]
+# then git add transactions.csv
+#      git commit -m 'Downloaded new transactions.csv'
+#      git push
+# fi
