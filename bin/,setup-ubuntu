@@ -27,6 +27,7 @@ for package in \
     argyll           `: to color-calibrate my displays` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
     cabextract       `: for extracting binary Windows drivers ` \
+    ccache           `: for bypassing inefficient Python extension builds` \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
     csvkit           `: manipulate data from the command line` \
