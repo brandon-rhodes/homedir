@@ -16,6 +16,10 @@
       "matches": ["https://thepartysource.com/*"]
     },
     {
+      "css": ["style-thespruce.css"],
+      "matches": ["https://www.thespruce.com/*"]
+    },
+    {
       "css": ["style-twitter.css"],
       "matches": ["https://twitter.com/*"]
     }
