@@ -1,19 +1,23 @@
 #!/bin/bash
 #
 # Sunrise, sunset, twilight
+#
+# Create a file named ~/.twilight with two lines that give latitude and
+# longitude, like "36.05 N" and "112.14 W".
 
 cd
 cd skyfield
 ~/.v/skyfield/bin/python -c '
 from skyfield import api
+coordinates = open("/home/brandon/.twilight").read().splitlines()
 planets = api.load("de421.bsp")
-bluffton = api.Topos("40.8939 N", "83.8917 W")
+topos = api.Topos(*coordinates)  # Hopefully looks like ["41 N", "85 W"]
 ts = api.load.timescale(builtin=True)
 t = ts.now()
 day_start = ts.tt_jd((t.tt - 0.7) // 1.0 + 0.7)
 day_end = ts.tt_jd(day_start.tt + 1.0)
 from skyfield import almanac
-times, events = almanac.find_discrete(day_start, day_end, almanac.dark_twilight_day(planets, bluffton))
+times, events = almanac.find_discrete(day_start, day_end, almanac.dark_twilight_day(planets, topos))
 from pytz import timezone
 z = timezone("US/Eastern")
 for t, e in zip(times, events):
