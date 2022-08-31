@@ -190,11 +190,10 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
-+ "&g. Goshen weather"  Exec exec browser "https://forecast.weather.gov/MapClick.php?lat=41.58918&lon=-85.83695"
 + "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
 + "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
 + "&r. Read feeds"  Exec exec browser "file:///home/brandon/local/htdocs/feeds.html"
-+ "&w. Weather"  Exec exec browser "http://forecast.weather.gov/MapClick.php?lat=40.8953301&lon=-83.8888288&site=all&smap=1&searchresult=Bluffton%2C%20OH%2045817%2C%20USA"
++ "&w. Weather"  Exec exec browser "https://forecast.weather.gov/MapClick.php?lat=41.58918&lon=-85.83695"
 + ""                Nop
 + "   Mercedes EPC"  Exec exec browser "https://epc.startekinfo.com/epc/"
 + "   Mercedes List" Exec exec browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
