@@ -42,6 +42,7 @@ for package in \
     fzf              `: very well-designed interactive selection tool` \
     git              `: distributed version control` \
     golang-go        `: for editor tools like gofmt and go language server` \
+    gnome-disk-utility `: to make it easy to reformat flash drives` \
     groff            `: for processing old documents` \
     html2text        `: when data is available in no better format` \
     htop             `: much better "top" command` \
