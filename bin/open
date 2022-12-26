@@ -1,11 +1,20 @@
 #!/bin/bash
 # "open" one or more files or URLs
 
+code=0
+
 for target in "$@"
 do
     if ! echo "$target" | egrep -q '^[A-Za-z]+://'
     then
-        target="file://$(realpath "$target")"
+        if [ ! -f "$target" ]
+        then
+            code=1
+            echo "Error: not a file: $target"
+            continue
+        else
+            target="file://$(realpath "$target")"
+        fi
     fi
     if command -v chromium-browser >/dev/null
     then
@@ -14,3 +23,5 @@ do
         google-chrome "$target"
     fi
 done
+
+exit $code
