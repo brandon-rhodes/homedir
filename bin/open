@@ -7,7 +7,7 @@ for target in "$@"
 do
     if ! echo "$target" | egrep -q '^[A-Za-z]+://'
     then
-        if [ ! -f "$target" ]
+        if [ ! -e "$target" ]
         then
             code=1
             echo "Error: not a file: $target"
