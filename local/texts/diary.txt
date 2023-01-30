@@ -1,4 +1,11 @@
 
+======== 2023 January 29 Sunday ========
+
+How can I tell if the ports of my Mikrotik router are really running at
+their top speed of 1000Mbps and not a lower speed like 100Mbps?  By
+visting “/webfig/#Terminal”, running the command “interface ethernet
+monitor” and giving the prompt “numbers:” something like “0,1,2”.
+
 ======== 2021 September 10 Friday ========
 
 It’s now time to calibrate a second monitor and after two months I’ve
