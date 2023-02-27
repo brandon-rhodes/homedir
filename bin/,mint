@@ -9,18 +9,27 @@ DISPLAY=:8
 
 google-chrome --user-data-dir=$HOME/.config/mint-chromium &
 
-sleep 1
+# visit mint.intuit.com/transaction
+# ctrl-f brandon ctrl?-enter ctrl-f continue ctrl-enter
+# already at transaction page; maybe because I followed bookmark?
+# ctrl-f export ctrl-enter, then wait some
+
+#sleep 199999
+sleep 3
 xdotool key ctrl+t
 sleep 1
 xdotool type mint.com
 xdotool key Return
-read -t 5 -p "Sleeping 5 seconds waiting for the site" || true
+read -t 8 -p "Sleeping 8 seconds waiting for the site" || true
 echo
 xdotool key ctrl+f type "sign in"
 xdotool key ctrl+Return
 read -t 10 -p "Sleeping 10 seconds waiting for login dialog" || true
 echo
-xdotool key Tab Return
+xdotool key ctrl+f type "Last accessed"
+xdotool key ctrl+Return
+read -t 10 -p "Sleeping 10 seconds waiting for password dialog" || true
+xdotool key Return
 read -t 12 -p "Sleeping 12 seconds waiting for login to complete" || true
 echo
 xdotool key ctrl+f type "transactions"
@@ -30,21 +39,13 @@ then
     # support "-i" option to allow interactive use
     read -p "Press Enter when done interacting with transactions: "
 else
-    sleep 40
+    read -t 8 -p "Sleeping 8 seconds waiting for transactions page" || true
 fi
-xdotool key ctrl+f type "export all"
+xdotool key ctrl+f type "Export"
 xdotool key ctrl+Return
-sleep 20
-xdotool key shift+ctrl+q
-sleep 2
+read -t 8 -p "Sleeping 8 seconds waiting for CSV" || true
+xdotool key ctrl+w
+sleep 1
+xdotool key ctrl+w
+sleep 1
 kill %1
-
-# cd  ~/accounting
-# grep -ivP '(\bpreauth|"auth)\b' ~/Downloads/transactions.csv > transactions.csv
-# git d transactions.csv
-# read -p "Commit?" yn
-# if [ "$yn" = "y" ]
-# then git add transactions.csv
-#      git commit -m 'Downloaded new transactions.csv'
-#      git push
-# fi
