@@ -33,6 +33,7 @@ Style * ResizeOpaque
 # remain on top, that never get obscured by other windows.
 
 Style TOP* StaysOnTop, Borders, Title
+Style "Screen Ruler" StaysOnTop, !Borders, !Title
 Style StayOnTop StaysOnTop, !Borders, !Title
 Style Borderless !Borders, !Title
 
