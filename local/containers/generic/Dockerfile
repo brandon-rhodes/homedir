@@ -2,7 +2,7 @@
 #
 # travis encrypt -r brandon-rhodes/pyephem SOMEVAR="secretvalue"
 
-FROM ubuntu:21.04
+FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt update && apt upgrade -y -y
 RUN apt install -y -y build-essential
