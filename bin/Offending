@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+#
+# Removes an offending SSH key if you paste into the shell a line like:
+# Offending key for IP in /home/brandon/.ssh/known_hosts:46
+#
+import os, sys
+
+filename, line_number = sys.argv[-1].split(':')
+
+assert sys.argv[1:-1] == ['key', 'for', 'IP', 'in']
+assert filename.endswith('/known_hosts')
+line_number = int(line_number)
+
+lines = open(filename).read().split('\n')
+del lines[line_number - 1]
+content = '\n'.join(lines)
+
+os.rename(filename, filename + '.bak')
+with open(filename, 'w') as f:
+    f.write(content)
