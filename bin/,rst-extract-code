@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import sys
+from fileinput import input
+from textwrap import dedent
+
+state = False
+output = []
+
+# We have to iterate with an index, so we can back up and reconsider the
+# line that ends each code block, since it might be the directive that
+# introduces the next code block.
+
+lines = list(input())
+length = len(lines)
+for i in range(length):
+    line = lines[i]
+    i += 1
+    if line.startswith(('.. testsetup::', '.. testcode::')):
+        snippet = []
+        while i < length:
+            line = lines[i]
+            if not line[0].isspace():
+                break
+            i += 1
+            snippet.append(line)
+        snippet = ''.join(snippet)
+        output.append(dedent(snippet))
+sys.stdout.write(''.join(output))
