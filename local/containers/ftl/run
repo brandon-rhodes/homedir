@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -f /usr/bin/docker ]
+then
+    echo Error: please apt install docker.io >&2
+    exit 2
+fi
+
+cd "$(dirname $0)"
+
+docker build -t x . 1>&2
+
+mkdir -p $HOME/.local/share/FasterThanLight
+
+exec docker run -ti \
+     --net=host \
+     -e DISPLAY=$DISPLAY \
+     --device /dev/dri \
+     --device /dev/snd \
+     --group-add $(getent group audio | cut -d: -f3) \
+     -u $(id -u):$(id -g) \
+     -v /tmp/.X11-unix:/tmp/.X11-unix \
+     -v $HOME/.Xauthority:/home/.Xauthority \
+     -v $HOME/.local/share/FasterThanLight:/home/.local/share/FasterThanLight \
+     -v $HOME/Games:/Games \
+     x "$@"
