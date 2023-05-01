@@ -70,6 +70,7 @@
       });
 
       function esc(unsafe) {
+          if (unsafe === null) return 'null';
           return unsafe
               .replace(/&/g, "&amp;")
               .replace(/</g, "&lt;")
