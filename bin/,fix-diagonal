@@ -1,0 +1,14 @@
+#!/home/brandon/.v/skyfield/bin/python3
+
+from PIL import Image
+with Image.open('/home/brandon/Downloads/insta1.jpeg') as im:
+    data = im.getdata()
+    rgb_tuples = list(data)
+    print(im.size)
+    x, y = im.size
+    x -= 1
+    out_size = x, y
+    print(out_size)
+    out = Image.new(im.mode, out_size)
+    out.putdata(rgb_tuples[:x*y])
+    out.save('fixed.png')
