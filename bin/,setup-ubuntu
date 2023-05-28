@@ -296,4 +296,4 @@ sudo dd if=local/etc/70-u2f.rules.txt of=/etc/udev/rules.d/70-u2f.rules.txt
 # Prevent VS Code (as of a late September update?) from repeatedly
 # popping up a request every few minutes that I unlock a keyring.
 
-sudo rm /usr/libexec/gcr-prompter
+sudo rm -f /usr/libexec/gcr-prompter
