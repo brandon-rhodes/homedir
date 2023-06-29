@@ -12,9 +12,11 @@ check () {
     fi
     for bat in BAT*
     do
-        :  # Skip to the last, and presumably biggest, battery.
+        source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
+        if [ "$POWER_SUPPLY_STATUS" == "Discharging" ]
+        then break  # if any battery is discharging, report its percentage
+        fi
     done
-    source <(sed "s/=/='/;s/$/'/" "$bat/uevent")
     if [ "$POWER_SUPPLY_STATUS" == "Charging" ]
     then return
     fi
@@ -28,6 +30,13 @@ check () {
 $bat $POWER_SUPPLY_STATUS $POWER_SUPPLY_CAPACITY%"
     return 1
 }
+
+if [ -n "$1" ]  # pass an argument to see output in terminal
+then
+    check
+    echo $content
+    exit
+fi
 
 while true
 do
