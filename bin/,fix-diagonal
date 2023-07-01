@@ -1,7 +1,16 @@
 #!/home/brandon/.v/skyfield/bin/python3
+#
+# Fix an Instagram image that they have skewed into a diagonal image.
 
+import sys
 from PIL import Image
-with Image.open('/home/brandon/Downloads/insta1.jpeg') as im:
+
+if len(sys.argv) != 2:
+    print('usage: ,fix-diagonal instagram-image.jpeg')
+    exit(2)
+
+path = sys.argv[1]
+with Image.open(path) as im:
     data = im.getdata()
     rgb_tuples = list(data)
     print(im.size)
