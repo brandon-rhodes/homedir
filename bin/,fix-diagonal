@@ -1,6 +1,17 @@
 #!/home/brandon/.v/skyfield/bin/python3
 #
 # Fix an Instagram image that they have skewed into a diagonal image.
+# One principle:
+#
+# First row of pixels has a hot pixel at index -2.
+# Second row of pixels has a hot pixel at index -3.
+# ...
+# Next-to-last row of pixels has a hot pixel at index 0.
+# Bottom row of pixels is not harmed.
+#
+# Another principle:
+#
+# Data to the right of the hot pixel should be placed on the left.
 
 import sys
 from PIL import Image
@@ -11,13 +22,28 @@ if len(sys.argv) != 2:
 
 path = sys.argv[1]
 with Image.open(path) as im:
-    data = im.getdata()
-    rgb_tuples = list(data)
-    print(im.size)
-    x, y = im.size
-    x -= 1
-    out_size = x, y
-    print(out_size)
-    out = Image.new(im.mode, out_size)
-    out.putdata(rgb_tuples[:x*y])
-    out.save('fixed.png')
+    width, height = im.size
+    data = list(im.getdata())
+
+rows = [
+    data[i*width : (i+1)*width] for i in range(height)
+]
+
+broken_rows = rows[:-1]  # last row is fine
+for i, row in enumerate(broken_rows):
+    hot_pixel = width - 2 - i
+    new_row = row[hot_pixel + 1:] + row[:hot_pixel]
+    rows[i] = new_row
+    print(hot_pixel)
+
+# Though the last row is fine, we still have to throw a pixel away to
+# make its width match the other rows.
+rows[-1] = rows[-1][:-1]
+
+new_size = width - 1, height
+
+out = Image.new(im.mode, new_size)
+out.putdata([pixel for row in rows for pixel in row])
+out_path = 'fixed.png'
+out.save(out_path)
+print('->', out_path)
