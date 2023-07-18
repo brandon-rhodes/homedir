@@ -11,7 +11,8 @@
 #
 # Another principle:
 #
-# Data to the right of the hot pixel should be placed on the left.
+# Surprisingly, data to the right of the hot pixel belongs next to the
+# *previous* row's pixels that are left of its hot pixel.
 
 import sys
 from PIL import Image
@@ -29,21 +30,17 @@ rows = [
     data[i*width : (i+1)*width] for i in range(height)
 ]
 
-broken_rows = rows[:-1]  # last row is fine
-for i, row in enumerate(broken_rows):
-    hot_pixel = width - 2 - i
-    new_row = row[hot_pixel + 1:] + row[:hot_pixel]
-    rows[i] = new_row
-    print(hot_pixel)
+new_rows = []
 
-# Though the last row is fine, we still have to throw a pixel away to
-# make its width match the other rows.
-rows[-1] = rows[-1][:-1]
+for i in range(height - 1):
+    new_row = rows[i+1][-2 - i:] + rows[i][:width - 2 - i]
+    new_rows.append(new_row)
 
-new_size = width - 1, height
+new_size = width, height - 1
+flat = [pixel for row in new_rows for pixel in row]
 
 out = Image.new(im.mode, new_size)
-out.putdata([pixel for row in rows for pixel in row])
+out.putdata(flat)
 out_path = 'fixed.png'
 out.save(out_path)
 print('->', out_path)
