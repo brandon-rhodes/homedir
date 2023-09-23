@@ -5,6 +5,14 @@
 # invocations of SSH via "s" from that host should also initialize bash
 # and so on through as many connections as I make.
 
+# If I forget that this is for interactive use and give it a command to
+# run instead, then switch to being a simple SSH alias.
+
+if [ -n "$2" ]
+then
+    exec ssh "$@"
+fi
+
 # First, create the configuration script.
 
 read -r -d '' rc <<'EOF'
@@ -85,12 +93,6 @@ function s {
 }
 
 EOF
-
-# Include any local customizations.
-
-if [ -f ~/.jrc ]
-then rc="$(echo "$rc"; cat ~/.jrc)"
-fi
 
 # The "exec" avoids leaving a useless `bash` parent process hanging
 # around: the equivalent of shell script tail recursion.
