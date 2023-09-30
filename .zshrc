@@ -111,8 +111,13 @@ __detect_cd_and_possibly_activate_environment () {
     fi
     python="$(PYENV_VERSION="$1" pyenv which python)"
     shift
-    mkdir -p ~/.v &&
-    ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug" &&
+    mkdir -p ~/.v
+    if [[ "$python" =~ '3.' ]]
+    then
+        "$python" -m venv "$@" ~/.v/"$slug"
+    else
+        ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug"
+    fi &&
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment
 }
