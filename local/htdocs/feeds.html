@@ -27,11 +27,19 @@
           'https://astronomy.stackexchange.com/feeds/tag?tagnames=python&sort=newest'
       ];
 
+      const log_visible = function (text) {
+          element.innerHTML += text;
+      };
+
       for (let url of rss_urls) {
           const promise = feednami.load(url).then(feed => {
+              log_visible(url + ' — ' + feed.entries.length + ' items'
+                          + '<br>');
               for (let entry of feed.entries) {
                   entries.push(entry);
               }
+          }).catch(function(error){
+              console.log(error);
           });
           promises.push(promise);
       }
@@ -44,6 +52,7 @@
           const promise = fetch(url).then(response => {
               return response.json();
           }).then(data => {
+              log_visible(url + ' — ' + data.items.length + ' items' + '<br>');
               for (let item of data.items) {
                   entries.push({
                       date: item.updated_at,
