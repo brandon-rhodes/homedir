@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Build and run an ephemeral docker image without making me remember the
-# commands to do so.
+# commands to do so.  Mount the current working directory as /cwd.
 
 if [ ! -f /usr/bin/docker ]
 then
@@ -9,4 +9,10 @@ then
     exit 2
 fi
 
-docker build -t ephemeral . 1>&2 && exec docker run -ti ephemeral "$@"
+set -e
+
+docker build -t ephemeral . 1>&2
+exec docker run -ti \
+     --net=host \
+     -v $PWD:/cwd \
+     ephemeral "$@"
