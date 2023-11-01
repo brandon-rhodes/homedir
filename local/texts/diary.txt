@@ -1,4 +1,11 @@
 
+======== 2023 October 31 Tuesday ========
+
+I want to view a GPS track from one of my Garmin watch .FIT files on
+Google Earth.  Thus:
+
+$ gpsbabel -i garmin_fit -f Archive/Garmin/DAJE3741.FIT -o gpx -F out.gpx
+
 ======== 2023 January 29 Sunday ========
 
 How can I tell if the ports of my Mikrotik router are really running at
