@@ -6,7 +6,7 @@ for path in "$@"
 do
     (echo '\pagenumbering{gobble}'; echo '```'; cat "$path"; echo '```') |
         pandoc \
-            -V fontsize=10pt \
+            -V fontsize=12pt \
             -V geometry:"top=0.5in, bottom=0.5in, left=1in, right=1in" \
             -V papersize:"letter" \
             -o "$path".pdf
