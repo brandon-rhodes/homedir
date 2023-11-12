@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ssh-keygen -p -f ~/.ssh/id_rsa
