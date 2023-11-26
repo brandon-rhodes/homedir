@@ -3,11 +3,7 @@
 # one example URL, 5004 bytes long):
 #
 # go install github.com/raviqqe/muffet/v2@latest
-# muffet -b 8192 --rate-limit=5 --exclude='^data:image' https://rhodesmill.org > OUT
-#
-# Then, back at my prompt outside of Docker:
-#
-# ,muffet-filter OUT | less
+# muffet -b 8192 --rate-limit=5 https://rhodesmill.org > OUT
 
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND noninteractive
