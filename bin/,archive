@@ -6,9 +6,19 @@ cd
 
 mkdir -p Archive
 
-if [ -z "$1" ]
+if [ -z "$2" ]
 then
-    s3cmd sync -v -n Archive s3://brandon-archive/
+    arg="-n"
 else
-    s3cmd sync -v -n s3://brandon-archive/Archive/ $HOME/Archive/
+    arg=""
+fi
+
+if [ "$1" = "out" ]
+then
+    s3cmd sync -v $arg $HOME/Archive s3://brandon-archive/
+elif [ "$1" = "in" ]
+then
+    s3cmd sync -v $arg s3://brandon-archive/Archive/ $HOME/Archive/
+else
+    echo 'usage: ,archive in|out [go]'
 fi
