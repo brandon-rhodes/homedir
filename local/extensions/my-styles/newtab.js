@@ -1,19 +1,22 @@
 chrome.bookmarks.getTree(
     function(nodes) {
         var descend = function(nodes, output_on) {
+            var paragraph = document.createElement('p');
+            paragraph.setAttribute('style', 'line-height: 2; font-size: 1.5em')
             for (var i=0; i < nodes.length; i++) {
                 var node = nodes[i];
-                var p = document.createElement('p');
-                //console.log(node);
                 if (output_on) {
-                    p.innerHTML = '<a href="' + node.url + '">'
-                        + node.title + '</a>';
-                    document.body.appendChild(p);
+                    var b = document.createElement('span');
+                    b.innerHTML = '<a href="' + node.url + '"'
+                        + ' style="margin-right: 2em">'
+                        + node.title + '</a> ';
+                    paragraph.appendChild(b);
                 }
                 if (node.hasOwnProperty('children')) {
                     descend(node.children, node.title == 'Bookmarks bar');
                 }
             }
+            document.body.appendChild(paragraph);
         }
         descend(nodes, 0);
     }
