@@ -297,3 +297,11 @@ sudo dd if=local/etc/70-u2f.rules.txt of=/etc/udev/rules.d/70-u2f.rules.txt
 # popping up a request every few minutes that I unlock a keyring.
 
 sudo rm -f /usr/libexec/gcr-prompter
+
+# Turn off apt advertisement about "Ubuntu Pro with 'esm-apps' enabled".
+# https://wolfgang.lol/snippet/make-ubuntu-shut-up-about-ubuntu-pro-security-updates-tagging-esm-apps-apt-apt-get/
+sudo systemctl mask --now ubuntu-advantage
+if [ -f /etc/apt/apt.conf.d/20apt-esm-hook.conf ]
+then
+    sudo mv /etc/apt/apt.conf.d/20apt-esm-hook.conf /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak
+fi
