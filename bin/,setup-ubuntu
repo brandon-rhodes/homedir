@@ -269,14 +269,6 @@ esac
 EOF
 sudo chmod +x /etc/pm/sleep.d/brandon
 
-# Make sure that even in a moment of weakness I can't be distracted by
-# the opiate of the masses: the degraded modern news media.
-
-if ! grep -q news.google.com /etc/hosts
-then
-    sudo bash -c 'echo 127.0.0.1 news.google.com >>/etc/hosts'
-fi
-
 # Give myself permission to set my backlight settings, since with the
 # upgrade to Ubuntu 18.10 "xbacklight" can't find the device.
 
