@@ -297,3 +297,22 @@ if [ -f /etc/apt/apt.conf.d/20apt-esm-hook.conf ]
 then
     sudo mv /etc/apt/apt.conf.d/20apt-esm-hook.conf /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak
 fi
+
+# https://askubuntu.com/a/521629/9043
+
+if [ ! -f /etc/systemd/system/ssh-inhibit-sleep.service ]
+then
+    sudo dd of=/etc/systemd/system/ssh-inhibit-sleep.service <<EOT
+[Unit]
+Description=Check for running SSH sessions and, if any, inhibit sleep
+Before=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '! who | grep -qv "\(:0\)"'
+
+[Install]
+RequiredBy=sleep.target
+EOT
+    sudo systemctl enable ssh-inhibit-sleep.service
+fi
