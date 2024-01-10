@@ -1,0 +1,47 @@
+/*  
+    CSS3 buttons are based on a blog post by Nick La (@nickla)
+    Read the blog post for more information:
+    "CSS3 Gradient Buttons": http://webdesignerwall.com/tutorials/css3-gradient-buttons
+*/
+
+.button {
+    border-radius: .4em;
+    cursor: pointer;
+    font: inherit;
+    outline: none;
+    padding-bottom: .4em;
+    padding-top: .2em;
+}
+
+.button:active {
+    position: relative;
+    top: 1px;
+}
+
+.black {
+    color: #fff;
+    border: solid .1em #333;
+    background: linear-gradient(#666, #000);
+}
+
+.black:hover {
+    background: linear-gradient(#444, #000);
+}
+
+.black:active {
+    background: linear-gradient(#000, #444);
+}
+
+.red {
+    color: #fff;
+    border: solid .1em #980c10;
+    background: linear-gradient(#ed1c24, #aa1317);
+}
+
+.red:hover {
+    background: linear-gradient(#c9151b, #a11115);
+}
+
+.red:active {
+    background: linear-gradient(#aa1317, #ed1c24);
+}

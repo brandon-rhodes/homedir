@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PasswordMaker.org</title>
+        <link rel="stylesheet" href="../css/awesome-buttons.css">
+        <link rel="stylesheet" href="../css/options.css">
+    </head>
+    <body>
+        <header>
+            <h1>Options</h1>
+            <a id="banner" target="_blank" href="https://github.com/passwordmaker/chrome-passwordmaker">
+                <img src="../images/forkme_right_red_aa0000.png" alt="Fork me on GitHub" height="149" width="149">
+            </a>
+        </header>
+        <nav>
+            <button class="button black nav_button" id="add">Add New Profile</button>
+            <button class="button black nav_button" id="showImport">Import Profiles</button>
+            <button class="button black nav_button" id="showExport">Export Profiles</button>
+            <button class="button black nav_button" id="showSettings">General Options</button>
+            <button class="button black nav_button" id="showInformation">Information</button>
+        </nav>
+        <main>
+            <div id="list">
+                <h2>Profile List</h2>
+                <input id="searchProfiles" placeholder="Search for Profile" type="text">
+                <ol id="profile_list"></ol>
+            </div>
+
+            <section id="profile_settings">
+                <div>
+                    <h2>Selected Profile:</h2>
+                    <div id="strength">
+                        <input id="checkStrength" type="checkbox">
+                        <label class="checkbox row" for="checkStrength">Test Strength of Profile</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="profileNameTB">Name:</label>
+                    <input class="input" id="profileNameTB">
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <label for="siteList">Use with sites:</label>
+                        <textarea class="input testInput" id="siteList"></textarea>
+                    </div>
+                    <div class="subrow extra_info">
+                        <span>
+                            Separate by spaces, e.g. "example.com apple.com google.com" to specify that this profile is automatically selected for those URL's.
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="url_example">
+                        <span id="exprotocol">https://</span><span id="exsubdomain">my.</span><span id="exdomain">example.com</span><span id="expath">/my/path?q=search</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="domainCB">URL Components:</label>
+                    <div class="subrow">
+                        <input class="testInput" id="protocolCB" type="checkbox">
+                        <label class="checkbox" for="protocolCB">Protocol</label>
+                    </div>
+                    <div class="subrow">
+                        <input class="testInput" id="subdomainCB" type="checkbox">
+                        <label class="checkbox" for="subdomainCB">Subdomain(s)</label>
+                    </div>
+                    <div class="subrow">
+                        <input class="testInput" id="domainCB" type="checkbox">
+                        <label class="checkbox" for="domainCB">Domain</label>
+                    </div>
+                    <div class="subrow">
+                        <input class="testInput" id="pathCB" type="checkbox">
+                        <label class="checkbox" for="pathCB">Port, path, query parameters</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label id="labelUseThisText" for="inputUseThisText">Use This Text:</label>
+                    <input class="input testInput" id="inputUseThisText">
+                    <div class="subrow extra_info">
+                        <span>
+                            If you want to use a fixed URL every time, you can fill it here.<br>
+                            E.g. To use the same password on example.com and anotherexample.com, enter example.com here and it will always uses example.com for this profile.
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="whereLeetLB">Use l33t:</label>
+                    <select class="input testInput" id="whereLeetLB">
+                        <option value="off">not at all</option>
+                        <option value="before-hashing">before generating password</option>
+                        <option value="after-hashing">after generating password</option>
+                        <option value="both">before and after generating password</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label id="leetLevelLabel" for="leetLevelLB">l33t Level:</label>
+                    <select class="input testInput" id="leetLevelLB">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="hashAlgorithmLB">Hash Algorithm:</label>
+                    <select class="input testInput" id="hashAlgorithmLB">
+                        <option value="md4">MD4</option>
+                        <option value="hmac-md4">HMAC-MD4</option>
+                        <option value="md5">MD5</option>
+                        <option value="md5_v6">MD5 Version 0.6</option>
+                        <option value="hmac-md5">HMAC-MD5</option>
+                        <option value="hmac-md5_v6">HMAC-MD5 Version 0.6</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="hmac-sha1">HMAC-SHA-1</option>
+                        <option value="sha256">SHA-256</option>
+                        <option value="hmac-sha256_fix">HMAC-SHA-256</option>
+                        <option value="hmac-sha256">HMAC-SHA-256 Version 1.5.1</option>
+                        <option value="rmd160">RIPEMD-160</option>
+                        <option value="hmac-rmd160">HMAC-RIPEMD-160</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="passwdLength">Password length:</label>
+                    <input class="input testInput" id="passwdLength" type="number" min="4" max="512" value="8">
+                </div>
+                <div class="row">
+                    <label for="usernameTB">Username:</label>
+                    <input class="input testInput" id="usernameTB">
+                </div>
+                <div class="row">
+                    <label for="modifier">Modifier:</label>
+                    <input class="input testInput" id="modifier">
+                </div>
+                <div class="row">
+                    <label for="charset">Characters:</label>
+                    <select class="input testInput" id="charset"></select>
+                    <input class="input testInput" id="customCharset">
+                </div>
+                <div class="row">
+                    <label for="passwordPrefix">Password Prefix:</label>
+                    <input class="input testInput" id="passwordPrefix">
+                </div>
+                <div class="row">
+                    <label for="passwordSuffix">Password Suffix:</label>
+                    <input class="input testInput" id="passwordSuffix">
+                </div>
+                <div class="row">
+                    <label for="description">Notes/Description:</label>
+                    <textarea class="input" id="description"></textarea>
+                </div>    
+                <div class="row">
+                    <span class="row link" id="cloneProfileButton">Clone this profile</span>
+                </div>
+                <div id="profile_buttons">
+                    <button class="button black" id="save">Save</button>
+                    <button class="button black" id="remove">Remove</button>
+                </div>
+            </section>
+            <aside id="strength_section">
+                <h2>Test Strength Below</h2>
+                <div class="strength_info">
+                    Please enter your password below and change the profile options on the left (siteList etc.)
+                    to alter the example data used for password generation.
+                </div>
+                <div class="row">
+                    <label class="strengthLabel" for="testPass">Password:</label>
+                    <input class="strengthInput testInput" id="testPass" type="password">
+                </div>
+                <div class="row">
+                    <label class="strengthLabel" for="testText">Used Text:</label>
+                    <input class="strengthInput" id="testText" readonly>
+                </div>
+                <div class="row">
+                    <label class="strengthLabel" for="genPass">Generated:</label>
+                    <input class="strengthInput" id="genPass" readonly>
+                </div>
+                <div class="row">
+                    <label class="strengthLabel" for="genStrength">Strength:</label>
+                    <input class="strengthInput" id="genStrength" readonly>
+                    <meter id="optionsMeter" class="row" min="0" max="100" low="25" high="75" optimum="80" value="0"></meter>
+                </div>
+                <div>
+                    <div class="row">
+                        <input class="testCheck" id="hasUpper" type="checkbox" disabled>
+                        <label class="testLabel" for="hasUpper">Upper Case</label>
+                    </div>
+                    <div class="row">
+                        <input class="testCheck" id="hasLower" type="checkbox" disabled>
+                        <label class="testLabel" for="hasLower">Lower Case</label>
+                    </div>
+                    <div class="row">
+                        <input class="testCheck" id="hasDigit" type="checkbox" disabled>
+                        <label class="testLabel" for="hasDigit">Digits</label>
+                    </div>
+                    <div class="row">
+                        <input class="testCheck" id="hasSymbol" type="checkbox" disabled>
+                        <label class="testLabel" for="hasSymbol">Symbols</label>
+                    </div>
+                </div>
+            </aside>
+
+            <section id="import_settings">
+                <h2>Import Profiles</h2>
+                <div class="row">
+                    <div class="section_info">Paste export into the box below then click "Import".</div>
+                    <div class="section_info">
+                        From Firefox PasswordMaker go to
+                        <a class="link" target="_blank" href="https://www.passwordmaker.org/Firefox/Mozilla/SeaMonkey/Flock/Netscape/Advanced">Advanced Options</a>
+                        &rarr; File &rarr; Export Settings &rarr; RDF.<br>
+                        Open the .rdf file in a plain text editor (e.g. notepad) then select all, copy and paste into the box below.
+                    </div>
+                    <input class="input" id="fileInput" type="file">
+                    <textarea class="input" id="importText"></textarea>
+                </div>
+                <div>
+                    <input id="importOverwrite" type="checkbox">
+                    <label class="checkbox" for="importOverwrite">Delete all profiles, then import (backup first!)</label>
+                    <button class="button black" id="importButton">Import</button>
+                </div>
+            </section>
+
+            <section id="export_settings">
+                <h2>Export Profiles</h2>
+                <div class="row">
+                    <div class="section_info">Copy and paste the text below into "Import Profiles" section of Chrome PasswordMaker.org.</div>
+                    <div class="section_info">
+                        For Firefox PasswordMaker, save the text below into a plain text document (e.g. open notepad, paste, save as "profiles.rdf") then go to
+                        <a class="link" target="_blank" href="https://www.passwordmaker.org/Firefox/Mozilla/SeaMonkey/Flock/Netscape/Advanced">Advanced Options</a>
+                        &rarr; File &rarr; Import Settings.
+                        <b>Back up any existing settings first by going to Firefox PasswordMaker &rarr; File &rarr; Export Setting &rarr; RDF.</b>
+                    </div>
+                    <textarea class="input" id="exportText"></textarea>
+                </div>
+                <div id="export_buttons">
+                    <button class="button black" id="copyButton">Copy</button>
+                    <button class="button black" id="exportFileButton">Export To File</button>
+                </div>
+            </section>
+
+            <section id="general_settings">
+                <h2>Settings</h2>
+                <div class="section_info">General options to configure extension behaviour</div>
+                <div class="row" id="store_location_row">
+                    <div class="subrow">
+                        <label for="store_location">Save Password:</label>
+                        <select class="input" id="store_location">
+                            <option value="memory">Per Session</option>
+                            <option value="memory_expire">Per Session, Expire</option>
+                            <option value="disk">On Disk</option>
+                            <option value="never">Never Store</option>
+                        </select>
+                    </div>
+                    <div class="subrow" id="password_expire_row">
+                        <label for="expirePasswordMinutes">Expire after:</label>
+                        <input class="input" id="expirePasswordMinutes" type="number" min="1" max="720" value="5">
+                        <span>Minutes</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="hidePassword" type="checkbox">
+                        <label class="checkbox" for="hidePassword">Visually Hide Generated Password in Popup</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="useVerificationCode" type="checkbox">
+                        <label class="checkbox" for="useVerificationCode">Manually Verify Password using 3 Letter Code</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="showPasswordStrength" type="checkbox">
+                        <label class="checkbox" for="showPasswordStrength">Show Password Strength Meter in Popup</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="alphaSortProfiles" type="checkbox">
+                        <label class="checkbox" for="alphaSortProfiles">Alphanumerically Sort Profiles</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="keepMasterPasswordHash" type="checkbox">
+                        <label class="checkbox" for="keepMasterPasswordHash">Keep Master Password Hash</label>
+                    </div>
+                    <div class="subrow" id="master_password_row">
+                        <label for="masterPassword">Master Password</label>
+                        <input class="input" id="masterPassword" type="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <input id="syncProfiles" type="checkbox">
+                        <label class="checkbox" for="syncProfiles">Sync Profiles Between Computers</label>
+                    </div>
+                    <div class="info_text" id="no_sync_password">
+                        In order to start syncing profile information across computers, please enter a sync
+                        password and click "Set password". The profile settings will be encrypted and stored on
+                        Google's servers.<br><br>
+                        A key, derived from your password will be stored locally.<br><br>
+                        Note that syncing profile settings requires that you log in to Chrome and enable extension syncing.
+                    </div>
+                    <div class="info_text" id="sync_data_exists">
+                        You have previously synced profile data which isn't being synchronized.
+                        Please enter your existing sync password to sync data to this computer.<br><br>
+                        If you have forgotten your previous sync password, you can delete the existing data on the server to start over.
+                    </div>
+                    <div class="info_text" id="sync_password_set">
+                        Password is correctly set and profiles are being synced.<br><br>
+                        You can delete the synced data and stop synchronization by clicking the "Delete Sync Data" button.
+                    </div>
+                    <div class="subrow" id="sync_profiles_row">
+                        <label for="syncProfilesPassword">Set Sync Password:</label>
+                        <input class="input" id="syncProfilesPassword" type="password">
+                    </div>
+                    <div class="subrow" id="sync_buttons">
+                        <button class="button black" id="set_sync_password">Set password</button>
+                        <button class="button black" id="clear_sync_data">Delete Sync Data</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="subrow">
+                        <button class="button red" id="resetToDefaultprofiles">Reset Profiles to Extension Defaults</button>
+                        <label class="checkbox" for="resetToDefaultprofiles"></label>
+                    </div>
+                </div>
+            </section>
+
+            <section id="general_information">
+                <h2>Information</h2>
+                <div class="row">
+                    <div class="subrow">
+                        <div class="section_info">Keyboard navigation</div>
+                        <div class="info_text">
+                            You can use the shortcut <b>Alt+X</b> or you can canfigue a custom shortcut if you navigate
+                            to "Manage Extensions" -> "Keyboard Shortcuts" to open the PasswordMaker popup, no matter where
+                            you are on a website.<br><br>
+                            When you are done typing your master password in the <i>Password</i> textfield of the
+                            PassworkMaker Pro popup, you can push <b>Enter</b> to fill the open website'spassword field
+                            with the generated password, using the settings that were preselected in the
+                            PasswordMaker popup.  Alternatively, you can copy the generated password
+                            to the clipboard by pressing <b>Ctrl+C</b>.<br><br>
+                            If you do not have the <b>Keep Master Password Hash</b> setting enabled, pushing <b>Enter</b> or
+                            <b>Tab</b> in the <i>Password</i> textfield will bring you to the <i>Confirmation</i> textfield. Here you can
+                            then push <b>Enter</b>, after you are done typing your master password again, to fill the open
+                            website's password field, using the settings that were preselected in the password popup.<br><br>
+                            If you want to alter any of the PasswordMaker popup's settings, just push <b>Tab</b> to
+                            get to the respective next setting. Push <b>Shift+Tab</b> to get to the previous setting
+                            respectively. When you are in the <i>Generated Password</i> field, again you can push <b>Enter</b>
+                            to fill the open website's password field.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <a target="_blank" href="https://github.com/passwordmaker/chrome-passwordmaker">PasswordMaker Chrome Extension</a>
+            is based on <a target="_blank" href="https://www.passwordmaker.org/">passwordmaker.org</a>
+        </footer>
+        <script src="../javascript/libs/sjcl.js"></script>
+        <script src="../javascript/passwordmaker/hashutils.js"></script>
+        <script src="../javascript/passwordmaker/md4.js"></script>
+        <script src="../javascript/passwordmaker/md5.js"></script>
+        <script src="../javascript/passwordmaker/sha256.js"></script>
+        <script src="../javascript/passwordmaker/sha1.js"></script>
+        <script src="../javascript/passwordmaker/ripemd160.js"></script>
+        <script src="../javascript/passwordmaker/l33t.js"></script>
+        <script src="../javascript/settings.js"></script>
+        <script src="../javascript/profile.js"></script>
+        <script src="../javascript/import.js"></script>
+        <script src="../javascript/options.js"></script>
+    </body>
+</html>

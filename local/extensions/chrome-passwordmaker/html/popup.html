@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PasswordMaker.org</title>
+        <link rel="stylesheet" href="../css/awesome-buttons.css">
+        <link rel="stylesheet" href="../css/popup.css">
+    </head>
+    <body>
+        <header>
+            <img alt="PasswordMaker.org" src="../images/passwdmaker48.png">
+            <span>PasswordMaker.org</span>
+        </header>
+        <main>
+            <div class="small_row">
+                <label for="password">Password:</label>
+                <input id="password" type="password">
+            </div>
+            <div class="small_row" id="confirmation_row">
+                <label for="confirmation">Confirmation:</label>
+                <input id="confirmation" type="password">
+            </div>
+            <div class="small_row" id="verification_row">
+                <label for="verificationCode">Verification Code:</label>
+                <input id="verificationCode" readonly tabindex="-1">
+            </div>
+            <div class="small_row" id="username_row" title="
+                Note: Changing the user name here will result in a different password being generated.">
+                <label for="username">Username:</label>
+                <input id="username" autocomplete="off" placeholder="Set in Profile Settings">
+            </div>
+            <div class="small_row">
+                <label for="profile">Use Profile:</label>
+                <select id="profile"></select>
+            </div>
+            <div class="small_row">
+                <label for="usedtext">Used text:</label>
+                <input id="usedtext">
+            </div>
+            <div class="small_row">
+                <label for="generated">Generated Password:</label>
+            </div>
+            <div class="big_row">
+                <input id="generated" readonly>
+                <button class="button black" id="activatePassword">Show Password</button>
+            </div>
+            <div class="small_row" id="strength_row">
+                <span id="strengthValue"></span>
+                <meter id="popupMeter" min="0" max="100" low="25" high="75" optimum="80" value="0"></meter>
+            </div>
+            <div class="big_row" id="button_row">
+                <button class="button black hidden" id="copypassword">Copy</button>
+                <button class="button black hidden" id="injectpassword" title="Fill the first blank username and password field.
+Please make sure the target field you want filled is empty!
+Note: This button only fills a single field at a time.">Fill Fields</button>
+                <button class="button black" id="options">Options</button>
+            </div>
+        </main>
+        <script src="../javascript/libs/sjcl.js"></script>
+        <script src="../javascript/passwordmaker/hashutils.js"></script>
+        <script src="../javascript/passwordmaker/md4.js"></script>
+        <script src="../javascript/passwordmaker/md5.js"></script>
+        <script src="../javascript/passwordmaker/sha256.js"></script>
+        <script src="../javascript/passwordmaker/sha1.js"></script>
+        <script src="../javascript/passwordmaker/ripemd160.js"></script>
+        <script src="../javascript/passwordmaker/l33t.js"></script>
+        <script src="../javascript/settings.js"></script>
+        <script src="../javascript/profile.js"></script>
+        <script src="../javascript/popup.js"></script>
+    </body>
+</html>

@@ -1,0 +1,365 @@
+body {
+    font-family: Georgia, "Droid Serif", Constantia, serif;
+    font-size: 100%;
+    margin: 0;
+    overflow-y: scroll;
+}
+
+#banner {
+    border: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+main {
+    display: flex;
+    margin: 0 auto;
+    min-width: 900px;
+    width: 900px;
+}
+
+main .button {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+header {
+    background-color: #eee;
+    border-bottom: 1px solid #aaa;
+}
+
+h1 {
+    font-style: italic;
+    margin: 0 auto;
+    padding: 15px;
+    width: 800px;
+}
+
+#list {
+    border-right: 1px solid #aaa;
+    min-width: 220px;
+    padding: 20px;
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+#searchProfiles {
+    font-size: 1.1em;
+    margin-left: 1em;
+    margin-bottom: 0.8em;
+    width: 90%;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    min-width: 850px;
+    text-align: center;
+}
+
+#add {
+    border-bottom-left-radius: 1.5em;
+}
+
+#showInformation {
+    border-bottom-right-radius: 1.5em;
+}
+
+#list ol {
+    font-size: 1.1em;
+    line-height: 1.5;
+    max-height: 800px;
+    min-height: 150px;
+    margin: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.link {
+    color: #551a8b;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
+.nav_button {
+    border-radius: 0;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    white-space: nowrap;
+    width: 170px;
+}
+
+.nav_button:hover {
+    background: linear-gradient(#0095cc, #00678e);
+}
+
+.nav_button:active {
+    background: linear-gradient(#0078a5, #00adee);
+    padding: 11px 10px 8px 10px;
+    position: static;
+}
+
+h2 {
+    display: inline-block;
+    margin: 0 0 20px 20px;
+}
+
+#strength_section {
+    border-left: 1px solid #aaa;
+    display: none;
+    max-width: 320px;
+    padding-top: 40px;
+}
+
+#strength {
+    display: inline-block;
+    font-size: 1.1em;
+    margin-left: 30px;
+}
+
+#checkStrength {
+    margin: 0;
+}
+
+.strengthInput {
+    margin-left: 110px;
+    text-align: center;
+}
+
+.strengthLabel {
+    width: 105px;
+}
+
+.strength_info {
+    margin: 0 0 20px 20px;
+}
+
+meter {
+    float: right;
+    margin-top: 5px;
+    width: 170px;
+}
+
+.testCheck {
+    display: none;
+}
+
+.testCheck + .testLabel {
+    background-repeat: no-repeat;
+    float: right;
+    line-height: 24px;
+    margin-right: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.testCheck:checked + .testLabel {
+    background-position: 0 -24px;
+}
+
+.testLabel {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAwCAYAAAALiLqjAAADVUlEQVRYhdWXsWscRxTGf08cLoI4jHGRQgTh0ggXN1cIhRRBEVvYWCAMdmFwZ5epUribJkUgf0ASSBESSKfgxBgOyxiDkYXRXGGEaxXGlRFiESpC8HNxM+t3s3ubi6Qr8mDY2dm33/feN29mdkWZrXVSJzh3QVU3gPlTYh6JyKYL4QBA9CN4ABZFBNVRXk19ewUm9fcB50I4mIusG8Bicmqz9FxV2/qLEZO5OHheRMjaNlCm+5RFQytFZDsfV9X5iqAhii1gTVULVS1tdNm1VNUi+m7Z7FNQFYEh2gbWXQjH/eFwR0QKoGyQqBSRoj8c7rgQjkVkHdhOgSa/uYbUl4ArCdCFUJFkshQuhB1DfEVEliyWnQPL2gUGwbllSxKlKJMsFjw4tywiA1Xt5oo0SQTQVdUxkv5wuAMUSRYLrqoVeC5Rx05IZl1gsNvrVYA2aoDdXm9ZYCAitcjHMshZ2+Rqk6VpDVVbhc1iUr/JJvnWqshmYVoJFLk0UMlVrZO81aqoIYoaeHBuOa8uoCrh9L7NpKqibEsom6oFGJDNiV2M00pUi3y316tKMbbBbq9Xy8TK1SbRHvAqjzyVYnyxKyJ5db0Skb1coqYqWgEeBOfWGW0ZOXhFEuUqYkAP4rtjElULLavhr4DHwFIEmmRdRvOyZ8FtMJ3IdmgfRLKVKU+0roispKiNEkfwcZI3RWS/qdTyfibnpP6+qm5CPJNhdC4DG6o6P825O+ncjpGPH/qztNp2/b8j6Ngb8dwFVk9B/B54op6fKsw0BxH8xxMC53YvkdhIV88IfAzLEpxUlhJYB941YZ12kg+BNfX8CdxvcjgNQQkU6nkZ74/OkuAYuJrAxXML+PWsCP4BbqrneQS/HsE7Tc5tBK8Z1XVu99XzMIL3gd8ngbcRlMAacAf424w/Us/3Efwi8AfwSUuQEwm+Vc9b9fwGXI2ER8A94/MzsNAG3kbwhfjRv5p6toAvgW/U8yZGfwO4/m/gbQTXgKfi+TSSDNXzQwQ/B3w3DXgbAUAfeCGeS9n4baiNnYgARj+Gz8TzmRn7elpwaCkvYwvAX+L5HLiM+fs5KwIi6C+M9p7/ZJagaVFZ25jCp4Zl5+DJFC9Ou7VUWGNfFTM9MmdlM/+q+AASMh6TCcAyXAAAAABJRU5ErkJggg==");
+}
+
+#profileNameTB {
+    font-family: Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
+    font-size: 2em;
+}
+
+.highlight {
+    animation: highlight1 1s;
+}
+
+@keyframes highlight1 {
+    0% {
+        background: white;
+    }
+
+    50% {
+        background: yellow;
+    }
+
+    100% {
+        background: white;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.subrow {
+    padding-top: 3px;
+}
+
+.section_info {
+    font-style: italic;
+    margin: 15px 0 15px 0;
+}
+
+.extra_info {
+    color: #808080;
+    font-size: .8em;
+    margin: 0 0 10px 165px;
+    width: 310px;
+}
+
+#profile_buttons, #sync_buttons {
+    margin: 20px 0 0 165px;
+    width: 300px;
+}
+
+.info_text {
+    font-size: .9em;
+    margin: 20px;
+}
+
+#fileInput, #importOverwrite {
+    margin-left: 5px;
+}
+
+.row {
+    margin-bottom: 6px;
+}
+
+#general_settings .subrow {
+    white-space: nowrap;
+}
+
+label {
+    margin-top: 3px;
+    position: absolute;
+    text-align: right;
+    width: 155px;
+}
+
+.disabled {
+    color: #aaa;
+}
+
+.checkbox {
+    position: relative;
+}
+
+.input {
+    width: 300px;
+    font-size: 84%;
+}
+
+.selected {
+    color: #ffdb13;
+}
+
+.url_example {
+    background-color: #000;
+    border-radius: 7px;
+    color: #fff;
+    font-size: .8em;
+    font-style: italic;
+    margin: 0 0 10px 165px;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    width: 310px;
+}
+
+footer {
+    background-color: #eee;
+    border-top: 1px solid #aaa;
+    bottom: 0;
+    font-size: .8em;
+    font-style: italic;
+    padding: 3px;
+    position: fixed;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+}
+
+footer a {
+    background-color: #ddd;
+    border-radius: 3px;
+    color: #000;
+    font-style: normal;
+    padding: 2px;
+}
+
+section {
+    display: none;
+    padding: 40px 40px 80px 40px;
+    width: 520px;
+}
+
+textarea {
+    width: 100%;
+}
+
+#importText, #exportText {
+    font-size: 100%;
+    height: 20em;
+    margin-top: 1em;
+    width: 100%;
+}
+
+#save {
+    float: left;
+}
+
+#sync_data_exists {
+    color: #ff8c00;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#sync_password_set {
+    color: #008000;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#clear_sync_data, #export_buttons, #importButton, #remove {
+    float: right;
+}
+
+#siteList {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-left: 165px;
+}
+
+#description {
+    font-size: 1.1em;
+    margin-left: 165px;
+}
+
+#cloneProfileButton, select, input {
+    margin-left: 165px;
+}
+
+#store_location_row {
+    margin-left: 7.5em;
+}
+
+select.input {
+    width: 304px;
+}
+
+#store_location {
+    width: 150px;
+}
+
+#master_password_row {
+    padding: 20px 0 10px 0;
+}
+
+#resetToDefaultprofiles {
+    font-weight: bold;
+    margin: 50px 0 50px 165px;
+}
+
+#expirePasswordMinutes {
+    width: 6em;
+}
