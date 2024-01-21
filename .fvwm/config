@@ -104,8 +104,8 @@ CursorStyle TOP top_side
 # Key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -1000"
 # Key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +1000"
 Key XF86AudioMute A N Exec exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-Key XF86MonBrightnessDown A N Exec exec xbacklight -dec 1
-Key XF86MonBrightnessUp A N Exec exec xbacklight -inc 1
+Key XF86MonBrightnessDown A N Exec exec $HOME/bin/,backlight down
+Key XF86MonBrightnessUp A N Exec exec $HOME/bin/,backlight up
 
 Key Equal A 4  Exec exec $HOME/bin/,wc
 Key a A 4  Menu Applications Nop

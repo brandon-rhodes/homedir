@@ -1,9 +1,30 @@
 #!/bin/bash
 
-f=/sys/class/backlight/intel_backlight/brightness
-if [ -z $1 ]
+set -e
+
+brightness=/sys/class/backlight/intel_backlight/brightness
+max=/sys/class/backlight/intel_backlight/max_brightness
+
+if [ -f $brightness ]
 then
-    echo $(cat $f) / $(cat /sys/class/backlight/intel_backlight/max_brightness)
+    if [ "$1" = "up" ]
+    then
+        let b="$(cat $brightness) * 4 / 3"
+        echo "$b" > $brightness
+    elif [ "$1" = "down" ]
+    then
+         let b="($(cat $brightness) * 3 / 4) + 1"
+         echo "$b" > $brightness
+    fi
+    echo Brightness $(cat $brightness) / $(cat $max)
 else
-    echo $1 > $f
+    if [ -z "$1" ]
+    then
+        xbacklight
+    elif  [ "$1" = "up" ]
+    then
+        xbacklight -inc 1
+    else
+        xbacklight -dec 1
+    fi
 fi

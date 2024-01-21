@@ -1,4 +1,14 @@
 
+======== 2024 January 21 Sunday ========
+
+These commands let me test out my new ‘udev/rules.d/backlight.rules’
+file without a reboot:
+
+udevadm test /sys/class/backlight/intel_backlight
+udevadm trigger --verbose --action=add /sys/class/backlight/intel_backlight
+
+From: https://unix.stackexchange.com/a/593121/13701
+
 ======== 2023 October 31 Tuesday ========
 
 I want to view a GPS track from one of my Garmin watch .FIT files on

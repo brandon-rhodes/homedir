@@ -269,21 +269,10 @@ esac
 EOF
 sudo chmod +x /etc/pm/sleep.d/brandon
 
-# Give myself permission to set my backlight settings, since with the
-# upgrade to Ubuntu 18.10 "xbacklight" can't find the device.
-
-if [ -f /sys/class/backlight/intel_backlight/brightness ]
-then
-    echo /bin/chown brandon /sys/class/backlight/intel_backlight/brightness |
-         sudo dd of=/etc/init.d/chown-backlight.sh
-    sudo chmod 744 /etc/init.d/chown-backlight.sh
-    sudo chown root:root /etc/init.d/chown-backlight.sh
-    sudo ln -fs /etc/init.d/chown-backlight.sh /etc/rc2.d/S99chown-backlight.sh
-fi
-
 # Enable U2F with a Yubikey.
 
-sudo dd if=local/etc/70-u2f.rules.txt of=/etc/udev/rules.d/70-u2f.rules.txt
+sudo dd if=$HOME/local/etc/70-u2f.rules.txt \
+        of=/etc/udev/rules.d/70-u2f.rules.txt
 
 # Prevent VS Code (as of a late September update?) from repeatedly
 # popping up a request every few minutes that I unlock a keyring.
@@ -316,3 +305,8 @@ RequiredBy=sleep.target
 EOT
     sudo systemctl enable ssh-inhibit-sleep.service
 fi
+
+# Permission on my Lenovo Thinkpad X260 to adjust the backlight brightness.
+
+sudo dd if=$HOME/local/etc/backlight.rules \
+        of=/etc/udev/rules.d/backlight.rules
