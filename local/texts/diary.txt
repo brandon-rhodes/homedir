@@ -1,4 +1,30 @@
 
+======== 2024 January 30 Tuesday ========
+
+To scan with our Brother DCP 8040, I had to download the driver here:
+
+https://support.brother.com/g/b/downloadhowto.aspx?c=us&lang=en&prod=dcp8040_all&os=128&dlid=dlf006893_000&flang=4&type3=625
+
+Then I ran the driver install tool (as root, which was a very sketchy
+thing to do, alas!) and had to answer ‘DCP8040’ for the model number,
+without any whitespace inside.  Then I had to reboot before the
+`simple-scan` tool would recognize it.
+
+The output pages were no letter sized, so I created this small pypdf
+script:
+
+from pypdf import PdfReader, PdfWriter
+reader = PdfReader("example.pdf")
+page = reader.pages[0]
+writer = PdfWriter()
+page.mediabox.lower_right = (
+    8.5 * 72,
+    page.mediabox.top - 11.0 * 72,
+)
+writer.add_page(page)
+with open('output.pdf', 'wb') as fp:
+    writer.write(fp)
+
 ======== 2024 January 21 Sunday ========
 
 These commands let me test out my new ‘udev/rules.d/backlight.rules’
