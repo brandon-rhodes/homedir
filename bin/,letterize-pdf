@@ -1,0 +1,19 @@
+#!/home/brandon/.v/V/bin/python3
+#
+# TODO: instead of having to remember to create a throwaway virtualenv
+# named ~/V that has pypdf installed, I should use one that's always
+# installed in my account.  Maybe the one in the ~/.emacs.d directory?
+
+import sys
+
+from pypdf import PdfReader, PdfWriter
+reader = PdfReader(sys.argv[1])
+writer = PdfWriter()
+for page in reader.pages:
+    page.mediabox.lower_right = (
+        8.5 * 72,
+        page.mediabox.top - 11.0 * 72,
+    )
+    writer.add_page(page)
+with open(sys.argv[2], 'wb') as fp:
+    writer.write(fp)
