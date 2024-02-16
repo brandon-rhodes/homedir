@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+cd ~/XEphem/GUI/xephem
+make
+exec ./xephem
