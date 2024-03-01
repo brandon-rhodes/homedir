@@ -1,4 +1,11 @@
 
+======== 2024 March 01 Friday ========
+
+When the network manager menu item ‘Edit Connections’ is greyed out, try
+manually running the network connection editor:
+
+nm-connection-editor
+
 ======== 2024 January 30 Tuesday ========
 
 To scan with our Brother DCP 8040, I had to download the driver here:
