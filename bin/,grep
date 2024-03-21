@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+  echo Usage: ,grep pattern...     to search within my home directory files
+  exit 2
+fi
+
+# See the “,home” shell script for how these two states are toggled.
+if [ -d .git ]
+then
+  d=.git
+else
+  d=.git-stowed
+fi
+
+set -e
+cd
+git --git-dir="$d" ls-files | xargs -d '\n' pcregrep "$@"
