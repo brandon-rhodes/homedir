@@ -6,6 +6,19 @@ manually running the network connection editor:
 
 nm-connection-editor
 
+======== 2024 February 17 Saturday ========
+
+Here’s how I used the command line to find quote-tweets of an annual
+Lord of the Rings tweet, using the `tweets.js` data from a Twitter
+archive download — on the off chance that (a) I ever need it again and
+(b) remember that I’ve done it before, which might be unlikely:
+
+$ cat tweets.js| sed 's/window.YTD.tweets.part0 =//' | jq -r '.[].tweet | .id + " " + .full_text' |grep 'face of a standing-stone' | awk '{print "<a href=\"https://twitter.com/ShireReckoning/status/" $1 "/quotes\">link</a>"}' > ~/tmp.html
+
+This was in search of an old reaction to a @ShireReckoning tweet.
+Twitter’s search is now poor enough that I wasn’t able to find it using
+their web interface.
+
 ======== 2024 January 30 Tuesday ========
 
 To scan with our Brother DCP 8040, I had to download the driver here:
