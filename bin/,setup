@@ -80,6 +80,35 @@ case "$1" in
     fi
     ;;
 
+"emacs-29" )
+    mkdir -p ~/local/src
+    cd ~/local/src
+    if [ ! -f ~/local/lib/libtree-sitter.a ]
+    then
+        wget -c https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.22.2.tar.gz
+        tar xf v0.22.2.tar.gz
+        cd tree-sitter-0.22.2
+        PREFIX=$HOME/local make
+        PREFIX=$HOME/local make install
+        cd ..
+    fi
+    if [ ! -d emacs-29.2 ]
+    then
+        wget -c https://ftp.gnu.org/gnu/emacs/emacs-29.2.tar.gz
+        tar xzf emacs-29.2.tar.gz
+    fi
+    cd emacs-29.2
+    LDFLAGS="-Wl,-R,$HOME/local/lib,--enable-new-dtags" \
+    TREE_SITTER_CFLAGS="-I$HOME/local/include" \
+    TREE_SITTER_LIBS="-L$HOME/local/lib -ltree-sitter" \
+    ./configure --prefix=$HOME/local --with-tree-sitter \
+                --with-xpm=ifavailable --with-gnutls=ifavailable
+                # --with-x \
+                # --with-jpeg=no --with-gif=no --with-tiff=no
+    make
+    make install
+    ;;
+
 "emacs-for-macos" )
     # https://www.gnu.org/software/emacs/download.html
     mkdir -p ~/local/src
