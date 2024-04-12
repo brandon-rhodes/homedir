@@ -138,6 +138,16 @@ case "$1" in
                         python=3.8 jupyter pandas seaborn
     ;;
 
+"uv" )
+    cd ~/.cache
+    wget -nc https://github.com/astral-sh/uv/releases/download/0.1.31/uv-x86_64-unknown-linux-gnu.tar.gz
+    sha256sum -c ~/local/src/uv-x86_64-unknown-linux-gnu.tar.gz.sha256
+    cd ~/bin
+    tar xvf ~/.cache/uv-x86_64-unknown-linux-gnu.tar.gz \
+        --strip-components=1 \
+        uv-x86_64-unknown-linux-gnu/uv
+    ;;
+
 "xephem" )
     sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
