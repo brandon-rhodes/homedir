@@ -1,4 +1,18 @@
 
+======== 2024 April 21 Sunday ========
+
+I have deleted a pair of old scripts that reminded me how to activate
+the VGA output on my oldest laptop, so here are the crucial commands in
+case I never need them again:
+
+xrandr --output VGA --same-as LVDS --mode 1024x768 --rate 60.0
+xrandr --output VGA --off
+
+By comparison, the HDMI commands for my recent presentations look like:
+
+xrandr --output HDMI-2 --same-as eDP-1 --mode 1280x720
+xrandr --output HDMI-2 --off
+
 ======== 2024 March 01 Friday ========
 
 When the network manager menu item ‘Edit Connections’ is greyed out, try
