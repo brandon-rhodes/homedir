@@ -97,8 +97,8 @@ __detect_cd_and_possibly_activate_environment () {
     __detect_cd_and_possibly_activate_environment &&
     ,setup-jedi
 }
-,virtualenv () {
-    local slug python
+,venv () {
+    local slug python version
     if ! slug=$(__compute_environment_slug)
     then
         echo "Error: must be in a directory beneath your home directory" >&2
@@ -109,12 +109,13 @@ __detect_cd_and_possibly_activate_environment () {
         pyenv versions
         return 1
     fi
-    python="$(PYENV_VERSION="$1" pyenv which python)"
+    version="$1"
     shift
+    python="$(PYENV_VERSION="$version" pyenv which python)"
     mkdir -p ~/.v
-    if [[ "$python" =~ '3.' ]]
+    if [[ "$version" =~ '3.' ]]
     then
-        "$python" -m venv "$@" ~/.v/"$slug"
+        uv venv -p $python "$@" ~/.v/"$slug"
     else
         ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug"
     fi &&
