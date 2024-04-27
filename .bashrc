@@ -8,30 +8,14 @@ source $HOME/.bashenv
 
 export EDITOR=$HOME/bin/enw
 
-# There should also be a quick way to launch the most graphical version
-# of Emacs available.  A job spawned from a sub-shell neither gets
-# enrolled in our jobs table, nor dies with the shell's terminal.  If
-# the current directory is listed in ~/.python-paths then the PYTHONPATH
-# value that follows it on the line is automatically set, to give me a
-# per-project ability to help Jedi find all relevant Python modules.
+# A quick way to launch Emacs, opening the current directory if no
+# command line arguments are offered.
 
 e () {
-    local pp
     if [ -z "$*" ] ;then
         set .
     fi
-    if [ -n "$PYTHONPATH" ] ;then
-        pp="$PYTHONPATH"
-    elif [ -f $HOME/.python-paths ] ;then
-        pp="$(grep "^$PWD " $HOME/.python-paths | sed 's/^[^ ]* //')"
-    fi
-    if [ -n "$DISPLAY" -a -x /usr/bin/emacs ] ;then
-        (PYTHONPATH="$pp" /usr/bin/emacs "$@" &)
-    elif [ -n "$DISPLAY" -a -x $HOME/usr/bin/emacs ] ;then
-        (PYTHONPATH="$pp" $HOME/usr/bin/emacs "$@" &)
-    else
-        PYTHONPATH="$pp" $HOME/bin/enw "$@"
-    fi
+    (emacs "$@" &)
 }
 
 # Go ahead and keep commands with leading whitespace in the shell
