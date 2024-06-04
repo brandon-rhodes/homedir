@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Remove a file, temporarily making its directory writeable.
+
+set -e
+
+d="$(dirname "$1")"
+old="$(stat -c '%a' "$d")"
+chmod +w "$d"
+rm "$1"
+
+chmod $old "$d"
