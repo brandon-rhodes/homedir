@@ -1,19 +1,6 @@
 #!/bin/bash
-# Attach to a persistent Emacs session for small quick edits from the
-# command line, such as commit messages. (For each of my actual writing
-# and coding projects, I bring up a full Emacs window instead.) Note
-# that this requires Emacs >= 23, as the older "emacsclient" does not
-# understand how to spawn an Emacs daemon the first time it is run.
+# This script used to run 'emacsclient' to avoid waiting for Emacs to
+# launch, but the Emacs 29 startup time is so fast that now we just run
+# a new Emacs.
 
-if hostname | grep -q webfaction || [ "$(uname -s)" = "Darwin" ]
-then
-    # Run Emacs normally, refusing to leave an Emacs daemon running on a
-    # shared host like webfaction, and abandoning any attempt to run
-    # Emacs as a server on a Mac since Emacs is often quite old there.
-    exec emacs -nw "$@"
-fi
-
-unset DISPLAY
-
-exec emacsclient --socket-name ~/.emacs.d/.socket-enw \
-                 --alternate-editor="" --tty "$@"
+exec emacs -nw "$@"
