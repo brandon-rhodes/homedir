@@ -70,6 +70,7 @@ for package in \
     nautilus         `: for mounting and unmounting flash drives` \
     nmap             `: for finding the IP address of printers on the LAN` \
     recordmydesktop  `: for screencasts` \
+    ripgrep          `: Emacs Consult has a command that uses this` \
     s3cmd            `: the cloud` \
     subversion       `: for running integration tests on uncommitted project` \
     suckless-tools   `: simple tools to go with my simple window manager` \
