@@ -1,4 +1,24 @@
 
+======== 2024 July 24 Wednesday ========
+
+Downloading YouTube videos — for example, to back up copies of my old
+conference talks in case the account that originally posted them goes
+away — has become troublesome; the old `youtube-dl` tool, for example,
+no longer seems to work, and no browser extension seems up to the task
+either.  Happily, one tool remains:
+
+https://github.com/yt-dlp/yt-dlp
+
+I run its single-file Python 3 application inside of a Docker container
+for safety.  I first need to run:
+
+apt update && apt install ffmpeg
+
+Maybe my Docker container has antiquated SSL support, because I get
+certificate errors, but I can get around them with:
+
+./yt-dlp --no-check-certificates https://www.youtube.com/watch?v=3bZSCb644_M
+
 ======== 2024 April 21 Sunday ========
 
 I have deleted a pair of old scripts that reminded me how to activate
