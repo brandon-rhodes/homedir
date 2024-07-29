@@ -191,15 +191,9 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
-+ "&h. Homedir"  Exec exec chromium-browser "file://$HOME"
-+ "&m. Make Quick Reference" Exec exec open "https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html"
-+ "&n. Notebook" Exec exec browser $(awk '/Notebook is running at/ {print $NF}' .xinitrc.log)
++ "&m. Maps w/clipboard"  Exec exec browser ",maps"
 + "&r. Read feeds"  Exec exec browser "file:///home/brandon/local/htdocs/feeds.html"
 + "&w. Weather"  Exec exec browser "https://forecast.weather.gov/MapClick.php?lat=41.58918&lon=-85.83695"
-+ ""                Nop
-+ "   Mercedes EPC"  Exec exec browser "https://epc.startekinfo.com/epc/"
-+ "   Mercedes List" Exec exec browser "http://lists.mercedeslist.com/private.cgi/mercedes-mercedeslist.com/"
-+ "   Newfoundland"  Exec exec browser "http://www.gad.net/Cosette/5Weeks/sitting.JPG"
 
 DestroyMenu MenuFvwmWindowOps
 AddToMenu MenuFvwmWindowOps

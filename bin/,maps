@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+#
+# Used by my FVWM shortcut Win+B M.
+
+import argparse
+import re
+import subprocess
+import sys
+
+def main(argv):
+    parser = argparse.ArgumentParser(
+        description='Open Google Maps to address in clipboard'
+    )
+    parser.parse_args(argv)
+    text = subprocess.check_output(['xclip', '-o'])
+    words = re.findall(rb'[A-Za-z\d]+', text)
+    if not words:
+        return
+    words = words[:12]  # in case I accidentally paste a whole document
+    url = b'https://www.google.com/maps/place/' + b'+'.join(words)
+    subprocess.run(['browser', url])
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
