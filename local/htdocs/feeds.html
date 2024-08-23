@@ -76,6 +76,10 @@
               return 0;
           });
           for (let entry of entries) {
+              if (!entry.date) {
+                  console.log(entry);
+                  continue;
+              }
               element.innerHTML += `<b>${entry.date.substring(0,10)}</b> — ${esc(entry.title)}\n<a href="${entry.link}">${esc(entry.link)}</a>\n\n`
           }
       });
