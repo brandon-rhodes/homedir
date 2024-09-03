@@ -6,6 +6,14 @@ cd
 
 mkdir -p Archive
 
+if [ ! -f ~/.bucket ]
+then
+    echo 'Please create $HOME/.bucket'
+    exit 1
+fi
+
+BUCKET=$(cat ~/.bucket)
+
 if [ -z "$2" ]
 then
     arg="-n"
@@ -15,10 +23,10 @@ fi
 
 if [ "$1" = "out" ]
 then
-    s3cmd sync -v $arg $HOME/Archive s3://brandon-archive/
+    s3cmd sync -v $arg $HOME/Archive s3://$BUCKET/
 elif [ "$1" = "in" ]
 then
-    s3cmd sync -v $arg s3://brandon-archive/Archive/ $HOME/Archive/
+    s3cmd sync -v $arg s3://$BUCKET/Archive/ $HOME/Archive/
 else
     echo 'usage: ,archive in|out [go]'
 fi
