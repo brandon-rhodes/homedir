@@ -11,6 +11,7 @@ fi
 cd "$(dirname $0)"
 
 mkdir -p ~/.dropbox-homedir
+mkdir -p ~/Dropbox
 
 docker build -t ephemeral . 1>&2
 
@@ -22,4 +23,5 @@ exec docker run -ti \
      -v /tmp/.X11-unix:/tmp/.X11-unix \
      -v ${HOME}/.Xauthority:/home/user/.Xauthority \
      -v $HOME/.dropbox-homedir:/home/user \
+     -v $HOME/Dropbox:/home/user/Dropbox \
      ephemeral "$@"
