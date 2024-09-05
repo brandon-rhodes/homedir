@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Show files that have changed in ~/Dropbox/ since the last time this
+# command was run with the `sync` option.  Helps me make sure I haven't
+# deleted anything by accident or changed anything I didn't mean to.
+
+set -e
+
+find-and-sort () {
+    find ~/Dropbox \
+         -name '.dropbox' -prune \
+         -o -name '.dropbox.cache' -prune \
+         -o -type f \
+         -printf '%12s  %TY-%Tm-%Td %TH:%TM  %p\n' | sort -k4
+}
+
+if [ "$1" = "sync" ]
+then
+    find-and-sort > ~/.inventory
+    exit
+fi
+
+if [ -n "$1" ]
+then
+    echo usage
+    exit 2
+fi
+
+find-and-sort > ~/.inventory-new
+git diff --no-index ~/.inventory ~/.inventory-new
