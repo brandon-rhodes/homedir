@@ -13,7 +13,10 @@ then
     exit 1
 fi
 
-case "$1" in
+command="$1"
+shift
+
+case "$command" in
 "ag" )
     V=2.2.0
 
@@ -102,7 +105,8 @@ case "$1" in
     TREE_SITTER_CFLAGS="-I$HOME/local/include" \
     TREE_SITTER_LIBS="-L$HOME/local/lib -ltree-sitter" \
     ./configure --prefix=$HOME/local --with-tree-sitter \
-                --with-xpm=ifavailable --with-gnutls=ifavailable
+                --with-xpm=ifavailable --with-gnutls=ifavailable \
+                "$@"
                 # --with-x \
                 # --with-jpeg=no --with-gif=no --with-tiff=no
     make
