@@ -14,6 +14,14 @@ find-and-sort () {
          -printf '%12s  %TY-%Tm-%Td %TH:%TM  %p\n' | sort -k4
 }
 
+report () {
+    awk '{i=ARGIND; c[i]+=1; n[i]+=$1} END {
+        printf " %\47d files  %\47d bytes\n", c[1], n[1];
+        printf " %\47d files  %\47d bytes  %+\47d  %+\47d\n", c[2], n[2],
+            c[2] - c[1], n[2] - n[1];
+    }' "$@"
+}
+
 if [ "$1" = "sync" ]
 then
     find-and-sort > ~/.inventory
@@ -27,4 +35,5 @@ then
 fi
 
 find-and-sort > ~/.inventory-new
-git diff --no-index ~/.inventory ~/.inventory-new
+git diff --no-index ~/.inventory ~/.inventory-new || true
+report ~/.inventory ~/.inventory-new
