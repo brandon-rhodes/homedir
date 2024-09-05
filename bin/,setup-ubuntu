@@ -109,6 +109,9 @@ for package in \
     `: for building tools like ag and ledger` \
     automake libpcre3-dev pkg-config \
     \
+    `: for building Emacs` \
+    libx11-dev libgtk2.0-dev \
+    \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
     \
