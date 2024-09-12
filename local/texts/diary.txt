@@ -1,4 +1,21 @@
 
+======== 2024 September 3 ========
+
+To take an old OGG file that recorded NTSC video at 720x480 with
+rectangular pixels, and convert it to a 720x540 MP4 with modern square
+pixels that will play back with a correct 4:3 aspect ratio, it turns out
+that you need to mention the target resolution on the command line not
+once but twice:
+
+ffmpeg -i razzle.ogg -aspect 720:540 -vf scale=720:540 -c:v libx264 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p razzle-4-3.mp4
+
+======== 2024 August 13 Tuesday ========
+
+To extract the audio of an mp4 video:
+
+ffmpeg -i ~/local/containers/ubuntu-24.04/Across\ the\ Great\ Divide.mp4 \
+       across-the-great-divide.mp3
+
 ======== 2024 July 24 Wednesday ========
 
 Downloading YouTube videos — for example, to back up copies of my old
