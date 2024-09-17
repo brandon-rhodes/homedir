@@ -15,7 +15,7 @@ then
     echo
     echo '$SSH_AGENT_PID is empty - restarting as the child of a new ssh-agent'
     echo
-    ssh-agent /bin/bash ~/.xinitrc2
+    exec ssh-agent /bin/bash ~/.xinitrc2
 fi
 
 # Make sure that all child processes inherit my standard environment.
@@ -58,7 +58,7 @@ fi
 
 # Turn off Yubikey before I have the chance to accidentally touch it.
 
-$HOME/bin/,yubi
+$HOME/bin/,yubi &
 
 # xfce4-power-manager ?
 
