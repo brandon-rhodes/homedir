@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# The incantation, which I will otherwise forget, for banning an IP address.
-
-exec sudo fail2ban-client set ssh banip "$@"

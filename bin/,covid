@@ -1,8 +1,0 @@
-#!/bin/bash
-
-U=https://coronavirus.ohio.gov/static/dashboards/COVIDSummaryDataZIP.csv
-OUT="$(curl -s $U | egrep '45801|45817|45840')"
-
-echo "$OUT"
-
-echo "$OUT" | awk -F, '{printf " %.2f", $NF} END {print""}'

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -e
-repo="$1"
-shift 1
-exec git clone git@github.com:brandon-rhodes/"$repo".git "$@"
