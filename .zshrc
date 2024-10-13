@@ -53,18 +53,7 @@ __detect_cd_and_possibly_activate_environment () {
             then
                 source deactivate
             fi
-            if [ -f ~/.v/"$slug"/bin/activate ]
-            then
-                # Either a virtualenv, or an old conda install.
-                source ~/.v/"$slug"/bin/activate ~/.v/"$slug"
-            else
-                # More recent versions of conda, like 4.7, without "activate".
-                # (This snippet is from what "conda init" writes to bashrc.)
-                local setup
-                setup="$('/home/brandon/.anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-                eval "$setup"
-                conda activate ~/.v/"$slug"
-            fi
+            source ~/.v/"$slug"/bin/activate ~/.v/"$slug"
             ENV_PATH="$PWD"
             ENV_SLUG="$slug"
         fi
@@ -77,25 +66,6 @@ __detect_cd_and_possibly_activate_environment () {
     then tail="($ENV_SLUG)$tail"
     fi
     base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} $tail %{$reset_color%}"
-}
-,conda-env () {
-    local slug
-    if ! slug=$(__compute_environment_slug)
-    then
-        echo "Error: must be in a directory beneath your home directory" >&2
-        return 1
-    fi
-    if [ "$#" = "0" ]
-    then
-        packages=( matplotlib notebook pandas pip )
-    else
-        packages=( "$@" pip )
-    fi
-    mkdir -p ~/.v &&
-    ~/.anaconda/bin/conda create -y -p ~/.v/$slug ${packages[*]} &&
-    unset OPWD &&
-    __detect_cd_and_possibly_activate_environment &&
-    ,setup-jedi
 }
 ,venv () {
     local slug python version

@@ -34,17 +34,6 @@ case "$command" in
     rm -r $V.tar.gz the_silver*
     ;;
 
-"anaconda" )
-    cd
-    mini=Miniconda3-4.2.12-Linux-x86_64.sh
-    wget -c https://repo.continuum.io/miniconda/$mini
-    if ! echo d0c7c71cc5659e54ab51f2005a8d96f3 $mini | md5sum -c -
-    then exit 1
-    fi
-    bash $mini -b -p .anaconda
-    ~/.anaconda/bin/conda upgrade --all -y
-    ;;
-
 "browser" )
     sudo update-alternatives --config x-www-browser
     ;;
@@ -134,12 +123,6 @@ case "$command" in
     unzip -o Crimson
     rm Crimson
     rm "SIL Open Font License 1.1.txt"
-    ;;
-
-"notebook" )
-    cd
-    .anaconda/bin/conda create -y -p ~/local/ipynb \
-                        python=3.8 jupyter pandas seaborn
     ;;
 
 "pythons" )

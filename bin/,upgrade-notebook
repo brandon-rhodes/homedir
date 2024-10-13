@@ -1,4 +1,0 @@
-#!/bin/bash
-
-exec env -i PATH=/bin:/usr/bin \
-     ~/.anaconda/bin/conda upgrade -p ~/local/ipynb --all
