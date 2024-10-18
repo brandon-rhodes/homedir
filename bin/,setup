@@ -136,7 +136,7 @@ case "$command" in
 "uv" )
     cd ~/.cache
     TAR=uv-x86_64-unknown-linux-gnu.tar.gz
-    wget -nc https://github.com/astral-sh/uv/releases/download/0.4.16/$TAR
+    wget -nc https://github.com/astral-sh/uv/releases/download/0.4.24/$TAR
     sha256sum -c ~/local/src/uv-x86_64-unknown-linux-gnu.tar.gz.sha256
     cd ~/bin
     tar xvf ~/.cache/$TAR \
