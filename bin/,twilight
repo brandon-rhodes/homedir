@@ -1,14 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.8"
+# dependencies = [
+#     "skyfield",
+#     "pytz",
+# ]
+# ///
 #
 # Sunrise, sunset, twilight
 #
 # Create a file named ~/.twilight with two lines that give latitude and
 # longitude, like "36.05 N" and "112.14 W".
 
-cd
-cd skyfield
-~/.v/skyfield/bin/python -c '
+import os
 from skyfield import api
+
+os.chdir('skyfield')
 coordinates = open("/home/brandon/.twilight").read().splitlines()
 planets = api.load("de421.bsp")
 topos = api.Topos(*coordinates)  # Hopefully looks like ["41 N", "85 W"]
@@ -22,4 +30,3 @@ from pytz import timezone
 z = timezone("US/Eastern")
 for t, e in zip(times, events):
     print(t.astimezone(z).strftime("%Y-%m-%d %H:%M"), " ", almanac.TWILIGHTS[e])
-'
