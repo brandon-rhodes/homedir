@@ -1,4 +1,12 @@
 
+======== 2024 November 4 Monday ========
+
+From my browser bookmarks, here’s the URL to view Google Photos by the
+date each photo was uploaded, so I can shift-select and adjust the date
+and time of whole batches of photographs at once:
+
+https://photos.google.com/search/_tra_
+
 ======== 2024 September 3 ========
 
 To take an old OGG file that recorded NTSC video at 720x480 with
