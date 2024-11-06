@@ -141,10 +141,6 @@ gi () {
 alias ,coreon="ulimit -c unlimited"
 alias ,coreoff="ulimit -c 0"
 
-# Be careful to run X server with "exec" so I get logged out when it exits.
-
-alias ,startx="exec startx"
-
 # Read AWS credentials for Boto from our ~/.s3cfg file.
 
 ,aws() {
