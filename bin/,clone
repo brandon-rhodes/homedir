@@ -13,7 +13,7 @@ fetch () {
 
 if [ -z "$1" ]
 then
-    echo $(fetch | jq -r '.[] | select(.fork | not) | .name' | sort) |
+    echo $(fetch | jq -r '.[] | select(.fork | not) | select(.archived | not) | .name' | sort) |
         fold -s -w 79
     exit
 fi
