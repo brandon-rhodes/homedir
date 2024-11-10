@@ -1,4 +1,21 @@
 
+======== Tools Whose Names I Forget ========
+
+Networking: nm-connection-editor nmtui
+
+======== 2024 November 10 Sunday ========
+
+Hibernation now works on my old X1 Carbon, so I don’t lose state if I
+leave it unplugged and it runs out of battery.  This helped:
+
+https://askubuntu.com/questions/1355428/how-do-i-hibernate-in-ubuntu-20-04
+
+I also set `CriticalPowerAction=Hibernate` in:
+/etc/UPower/UPower.conf
+
+and then ran:
+systemctl restart upower
+
 ======== 2024 November 4 Monday ========
 
 From my browser bookmarks, here’s the URL to view Google Photos by the
@@ -89,7 +106,7 @@ thing to do, alas!) and had to answer ‘DCP8040’ for the model number,
 without any whitespace inside.  Then I had to reboot before the
 `simple-scan` tool would recognize it.
 
-The output pages were no letter sized, so I created this small pypdf
+The output pages were not letter sized, so I created this small pypdf
 script:
 
 from pypdf import PdfReader, PdfWriter
@@ -530,13 +547,3 @@ fi
 sed -i 's/default:$/default: break;/' twid.c
 gcc twid.c -o twiddler
 echo 'Try: TWID_DEFAULTS=~/src/twiddler/twid_defaults.ini ./twiddler'
-
-======== 2017 September 10 Sunday ========
-
-Calculation of how far we went each day on our 2-day hike we just
-completed of Wildcat Hollow:
-
-Minutes hiked the first day: (- (+ (* 7 60) 10) (+ (* 3 60) 24)) 226
-Minutes hiked the second day: (- (+ (* 14 60) 40) (+ (* 8 60) 50)) 350
-Fraction of distance the first day: (* 14.7 (/ 226.0 (+ 226 350))) 5.8
-Fraction of distance the second day: (* 14.7 (/ 350.0 (+ 226 350))) 8.9
