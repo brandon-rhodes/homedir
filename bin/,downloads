@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Since I use the `~/Downloads` directory as a general-purpose 'stack'
+# (sorted by date) for moving files, I very often type `ltr ~/Downloads`
+# to view it as a stack - but the huge resulting listing then nukes my
+# terminal history; I'm usually too impatient to type `| tail` to limit
+# the output.  So let's wrap the whole maneuver up as a script, and make
+# the output especially pretty to encourage me to remember and use it!
+
+ls -ort --block-size="'1" --time-style='+ %Y-%m-%d %H:%M ' ~/Downloads \
+    | sed 's/-rw-rw-r--  1 brandon//' \
+    | tail -5
