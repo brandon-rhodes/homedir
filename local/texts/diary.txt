@@ -1,6 +1,7 @@
 
 ======== Tools Whose Names I Forget ========
 
+Filesystems: lsblk
 Networking: nm-connection-editor nmtui
 
 ======== 2024 November 10 Sunday ========
