@@ -63,7 +63,7 @@ def main():
     try:
         download_messages(creds)
     except HttpError as error:
-        print(f'An error occurred: {error}')
+        exit(f'An error occurred: {error}')
 
 def download_messages(creds):
     cache_dir = Path('~/.cache/ting').expanduser()
@@ -81,9 +81,12 @@ def download_messages(creds):
         print(path)
 
 def do_search(service, cache_dir):
+    # If doing rapid development on the rest of the script, uncomment
+    # this to skip the email search each time:
+    #
     list_path = cache_dir / 'MESSAGE_IDS'
-    if list_path.exists():
-        return list_path
+    # if list_path.exists():
+    #     return list_path
 
     q = 'subject:"Weekly Ting Monitoring Report"'
     print(q)
