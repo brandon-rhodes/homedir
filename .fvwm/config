@@ -191,7 +191,7 @@ AddToMenu SshDestinations "Remote Shells" Title
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
-+ "&m. Maps w/clipboard"  Exec exec browser ",maps"
++ "&m. Maps w/clipboard"  Exec exec ",maps"
 + "&r. Read feeds"  Exec exec browser "file:///home/brandon/local/htdocs/feeds.html"
 + "&w. Weather"  Exec exec browser "https://forecast.weather.gov/MapClick.php?lat=41.58918&lon=-85.83695"
 
