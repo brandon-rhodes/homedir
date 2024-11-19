@@ -20,4 +20,4 @@ exec xterm \
      -cm \
      +bdc \
      -xrm 'xterm*boldMode: off' \
-     /bin/bash
+     ${@:-/bin/bash}
