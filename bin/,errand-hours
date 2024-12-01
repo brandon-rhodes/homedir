@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+import datetime as dt
+import requests
+
+API_KEY = open('/home/brandon/.google-maps-key').read().strip()
+
+def get_business_hours(business_id, today):
+    url = (
+        'https://maps.googleapis.com/maps/api/place/details/json'
+        f'?place_id={business_id}&key={API_KEY}'
+    )
+    response = requests.get(url)
+    data = response.json()
+    if response.status_code == 200:
+
+        # Print the business name.
+        name = data['result']['name']
+        print(f'{name:30}', end='')
+
+        # Find today's hours.
+        periods = [
+            period for period
+            in data['result']['current_opening_hours']['periods']
+            if period['open']['date'] == today
+        ]
+        if periods:
+            periods = [(p['open']['time'], p['close']['time']) for p in periods]
+            periods.sort()
+            indent = int(periods[0][0]) // 100
+            print(' ' * indent, end='')
+            for p in periods:
+                print(f'{pretty(p[0])} - {pretty(p[1])}', end='')
+        else:
+            print('closed today', end='')
+
+        print()
+    else:
+        print(f'Error retrieving data for: {business_id}')
+
+def pretty(four_digit_time):
+    s = four_digit_time
+    if s[0] == '0':
+        s = ' ' + s[1:]
+    if s[2:] == '00':
+        s = s[:2] + '  '
+    return s
+
+business_ids = [
+    'ChIJKUiwMmnsFogRGUNBYDjZyRs',  # Goshen Public Library
+    'ChIJQZ72OWztFogRx7vIYo4IiFg',  # Fables
+    'ChIJwZ5Jv2zsFogRdu07e6OuFAY',  # True Value
+    'ChIJ099QChPsFogRCFJkZz1xoqw',  # First State Bank
+    'ChIJcS-DEvbrFogR1ghLBARsWo8',  # Depot thrift store
+    'ChIJ99gVqWLpFogR91k7aRZLFOo',  # ReStore
+    'ChIJBy2_poTpFogRL609nYdu0lo',  # Lowe's
+    'ChIJY0AMr3LsFogRlFNCCzGK4NY',  # Brewing Company
+    'ChIJBaVTWxPsFogRPXbAjwFUT8Y',  # Common Spirits
+    'ChIJg5M9Wd7tFogRJI3qOvssx-o',  # Nice Try
+]
+
+def main():
+    #today = (dt.datetime.now().weekday() + 1) % 7
+    today = dt.datetime.now().strftime('%Y-%m-%d')
+    for id in business_ids:
+        get_business_hours(id, today)
+
+main()
