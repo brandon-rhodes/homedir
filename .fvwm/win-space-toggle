@@ -1,7 +1,8 @@
 #!/bin/bash
 
-pkill -f win-space-script ||
+pkill -f win-space-script || (
     xterm -geometry 68x18+0-0 \
           -fs 14 -fg white -bg black \
           -T win-space-popup \
-          -e /bin/bash ~/.fvwm/win-space-script
+          -e /bin/bash ~/.fvwm/win-space-script &
+)
