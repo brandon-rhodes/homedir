@@ -151,33 +151,6 @@ then
     sudo apt-file update
 fi
 
-# Wipe out the default Ubuntu ssh client configuration, in particular to
-# turn off its SendEnv settings that send locale variables like LC_PAPER
-# even to hosts that cannot digest it.
-
-#sudo dd if=/dev/null of=/etc/ssh/ssh_config
-
-# Docker
-
-#sudo apt-get install linux-image-extra-`uname -r`
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-
-#sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-#sudo chmod a+r /etc/apt/sources.list.d/docker.list
-#sudo apt-get install lxc-docker
-#sudo docker pull ubuntu
-#sudo adduser brandon docker
-
-# Shut down the oneconf service to avoid various error messages.
-
-if [ -d /usr/share/oneconf ]
-then
-    sudo chmod a-x /usr/share/oneconf/oneconf-service
-    sudo chmod a-x /usr/share/oneconf/oneconf-query
-    sudo chmod a-x /usr/share/oneconf/oneconf-update
-    sudo killall -q oneconf-service || true
-fi
-
 # Outlaw Ubuntu's terrible "Sorry the application X has stopped
 # unexpectedly" popups.
 
@@ -291,6 +264,7 @@ then
     sudo mv /etc/apt/apt.conf.d/20apt-esm-hook.conf /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak
 fi
 
+# Refuse to sleep if there is an active SSH connection.
 # https://askubuntu.com/a/521629/9043
 
 if [ ! -f /etc/systemd/system/ssh-inhibit-sleep.service ]
