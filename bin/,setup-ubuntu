@@ -19,7 +19,7 @@ sudo dpkg-reconfigure --frontend=noninteractive locales
 
 # Install happy packages.
 
-apt-cache search . | awk '{print $1}' > /tmp/all-package-names
+apt-cache search . | awk '{print $1}' | sort > /tmp/existing-packages
 
 for package in \
     adb android-sdk-platform-tools-common `: for backing up an Android phone` \
@@ -124,12 +124,15 @@ for package in \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 do
     echo $package
-done |
-    sort - /tmp/all-package-names |
-    uniq -c |
-    awk '$1 == 2 {print $2}' > /tmp/existing-packages
+done | sort -u > /tmp/desired-packages
 
-sudo apt-get install --ignore-missing -y $(cat /tmp/existing-packages)
+echo
+echo Unknown packages:
+comm -13 /tmp/existing-packages /tmp/desired-packages | xargs echo
+echo
+
+sudo apt-get install --ignore-missing -y $(
+    comm -12 /tmp/existing-packages /tmp/desired-packages)
 
 sudo apt-get purge notify-osd
 
@@ -144,12 +147,9 @@ sudo apt-get purge notify-osd
 # APT::Periodic::Unattended-Upgrade "1";
 # EOF
 
-# Run "apt-file update" for the first time if necessary.
+# Make sure "apt-file" is indexed and ready to go.
 
-if ! ls /var/cache/apt/apt-file | grep -q .
-then
-    sudo apt-file update
-fi
+sudo apt-file update
 
 # Outlaw Ubuntu's terrible "Sorry the application X has stopped
 # unexpectedly" popups.
