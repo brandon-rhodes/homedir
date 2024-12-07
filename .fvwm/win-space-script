@@ -17,7 +17,7 @@ do
     echo "     $(TZ=$TZ1 date +'%Y %b %d')    $(TZ=UTC date +'%Y %b %d')    $(TZ=US/Eastern date +'%Y %b %d')    $(TZ=US/Pacific date +'%Y %b %d')"
     echo "        $(TZ=$TZ1 date +'%H:%M')          $(TZ=UTC date +'%H:%M')          $(TZ=US/Eastern date +'%H:%M')          $(TZ=US/Pacific date +'%H:%M')"
     echo
-    script --quiet --command 'cal -3' ~/.fvwm/.calendar >/dev/null
+    script --quiet --command 'ncal -3b' ~/.fvwm/.calendar >/dev/null
     sed '1d;/Script done/d;/^$/d;s/^/  /' ~/.fvwm/.calendar
     shopt -s nullglob
     for bat in /sys/class/power_supply/BAT*
