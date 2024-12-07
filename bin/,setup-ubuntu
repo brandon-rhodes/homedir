@@ -59,7 +59,6 @@ for package in \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
     pdftk            `: perform various useful operations on PDFs` \
-    pm-utils         `: so I can suspend the machine from its command line` \
     pwgen            `: random passwords` \
     pypy pypy-dev    `: for when I want to be fast` \
     python2-dev      `: for when I feel old fashioned` \
@@ -172,17 +171,6 @@ sudo chmod 644 /usr/share/xsessions/xinitrc.desktop
 # Set my shell.
 
 sudo chsh -s /bin/zsh $USER
-
-# Let everyone suspend or hibernate.
-
-if ! sudo grep -q pm-suspend /etc/sudoers
-then
-    sudo chmod +w /etc/sudoers
-    sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-suspend" >> /etc/sudoers'
-    sudo bash -c 'echo "ALL ALL=NOPASSWD: /usr/sbin/pm-hibernate" >> /etc/sudoers'
-    sudo bash -c 'echo "ALL ALL=NOPASSWD: /bin/kbd_mode" >> /etc/sudoers'
-    sudo chmod -w /etc/sudoers
-fi
 
 # Enable most sysrq commands.
 

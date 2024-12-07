@@ -230,8 +230,8 @@ AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.  Restart fvwm]"  Restart
 + "$[gt.  Quit fvwm]"    Quit
 + "" Nop
-+ "$[gt.&H Hibernate]" Exec slock & sudo /usr/sbin/pm-hibernate
-+ "$[gt.&S Suspend]"   Exec slock & sudo /usr/sbin/pm-suspend
++ "$[gt.&H Hibernate]" Exec slock & systemctl hibernate
++ "$[gt.&S Suspend]"   Exec slock & systemctl suspend
 
 DestroyMenu Pastes
 AddToMenu Pastes "Pastes" Title
