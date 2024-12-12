@@ -1,12 +1,22 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run --script
 
-from __future__ import print_function
+# /// script
+# requires-python = ">=3.8"
+# dependencies = [
+#     "pygithub",
+# ]
+# ///
 
-import argparse
+# In case of a `github.GithubException.BadCredentialsException`, visit:
+#
+# https://github.com/settings/tokens?type=beta
+#
+# and click on the token name and click “Regenerate token” and then
+# paste it into the path shown below.
+
 import os
 import sys
 
-# "pip install PyGithub"
 from github import Github
 
 def main(argv):
@@ -24,13 +34,8 @@ def main(argv):
 
     for query in queries:
         for repo in g.search_repositories(query=query):
-            # print(dir(repo))
-            # print([x for x in dir(repo) if 'count' in x])
-
-            #open_issue_count = len(list(repo.get_issues()))
             open_issue_count = repo.open_issues_count
             open_pull_count = len(list(repo.get_pulls()))
-            #star_count = len(list(repo.get_stargazers()))
             star_count = repo.stargazers_count
             score = open_issue_count + open_pull_count + star_count
             tup = (
@@ -40,9 +45,14 @@ def main(argv):
             # break
 
     data.sort(reverse=True)
+    fmt = '{:30}  {:>5}  {:>5}  {:>5}'
+
+    print()
+    print(fmt.format('Name', 'Issues', 'PRs', 'Stars'))
+    print()
 
     for score, name, open_issue_count, open_pull_count, star_count in data:
-        print('{:30}  {:>5}  {:>5}  {:>5}'.format(
+        print(fmt.format(
             name,
             open_issue_count or '-',
             open_pull_count or '-',
