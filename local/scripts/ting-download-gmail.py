@@ -23,6 +23,12 @@
 # and then downloading each PNG image.
 #
 # Email bodies and images are saved to the ~/.cache/ting/ directory.
+#
+# If you get the error:
+#
+#     invalid_grant: Bad Request
+#
+# the remove the file `token-google-api.json` and try again.
 
 import datetime as dt
 import os.path
@@ -44,9 +50,10 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 def main():
     creds = None
+    filename = 'token-google-api.json'
 
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if os.path.exists(filename):
+        creds = Credentials.from_authorized_user_file(filename, SCOPES)
 
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -57,7 +64,7 @@ def main():
             )
             creds = flow.run_local_server(port=0)
 
-        with open('token.json', 'w') as token:
+        with open(filename, 'w') as token:
             token.write(creds.to_json())
 
     try:
@@ -81,10 +88,11 @@ def download_messages(creds):
         print(path)
 
 def do_search(service, cache_dir):
+    list_path = cache_dir / 'MESSAGE_IDS'
+
     # If doing rapid development on the rest of the script, uncomment
     # this to skip the email search each time:
     #
-    list_path = cache_dir / 'MESSAGE_IDS'
     # if list_path.exists():
     #     return list_path
 
