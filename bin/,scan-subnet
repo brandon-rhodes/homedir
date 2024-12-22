@@ -13,6 +13,7 @@ else
     if [ "$1" = "x" ]
     then
         set $(ip -o -f inet addr show | awk '/scope global/ && ! /br-/ && ! /docker/ {print $4}')
+        echo "$@"
     fi
-    exec sudo nmap -sn "$1"
+    exec sudo nmap "$1"
 fi
