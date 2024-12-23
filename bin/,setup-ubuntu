@@ -133,7 +133,11 @@ echo
 sudo apt-get install --ignore-missing -y $(
     comm -12 /tmp/existing-packages /tmp/desired-packages)
 
-sudo apt-get purge notify-osd
+# Remove various annoying or unnecessary packages.
+
+sudo apt purge \
+     command-not-found python3-commandnotfound \
+     notify-osd
 
 # Arrange for packages to automatically update.
 
@@ -276,3 +280,9 @@ fi
 
 sudo dd if=$HOME/local/etc/backlight.rules \
         of=/etc/udev/rules.d/backlight.rules
+
+# Remove dangling config files of uninstalled packages.  Note that this
+# is run without '-y' so that I have the chance to review the list and
+# answer 'y' or 'n'.
+
+apt purge ?config-files
