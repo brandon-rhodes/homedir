@@ -80,18 +80,21 @@ __detect_cd_and_possibly_activate_environment () {
     else
         if [ -z "$1" ]
         then
-            pyenv versions
+            pyenv versions | grep -v ' 3'
+            echo
+            uv python list
             return 1
         fi
         version="$1"
-        shift
-        python="$(PYENV_VERSION="$version" pyenv which python)"
         mkdir -p ~/.v
         if [[ "$version" =~ '3.' ]]
         then
-            uv venv -p $python "$@" ~/.v/"$slug"
+            uv venv --python "$@" ~/.v/"$slug"
         else
-            ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug"
+            shift
+            python="$(PYENV_VERSION="$version" pyenv which python)"
+            python2 ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" \
+                    ~/.v/"$slug"
         fi
     fi &&
     unset OPWD &&
