@@ -67,7 +67,7 @@ __detect_cd_and_possibly_activate_environment () {
     fi
     base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} $tail %{$reset_color%}"
 }
-,venv () {
+,v () {
     local slug python version
     if ! slug=$(__compute_environment_slug)
     then
