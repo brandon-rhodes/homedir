@@ -74,20 +74,25 @@ __detect_cd_and_possibly_activate_environment () {
         echo "Error: must be in a directory beneath your home directory" >&2
         return 1
     fi
-    if [ -z "$1" ]
+    if [ -f ".python-version" ]
     then
-        pyenv versions
-        return 1
-    fi
-    version="$1"
-    shift
-    python="$(PYENV_VERSION="$version" pyenv which python)"
-    mkdir -p ~/.v
-    if [[ "$version" =~ '3.' ]]
-    then
-        uv venv -p $python "$@" ~/.v/"$slug"
+        uv venv ~/.v/"$slug"
     else
-        ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug"
+        if [ -z "$1" ]
+        then
+            pyenv versions
+            return 1
+        fi
+        version="$1"
+        shift
+        python="$(PYENV_VERSION="$version" pyenv which python)"
+        mkdir -p ~/.v
+        if [[ "$version" =~ '3.' ]]
+        then
+            uv venv -p $python "$@" ~/.v/"$slug"
+        else
+            ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" ~/.v/"$slug"
+        fi
     fi &&
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment
