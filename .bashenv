@@ -1,3 +1,7 @@
+# python-build-standalone quirk: 'Backspace Key Doesn’t work in Python REPL'
+
+export TERMINFO_DIRS=/etc/terminfo:/lib/terminfo:/usr/share/terminfo
+
 # In case I ever install Go applications (such as boot2docker).
 
 export GOPATH=$HOME/go
