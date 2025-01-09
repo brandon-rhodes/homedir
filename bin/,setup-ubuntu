@@ -54,7 +54,7 @@ for package in \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
     mercurial        `: for running integration tests on uncommitted project` \
-    mplayer geeqie   `: for media` \
+    mplayer sxiv     `: for media` \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
