@@ -1,8 +1,67 @@
 
-======== Tools Whose Names I Forget ========
+======== Tools Whose Names/Options I Forget ========
 
 Filesystems: lsblk
+Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
+  `journalctl -b -k -p 0..3 --grep=BIOS` `lspci -v` to see kernel modules
+  `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
+
+======== 2025 January 14 Tuesday ========
+
+Last month I took a gamble and upgraded my old Lenovo X260 laptop to
+Ubuntu 24.04 in the hope that Wifi might become more stable (it often
+would not switch networks without a reboot), and might start remembering
+Wifi passwords.  Maybe it helped?  But, alas, the laptop stopped being
+able to suspend!  The display would turn off and the power button would
+start its slow ‘suspend’ flash, but the ‘Fn’ and ‘F1’ lights would stay
+on, the battery would drain, and it would never wake from suspend.
+
+After reading online, I tried out a more recent `6.10.14-061014-generic`
+kernel but it didn’t help.
+
+https://wiki.ubuntu.com/Kernel/MainlineBuilds
+https://kernel.ubuntu.com/mainline/?C=N;O=D
+
+So I took a look at the kernel command line in `/etc/default/grub`.  It
+had grown quite a few options over the years that I’ve had this laptop!
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_rc6=0 intel_idle.max_cstate=1 i915.enable_dc=0 i915.disable_power_well=0 i915.enable_psr=0"
+
+It looks like many of these options are obsolete, and I wondered if any
+of them could themselves be the cause of a problem.  So I started over
+again with ‘quiet splash’.  Not only was suspend still broken, but now
+the system would randomly freeze for a few seconds every couple of
+minutes.
+
+First, the freezes: I tried ‘i915.psr_safest_params=1’ which was rumored
+to have less impact on the system, but there was no improvement, so I
+restored ‘i915.enable_psr=0’ and the freezes disappeared.
+
+Second, the broken suspend: after trying quite a few possible fixes,
+including an upgrade of the BIOS to 1.50, and ‘init_on_alloc=0’, the
+necessary kernel parameter wound up being ‘intel_iommu=off’.  Success!
+
+So I have landed on:
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i915.enable_psr=0 intel_iommu=off"
+
+And I can use the laptop happily again!  While making these fixes, this
+message also disappeared from dmesg:
+
+DMAR: DRHD: handling fault status reg 3
+
+See the ‘Kernel:’ entry atop this file for a few new commands that I
+learned or re-learned from various forums while poking around, including
+the rather useful `inxi` which was already on the laptop but which I
+don’t remember ever having seen before.  I also learned to print out
+kernel module parameters:
+
+modinfo -p i915
+
+and how to check their current value:
+
+cat /sys/module/i915/parameters/enable_psr
 
 ======== 2024 November 10 Sunday ========
 
