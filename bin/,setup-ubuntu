@@ -261,14 +261,14 @@ fi
 
 if [ ! -f /etc/systemd/system/ssh-inhibit-sleep.service ]
 then
-    sudo dd of=/etc/systemd/system/ssh-inhibit-sleep.service <<EOT
+    sudo dd of=/etc/systemd/system/ssh-inhibit-sleep.service <<'EOT'
 [Unit]
 Description=Check for running SSH sessions and, if any, inhibit sleep
 Before=sleep.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c '! who | grep -qv "\(:0\)"'
+ExecStart=/bin/sh -c '! who | grep -qv "\\(:0\\)"'
 
 [Install]
 RequiredBy=sleep.target
