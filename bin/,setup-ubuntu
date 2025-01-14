@@ -285,4 +285,4 @@ sudo dd if=$HOME/local/etc/backlight.rules \
 # is run without '-y' so that I have the chance to review the list and
 # answer 'y' or 'n'.
 
-apt purge ?config-files
+sudo apt purge ?config-files
