@@ -63,6 +63,19 @@ and how to check their current value:
 
 cat /sys/module/i915/parameters/enable_psr
 
+======== 2024 December 10 Tuesday ========
+
+Neat!  You can list the exploit mitigations active in your Linux kernel:
+grep . /sys/devices/system/cpu/vulnerabilities/*
+
+======== 2024 December 05 Thursday ========
+
+Frontier Eero call
+‘rebuild your network’
+then power cycle
+then it worked
+(TODO: expand this into an actual story)
+
 ======== 2024 November 10 Sunday ========
 
 Hibernation now works on my old X1 Carbon, so I don’t lose state if I
