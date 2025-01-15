@@ -138,6 +138,7 @@ sudo apt-get install --ignore-missing -y $(
 
 sudo apt purge \
      command-not-found python3-commandnotfound \
+     nfs-common nfs-kernel-server portmap \
      notify-osd \
      pm-utils \
      ubuntu-advantage-desktop-daemon
