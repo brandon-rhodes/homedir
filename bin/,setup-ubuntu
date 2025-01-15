@@ -66,7 +66,6 @@ for package in \
     python3 python3-dev `: for when I feel modern` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
-    nautilus         `: for mounting and unmounting flash drives` \
     nmap             `: for finding the IP address of printers on the LAN` \
     recordmydesktop  `: for screencasts` \
     ripgrep          `: Emacs Consult has a command that uses this` \
@@ -79,6 +78,7 @@ for package in \
     texlive-latex-extra \
     texlive-fonts-recommended \
     texlive-extra-utils `: to get pdfnup` \
+    thunar           `: for mounting and unmounting flash drives` \
     traceroute       `: when I want something quieter than mtr` \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
