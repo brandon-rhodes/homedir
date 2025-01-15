@@ -33,7 +33,7 @@ for package in \
     csvkit           `: manipulate data from the command line` \
     dos2unix         `: for removing CR chars or, more rarely, adding them` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
-    emacs            `: editor-of-choice` \
+    emacs-nox        `: editor-of-choice (I compile X version myself)` \
     emacs-el         `: readable LISP source` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
@@ -138,10 +138,13 @@ sudo apt-get install --ignore-missing -y $(
 
 doomed_packages="
   command-not-found python3-commandnotfound
+  emacs-gtk
+  ibus ibus-data
   nfs-common nfs-kernel-server portmap
   notify-osd
   pm-utils
   ubuntu-advantage-desktop-daemon
+  unattended-upgrades
 "
 doomed_packages="$(comm -12 \
      <(echo $doomed_packages | tr ' ' '\n' | grep . | sort) \
@@ -149,19 +152,13 @@ doomed_packages="$(comm -12 \
 )"
 if [ -n "$doomed_packages" ]
 then
-    apt -s purge "$doomed_packages"
+    apt purge "$doomed_packages"
 fi
 
-# Arrange for packages to automatically update.
-
-# sudo apt-get install unattended-upgrades
-
-# sudo dd of=/etc/apt/apt.conf.d/10periodic <<'EOF'
-# APT::Periodic::Update-Package-Lists "1";
-# APT::Periodic::Download-Upgradeable-Packages "1";
-# APT::Periodic::AutocleanInterval "7";
-# APT::Periodic::Unattended-Upgrade "1";
-# EOF
+#  gnome-disks gnome-keyring
+#  gvfs-backends
+#  at-spi2-core packagekit accountsservice
+# apt purge $(dpkg-query -l |grep '^ii' | awk '{print$2}' | grep ^gnome)
 
 # Make sure "apt-file" is indexed and ready to go.
 
