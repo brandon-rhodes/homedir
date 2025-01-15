@@ -291,6 +291,9 @@ fi
 sudo dd if=$HOME/local/etc/backlight.rules \
         of=/etc/udev/rules.d/backlight.rules
 
+# TODO: install 22.04 .deb from here to get volume control:
+# https://packages.ubuntu.com/jammy/xfce4-volumed
+
 # Remove dangling config files of uninstalled packages.  Note that this
 # is run without '-y' so that I have the chance to review the list and
 # answer 'y' or 'n'.
