@@ -136,12 +136,21 @@ sudo apt-get install --ignore-missing -y $(
 
 # Remove various annoying or unnecessary packages.
 
-sudo apt purge \
-     command-not-found python3-commandnotfound \
-     nfs-common nfs-kernel-server portmap \
-     notify-osd \
-     pm-utils \
-     ubuntu-advantage-desktop-daemon
+doomed_packages="
+  command-not-found python3-commandnotfound
+  nfs-common nfs-kernel-server portmap
+  notify-osd
+  pm-utils
+  ubuntu-advantage-desktop-daemon
+"
+doomed_packages="$(comm -12 \
+     <(echo $doomed_packages | tr ' ' '\n' | grep . | sort) \
+     <(dpkg-query --show --showformat='${Package}\n') \
+)"
+if [ -n "$doomed_packages" ]
+then
+    apt -s purge "$doomed_packages"
+fi
 
 # Arrange for packages to automatically update.
 
