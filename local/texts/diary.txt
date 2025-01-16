@@ -7,6 +7,15 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 January 15 Wednesday ========
+
+The volume buttons stopped working on my laptop because the wonderful
+‘xfce4-volumed’ has been removed from Ubuntu as of 24.04.  So I snagged
+the `.deb` from 22.04 and was able to install it manually!  Alas, the
+modern replacement, a full xfce4 tray with plugins and configuration, is
+clunky and unattractive and complicated.  Much simpler to just keep
+using the original!
+
 ======== 2025 January 14 Tuesday ========
 
 Last month I took a gamble and upgraded my old Lenovo X260 laptop to

@@ -101,9 +101,6 @@ CursorStyle TOP top_side
 # using the otherwise useless "Windows" key ("A" means "in any context"
 # and "4" means "the Windows key" otherwise known as "Win+...").
 
-# Key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -1000"
-# Key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +1000"
-Key XF86AudioMute A N Exec exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 Key XF86MonBrightnessDown A N Exec exec $HOME/bin/,backlight down
 Key XF86MonBrightnessUp A N Exec exec $HOME/bin/,backlight up
 
