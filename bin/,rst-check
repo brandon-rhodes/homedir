@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Render an `*.rst` text file or a module-level docstring as HTML, both
+# to check its syntax, and to view it in the browser.  (Typically before
+# releasing a package on PyPI.)
 
 if [ -z "$1" ]
 then
@@ -20,9 +24,9 @@ print(ast.get_docstring(a))
     set -- /tmp/rst.src "$@"
 fi
 
-/home/brandon/.v/skyfield/bin/rst2html.py "$1" /tmp/rst.html
+uvx --with pygments docutils "$1" /tmp/rst.html
 
 if [ -n "$2" ]
 then
-    python -m webbrowser -t file:///tmp/rst.html
+    python3 -m webbrowser -t file:///tmp/rst.html
 fi
