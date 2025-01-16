@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# The slow but correct way to determine which installed packages are at
+# the root of their own dependency graph: removing them would not
+# inspire `apt purge` to remove any other packages in addition.
+
+dpkg-query --show --showformat='${Package}\t${Status}\n' \
+    | awk '/installed$/ {print $1}' | while read package
+do
+    victims=$(
+        apt purge -s $package 2>&1 |
+        awk '/REMOVED:/ {getline; print}' |
+        sed 's/\*//g'
+    )
+    count=$(echo $victims | wc -w)
+    if [ "$count" = "1" ]
+    then
+        echo $package
+    fi
+done

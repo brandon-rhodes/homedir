@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Output the dpkg history logs in order from old to new, possibly
+# filtered by a regular expression.
+
+if [ -t 1 ]
+then
+    out=less
+else
+    out=cat
+fi
+if [ -z "$1" ]
+then
+    set .
+fi
+zless $(ls -rv /var/log/dpkg.log*) | grep -P "$@" | $out
