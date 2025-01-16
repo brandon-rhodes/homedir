@@ -62,4 +62,9 @@ $HOME/bin/,yubi &
 
 # xfce4-power-manager ?
 
+if [ -x $HOME/local/bin/fvwm ]
+then
+    exec $HOME/local/bin/fvwm
+fi
+
 exec fvwm

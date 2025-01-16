@@ -7,6 +7,25 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 January 16 Thursday ========
+
+After upgrading the X260 to Ubuntu 24.04, FVWM autoraise stopped
+working, with this error message in my desktop log:
+
+*** buffer overflow detected ***: terminated
+
+So, after a bit of research online, I have compiled my own version of
+FVWM with this patch:
+
+diff --git modules/FvwmAuto/FvwmAuto.c modules/FvwmAuto/FvwmAuto.c
+index d789797a..9c0e73c0 100644
+--- modules/FvwmAuto/FvwmAuto.c
++++ modules/FvwmAuto/FvwmAuto.c
+@@ -346,2 +346,3 @@ main(int argc, char **argv)
+        }
++       len += 2;               /* for \n and null byte */
+        buf = safemalloc(len);
+
 ======== 2025 January 15 Wednesday ========
 
 The volume buttons stopped working on my laptop because the wonderful
