@@ -1,2 +1,0 @@
-set -e
-cd "$(readlink -f $(dirname "${BASH_SOURCE[0]}"))"
