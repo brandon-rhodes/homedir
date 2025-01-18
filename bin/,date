@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-
-#!/usr/bin/env python
-
-from __future__ import print_function
+#!/usr/bin/env python3
+#
+# Convert a UNIX timestamp to a date, or vice-versa for a string like
+# '2025-01-18'.
 
 import argparse
 import datetime as dt
