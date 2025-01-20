@@ -28,7 +28,8 @@
 #
 #     invalid_grant: Bad Request
 #
-# the remove the file `token-google-api.json` and try again.
+# the remove the file `token-google-api.json` and try again.  (Update:
+# the code now tries doing this itself.)
 
 import datetime as dt
 import os.path
@@ -39,6 +40,7 @@ from email.parser import Parser
 from email.policy import default
 from pathlib import Path
 
+import google.auth.exceptions
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -49,11 +51,28 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 def main():
-    creds = None
-    filename = 'token-google-api.json'
+    os.chdir(os.path.dirname(__file__))
+    token_path = 'token-google-api.json'
+    token_existed = os.path.exists(token_path)
+    try:
+        creds = get_creds(token_path)
+    except google.auth.exceptions.RefreshError:
+        if not token_existed:
+            raise
+        print('RefreshError; removing token-google-api.json and trying again')
+        os.unlink('token-google-api.json')
+        creds = get_creds(token_path)
 
-    if os.path.exists(filename):
-        creds = Credentials.from_authorized_user_file(filename, SCOPES)
+    try:
+        download_messages(creds)
+    except HttpError as error:
+        exit(f'An error occurred: {error}')
+
+def get_creds(token_path):
+    creds = None
+
+    if os.path.exists(token_path):
+        creds = Credentials.from_authorized_user_file(token_path, SCOPES)
 
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -64,13 +83,10 @@ def main():
             )
             creds = flow.run_local_server(port=0)
 
-        with open(filename, 'w') as token:
+        with open(token_path, 'w') as token:
             token.write(creds.to_json())
 
-    try:
-        download_messages(creds)
-    except HttpError as error:
-        exit(f'An error occurred: {error}')
+    return creds
 
 def download_messages(creds):
     cache_dir = Path('~/.cache/ting').expanduser()
