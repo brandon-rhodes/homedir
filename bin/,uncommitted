@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Run 'uncommitted' on my home directory, saving its output in a file.
+
+cd
+
+out=UNCOMMITTED
+number=0
+while [ -e "$out" ]; do
+    printf -v out 'UNCOMMITTED.%d' "$(( ++number ))"
+done
+
+uvx uncommitted -s -v . > $out
+
+less $out
+echo $out
