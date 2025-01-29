@@ -11,6 +11,7 @@ chrome.bookmarks.getTree(
                         + ' style="margin-right: 2em">'
                         + node.title + '</a> ';
                     paragraph.appendChild(b);
+                    paragraph.append(' ');
                 }
                 if (node.hasOwnProperty('children')) {
                     descend(node.children, node.title == 'Bookmarks bar');
