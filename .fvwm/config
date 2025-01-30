@@ -107,6 +107,7 @@ Key e A 4  Exec exec emacs
 Key g A 4  Exec exec browser "https://github.com/notifications"
 Key i A 4  All (CurrentPage, !Iconic) Iconify
 Key i A 4S All (CurrentPage, Iconic) Iconify
+Key j A 4  Menu Emoji Nop
 Key l A 4  Lower
 Key m A 4  Exec exec bash $HOME/.fvwm/open-in-google-maps.sh
 Key n A 4  Exec exec ,browser
@@ -174,6 +175,14 @@ AddToMenu Applications "Applications" Title
 + "&t. Thunar"    Exec exec thunar
 + "&v. VirtualBox" Exec exec virtualbox
 + "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x1000 -no-host-grab
+
+DestroyMenu Emoji
+AddToMenu Emoji "Emoji" Title
++ "&f. Frown" Exec exec xdotool type --delay 30 '🫤'
++ "&p. Party" Exec exec xdotool type --delay 30 '🎉'
++ "&s. Smile" Exec exec xdotool type --delay 30 '🙂'
++ "&t. Thumbs-up" Exec exec xdotool type --delay 30 '👍'
++ "&w. Wow" Exec exec xdotool type --delay 30 '😮'
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
