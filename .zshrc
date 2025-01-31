@@ -163,7 +163,7 @@ else
                 # Too expensive to run "status" each time.
                 color=blue
             else
-                status_lines="$(git status --porcelain)"
+                status_lines="$(GIT_OPTIONAL_LOCKS=0 git status --porcelain)"
                 status_lines=":${status_lines//
 /:}"                            # delimit the lines with colons instead
                 if [[ "$status_lines" =~ ':[^?][^?]' ]]
