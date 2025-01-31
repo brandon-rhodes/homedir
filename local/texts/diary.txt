@@ -7,6 +7,13 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 January 31 Friday ========
+
+Wanted to connect my laptop to my Bluetooth headphones, but without
+needing to install more packages.  Turns out, it can be paired from the
+command line!  The command is `bluetoothctl` and can be used to turn on
+scanning and perform a connection.
+
 ======== 2025 January 16 Thursday ========
 
 After upgrading the X260 to Ubuntu 24.04, FVWM autoraise stopped
