@@ -59,8 +59,10 @@ MenuStyle * Font "xft:Inconsolata:Regular:pixelsize=24:minispace=True:antialias=
 
 Style * Font "xft:Ubuntu:Regular:pixelsize=18:minispace=True:antialias=True"
 Style * IconFont "xft:Ubuntu:Regular:pixelsize=18:minispace=True:antialias=True"
+Style * TitleStyle None
+Style * NoTitle
 Style * HilightFore white, HilightBack black
-Style * BorderWidth 1, !Handles
+Style * BorderWidth 2, !Handles
 Style * Icon unknown1.xpm, Color lightgrey/dimgrey
 Style * MwmBorder, MWMFunctions, MWMDecor, HintOverride
 Style * DecorateTransient, NoPPosition
@@ -264,21 +266,21 @@ AddToFunc FuncFvwmMoveOrRaise
 DestroyFunc FuncMaximizeBorderlessly
 AddToFunc FuncMaximizeBorderlessly
 + I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
-+ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, !Title
 + I UpdateStyles
 + I Maximize Toggle 100 100
 
 DestroyFunc FuncMaximizeBorderlessly1024
 AddToFunc FuncMaximizeBorderlessly1024
 + I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
-+ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, !Title
 + I UpdateStyles
 + I Maximize Toggle 1024p 768p
 
 DestroyFunc FuncMaximizeBorderlessly16_9
 AddToFunc FuncMaximizeBorderlessly16_9
 + I ThisWindow (!Maximized) WindowStyle BorderWidth 0, HandleWidth 0, !Title
-+ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, Title
++ I ThisWindow (Maximized) WindowStyle BorderWidth 1, HandleWidth 6, !Title
 + I UpdateStyles
 + I Maximize Toggle 1280p 720p
 
