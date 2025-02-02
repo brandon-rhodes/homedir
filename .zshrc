@@ -22,9 +22,8 @@ ci-helper () {
 
 alias ci='ci-helper #'
 
-# Use my own zsh completion logic, where provided.
+# Custom completions.
 
-fpath=(~/.zsh-completion $fpath)
 compdef s=ssh
 
 # Activate virtual environments automatically when $PWD changes.
