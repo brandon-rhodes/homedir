@@ -12,6 +12,10 @@
       "matches": ["https://danluu.com/*"]
     },
     {
+      "css": ["style-gmail.css"],
+      "matches": ["https://mail.google.com/*"]
+    },
+    {
       "css": ["style-thepartysource.css"],
       "matches": ["https://thepartysource.com/*"]
     },
