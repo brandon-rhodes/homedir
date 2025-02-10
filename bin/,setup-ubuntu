@@ -303,8 +303,19 @@ fi
 sudo dd if=$HOME/local/etc/backlight.rules \
         of=/etc/udev/rules.d/backlight.rules
 
-# TODO: install 22.04 .deb from here to get volume control:
-# https://packages.ubuntu.com/jammy/xfce4-volumed
+# The only small quick volume control daemon that I can find.  Alas, its
+# replacement within xfce4 is an extremely clunky and unhappy icon tray.
+
+deb=xfce4-volumed_0.2.0-0ubuntu3_amd64.deb
+
+if [ ! -f ~/.cache/$deb ]
+then
+    pushd ~/.cache
+    wget http://mirrors.kernel.org/ubuntu/pool/universe/x/xfce4-volumed/$deb
+    sudo dpkg -i $deb
+    apt --fix-broken install -y -y
+    popd
+fi
 
 # Remove dangling config files of uninstalled packages.  Note that this
 # is run without '-y' so that I have the chance to review the list and
