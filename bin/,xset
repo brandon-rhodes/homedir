@@ -49,12 +49,12 @@ declare -a fields="($(lspci -m | grep VGA | head -1))"
 
 case ${fields[3]} in
     "3rd Gen Core processor Graphics Controller")  # ThinkPad X1 Carbon 1st gen
-        set_dpi 130
+        set_dpi 120  # = 96 * 1.25; real DPI=131, this tightens things a bit
         # xinput --set-prop "SynPS/2 Synaptics TouchPad" \
         #        "Synaptics Tap Action" 0 0 0 0 0 0 0
         ;;
     "Skylake GT2 [HD Graphics 520]")  # ThinkPad X260
-        set_dpi 144  # real DPI is 167, but then Chrome looks too small
+        set_dpi 144  # = 96 × 2; real DPI=167, but then Chrome looks too small
 
         # First number: adaptive profile on/off
         # Second number: flat profile on/off
