@@ -163,6 +163,17 @@ case "$command" in
         uv-x86_64-unknown-linux-gnu/uv uv-x86_64-unknown-linux-gnu/uvx
     ;;
 
+"x" )
+    # All the extras needed for my X Windows setup.
+    ,setup fonts
+    ,setup fvwm
+    dest=~/Third-party/alacritty-theme
+    if [ ! -d $dest ]
+    then
+        git clone https://github.com/alacritty/alacritty-theme $dest
+    fi
+    ;;
+
 "xephem" )
     sudo apt-get install libxext-dev libxmu-dev libxp-dev libxt-dev \
         x11proto-print-dev
