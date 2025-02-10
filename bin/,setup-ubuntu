@@ -14,7 +14,15 @@ sudo apt-get update
 # Avoid "perl" locale errors and the "locale" error:
 # locale: Cannot set LC_ALL to default locale: No such file or directory
 
-sudo locale-gen en_US en_US.UTF-8
+sudo dd of=/etc/locale.gen <<'EOF'
+en_US ISO-8859-1
+en_US.UTF-8 UTF-8
+EOF
+
+sudo dd of=/var/lib/locales/supported.d/en <<'EOF'
+en_US.UTF-8 UTF-8
+EOF
+
 sudo dpkg-reconfigure --frontend=noninteractive locales
 
 # Install happy packages.
