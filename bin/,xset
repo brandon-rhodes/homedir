@@ -58,9 +58,9 @@ case ${fields[3]} in
         # xinput --set-prop "SynPS/2 Synaptics TouchPad" \
         #        "Synaptics Tap Action" 0 0 0 0 0 0 0
         ;;
-    "Skylake GT2 [HD Graphics 520]")
-        set_dpi 160
-        set_chrome_scale 1.5
+    "Skylake GT2 [HD Graphics 520]")  # ThinkPad X260
+        set_dpi 144  # real DPI is 167, but Chrome looks too small
+        set_chrome_scale 1.0
 
         # First number: adaptive profile on/off
         # Second number: flat profile on/off
