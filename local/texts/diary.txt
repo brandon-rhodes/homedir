@@ -7,6 +7,14 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 February 09 Sunday ========
+
+After dropping new .ttf or .otf files into `~/.fonts`, run this command
+to check whether the available fonts have really changed, and to learn
+their official names:
+
+fc-list :spacing=mono
+
 ======== 2025 January 31 Friday ========
 
 Wanted to connect my laptop to my Bluetooth headphones, but without
