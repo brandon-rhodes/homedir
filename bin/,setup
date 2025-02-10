@@ -129,6 +129,21 @@ case "$command" in
     wget -nc $version/fonts/frozen/MonaspaceArgonFrozen-Regular.ttf
     ;;
 
+"fvwm" )
+    cd ~/local/src
+    if [ ! -d fvwm-buffer-overflow ]
+    then
+        git clone https://github.com/brandon-rhodes/fvwm-buffer-overflow
+    fi
+    if [ ! -x $HOME/local/bin/fvwm ]
+    then
+        cd fvwm-buffer-overflow
+        ./autogen.sh
+        ./configure --prefix=$HOME/local
+        make install
+    fi
+    ;;
+
 "pythons" )
     for v in 2.3.7 2.4.6 2.7.3 \
                    3.6.8 3.7.3 3.8.1 3.9.10 3.10.1 3.11.7 3.12.1
