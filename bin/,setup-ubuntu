@@ -126,6 +126,9 @@ for package in \
     `: Hettinger reminded me how awesome these tools are` \
     graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag \
     \
+    `: laptop power optimization for longer battery life` \
+    tlp acpi-call-dkms linux-tools-generic smartmontools \
+    \
     `: Verbatim list of dependencies for pyenv` \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
