@@ -119,10 +119,14 @@ case "$command" in
 "fonts" )
     mkdir -p ~/.fonts
     cd ~/.fonts
-    wget http://www.fontsquirrel.com/fonts/download/Crimson
+
+    wget -nc http://www.fontsquirrel.com/fonts/download/Crimson
     unzip -o Crimson
-    rm Crimson
-    rm "SIL Open Font License 1.1.txt"
+    rm "SIL Open Font License.txt"
+
+    version=https://github.com/githubnext/monaspace/raw/refs/tags/v1.200
+    wget -nc $version/fonts/otf/MonaspaceArgon-Regular.otf
+    wget -nc $version/fonts/frozen/MonaspaceArgonFrozen-Regular.ttf
     ;;
 
 "pythons" )
