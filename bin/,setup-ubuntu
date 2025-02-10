@@ -41,7 +41,7 @@ for package in \
     csvkit           `: manipulate data from the command line` \
     dos2unix         `: for removing CR chars or, more rarely, adding them` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
-    emacs-nox        `: editor-of-choice (I compile X version myself)` \
+    emacs-nox        `: editor-of-choice - I compile X version myself` \
     emacs-el         `: readable LISP source` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
