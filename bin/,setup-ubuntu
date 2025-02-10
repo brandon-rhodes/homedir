@@ -149,6 +149,7 @@ sudo apt-get install --ignore-missing -y $(
 
 doomed_packages="
   command-not-found python3-commandnotfound
+  docker.io
   emacs-gtk
   ibus ibus-data
   nfs-common nfs-kernel-server portmap
