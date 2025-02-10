@@ -1,18 +1,20 @@
 #!/bin/bash
 
-set -ex
-
-if [ ! -f /usr/bin/docker ]
-then
-    echo Error: please apt install docker.io >&2
-    exit 2
-fi
+set -e
 
 directory=$PWD
 cd "$(dirname $0)"
 
-docker build -t generic . 1>&2
-exec docker run -ti \
+if [ -n "$1" ]
+then
+    podman build -t generic . 1>&2
+    exit
+fi
+
+exec podman run -ti \
      --net=host \
-     -v $directory:/mnt \
+     -v $HOME/bin:/root/bin:ro \
+     -v $HOME/.bashenv:/root/.bashenv:ro \
+     -v $HOME/.bashrc:/root/.bashrc:ro \
+     -v $directory:/work \
      generic "$@"

@@ -2,10 +2,14 @@
 #
 # travis encrypt -r brandon-rhodes/pyephem SOMEVAR="secretvalue"
 
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt update && apt upgrade -y -y
-RUN apt install -y -y build-essential
-RUN apt install -y -y less python2.7-dev python3-dev
-RUN ln -s python2.7 /usr/bin/python
-CMD cd /mnt && /bin/bash
+RUN apt install -y -y build-essential less python3-dev
+RUN apt install -y -y curl telnet
+RUN apt install -y -y wget
+RUN apt install -y -y git
+RUN apt install -y -y nano
+
+WORKDIR /work
+CMD ["/bin/bash"]
