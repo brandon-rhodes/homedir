@@ -57,14 +57,15 @@ __detect_cd_and_possibly_activate_environment () {
             ENV_SLUG="$slug"
         fi
     fi
-    local tail=${PWD#$ENV_PATH}
-    if [ "$tail" = "$PWD" ]
-    then tail="%~"
+    prompt_cwd=$PWD
+    if [ -n "$ENV_SLUG" ] && [[ $PWD/ == ${ENV_PATH}/* ]]
+    then
+        prompt_cwd=${PWD#$ENV_PATH}  # "~/project/a/b" -> "/a/b"
+        prompt_cwd=${prompt_cwd#/}   # "/a/b" -> "a/b"
+        prompt_cwd=${prompt_cwd:-.}  # empty string -> "."
+    else
+        prompt_cwd="$(print -P '%~')"
     fi
-    if [ -n "$ENV_SLUG" ]
-    then tail="($ENV_SLUG)$tail"
-    fi
-    base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} $tail %{$reset_color%}"
 }
 ,v () {
     local slug python version
@@ -113,55 +114,53 @@ else
     autoload -Uz url-quote-magic
     zle -N self-insert url-quote-magic
 
-    autoload colors && colors
+    # autoload -Uz vcs_info
+    # zstyle ':vcs_info:*' enable git
+    # zstyle ':vcs_info:*' check-for-changes true
+    # zstyle ':vcs_info:git:*' formats '%b' '%c%u'
+    # precmd () {
+    #     vcs_info
+    #     if [ -z "$vcs_info_msg_1_" ]
+    #     then
+    #         psvar=(green "${vcs_info_msg_0_}")
+    #     else
+    #         psvar=(red "${vcs_info_msg_0_}")
+    #     fi
+    # }
+
+    #set -o PROMPT_SUBST
+
     zle_highlight=(default:fg=0,bg=7,bold)
 
     if [ -z "$SSH_TTY" ]
     then
-        base_PROMPT="%{$fg_bold[black]$bold%}\$%{$reset_color%} "
+        PS1=$'%B%F{white}%(?.%K{green} .%K{red}%?) %(?.%F{green}.%F{red})%k\ue0b0%f '
     else
         PS1="${HOST:-${HOSTNAME}}"
 
         # Keep only the first component of a fully-qualified hostname.
         PS1="${PS1%%.*}"
 
-        base_PROMPT="%{$fg_bold[black]$bold%}$PS1\$%{$reset_color%} "
+        # TODO: make this fancier? or pop remote case out and simplify,
+        # since who knows where I might be SSH'ing from, maybe no Unicode?
     fi
-    base_RPROMPT="%{$fg_bold[white]$bg[cyan]%} %~ %{$reset_color%}"
 
-    start_time=$SECONDS
-
-    preexec() {
-        start_time=$SECONDS
-    }
+    RPROMPT=$'%B%(1V.%F{%1v}\ue0b2%K{%1v}%F{white} \ue0a0%2v .)%(3V.%F{white}%K{cyan} %3v .)%F{white}%K{black} %18<…<%4v '
 
     precmd() {
-        local color elapsed rev root status_lines
+        local color rev root status_lines
         rehash
         __detect_cd_and_possibly_activate_environment
         root=$(git rev-parse --show-toplevel 2>/dev/null)
 
-        PROMPT="$base_PROMPT"
-
-        if [ -n "$start_time" ]
-        then
-            elapsed=$(($SECONDS - $start_time))
-            unset start_time
-            if [ $(( $elapsed >= 5 )) = "1" ]
-            then
-                elapsed=$(printf "%d:%02d\n" $(($elapsed / 60)) $(($elapsed % 60)))
-                PROMPT="$elapsed $PROMPT"
-            fi
-        fi
-
-        RPROMPT="$base_RPROMPT"
         if [ -n "$root" ]
         then
             if [ -f "$root/.git/no-prompt" ]
             then
                 # Too expensive to run "status" each time.
-                color=blue
+                rev=off
             else
+                rev="$(GIT_OPTIONAL_LOCKS=0 git rev-parse --abbrev-ref HEAD)"
                 status_lines="$(GIT_OPTIONAL_LOCKS=0 git status --porcelain)"
                 status_lines=":${status_lines//
 /:}"                            # delimit the lines with colons instead
@@ -172,9 +171,8 @@ else
                 else color=yellow
                 fi
             fi
-            rev="$(git rev-parse --abbrev-ref HEAD)"
-            RPROMPT="%{$fg_bold[white]$bg[$color]%}$rev%{$reset_color%} $RPROMPT"
         fi
+        psvar=("$color" "$rev" "$ENV_SLUG" "$prompt_cwd")
     }
 fi
 
@@ -245,3 +243,8 @@ zstyle ':completion:*' menu select
 # Install my other customizations.
 
 source ~/.bashrc
+
+# This needs to be set after ~/.bashrc and ~/.bashenv are run, because
+# setting $TERMINFO_DIRS resets its value to 1.
+
+ZLE_RPROMPT_INDENT=0
