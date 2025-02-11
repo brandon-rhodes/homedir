@@ -114,22 +114,6 @@ else
     autoload -Uz url-quote-magic
     zle -N self-insert url-quote-magic
 
-    # autoload -Uz vcs_info
-    # zstyle ':vcs_info:*' enable git
-    # zstyle ':vcs_info:*' check-for-changes true
-    # zstyle ':vcs_info:git:*' formats '%b' '%c%u'
-    # precmd () {
-    #     vcs_info
-    #     if [ -z "$vcs_info_msg_1_" ]
-    #     then
-    #         psvar=(green "${vcs_info_msg_0_}")
-    #     else
-    #         psvar=(red "${vcs_info_msg_0_}")
-    #     fi
-    # }
-
-    #set -o PROMPT_SUBST
-
     zle_highlight=(default:fg=0,bg=7,bold)
 
     if [ -z "$SSH_TTY" ]
