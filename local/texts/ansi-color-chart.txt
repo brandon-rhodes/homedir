@@ -1,3 +1,4 @@
+ANSI color chart showing all combinations of the 16 basic terminal colors
 From https://gist.github.com/dzubi/2157470
 
                  40m     41m     42m     43m     44m     45m     46m     47m
