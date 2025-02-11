@@ -123,8 +123,8 @@ for package in \
     `: for lxml` \
     libxml2-dev libxslt1-dev \
     \
-    `: Hettinger reminded me how awesome these tools are` \
-    graphviz python-blockdiag python-seqdiag python-actdiag python-nwdiag \
+    `: an excellent tool that Hettinger reminded me about` \
+    graphviz \
     \
     `: laptop power optimization for longer battery life` \
     tlp acpi-call-dkms linux-tools-generic smartmontools \
