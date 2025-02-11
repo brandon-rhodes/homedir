@@ -3,4 +3,8 @@
 # launch, but the Emacs 29 startup time is so fast that now we just run
 # a new Emacs.
 
+if [ "$TERM" = "alacritty" ]
+then
+    TERM=xterm-16color  # only use the 16 colors of the current theme
+fi
 exec emacs -nw "$@"
