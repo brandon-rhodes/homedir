@@ -209,6 +209,14 @@ unsetopt bang_hist
 
 setopt hist_ignore_dups
 
+# Print the duration of the most recent command, to avoid my habit of
+# Control-C'ing a command once I see that it's going to take several
+# seconds, and re-running it with `time`.
+
+,elapsed () {
+    fc -l -D -1 | awk '{print "The",$3,"command took",$2,"to run"}'
+}
+
 # Don't complain if I paste part of a shell script into the command
 # line, and some lines start with '#'.  They are comments!  I'm not
 # trying to run the program '#'!
