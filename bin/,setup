@@ -127,6 +127,7 @@ case "$command" in
     version=https://github.com/githubnext/monaspace/raw/refs/tags/v1.200
     wget -nc $version/fonts/otf/MonaspaceArgon-Regular.otf
     wget -nc $version/fonts/frozen/MonaspaceArgonFrozen-Regular.ttf
+    wget -nc $version/fonts/frozen/MonaspaceNeonFrozen-Regular.ttf
     ;;
 
 "fvwm" )
