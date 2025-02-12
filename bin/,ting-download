@@ -1,3 +1,4 @@
 #!/bin/bash
 
+cd
 exec uv run local/scripts/ting-download-gmail.py
