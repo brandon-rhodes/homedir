@@ -120,10 +120,6 @@ case "$command" in
     mkdir -p ~/.fonts
     cd ~/.fonts
 
-    wget -nc http://www.fontsquirrel.com/fonts/download/Crimson
-    unzip -o Crimson
-    rm "SIL Open Font License.txt"
-
     version=https://github.com/githubnext/monaspace/raw/refs/tags/v1.200
     wget -nc $version/fonts/otf/MonaspaceArgon-Regular.otf
     wget -nc $version/fonts/frozen/MonaspaceArgonFrozen-Regular.ttf
