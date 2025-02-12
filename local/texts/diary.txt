@@ -24,6 +24,8 @@ scanning and perform a connection.
 
 ======== 2025 January 16 Thursday ========
 
+(UPDATE: this fix is now part of ‘,setup fvwm’ and thus ‘,setup x’.)
+
 After upgrading the X260 to Ubuntu 24.04, FVWM autoraise stopped
 working, with this error message in my desktop log:
 
@@ -42,6 +44,8 @@ index d789797a..9c0e73c0 100644
         buf = safemalloc(len);
 
 ======== 2025 January 15 Wednesday ========
+
+(UPDATE: this now gets installed by the ‘,setup-ubuntu’ script.)
 
 The volume buttons stopped working on my laptop because the wonderful
 ‘xfce4-volumed’ has been removed from Ubuntu as of 24.04.  So I snagged
