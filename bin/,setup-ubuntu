@@ -281,20 +281,11 @@ fi
 # Refuse to sleep if there is an active SSH connection.
 # https://askubuntu.com/a/521629/9043
 
-if [ ! -f /etc/systemd/system/ssh-inhibit-sleep.service ]
+src=$HOME/local/etc/ssh-inhibit-sleep.service
+dst=/etc/systemd/system/ssh-inhibit-sleep.service
+if ! cmp $src $dst
 then
-    sudo dd of=/etc/systemd/system/ssh-inhibit-sleep.service <<'EOT'
-[Unit]
-Description=Check for running SSH sessions and, if any, inhibit sleep
-Before=sleep.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/sh -c '! who | grep -qv "\\(:0\\)"'
-
-[Install]
-RequiredBy=sleep.target
-EOT
+    sudo dd if=$src of=$dst
     sudo systemctl enable ssh-inhibit-sleep.service
 fi
 

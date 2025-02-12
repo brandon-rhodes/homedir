@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for running SSH sessions and, if any, inhibit sleep
+Before=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '! ps axf|grep -q "sshd: [a-z]"'
+
+[Install]
+RequiredBy=sleep.target
