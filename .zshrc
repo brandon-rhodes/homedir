@@ -17,7 +17,12 @@ ci-helper () {
         echo 'Error: message has more than 50 characters             ^==='
         return 1
     fi
-    git ci -m "$message" .
+    if [ -d .git/refs/jj ]
+    then
+        jj describe -m "$message"
+    else
+        git ci -m "$message" .
+    fi
 }
 
 alias ci='ci-helper #'
@@ -139,7 +144,11 @@ else
 
         if [ -n "$root" ]
         then
-            if [ -f "$root/.git/no-prompt" ]
+            if [ -d .git/refs/jj ]
+            then
+                rev="jj $(jj bookmark list -r @ | awk -F: '{print$1}')"
+                color=green
+            elif [ -f "$root/.git/no-prompt" ]
             then
                 # Too expensive to run "status" each time.
                 rev=off
