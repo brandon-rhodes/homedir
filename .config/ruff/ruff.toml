@@ -1,4 +1,4 @@
 # Ruff thinks that NumPy array1[array2 == True] is bad Python.
 
-[tool.ruff]
+[lint]
 ignore = ["E712"]
