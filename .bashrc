@@ -125,6 +125,9 @@ d () {
 function g {
     grep -P --color=always "$@" 2>/dev/null | less -FRX
 }
+function gr {  # 'gr' stands for 'grep -r'
+    rg --line-buffered --max-columns=1000 --smart-case --sort path "$@"
+}
 gi () {
     # Correct something like "gi tstatus" to "git status".
     arg1="$1"
