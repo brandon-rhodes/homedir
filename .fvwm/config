@@ -117,7 +117,7 @@ Key o A 4  Exec exec open $HOME/Downloads/"$(ls -tr ~/Downloads | tail -1)"
 Key p A 4  Menu Projects Nop
 Key r A 4  Exec exec $HOME/.fvwm/clipboard-rot13.py
 Key s A 4  Menu SshDestinations Nop
-Key t A 4  Exec exec xterm
+Key t A 4  Exec exec alacritty
 Key t A 4S Exec exec xterm -geometry 80x8
 Key u A 4  Exec exec xterm -e 'xclip -o | ,unicode-names | less'
 Key v A 4  Menu Pastes Nop

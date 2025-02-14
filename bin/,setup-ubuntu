@@ -31,6 +31,7 @@ apt-cache search . | awk '{print $1}' | sort > /tmp/existing-packages
 
 for package in \
     adb android-sdk-platform-tools-common `: for backing up an Android phone` \
+    alacritty        `: terminal with better font support than xterm` \
     apt-file         `: to find where files come from` \
     argyll           `: to color-calibrate my displays` \
     autocutsel       `: unifies the X Windows clipboard and selection` \
