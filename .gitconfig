@@ -8,7 +8,6 @@ at = rev-parse HEAD
 abandon = !b="$(git symbolic-ref --short HEAD)" && [ "$b" != "master" ] && git checkout master && git branch -D "$b"
 abort = merge --abort
 amend = commit --amend --no-edit
-atag = !bash -c 'git tag -a \"$@\" && git push --tags' --
 base = merge-base HEAD origin/master
 br = "!if [ -n \"$1\" ] ;then git branch \"$@\" ;else git for-each-ref --sort=committerdate refs/heads/ --format=\"%(HEAD) %(color:yellow)%(objectname:short)%(color:reset) %(refname:short) (%(color:green)%(committerdate:relative)%(color:reset))\" ;fi ;:"
 cherry-apply = !git cherry-pick --no-commit --allow-empty "$@" && git reset HEAD
@@ -55,6 +54,7 @@ tags = tag -l --sort=creatordate --format='%(creatordate:short)  %(refname:short
 undo = !git reset --soft HEAD~1 && git reset HEAD .
 unstage = restore --staged .
 up = fetch origin master:master
+vtag = !bash -c 'git tag -a \"$@\" -m \"Version $@\" && git push --tags' --
 who = "!f () { \
     git log --date='format:%Y-%m' --format='%cd %ae' --since=1.year $@ \
         | sort | uniq -c | awk '{printf(\"%s %4s %s\\n\",$2,$1,$3)}' \
