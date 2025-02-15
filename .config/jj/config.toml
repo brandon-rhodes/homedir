@@ -8,6 +8,7 @@ name = 'Brandon Rhodes'
 email = 'brandon@rhodesmill.org'
 
 [aliases]
+d = ['diff', '--git']
 l = ['log', '-r', '::', '-T', 'bcr_oneline']
 lp = ['log', '--git', '--ignore-working-copy', '-p', '-r', '::']
 r = ['rebase', '-r', '@', '-d']
