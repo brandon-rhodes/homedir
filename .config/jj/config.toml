@@ -1,0 +1,22 @@
+[ui]
+pager = ':builtin'
+editor = 'enw'
+default-command = 'log'
+
+[user]
+name = 'Brandon Rhodes'
+email = 'brandon@rhodesmill.org'
+
+[aliases]
+l = ['log', '-r', '::', '-T', 'bcr_oneline']
+lp = ['log', '--git', '--ignore-working-copy', '-p', '-r', '::']
+r = ['rebase', '-r', '@', '-d']
+
+[template-aliases]
+'bcr_oneline' = '''
+"" ++ commit_id.short() ++ " " ++ " " ++ description.first_line() ++ bmarks_maybe ++ "\n"
+'''
+'bmarks_maybe' = '''
+if(local_bookmarks.len() > 0 || remote_bookmarks.len() > 0,
+   "\n              " ++ local_bookmarks ++ " " ++ remote_bookmarks)
+'''
