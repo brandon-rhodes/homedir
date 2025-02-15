@@ -102,7 +102,6 @@ unset TMOUT
 
 if [ -x /usr/bin/colordiff ] ;then DIFF=colordiff ;else DIFF=diff ;fi
 
-alias a="ag -i"
 alias c="$HOME/local/containers/generic/run"
 alias gg="git log -p --pickaxe-all -G"
 alias la="/bin/ls -avCF"
@@ -125,7 +124,7 @@ d () {
 function g {
     grep -P --color=always "$@" 2>/dev/null | less -FRX
 }
-function gr {  # 'gr' stands for 'grep -r'
+function r {
     rg --line-buffered --max-columns=1000 --smart-case --sort path "$@"
 }
 gi () {
