@@ -1,0 +1,18 @@
+
+Brandon’s UNIX Cheat Sheet      CRITERIA: if I often forget a command
+                                and must look it up, add to this file.
+
+Jujutsu
+
+~/.config/jj/config.toml
+jj desc (alias ‘ci’)
+jj edit R
+jj b m master; jj git push
+
+Release Python Package
+
+rm -r dist
+PYTHONDONTWRITEBYTECODE= uv build
+source ~/.pypi-token
+uv publish
+(then, per-project script to push docs?)
