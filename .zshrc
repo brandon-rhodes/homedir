@@ -146,8 +146,16 @@ else
         then
             if [ -d .git/refs/jj ]
             then
-                rev="jj $(jj bookmark list -r @ | awk -F: '{print$1}')"
-                color=green
+                status_lines="$(jj log -r '(remote_bookmarks()..@)-' \
+                                --no-graph -T 'remote_bookmarks')"
+                rev=$(echo $status_lines | grep -oP '(\w+)(?=@origin)')
+                if jj log -T builtin_log_oneline -r 'remote_bookmarks()..' \
+                      --no-graph | grep -qv '(empty)'
+                then
+                    color=red
+                else
+                    color=green
+                fi
             elif [ -f "$root/.git/no-prompt" ]
             then
                 # Too expensive to run "status" each time.
