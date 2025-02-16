@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+
+def main(argv):
+    parser = argparse.ArgumentParser(
+        description='Print that paths where Python packages live',
+    )
+    parser.add_argument('package', nargs='+', help='names of Python packages')
+    args = parser.parse_args(argv)
+
+    for name in args.package:
+        import importlib.util
+        spec = importlib.util.find_spec(name)
+        print(name, spec.origin)
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
