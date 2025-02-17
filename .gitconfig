@@ -20,6 +20,7 @@ edit = commit --amend --only
 h = !man gitrevisions
 fetch-pull-request = !git fetch origin pull/$1/head:pull-$1
 ff = merge --ff-only
+g = !git log -p --pickaxe-all -G
 hard = reset --hard
 harder = !git hard && git clean -f -d
 incoming = remote show origin
