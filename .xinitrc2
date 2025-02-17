@@ -46,6 +46,10 @@ nm-applet &
 xfce4-volumed &
 xiccd &
 
+# Turn off bluetooth to save power; I can turn it back on when I need it.
+
+bluetoothctl power off
+
 # Turn off Yubikey before I have the chance to accidentally touch it.
 
 $HOME/bin/,yubi &
