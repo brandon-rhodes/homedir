@@ -41,26 +41,14 @@ trayer --edge top --align right --width 6 &
 ~/.fvwm/battery-check-loop &
 autocutsel &
 # blueman-applet &
-# indicator-cpufreq &
 nm-applet &
 ~/.fvwm/xautolock &
 xfce4-volumed &
 xiccd &
-[ -x ~/.emacs.d/pycl.sh ] && ~/.emacs.d/pycl.sh &
-
-if [ -d $HOME/.dropbox-dist/ ]
-then $HOME/.dropbox-dist/dropbox-*/dropbox start &
-fi
-
-if [ -d $HOME/local/ipynb ]
-then $HOME/local/ipynb/bin/jupyter-notebook --no-browser -y &
-fi
 
 # Turn off Yubikey before I have the chance to accidentally touch it.
 
 $HOME/bin/,yubi &
-
-# xfce4-power-manager ?
 
 if [ -x $HOME/local/bin/fvwm ]
 then
