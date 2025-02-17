@@ -20,7 +20,7 @@ fi
 
 # Make sure that all child processes inherit my standard environment.
 
-source .bashrc
+source .bashenv
 
 # Establish my default X Windows settings.
 
