@@ -305,7 +305,7 @@ then
     pushd ~/.cache
     wget http://mirrors.kernel.org/ubuntu/pool/universe/x/xfce4-volumed/$deb
     sudo dpkg -i $deb
-    apt --fix-broken install -y -y
+    sudo apt --fix-broken install -y -y
     popd
 fi
 
