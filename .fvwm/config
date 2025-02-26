@@ -181,10 +181,12 @@ AddToMenu Applications "Applications" Title
 DestroyMenu Emoji
 AddToMenu Emoji "Emoji" Title
 + "&f. Frown" Exec exec xdotool type --delay 30 '🫤'
++ "&h. Heart" Exec exec xdotool type --delay 30 '❤️'
++ "&o. Open-mouth" Exec exec xdotool type --delay 30 '😮'
 + "&p. Party" Exec exec xdotool type --delay 30 '🎉'
 + "&s. Smile" Exec exec xdotool type --delay 30 '🙂'
 + "&t. Thumbs-up" Exec exec xdotool type --delay 30 '👍'
-+ "&w. Wow" Exec exec xdotool type --delay 30 '😮'
++ "&w. Wink" Exec exec xdotool type --delay 30 '😉'
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
