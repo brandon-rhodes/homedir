@@ -16,6 +16,7 @@
 import os
 from skyfield import api
 
+os.chdir(os.path.expanduser("~"))
 os.chdir('skyfield')
 coordinates = open("/home/brandon/.twilight").read().splitlines()
 planets = api.load("de421.bsp")
