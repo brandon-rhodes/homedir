@@ -124,6 +124,8 @@ case "$command" in
     wget -nc $version/fonts/otf/MonaspaceArgon-Regular.otf
     wget -nc $version/fonts/frozen/MonaspaceArgonFrozen-Regular.ttf
     wget -nc $version/fonts/frozen/MonaspaceNeonFrozen-Regular.ttf
+    wget -nc $version/fonts/variable/MonaspaceNeonVarVF%5Bwght,wdth,slnt%5D.ttf
+
     ;;
 
 "fvwm" )

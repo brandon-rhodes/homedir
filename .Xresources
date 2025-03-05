@@ -6,7 +6,7 @@
 ! window being partially off the right edge of the screen.  So we set
 ! the value here instead:
 
-Emacs.font: Monaspace Neon Frozen-9.5
+Emacs.font: Monaspace Neon Var-9.5
 Emacs.geometry: 80x28
 
 NetHack.tile_file: /home/brandon/local/lib/nethack/X11tiles-32-32.xpm
