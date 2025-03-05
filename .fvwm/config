@@ -222,7 +222,7 @@ AddToMenu MenuFvwmWindowOps
 + "$[gt.&T Title Off]"     FuncTitleOff
 + "$[gt.  Title On]"       FuncTitleOn
 + "$[gt.  (Un)On Top]"     ToggleLayer
-+ "$[gt.  (Un)Stick]"      Stick
++ "$[gt.&K (Un)Stick]"     Stick
 + "$[gt.  (Un)Ma&ximize]"  Maximize
 + "$[gt.  Destroy]"        Destroy
 + "" Nop
