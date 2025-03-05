@@ -7,6 +7,13 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 February 19 Wednesday ========
+
+When I started trying out `jj` the other day, I installed it using Rust.
+Here was the basic command line:
+
+RUSTC=rustc-1.80 cargo install --locked --bin jj jj-cli
+
 ======== 2025 February 09 Sunday ========
 
 After dropping new .ttf or .otf files into `~/.fonts`, run this command
