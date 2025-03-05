@@ -2,11 +2,18 @@
 Brandon’s UNIX Cheat Sheet      CRITERIA: if I often forget a command
                                 and must look it up, add to this file.
 
+Emacs hints: Help 'Back' button is 'l'. C-s C-w. C-g o. C-s g M-n.
+In git blame with ‘tig’: ‘%’ expands diff to all the files in the commit.
+In fzf file search, to create new file (name already typed): C-x C-b name M-RET
+New Emacs discoveries: M-h
+
 Jujutsu
 
 ~/.config/jj/config.toml
-jj desc (alias ‘ci’)
+jj new R
 jj edit R
+jj rebase -r A -d main
+jj desc (alias ‘ci’)
 jj b m master; jj git push
 
 Release Python Package
@@ -14,5 +21,5 @@ Release Python Package
 rm -r dist
 PYTHONDONTWRITEBYTECODE= uv build
 source ~/.pypi-token
-uv publish
+uv publish dist/...*
 (then, per-project script to push docs?)
