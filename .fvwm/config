@@ -140,10 +140,20 @@ Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
 Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
 Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
 
-Key 2     A 4  Resize frame 50 100
+# Win + 1/2/4/5 move a window to one of the four corners of the screen.
+# Win + 3 was already taken, with nine years of muscle memory behind it,
+# to move my browser into my favorite lower-right position and size.
+
+Key 1     A 4  Move 0p 0p
+Key 2     A 4  Move -0p 0p
 Key 3     A 4  ResizeMove frame 70 85 -0p -0p
-Key 4     A 4  Resize frame 50 50
-Key 5     A 4  Resize frame 1280p 720p
+Key 4     A 4  Move 0p -0p
+Key 5     A 4  Move -0p -0p
+
+# For when I accidentally resize an Emacs or terminal window: restore a
+# text window to 80 columns by 24 rows.
+
+Key 8     A 4  Resize 80c 24c
 
 # For occasions when I want to be sitting back in front of a desktop and
 # am far from a mouse, I have emergency keystrokes to let me move to new
