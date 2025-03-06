@@ -1,10 +1,27 @@
 #!/bin/bash
-# This script used to run 'emacsclient' to avoid waiting for Emacs to
-# launch, but the Emacs 29 startup time is so fast that now we just run
-# a new Emacs.
+#
+# Run Emacs in the terminal so I can make quick edits without having to
+# shift my attention to another window.
+#
+# Why launch an Emacs server, when it starts up so fast these days?
+# Because this script is set as my 'git commit' editor, and here is my
+# almost invariable workflow:
+#
+# 1. I run `git ci`.
+# 2. I painstakingly craft a commit message with a ≤50 char summary.
+# 3. I glance at the diff, and see that I left in a debug statement!
+# 4. So I delete the message and exit, so git will abort the commit.
+# 5. I remove the debug statement.
+# 6. I re-run `git ci`.
+# 7. I need the commit message back!
+#
+# Step 7 is an unhappy one if I exited Emacs without backing up the
+# commit message somewhere, because then I need to recreate it.  But if
+# I use the Emacs daemon, then it's waiting in the kill ring for me!
 
 if [ "$TERM" = "alacritty" ]
 then
     TERM=xterm-16color  # only use the 16 colors of the current theme
 fi
-exec emacs -nw "$@"
+unset DISPLAY
+exec emacsclient -nw --alternate-editor="" "$@"
