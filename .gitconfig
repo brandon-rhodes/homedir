@@ -67,6 +67,8 @@ wdiff = diff --color-words=.
 [core]
 pager = less -FRX
 excludesfile = ~/.gitexcludes
+fsmonitor = true
+untrackedCache = true
 
 [color]
 branch = auto
@@ -76,15 +78,20 @@ status = auto
 
 [diff]
 noprefix = true
+algorithm = histogram
+colorMoved = plain
+renames = true
 
 [fetch]
+all = true
 prune = true
+pruneTags = true
 
 [filter "sshconfig_trailer"]
 clean = sed '/^. Everything below will be ignored by git.$/q'
 
 [merge]
-conflictstyle = diff3
+conflictstyle = zdiff3
 tool = meld
 
 [mergetool "meld"]
@@ -97,3 +104,16 @@ default = current
 
 [include]
 path = .gitlocal
+
+[column]
+ui = auto
+
+[tag]
+sort = version:refname
+
+[init]
+defaultBranch = main
+
+[rebase]
+autoStash = true
+updateRefs = true
