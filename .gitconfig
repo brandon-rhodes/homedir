@@ -107,6 +107,7 @@ path = .gitlocal
 
 [column]
 ui = auto
+status = never  # always list files vertically
 
 [tag]
 sort = version:refname
