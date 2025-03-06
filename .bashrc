@@ -120,8 +120,8 @@ d () {
     else $DIFF -ur "$@"
     fi
 }
-function g {
-    grep -P --color=always "$@" 2>/dev/null | less -FRX
+function g {               # used to use 'grep', but wanted --smart-case
+    r "$@" | less -FRX
 }
 function r {
     rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case \
