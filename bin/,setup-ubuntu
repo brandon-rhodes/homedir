@@ -40,6 +40,7 @@ for package in \
     colordiff wdiff  `: for the occasional need to diff outside of git ` \
     cscope           `: for that rare trawl through C code ` \
     csvkit           `: manipulate data from the command line` \
+    dictd dict-gcide `: let Emacs look things up in the dictionary` \
     dos2unix         `: for removing CR chars or, more rarely, adding them` \
     dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs-nox        `: editor-of-choice - I compile X version myself` \
@@ -308,6 +309,10 @@ then
     sudo apt --fix-broken install -y -y
     popd
 fi
+
+# Enable dictd.
+
+sudo systemctl enable dictd
 
 # Remove dangling config files of uninstalled packages.  Note that this
 # is run without '-y' so that I have the chance to review the list and
