@@ -61,6 +61,11 @@ modern replacement, a full xfce4 tray with plugins and configuration, is
 clunky and unattractive and complicated.  Much simpler to just keep
 using the original!
 
+======== 2025 January 15 Wednesday ========
+
+To sort Ubuntu packages by how large their install footprint is:
+dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
+
 ======== 2025 January 14 Tuesday ========
 
 Last month I took a gamble and upgraded my old Lenovo X260 laptop to
