@@ -1,9 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env python3
 #
 # Sort the dictionary that Emacs saves to ~/.aspell.en.pws so that it
 # version-controls reasonably.  Always run this before checking in.
+# Also, remove any version control conflict markers, and re-compute the
+# word count at the top.
 
-cd ~
-(head -1 .aspell.en.pws; awk 'NR>1' .aspell.en.pws | sort -u) \
-    > .aspell.en.new &&
-    mv .aspell.en.new .aspell.en.pws
+markers = (b'<<<<<<<', b'|||||||', b'=======', b'>>>>>>>', b'personal_ws')
+
+def main():
+    with open('/home/brandon/.aspell.en.pws', 'rb') as f:
+        lines = list(f)
+
+    lines = [s for s in lines if not s.startswith(markers)]
+    lines = sorted(set(lines))
+
+    length = len(lines)
+    lines.insert(0, b'personal_ws-1.1 en %d \n' % length)
+    output = b''.join(lines)
+
+    with open('/home/brandon/.aspell.en.pws', 'wb') as f:
+        f.write(output)
+
+if __name__ == '__main__':
+    main()
