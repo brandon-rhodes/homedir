@@ -89,6 +89,7 @@ for package in \
     texlive-fonts-recommended \
     texlive-extra-utils `: to get pdfnup` \
     thunar           `: for mounting and unmounting flash drives` \
+    tig              `: my preferred way to browse git blame` \
     traceroute       `: when I want something quieter than mtr` \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
