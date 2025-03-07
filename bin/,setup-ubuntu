@@ -120,7 +120,7 @@ for package in \
     automake libpcre3-dev pkg-config \
     \
     `: for building Emacs` \
-    libgnutls28-dev libx11-dev libgtk2.0-dev \
+    libgnutls28-dev libx11-dev libgtk2.0-dev texinfo \
     \
     `: for lxml` \
     libxml2-dev libxslt1-dev \

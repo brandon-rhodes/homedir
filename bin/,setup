@@ -35,7 +35,7 @@ case "$command" in
     sudo chmod -R a+rX /usr/share/sane/snapscan/
     ;;
 
-"emacs" )
+"dot-emacs" )
     # make sure pyenv is available
     ,up
     # check out and set up ~/.emacs.d
@@ -55,10 +55,10 @@ case "$command" in
     fi
     ;;
 
-"emacs-29" )
+"emacs" )
     mkdir -p ~/local/src
     cd ~/local/src
-    if [ ! -f ~/local/lib/libtree-sitter.a ]
+    if false  #[ ! -f ~/local/lib/libtree-sitter.a ]
     then
         wget -c https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.22.2.tar.gz
         tar xf v0.22.2.tar.gz
@@ -67,16 +67,18 @@ case "$command" in
         PREFIX=$HOME/local make install
         cd ..
     fi
-    if [ ! -d emacs-29.2 ]
+    version=emacs-30.1
+    if [ ! -d $version ]
     then
-        wget -c https://ftp.gnu.org/gnu/emacs/emacs-29.2.tar.gz
-        tar xzf emacs-29.2.tar.gz
+        wget -c https://ftp.gnu.org/gnu/emacs/$version.tar.gz
+        tar xzf emacs-30.1.tar.gz
     fi
-    cd emacs-29.2
-    LDFLAGS="-Wl,-R,$HOME/local/lib,--enable-new-dtags" \
-    TREE_SITTER_CFLAGS="-I$HOME/local/include" \
-    TREE_SITTER_LIBS="-L$HOME/local/lib -ltree-sitter" \
-    ./configure --prefix=$HOME/local --with-tree-sitter \
+    cd $version
+    #LDFLAGS="-Wl,-R,$HOME/local/lib,--enable-new-dtags" \
+    #TREE_SITTER_CFLAGS="-I$HOME/local/include" \
+    #TREE_SITTER_LIBS="-L$HOME/local/lib -ltree-sitter" \
+    #--with-tree-sitter \
+    ./configure --prefix=$HOME/local \
                 --with-xpm=ifavailable --with-gnutls=ifavailable \
                 "$@"
                 # --with-x \
