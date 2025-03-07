@@ -97,7 +97,6 @@ for package in \
     ttf-ubuntu-font-family `: default Ubuntu font family, for emacs` \
     tzdata-legacy    `: support time zone aliases like US/Eastern` \
     units            `: desk calculator` \
-    vagrant          `: for various virtualization tasks` \
     wakeonlan        `: for waking up other machines I have suspended` \
     whois            `: for searching the domain name registries` \
     wireshark        `: primarily for debugging TCP` \

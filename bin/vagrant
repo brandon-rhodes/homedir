@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Run Vagrant with a less secure umask, since otherwise LXC will
-# generate a container filesystem whose root directory is rwxr-x---.
-# See https://github.com/fgrehm/vagrant-lxc/pull/435
-
-umask 022
-exec /usr/bin/vagrant "$@"
