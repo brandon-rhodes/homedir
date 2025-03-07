@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 #
 # Enter a loop that runs a command then pauses by running "inotifywait"
 # with a list of files we want to watch.  When one of those files is
@@ -17,7 +17,7 @@ def main():
     try:
         i = args.index('--')
     except ValueError:
-        print >>sys.stderr, 'usage: ,watch cmd [arg...] -- [file file...]'
+        print('usage: ,watch cmd [arg...] -- [file file...]', file=sys.stderr)
         sys.exit(2)
 
     cmd = args[:i]
