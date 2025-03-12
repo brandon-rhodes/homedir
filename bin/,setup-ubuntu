@@ -68,7 +68,7 @@ for package in \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
-    pdftk            `: perform various useful operations on PDFs` \
+    pdftk-java       `: perform various useful operations on PDFs` \
     pwgen            `: random passwords` \
     pypy pypy-dev    `: for when I want to be fast` \
     python2-dev      `: for when I feel old fashioned` \
