@@ -7,6 +7,20 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 March 12 Wednesday ========
+
+I need to stop using matplotlib.pyplot, because simply importing it
+makes it try to find Tcl, which gives an error with the `uv` versions of
+Python that I now use.  The error looks like:
+
+_tkinter.TclError: Can't find a usable init.tcl in the following directories...
+
+The solution is:
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 ======== 2025 February 19 Wednesday ========
 
 When I started trying out `jj` the other day, I installed it using Rust.
