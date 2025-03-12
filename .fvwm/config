@@ -200,7 +200,7 @@ AddToMenu Emoji "Emoji" Title
 
 DestroyMenu SshDestinations
 AddToMenu SshDestinations "Remote Shells" Title
-+ "&f. founders"   Exec exec xterm -e ssh founders
++ "&f. founders"   Exec exec alacritty -e ssh founders
 
 DestroyMenu BrowserBookmarks
 AddToMenu BrowserBookmarks "Bookmarks" Title
