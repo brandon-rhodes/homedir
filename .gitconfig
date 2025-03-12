@@ -62,7 +62,7 @@ who = "!f () { \
         | sort -n \
         | awk '{t=\"\";if($1!=m)m=t=$1;printf(\"%7s %4s %s\\n\",t,$2,$3)}' ; \
     }; f"
-wdiff = diff --color-words=.
+wdiff = diff --word-diff=plain
 
 [core]
 pager = less -FRX
