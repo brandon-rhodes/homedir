@@ -6,6 +6,12 @@
 alias -g ,1='2>&1'
 alias -g ,2='2>/dev/null'
 
+# Don't treat * or ? or [] as special in arguments to `r` alias, so I
+# can type regular expressions without having to quote them.  (But will
+# I be annoyed that any filename arguments also can't use globs?)
+
+alias r='noglob rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
+
 # Ignore special characters like "#" and ";" when running the "ci" command.
 
 ci-helper () {
