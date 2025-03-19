@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Grep for words, and print them one per line.
+#
+# On my first try at writing this script I used `pcregrep`, but it keeps
+# only the first byte of each several-byte Unicode character:
+#
+# K   h   a   z   a   d   -   d 303 273   m           <- file
+# K   h   a   z   a   d  \n   d 303  \n   m  \n   C   <- pcregrep output
+#
+#exec grep -o -P '[\d\p{L}\p{M}][-\d\p{L}\p{M}]*' "$@"
+#exec pcregrep -o '[\d\p{L}\p{M}]+' "$@"
+
+exec rg -o '[\d\p{L}\p{M}](['\''’]?[-\d\p{L}\p{M}])*' "$@"
