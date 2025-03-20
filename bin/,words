@@ -11,4 +11,5 @@
 #exec grep -o -P '[\d\p{L}\p{M}][-\d\p{L}\p{M}]*' "$@"
 #exec pcregrep -o '[\d\p{L}\p{M}]+' "$@"
 
-exec rg -o '[\d\p{L}\p{M}](['\''’]?[-\d\p{L}\p{M}])*' "$@"
+exec rg -o --color=never --no-filename --no-heading --no-line-number \
+     '[\d\p{L}\p{M}](['\''’]?[-\d\p{L}\p{M}])*' "$@"
