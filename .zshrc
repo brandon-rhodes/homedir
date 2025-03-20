@@ -6,6 +6,12 @@
 alias -g ,1='2>&1'
 alias -g ,2='2>/dev/null'
 
+# And for common maneuvers.
+
+alias -g ,c='|sort|uniq -c|sort -n|less -F'
+alias -g ,m='|less -F'
+alias -g ,u='|sort|uniq|less -F'
+
 # Don't treat * or ? or [] as special in arguments to `r` alias, so I
 # can type regular expressions without having to quote them.  (But will
 # I be annoyed that any filename arguments also can't use globs?)
