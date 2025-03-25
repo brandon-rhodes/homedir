@@ -131,7 +131,7 @@ else
     autoload -Uz url-quote-magic
     zle -N self-insert url-quote-magic
 
-    zle_highlight=(default:fg=0,bg=7,bold)
+    zle_highlight=(default:bold)
 
     if [ -z "$SSH_TTY" ]
     then
