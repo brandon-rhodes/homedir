@@ -1,13 +1,4 @@
-# git clone https://github.com/alacritty/alacritty-theme \
-#  ~/Third-party/alacritty-theme
-#import = ["~/Third-party/alacritty-theme/themes/pencil_light.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/papercolor_light.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/noctis_lux.toml"]
-import = ["~/Third-party/alacritty-theme/themes/dayfox.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/everforest_light.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/gruvbox_light.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/solarized_light.toml"]
-#import = ["~/Third-party/alacritty-theme/themes/alabaster.toml"]
+import = ["~/.config/alacritty/my_gruvbox_light.toml"]
 
 [window]
 dimensions = {columns=80, lines=24}

@@ -1,0 +1,29 @@
+# Colors (Gruvbox light)
+
+[colors.primary]
+background = '#f9f5d7'  # the high contrast choice ('hard')
+foreground = '#3c3836'
+
+# These are both the same stack of colors, because I find these darker
+# colors so much more readable against the light background than the
+# brighter version of each color.
+
+[colors.normal]
+black   = '#928374'
+red     = '#9d0006'
+green   = '#79740e'
+yellow  = '#b57614'
+blue    = '#076678'
+magenta = '#8f3f71'
+cyan    = '#427b58'
+white   = '#f9f5d7'  # needs to work as reverse video color
+
+[colors.bright]
+black   = '#928374'
+red     = '#9d0006'
+green   = '#79740e'
+yellow  = '#b57614'
+blue    = '#076678'
+magenta = '#8f3f71'
+cyan    = '#427b58'
+white   = '#f9f5d7'
