@@ -135,7 +135,7 @@ else
 
     if [ -z "$SSH_TTY" ]
     then
-        PS1=$'%B%F{white}%(?.%K{green} .%K{red}%?) %(?.%F{green}.%F{red})%k\ue0b0%f '
+        PS1=$'%B%F{white}%(?.%K{green} .%K{red}%?) %(?.%F{green}.%F{red})%k\ue0b0%f%b '
     else
         PS1="${HOST:-${HOSTNAME}}"
 
@@ -146,7 +146,7 @@ else
         # since who knows where I might be SSH'ing from, maybe no Unicode?
     fi
 
-    RPROMPT=$'%B%(1V.%F{%1v}\ue0b2%K{%1v}%F{white} \ue0a0%2v .)%(3V.%F{white}%K{cyan} %3v .)%F{white}%K{black} %18<…<%4v '
+    RPROMPT=$'%B%(1V.%F{%1v}\ue0b2%K{%1v}%F{white} \ue0a0%2v .)%(3V.%F{white}%K{cyan} %3v .)%F{white}%K{black} %18<…<%4v %f%k%b'
 
     precmd() {
         local color rev root status_lines
