@@ -220,6 +220,44 @@ unsetopt bang_hist
 
 setopt hist_ignore_dups
 
+# Fuzzy history searching, adapted from Laurence Tratt:
+# https://tratt.net/laurie/blog/2025/better_shell_history_search.html
+
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  local awk_filter='{ cmd=$0; sub(/^\s*[0-9]+\**\s+/, "", cmd); if (!seen[cmd]++) print $0 }'  # filter out duplicates
+  local n=1 fc_opts=''
+  if [[ -o extended_history ]]; then
+    awk_filter='
+{
+  ts = int($2)
+  delta = systime() - ts
+  delta_days = int(delta / 86400)
+  if (delta < 0) { $2="+" (-delta_days) "d" }
+  else if (delta_days < 1 && delta < 72000) { $2=strftime("%H:%M", ts) }
+  else if (delta_days == 0) { $2="1d" }
+  else { $2=delta_days "d" }
+  line=$0; $1=""; $2=""
+  if (!seen[$0]++) print line
+}'
+    fc_opts='-i'
+    n=2
+  fi
+  selected=( $(fc -rl $fc_opts -t '%s' 1 | sed -E "s/^ *//" | awk "$awk_filter" | fzf) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget
+
 # Print the duration of the most recent command, to avoid my habit of
 # Control-C'ing a command once I see that it's going to take several
 # seconds, and re-running it with `time`.
