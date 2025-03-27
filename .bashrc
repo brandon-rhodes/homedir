@@ -25,14 +25,11 @@ e () {
 
 HISTCONTROL=erasedups
 
-# For security, bash should never save command history to disk under one
-# of my main accounts.  But saving history is okay inside a VM and,
-# actually, kind of convenient, because of how often one logs out and
-# back in and needs to run verbose and cumbersome boilerplate commands.
+# Never save history to disk, both because it feels vaguely insecure,
+# and because the history would be a crazy interleaving of commands from
+# the dozen or more shells that I have open at any given time.
 
-if [ "$LOGNAME" != "vagrant" ]
-then unset HISTFILE
-fi
+unset HISTFILE
 
 # Keep plenty of history to avoid having to retype commands.
 
