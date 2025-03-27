@@ -19,9 +19,14 @@ def get_business_hours(business_id, today):
         print(f'{name:30}', end='')
 
         # Find today's hours.
+        coh = data['result']['current_opening_hours']
+        if 'periods' not in coh:
+            print('closed always')
+            return
+
         periods = [
             period for period
-            in data['result']['current_opening_hours']['periods']
+            in coo['periods']
             if period['open']['date'] == today
         ]
         if periods:
