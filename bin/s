@@ -5,6 +5,11 @@
 # invocations of SSH via "s" from that host should also initialize bash
 # and so on through as many connections as I make.
 
+if [ "$TERM" = "alacritty" ]
+then
+    TERM=xterm  # avoid 'Unsupported SSH client terminal' on DietPi hosts
+fi
+
 # If I forget that this is for interactive use and give it a command to
 # run instead, then switch to being a simple SSH alias.
 
