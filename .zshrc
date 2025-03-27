@@ -226,10 +226,8 @@ setopt hist_ignore_dups
 fzf-history-widget() {
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local awk_filter='{ cmd=$0; sub(/^\s*[0-9]+\**\s+/, "", cmd); if (!seen[cmd]++) print $0 }'  # filter out duplicates
   local n=1 fc_opts=''
-  if [[ -o extended_history ]]; then
-    awk_filter='
+  awk_filter='
 {
   ts = int($2)
   delta = systime() - ts
@@ -241,10 +239,8 @@ fzf-history-widget() {
   line=$0; $1=""; $2=""
   if (!seen[$0]++) print line
 }'
-    fc_opts='-i'
-    n=2
-  fi
-  selected=( $(fc -rl $fc_opts -t '%s' 1 | sed -E "s/^ *//" | awk "$awk_filter" | fzf) )
+  n=2
+  selected=( $(fc -lr -t '%s' 1 | sed -E "s/^ *//" | awk "$awk_filter" | fzf) )
   local ret=$?
   if [ -n "$selected" ]; then
     num=$selected[1]
@@ -256,7 +252,7 @@ fzf-history-widget() {
   return $ret
 }
 zle     -N   fzf-history-widget
-bindkey '^R' fzf-history-widget
+bindkey '^G' fzf-history-widget
 
 # Print the duration of the most recent command, to avoid my habit of
 # Control-C'ing a command once I see that it's going to take several
