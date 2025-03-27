@@ -7,6 +7,49 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 March 27 Thursday ========
+
+After a DietPi rebooted recently, I was no longer able to get to its web
+server on port 80.  It turns out that the `rc.local` script needed a
+little help to run on startup.  Following the blog post published at
+https://www.troublenow.org/752/debian-10-add-rc-local/ I created:
+
+cat > /etc/systemd/system/rc-local.service
+[Unit]
+Description=/etc/rc.local
+ConditionPathExists=/etc/rc.local
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+[Install]
+WantedBy=multi-user.target
+
+Then I created /etc/rc.local:
+
+#!/bin/bash
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+Then:
+
+chmod +x /etc/rc.local
+systemctl enable rc-local
+systemctl start rc-local
+
+It worked!  I can now access its web server on port 80.
+
+======== 2025 March 23 Sunday ========
+
+The default alacritty gruvbox theme has a washed-out green:
+
+https://github.com/alacritty/alacritty-theme/blob/master/themes/gruvbox_light.toml
+
+So my `my_gruvbox_light.toml` config file uses the same stack of higher
+contrast colors for both ‘normal’ and ‘bright’ ANSI colored text.
+
 ======== 2025 March 12 Wednesday ========
 
 I need to stop using matplotlib.pyplot, because simply importing it
