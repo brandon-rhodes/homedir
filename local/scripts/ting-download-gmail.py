@@ -47,6 +47,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+TING_CACHE = '~/Archive/Ting'
+
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
@@ -89,7 +91,7 @@ def get_creds(token_path):
     return creds
 
 def download_messages(creds):
-    cache_dir = Path('~/.cache/ting').expanduser()
+    cache_dir = Path(TING_CACHE).expanduser()
     if not cache_dir.is_dir():
         cache_dir.mkdir()
 
