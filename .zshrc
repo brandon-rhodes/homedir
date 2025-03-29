@@ -222,11 +222,12 @@ setopt hist_ignore_dups
 
 # Fuzzy history searching, adapted from Laurence Tratt:
 # https://tratt.net/laurie/blog/2025/better_shell_history_search.html
+# With support for the Enter key thanks to Damien Wyart emailing me:
+# https://github.com/junegunn/fzf/issues/477
 
 fzf-history-widget() {
-  local selected num
+  local key num selected
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local n=1 fc_opts=''
   awk_filter='
 {
   ts = int($2)
@@ -239,20 +240,23 @@ fzf-history-widget() {
   line=$0; $1=""; $2=""
   if (!seen[$0]++) print line
 }'
-  n=2
-  selected=( $(fc -lr -t '%s' 1 | sed -E "s/^ *//" | awk "$awk_filter" | fzf) )
+  selected=( K$(fc -lr -t '%s' 1 | awk "$awk_filter" | fzf --expect=ctrl-e) )
   local ret=$?
   if [ -n "$selected" ]; then
-    num=$selected[1]
+    key=$selected[1]
+    num=$selected[2]
     if [ -n "$num" ]; then
       zle vi-fetch-history -n $num
+      if [ "$key" = "K" ]; then  # "K" by itself means they pressed Enter
+        zle accept-line
+      fi
     fi
   fi
   zle reset-prompt
   return $ret
 }
 zle     -N   fzf-history-widget
-bindkey '^G' fzf-history-widget
+bindkey '^R' fzf-history-widget
 
 # Print the duration of the most recent command, to avoid my habit of
 # Control-C'ing a command once I see that it's going to take several
