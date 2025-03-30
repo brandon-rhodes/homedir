@@ -11,6 +11,7 @@ alias -g ,2='2>/dev/null'
 alias -g ,c='|sort|uniq -c|sort -n|less -F'
 alias -g ,m='|less -F'
 alias -g ,u='|sort|uniq|less -F'
+alias ,z='source ~/.zshrc'
 
 # Don't treat * or ? or [] as special in arguments to `r` alias, so I
 # can type regular expressions without having to quote them.  (But will
