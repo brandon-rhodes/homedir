@@ -7,6 +7,31 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 March 30 Sunday ========
+
+The office DietPi was not available at its normal hostname because
+avahi-daemon was advertising ‘office-3.local’ instead.  Alas, the
+problem seems to be chronic and unsolved after seven years:
+
+https://serverfault.com/questions/652102/
+https://github.com/avahi/avahi/issues/117
+
+It’s daunting to start scrolling through a GitHub issue and see the
+ominous ‘...’ where GitHub is hiding ‘248 remaining items’!
+
+One would think, after so many years of pain, that there would be a
+simple `avahi-daemon.conf` option to turn off the broken collision
+avoidance, but there does not appear to be.  Alas!  After reading
+several answers, in `/boot/dietpi.txt` I have tried:
+
+CONFIG_ENABLE_IPV6=0
+
+Which will take effect on the next reboot.  In the meantime:
+
+sudo service avahi-daemon restart
+
+Which restored the daemon back to the correct hostname.
+
 ======== 2025 March 27 Thursday ========
 
 After a DietPi rebooted recently, I was no longer able to get to its web
