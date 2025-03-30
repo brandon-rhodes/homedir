@@ -2,10 +2,10 @@
 Brandon’s UNIX Cheat Sheet      CRITERIA: if I often forget a command
                                 and must look it up, add to this file.
 
-Emacs hints: Help 'Back' button is 'l'. C-s C-w. C-g o. C-s g M-n.
+Emacs hints: Help 'Back' button is 'l'. C-s C-w. C-g o. C-s g M-n. M-h.
 In git blame with ‘tig’: ‘%’ expands diff to all the files in the commit.
 In fzf file search, to create new file (name already typed): C-x C-b name M-RET
-New Emacs discoveries: M-h
+In zsh, most recently edited file: C-x m
 
 Jujutsu
 
@@ -23,3 +23,8 @@ PYTHONDONTWRITEBYTECODE= uv build
 source ~/.pypi-token
 uv publish dist/...*
 (then, per-project script to push docs?)
+
+Hardware
+
+usb-devices
+upower
