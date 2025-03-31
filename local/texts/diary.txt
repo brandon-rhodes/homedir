@@ -7,6 +7,30 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 March 31 Monday ========
+
+At Jeremy Friesen’s suggestion, I’m trying out Jinx for Emacs spell
+checking.  After `apt install libenchant-2-dev`, I put this in init.el:
+
+(use-package jinx)
+(add-hook 'emacs-startup-hook #'global-jinx-mode)
+
+But the result was an error:
+
+    "no such file or directory: cache cc"
+
+Apparently Jinx did not understand that CC="ccache cc" means that you
+run `ccache` with a first argument of `cc` ahead of all of the other C
+compile options.  Instead, it looked for a binary with that name,
+including the space in the middle.  So I launched Emacs temporarily
+with:
+
+CC=cc emacs
+
+The result in the *Messages* buffer was gratifying:
+
+    Jinx: jinx-mod.so compiled successfully
+
 ======== 2025 March 30 Sunday ========
 
 The office DietPi was not available at its normal hostname because
