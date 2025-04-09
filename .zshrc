@@ -241,7 +241,7 @@ fzf-history-widget() {
   line=$0; $1=""; $2=""
   if (!seen[$0]++) print line
 }'
-  selected=( K$(fc -lr -t '%s' 1 | awk "$awk_filter" | fzf --expect=ctrl-e) )
+  selected=( K$(fc -lr -t '%s' 1 | awk "$awk_filter" | fzf +s --expect=ctrl-e) )
   local ret=$?
   if [ -n "$selected" ]; then
     key=$selected[1]
