@@ -3,6 +3,7 @@ Brandon’s UNIX Cheat Sheet      CRITERIA: if I often forget a command
                                 and must look it up, add to this file.
 
 Emacs hints: Help 'Back' button is 'l'. C-s C-w. C-g o. C-s g M-n. M-h.
+Org mode: C-c C-o open link.
 In git blame with ‘tig’: ‘%’ expands diff to all the files in the commit.
 In fzf file search, to create new file (name already typed): C-x C-b name M-RET
 In zsh, most recently edited file: C-x m
@@ -28,3 +29,11 @@ Hardware
 
 usb-devices
 upower
+
+Characters (convenient for cutting and pasting!) (see also: characters.txt)
+
+∆ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ⋮ ≈ − (minus)
+┌─┬─┐
+│ │ │
+├─┼─┤
+└─┴─┘
