@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Typing the content of the clipboard will work around any problems with
+# broken web site forms whose fields don't accept a normal Ctrl-V paste.
+
+CONTENT="$(xclip -o -selection clipboard)"
+sleep 1
+xdotool keyup Control_L
+xdotool type --delay 30 "$CONTENT"
