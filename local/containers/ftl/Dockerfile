@@ -14,4 +14,6 @@ ENV HOME /home
 WORKDIR /home
 RUN mkdir -p .local/share
 RUN echo 'cd /Games && cd F* && exec ./FTL' > run-ftl && chmod +x run-ftl
+#CMD bash
 CMD ./run-ftl
+#CMD strace -f -o /Games/trace.out /Games/FTL.1.6.12.Linux/data/FTL.amd64
