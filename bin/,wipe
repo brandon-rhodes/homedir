@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+#
+# Yes, devices can secretly send overwrites to new sectors and keep the
+# previous version of a sector around; and, yes, even if zeros are
+# really written, the previous magnetic fields might still be there.
+#
+# But if I merely 'rm' a file, then I know for sure that its sectors go
+# on the free list, probably without being cleared.  By running this
+# script instead, I at least state my intention to the OS and device
+# that I want the data itself overwritten.
+
+import argparse
+import os
+import sys
+
+def main(argv):
+    parser = argparse.ArgumentParser(
+        description='Write all zeros to a file without truncating it.'
+    )
+    parser.add_argument('path', nargs='+', help='files to wipe')
+    args = parser.parse_args(argv)
+
+    r = 0
+
+    for path in args.path:
+        try:
+            f = open(path, 'rb+')
+        except OSError as e:
+            print('Error:', e.strerror, path, file=sys.stderr)
+            r = 1
+            continue
+        s = os.fstat(f.fileno())
+        f.write(b'\0' * s.st_size)
+        f.close()
+
+    exit(r)
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
