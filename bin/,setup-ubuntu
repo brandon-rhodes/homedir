@@ -60,6 +60,7 @@ for package in \
     inkscape         `: SVG editing` \
     inotify-tools    `: for waiting on files to change` \
     intel-microcode  `: processor bugfixes, if applicable` \
+    libenchant-2-dev `: so Emacs Jinx spell checker can compile jinx-mod.so` \
     libnotify-bin    `: so my scripts can issue desktop notifications` \
     libreadline-dev  `: for compiling Python from source` \
     jq               `: like grep but for JSON` \
