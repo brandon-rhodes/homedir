@@ -45,6 +45,7 @@ for package in \
     dvipng           `: so sympy can render to PNG with LaTeX` \
     emacs-nox        `: editor-of-choice - I compile X version myself` \
     emacs-el         `: readable LISP source` \
+    evince           `: PDF viewer - auto-reloads, but keeps position in doc` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
