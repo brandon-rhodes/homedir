@@ -118,6 +118,22 @@ __detect_cd_and_possibly_activate_environment () {
     unset OPWD &&
     __detect_cd_and_possibly_activate_environment
 }
+,nuke () {
+    local saved_ps1 virtual_env
+    if [ -z "$VIRTUAL_ENV" ]
+    then
+        echo 'Error: no active environment'
+        return 1
+    fi
+    saved_ps1="$PS1"
+    virtual_env="$VIRTUAL_ENV"
+    deactivate || return 1
+    PS1="$saved_ps1"
+    unset ENV_PATH
+    unset ENV_SLUG
+    echo "rm -rf $virtual_env"
+    rm -rfI "$virtual_env"
+}
 
 # Build a pretty prompt.
 
