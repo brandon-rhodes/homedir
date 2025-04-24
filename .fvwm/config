@@ -120,7 +120,7 @@ Key s A 4  Menu SshDestinations Nop
 Key t A 4  Exec exec alacritty
 Key t A 4S Exec exec xterm -geometry 80x8
 Key u A 4  Exec exec xterm -e 'xclip -o | ,unicode-names | less'
-Key v A 4  Exec exec ,type-clipboard
+Key v A 4  Menu Clipboard
 Key w A 4  Menu MenuFvwmWindowOps Nop
 Key x A 4  Menu MenuTransforms Nop
 Key y A 4  Exec exec ,yubi
@@ -187,6 +187,9 @@ AddToMenu Applications "Applications" Title
 + "&t. Thunar"    Exec exec thunar
 + "&v. VirtualBox" Exec exec virtualbox
 + "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x1000 -no-host-grab
+
+DestroyMenu Clipboard
+AddToMenu Clipboard "Type clipboard" Exec exec ,type-clipboard
 
 DestroyMenu Emoji
 AddToMenu Emoji "Emoji" Title
