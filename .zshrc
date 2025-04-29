@@ -111,7 +111,7 @@ __detect_cd_and_possibly_activate_environment () {
         else
             shift
             python="$(PYENV_VERSION="$version" pyenv which python)"
-            python2 ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" \
+            $python ~/local/src/virtualenv/virtualenv.py -p "$python" "$@" \
                     ~/.v/"$slug"
         fi
     fi &&
