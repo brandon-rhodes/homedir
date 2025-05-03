@@ -117,10 +117,10 @@ d () {
     else $DIFF -ur "$@"
     fi
 }
-function g {               # used to use 'grep', but wanted --smart-case
+function g {               # formerly 'grep', but wanted --smart-case
     r "$@" | less -FRX
 }
-function r {
+function a {               # formerly 'ag', so muscle memory is 'a' not 'r'
     rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case \
        --sort path "$@"
 }
