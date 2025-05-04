@@ -13,11 +13,11 @@ alias -g ,m='|less -F'
 alias -g ,u='|sort|uniq|less -F'
 alias ,z='source ~/.zshrc'
 
-# Don't treat * or ? or [] as special in arguments to `r` alias, so I
+# Don't treat * or ? or [] as special in arguments to `a` alias, so I
 # can type regular expressions without having to quote them.  (But will
 # I be annoyed that any filename arguments also can't use globs?)
 
-alias r='noglob rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
+alias a='noglob rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
 
 # Ignore special characters like "#" and ";" when running the "ci" command.
 
