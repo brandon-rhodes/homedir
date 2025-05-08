@@ -21,7 +21,8 @@
 
 if [ "$TERM" = "alacritty" ]
 then
-    TERM=xterm-16color  # only use the 16 colors of the current theme
+    unset COLORTERM        # hide 'truecolor' so Emacs uses terminal theme
+    TERM=xterm-16color     # only use the 16 colors of the current theme
 fi
 unset DISPLAY
 exec emacsclient -nw --alternate-editor="" "$@"
