@@ -118,7 +118,10 @@ d () {
     fi
 }
 function g {               # formerly 'grep', but wanted --smart-case
-    r "$@" | less -FRX
+    pattern="$1"
+    shift
+    rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case \
+       --sort path "$pattern" "${@:--}" | less -FRX
 }
 function a {               # formerly 'ag', so muscle memory is 'a' not 'r'
     rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case \
