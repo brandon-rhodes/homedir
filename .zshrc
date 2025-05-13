@@ -17,7 +17,7 @@ alias ,z='source ~/.zshrc'
 # can type regular expressions without having to quote them.  (But will
 # I be annoyed that any filename arguments also can't use globs?)
 
-alias a='noglob rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
+alias a='noglob rg --line-buffered --hidden -g !.tox -g !.git --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
 
 # Ignore special characters like "#" and ";" when running the "ci" command.
 
