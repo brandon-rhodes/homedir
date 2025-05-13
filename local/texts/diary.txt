@@ -7,6 +7,15 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 May 10 Saturday ========
+
+To intercept the ANSI escape codes passing between Alacritty and Emacs:
+
+strace -e read,write -s 9999 -p 257822 -o trace.out
+
+\33[24;1H\33[?25l\33[38;5;178m\33[47mruff [E402]: Module level import not at top of file\33[39;49m\33[30m\33[47m \33[39;49m\33[4;3H\33[?12l\33[?25h\33[?12;25h
+\33[24;1H\33[?25l\33[30m\33[47mCan\342\200\231t shift all lines enough                        \33[39;49m\33[4;3H\33[?12l\33[?25h\33[?12;25h
+
 ======== 2025 March 31 Monday ========
 
 At Jeremy Friesen’s suggestion, I’m trying out Jinx for Emacs spell
