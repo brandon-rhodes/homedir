@@ -3,8 +3,8 @@
 
 SetEnv LC_COLLATE C
 
-# Assure that all subprocesses aborb our umask and other settings that
-# are defined in our shell startup files.
+# Assure that all subprocesses receive our umask by running '.bashenv'
+# before the shell command line.
 
 ExecUseShell /bin/bash
 SetEnv BASH_ENV $HOME/.bashenv
@@ -49,6 +49,14 @@ FvwmAuto 300 Raise Nop
 # until the mouse enters another window.
 
 Style * SloppyFocus
+
+# Don't let windows grab focus; what if, for example, I were typing a
+# password at that moment?  This came to my attention when a stray Emacs
+# setting resulted in its emitting BEL ('/007') each time the mouse
+# tried to leave the window, immediate moving the mouse back inside.
+# https://www.fvwm.org/Wiki/Tips/FocusStealing/
+
+DestroyFunc UrgencyFunc
 
 # Menu appearance.
 
