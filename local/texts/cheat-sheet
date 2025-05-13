@@ -30,6 +30,15 @@ Hardware
 usb-devices
 upower
 
+bluetoothctl
+ show; scan on; pair X; connect X; disconnect X; remove X
+[bluetooth]# [NEW] Device 0C:D7:46:ED:F8:A8 Jackie Wyse-Rhodes’s Keyboard
+0C:D7:46:ED:F8:A8
+
+Tools
+
+Crop: gthumb
+
 Characters (convenient for cutting and pasting!) (see also: characters.txt)
 
 ∆ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ⋮ ≈ − (minus)
