@@ -8,6 +8,11 @@ source $HOME/.bashenv
 
 export EDITOR=$HOME/bin/enw
 
+# Stop Emacs from trying to use its own color scheme in the terminal.
+# It should use the terminal's 16 color theme instead.
+
+unset COLORTERM
+
 # A quick way to launch Emacs, opening the current directory if no
 # command line arguments are offered.
 
