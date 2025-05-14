@@ -29,14 +29,6 @@ then
     exit
 fi
 
-# Make sure an SSH key is available before attempting git operations.
-
-if ! ssh-add -l >/dev/null
-then
-    echo 'Error: please ssh-add an SSH key'
-    exit 1
-fi
-
 # Update my home directory setup to make sure I have the most recent
 # versions of everything.
 
