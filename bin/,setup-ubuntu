@@ -67,6 +67,7 @@ for package in \
     jq               `: like grep but for JSON` \
     mercurial        `: for running integration tests on uncommitted project` \
     mplayer sxiv     `: for media` \
+    ncal             `: for my WIN+Space popup window` \
     openssh-server   `: secure shell` \
     pandoc           `: requirement of nbconvert for the IPython notebook` \
     pcregrep         `: reasonable RE syntax, and can capture groups` \
@@ -122,7 +123,10 @@ for package in \
     automake libpcre3-dev pkg-config \
     \
     `: for building Emacs` \
-    libgnutls28-dev libx11-dev libgtk2.0-dev texinfo \
+    libgnutls28-dev libx11-dev libgif-dev libgtk2.0-dev texinfo \
+    \
+    `: for building fvwm` \
+    libxt-dev \
     \
     `: for lxml` \
     libxml2-dev libxslt1-dev \

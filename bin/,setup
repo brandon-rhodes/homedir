@@ -21,6 +21,11 @@ case "$command" in
     sudo update-alternatives --config x-www-browser
     ;;
 
+"chrome" )
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt install ./google-chrome-stable_current_amd64.deb
+    ;;
+
 "drivers" )
     # Epson scanner.  Yes, calling the firmware the default name
     # "your-firmwarefile.bin" is silly.  But no matter how much editing
@@ -108,6 +113,9 @@ case "$command" in
     if [ ! -x $HOME/local/bin/fvwm ]
     then
         cd fvwm-buffer-overflow
+        # Avoid error "configure is not able to compile programs with warnings"
+        # https://bbs.archlinux.org/viewtopic.php?id=295718
+        export CFLAGS="-Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
         ./autogen.sh
         ./configure --prefix=$HOME/local
         make install

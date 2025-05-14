@@ -41,6 +41,15 @@ else
     ,home
 fi
 
+if [ ! -d .emacs.d/.git ]
+then
+    if [ -d .emacs.d ]
+    then
+	mv .emacs.d old-dot-emacs
+    fi
+    git clone https://github.com/brandon-rhodes/dot-emacs .emacs.d
+fi
+
 pushd .emacs.d
 git pull
 popd
