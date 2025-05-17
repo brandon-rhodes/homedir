@@ -35,11 +35,16 @@ e () {
 
 HISTCONTROL=erasedups
 
-# Never save history to disk, both because it feels vaguely insecure,
-# and because the history would be a crazy interleaving of commands from
-# the dozen or more shells that I have open at any given time.
+# Don't save shell command history to disk; it feels vaguely insecure,
+# and the history winds up as a crazy interleaving of commands from a
+# dozen or more terminal windows.  But it does wind up being useful
+# under Termux: on Android, I usually only run one shell at a time, and
+# sessions don't persist as long as on my desktop.
 
-unset HISTFILE
+if [ -z "$TERMUX_VERSION" ]
+then
+    unset HISTFILE
+fi
 
 # Keep plenty of history to avoid having to retype commands.
 
