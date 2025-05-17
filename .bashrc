@@ -20,7 +20,12 @@ e () {
     if [ -z "$*" ] ;then
         set .
     fi
-    (emacs "$@" &)
+    if [ -z "$DISPLAY" ]
+    then
+        enw "$@"
+    else
+        (emacs "$@" &)
+    fi
 }
 
 # Go ahead and keep commands with leading whitespace in the shell
