@@ -73,9 +73,7 @@ then
     echo -ne "\033]0;$USER@$HOST\007"
 fi
 
-# The prompt should name the system on which the shell is running, in
-# bold so the eye can easily find prompts when scrolling, and also turn
-# red if it is a root prompt.
+# The prompt names the system on which the shell is running.
 
 if [ -t 0 -a -z "$ZSH_VERSION" ]
 then
@@ -92,13 +90,12 @@ then
     fi
     if [ -n "$TERM" -a "$TERM" != "dumb" ]
     then
-        # Bold and colorful, with root in red and others in yellow.
-        PS1="$(tput bold; tput setab 7)\]$PS1\[$(tput sgr0)\]"
+        # Prompt in bold, with background color that's red when root.
         if [ "$USER" = "root" ]
         then
-            PS1="\[$(tput setaf 1)$PS1"
+            PS1="\[\033[1;41m\]$PS1\[\033[0m\]"
         else
-            PS1="\[$(tput setaf 3)$PS1"
+            PS1="\[\033[1;45m\]$PS1\[\033[0m\]"
         fi
     fi
     PS1="${PS1} "
