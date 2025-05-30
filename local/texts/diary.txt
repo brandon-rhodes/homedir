@@ -7,6 +7,16 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 May 30 Friday ========
+
+Interesting!  Someone else also had the idea, a few months later than I
+did, to ‘import datetime as dt’ to avoid using the name ‘datetime’ for
+both a module and a type.  I guess I should have written a blog post,
+instead of a very-hard-to-find-later tweet.
+
+https://x.com/brandon_rhodes/status/1108009997278109697
+https://adamj.eu/tech/2019/09/12/how-i-import-pythons-datetime-module/
+
 ======== 2025 May 10 Saturday ========
 
 To intercept the ANSI escape codes passing between Alacritty and Emacs:
