@@ -317,3 +317,8 @@ source ~/.bashrc
 # setting $TERMINFO_DIRS resets its value to 1.
 
 ZLE_RPROMPT_INDENT=0
+
+# Display any anniversaries.
+
+[ -e ~/Plain/anniversaries ] &&
+    grep "$(date '+%b %d')" $HOME/Plain/anniversaries
