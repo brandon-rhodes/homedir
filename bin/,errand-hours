@@ -26,7 +26,7 @@ def get_business_hours(business_id, today):
 
         periods = [
             period for period
-            in coo['periods']
+            in coh['periods']
             if period['open']['date'] == today
         ]
         if periods:
