@@ -5,9 +5,17 @@
 # invocations of SSH via "s" from that host should also initialize bash
 # and so on through as many connections as I make.
 
+if [ -z "$1" ]
+then
+    echo 'usage: ,s host' >&2
+    exit 2
+fi
+
+# Avoid 'Unsupported SSH client terminal' on DietPi hosts.
+
 if [ "$TERM" = "alacritty" ]
 then
-    TERM=xterm  # avoid 'Unsupported SSH client terminal' on DietPi hosts
+    TERM=xterm
 fi
 
 # If I forget that this is for interactive use and give it a command to
@@ -21,6 +29,15 @@ fi
 # First, create the configuration script.
 
 read -r -d '' rc <<'EOF'
+
+# If I trust this host enough to forward my X session, and it has zsh
+# installed, then it's probably one of my own machines, and has my dot
+# files already checked out, so I can just invoke them.
+
+if [ -n "$DISPLAY" ] && [ -x /bin/zsh ]
+then
+    exec zsh "$@"
+fi
 
 # Aliases
 
