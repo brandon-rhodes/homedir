@@ -320,5 +320,7 @@ ZLE_RPROMPT_INDENT=0
 
 # Display any anniversaries.
 
-[ -e ~/Plain/anniversaries ] &&
-    grep "$(date '+%b %d')" $HOME/Plain/anniversaries
+if [ -e ~/Plain/anniversaries ]
+then
+    grep "$(date '+%b %d')" $HOME/Plain/anniversaries || true
+fi
