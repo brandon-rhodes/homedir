@@ -75,13 +75,6 @@ then
     xdg-mime default google-chrome.desktop x-scheme-handler/https
 fi
 
-if [ -f ~/.emacs.d/SETUP-spell.sh ] && ! [ -f .emacs.d/aspell-huge ]
-then
-    pushd .emacs.d
-    ./SETUP-spell.sh
-    popd
-fi
-
 if ! [ -d ~/.pyenv ]
 then
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
