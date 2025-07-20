@@ -155,12 +155,8 @@ else
         PS1=$'%B%F{white}%(?.%K{green} .%K{red}%?) %(?.%F{green}.%F{red})%k\ue0b0%f%b '
     else
         PS1="${HOST:-${HOSTNAME}}"
-
-        # Keep only the first component of a fully-qualified hostname.
-        PS1="${PS1%%.*}"
-
-        # TODO: make this fancier? or pop remote case out and simplify,
-        # since who knows where I might be SSH'ing from, maybe no Unicode?
+        PS1="${PS1%%.*}"        # keep only first component of hostname
+        PS1=$'%B%F{white}%K{cyan}'$PS1$' %F{cyan}%k\ue0b0%f%b '
     fi
 
     RPROMPT=$'%B%(1V.%F{%1v}\ue0b2%K{%1v}%F{white} \ue0a0%2v .)%(3V.%F{white}%K{cyan} %3v .)%F{white}%K{black} %18<…<%4v %f%k%b'
