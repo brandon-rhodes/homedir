@@ -172,7 +172,7 @@ doomed_packages="$(comm -12 \
 )"
 if [ -n "$doomed_packages" ]
 then
-    sudo apt purge "$doomed_packages"
+    sudo apt purge $(echo $doomed_packages)
 fi
 
 #  gnome-disks gnome-keyring
