@@ -46,3 +46,7 @@ Characters (convenient for cutting and pasting!) (see also: characters.txt)
 │ │ │
 ├─┼─┤
 └─┴─┘
+
+Libraries
+
+browser_cookie3 for using Chrome cookies in Python.
