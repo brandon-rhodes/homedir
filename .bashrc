@@ -131,7 +131,7 @@ d () {
 }
 function g {               # formerly 'grep', but wanted --smart-case
     pattern="$1"
-    shift
+    shift || return $?
     rg --line-buffered --max-columns=1000 --no-ignore-vcs --smart-case \
        --sort path "$pattern" "${@:--}" | less -FRX
 }
