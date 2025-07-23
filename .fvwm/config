@@ -202,6 +202,7 @@ DestroyMenu Emoji
 AddToMenu Emoji "Emoji" Title
 + "&f. Frown" Exec exec xdotool type --delay 30 '🫤'
 + "&h. Heart" Exec exec xdotool type --delay 30 '❤️'
++ "&m. Music" Exec exec xdotool type --delay 30 '♫'
 + "&o. Open-mouth" Exec exec xdotool type --delay 30 '😮'
 + "&p. Party" Exec exec xdotool type --delay 30 '🎉'
 + "&s. Smile" Exec exec xdotool type --delay 30 '🙂'
