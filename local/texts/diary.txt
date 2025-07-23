@@ -7,6 +7,60 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+
+======== 2025 July 22 Tuesday ========
+
+Some tries at preventing a system from going to sleep if I don’t log in
+from the console:
+
+https://askubuntu.com/questions/1337649/how-to-disable-suspend-in-20-minutes-from-the-lightdm-login-screen
+
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
+sudo -u lightdm dbus-launch gsettings set com.canonical.unity.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+sudo -u lightdm dbus-launch gsettings set com.canonical.unity.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+^ didn’t work, at least by themselves
+
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
+======== 2025 July 22 Tuesday ========
+
+To record audio:
+arecord -L
+arecord -D hw:CARD=Nano,DEV=0 -f S24_3LE -r 44100 -c 2 blue.wav
+ffmpeg -i blue.wav -vn -ar 44100 -ac 2 -b:a 192k blue.mp3
+ffmpeg -i blue.wav -vn -ac 2 -b:a 192k blue.mp3
+
+======== 2025 July 22 Tuesday ========
+
+Prevent a system that’s just woken up from slamming the CPU with an apt
+package list update:
+
+if grep 1 /etc/apt/apt.conf.d/10periodic
+then
+    sudo sed -i 's/1/0/' /etc/apt/apt.conf.d/10periodic
+fi
+
+======== 2025 July 08 Tuesday ========
+
+To download a PDF of every article from every issue of Mythlore:
+
+wget https://dc.swosu.edu/mythlore/all_issues.html
+g Number all_issues.html | sed 's/.*"http/http/' | sed 's/".*//' > URLs
+for u in $(cat URLs); do sleep 1; curl $u; done > issues.html
+g article= issues.html | sed 's/.*article=//' | sed 's/&.*//' > article-numbers
+for n in $(cat article-numbers)
+do
+   sleep 5
+   wget -O $n.pdf "https://dc.swosu.edu/cgi/viewcontent.cgi?article=$n&amp;context=mythlore"
+done
+pdfgrep -i 'g *i *m *l *i' *.pdf
+
 ======== 2025 May 30 Friday ========
 
 Interesting!  Someone else also had the idea, a few months later than I
