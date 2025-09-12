@@ -142,10 +142,15 @@ Key Tab A 4  FuncMaximizeY
 
 # Windows key plus an arrow key moves window into tile-like positions.
 
-Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
-Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
-Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
-Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
+# Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
+# Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
+# Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
+# Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
+
+Key Up    A 4  CursorMove  0p -1p
+Key Down  A 4  CursorMove  0p  1p
+Key Right A 4  CursorMove  1p  0p
+Key Left  A 4  CursorMove -1p  0p
 
 # Win + 1/2/4/5 move a window to one of the four corners of the screen.
 # Win + 3 was already taken, with nine years of muscle memory behind it,
