@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import datetime as dt
 
@@ -8,5 +8,4 @@ def till(name, date):
     print('{}: {} days = {:.1f} weeks'.format(name, days, weeks))
 
 today = dt.date.today()
-till('Grand Canyon April', dt.date(2019, 4, 23))
-till('Grand Canyon October', dt.date(2019, 10, 21))
+till('Grand Canyon October', dt.date(2025, 10, 12))
