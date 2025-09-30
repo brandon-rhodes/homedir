@@ -2,6 +2,8 @@
 Brandon’s UNIX Cheat Sheet      CRITERIA: if I often forget a command
                                 and must look it up, add to this file.
 
+‘findmnt’
+
 Emacs hints: Help 'Back' button is 'l'. C-s C-w. C-g o. C-s g M-n. M-h.
 Org mode: C-c C-o open link.
 In git blame with ‘tig’: ‘%’ expands diff to all the files in the commit.
@@ -34,6 +36,7 @@ bluetoothctl
  show; scan on; pair X; connect X; disconnect X; remove X
 [bluetooth]# [NEW] Device 0C:D7:46:ED:F8:A8 Jackie Wyse-Rhodes’s Keyboard
 0C:D7:46:ED:F8:A8
+08:DF:1F:9A:50:E5
 
 Tools
 

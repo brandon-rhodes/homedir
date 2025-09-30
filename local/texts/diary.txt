@@ -7,6 +7,11 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 August 26 Tuesday ========
+
+To combine two .wav files that were recorded simultaneously:
+
+ffmpeg -i 2025-08-26-brandon.wav -i 2025-08-26-David.m4a -filter_complex "amix=inputs=2:duration=shortest" output_mixed_audio.mp3
 
 ======== 2025 July 22 Tuesday ========
 
@@ -30,7 +35,8 @@ sudo -u lightdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.powe
 
 ======== 2025 July 22 Tuesday ========
 
-To record audio:
+To record audio to a .wav file and then convert it to an .mp3 file:
+
 arecord -L
 arecord -D hw:CARD=Nano,DEV=0 -f S24_3LE -r 44100 -c 2 blue.wav
 ffmpeg -i blue.wav -vn -ar 44100 -ac 2 -b:a 192k blue.mp3
