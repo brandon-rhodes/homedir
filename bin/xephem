@@ -3,4 +3,4 @@
 set -e
 cd ~/XEphem/GUI/xephem
 make
-exec ./xephem
+exec ./xephem "$@"
