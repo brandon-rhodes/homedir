@@ -205,6 +205,7 @@ AddToMenu Clipboard "Type clipboard" Exec exec ,type-clipboard
 
 DestroyMenu Emoji
 AddToMenu Emoji "Emoji" Title
++ "&e. Embarrassed" Exec exec xdotool type --delay 30 '😳'
 + "&f. Frown" Exec exec xdotool type --delay 30 '🫤'
 + "&h. Heart" Exec exec xdotool type --delay 30 '❤️'
 + "&m. Music" Exec exec xdotool type --delay 30 '♫'
