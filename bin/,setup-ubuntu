@@ -46,6 +46,7 @@ for package in \
     emacs-nox        `: editor-of-choice - I compile X version myself` \
     emacs-el         `: readable LISP source` \
     evince           `: PDF viewer - auto-reloads, but keeps position in doc` \
+    exfat-fuse exfatprogs `: format USB drives so they can hold large files` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
     fonts-inconsolata `: favorite console font` \
@@ -91,7 +92,6 @@ for package in \
     texlive-latex-extra \
     texlive-fonts-recommended \
     texlive-extra-utils `: to get pdfnup` \
-    thunar           `: for mounting and unmounting flash drives` \
     tig              `: my preferred way to browse git blame` \
     traceroute       `: when I want something quieter than mtr` \
     trayer           `: lets me click the network manager` \
