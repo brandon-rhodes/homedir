@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "My user stylesheets",
   "version": "0.1.0",
   "description": "Fix problems with various web sites",
