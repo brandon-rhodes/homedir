@@ -7,6 +7,23 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2025 December 07 Sunday ========
+
+After an upgrade to 25.04, apt was still not updating Google Chrome.  It
+turns out that its ‘sources’ entry needed to specify an architecture of
+‘amd64’ which, given apt’s modern multi-line source specification
+language, comes out looking like this:
+
+/etc/apt/sources.list.d/google-chrome.sources
+
+Enabled: yes
+Types: deb
+URIs: http://dl.google.com/linux/chrome/deb/
+Suites: stable
+Components: main
+Architectures: amd64
+Signed-By: ...
+
 ======== 2025 August 26 Tuesday ========
 
 To combine two .wav files that were recorded simultaneously:
@@ -213,6 +230,8 @@ Wanted to connect my laptop to my Bluetooth headphones, but without
 needing to install more packages.  Turns out, it can be paired from the
 command line!  The command is `bluetoothctl` and can be used to turn on
 scanning and perform a connection.
+
+pair 4D:82:F3:42:7F:89
 
 ======== 2025 January 16 Thursday ========
 
