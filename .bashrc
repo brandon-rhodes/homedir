@@ -120,6 +120,7 @@ alias ltr="/bin/ls -ltrF"
 alias ltra="/bin/ls -ltra"
 alias m="less"
 alias o="open"
+alias python="python3"          # muscle memory
 alias vs="git diff-vs-master"
 alias xargs="xargs -d '\n'"  # I never put multiple filenames on one line
 
