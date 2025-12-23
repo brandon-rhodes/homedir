@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Connect to another host via SSH, using a bit of magic to set up all of
-# my essential aliases without modifying any remote files.  Any further
-# invocations of SSH via "s" from that host should also initialize bash
-# and so on through as many connections as I make.
+# Connect to another host via SSH, and use a bit of redirection magic to
+# set up all of my essential aliases without modifying any remote files.
+# Any further invocations of SSH via "s" from that host should also
+# initialize bash, and so on, through as many connections as I make.
 
 if [ -z "$1" ]
 then
-    echo 'usage: ,s host' >&2
+    echo "usage: s <host>" >&2
     exit 2
 fi
 
@@ -26,7 +26,7 @@ then
     exec ssh "$@"
 fi
 
-# First, create the configuration script.
+# The rc file that I want the remote 'bash' to use.
 
 read -r -d '' rc <<'EOF'
 
@@ -116,7 +116,19 @@ function s {
 
 EOF
 
-# The "exec" avoids leaving a useless `bash` parent process hanging
-# around: the equivalent of shell script tail recursion.
+# We build the 'ssh' command concentrically.  On the inside is a command
+# that launches 'bash' with our rc text cleverly provided as a
+# here-string on file descriptor 3.
 
-exec ssh -t "$1" -- 'exec /bin/bash --rcfile /dev/fd/3 3<<<'$(printf %q "$rc")
+cmd='exec /bin/bash --rcfile /dev/fd/3 3<<<'"$(printf %q "$rc")"
+
+# Next, we need to make sure that the inner command is run by 'bash' and
+# not by some other shell, since simple shells like 'sh' do not
+# understand the triple-'<' bash syntax for here-strings.
+
+cmd='exec /bin/bash -c '"$(printf %q "$cmd")"
+
+# Finally, we can 'ssh', with our fingers crossed that the outer command
+# works in whatever shell is the remote account's default.
+
+exec ssh -t "$1" -- "$cmd"
