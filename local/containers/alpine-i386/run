@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -ex
+
+NAME=alpine-i386
+PLATFORM=--platform=linux/i386
+
+if [ ! -f /usr/bin/podman ]
+then
+    echo Error: please apt install podman >&2
+    exit 2
+fi
+
+cd "$(dirname $0)"
+
+podman build -t $NAME $PLATFORM . 1>&2
+
+mkdir -p dot-abuild dot-ccache packages src
+chmod a+w src
+
+exec podman run -ti \
+     --net=host \
+     -v $PWD/dot-abuild:/home/brandon/.abuild \
+     -v $PWD/dot-ccache:/home/brandon/.ccache \
+     -v $PWD/packages:/home/brandon/packages \
+     -v $PWD/src:/home/brandon/src \
+     $PLATFORM \
+     $NAME "$@"
