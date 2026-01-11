@@ -17,16 +17,22 @@ BUCKET=$(cat ~/.bucket)
 if [ -z "$2" ]
 then
     arg="-n"
+    run () {
+        "$@" 2>&1 | less
+    }
 else
     arg=""
+    run () {
+        "$@"
+    }
 fi
 
 if [ "$1" = "out" ]
 then
-    s3cmd sync -v $arg $HOME/Archive s3://$BUCKET/
+    run s3cmd sync -v $arg $HOME/Archive s3://$BUCKET/
 elif [ "$1" = "in" ]
 then
-    s3cmd sync -v $arg s3://$BUCKET/Archive/ $HOME/Archive/
+    run s3cmd sync -v $arg s3://$BUCKET/Archive/ $HOME/Archive/
 else
     echo 'usage: ,archive in|out [go]'
 fi
