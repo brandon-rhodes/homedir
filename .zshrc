@@ -276,7 +276,7 @@ bindkey '^R' fzf-history-widget
 # Control-C'ing a command once I see that it's going to take several
 # seconds, and re-running it with `time`.
 
-,elapsed () {
+,time () {
     fc -l -D -1 | awk '{print "The",$3,"command took",$2,"to run"}'
 }
 
