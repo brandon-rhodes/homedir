@@ -140,12 +140,14 @@ Key f   A 4  FuncMaximizeBorderlessly
 Key f   A 4S FuncMaximizeBorderlessly1024
 Key Tab A 4  FuncMaximizeY
 
-# Windows key plus an arrow key moves window into tile-like positions.
+# Windows key plus [ or ] tiles the window left or right.
 
 # Key Up    A 4  ResizeMoveMaximize frame keep 50 keep 0
 # Key Down  A 4  ResizeMoveMaximize frame keep 50 keep 50
-# Key Right A 4  ResizeMoveMaximize frame 50 100 50 0
-# Key Left  A 4  ResizeMoveMaximize frame 50 100 0 0
+Key bracketleft  A 4  ResizeMoveMaximize frame 50 100 0 0
+Key bracketright A 4  ResizeMoveMaximize frame 50 100 50 0
+
+# Windows key plus the arrow keys move the mouse one pixel at a time.
 
 Key Up    A 4  CursorMove  0p -1p
 Key Down  A 4  CursorMove  0p  1p
