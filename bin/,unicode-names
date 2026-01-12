@@ -4,6 +4,7 @@
 import sys, unicodedata
 for ch in sys.stdin.read():
     try:
-        print(unicodedata.name(ch))
+        h = hex(ord(ch)).replace('0x', '').zfill(4)
+        print('U+' + h, unicodedata.name(ch))
     except ValueError:
         print(ord(ch))
