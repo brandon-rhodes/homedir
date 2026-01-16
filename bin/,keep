@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+#
+# Run this script every month or so right after downloading a Google
+# Takeout `.zip` that includes Google Keep notes.  It will iterate
+# across all of the notes, format them, and write them in a stable order
+# (by creation time) to a plain-text file named ~/Plain/keep where they
+# can be searched and version-controlled along with my other plain-text
+# files of to-do lists and notes.
+
+import json
+import sys
+import zipfile
+from datetime import datetime
+from glob import glob
+
+def main():
+    paths = glob('/home/brandon/Downloads/takeout-*')
+    paths.sort()
+    path = paths[-1]
+    f = open(path, 'rb')
+    z = zipfile.ZipFile(f)
+
+    jlist = []
+    for item in z.infolist():
+        if not item.filename.endswith('.json'):
+            continue
+        #o = z.open(item).read()
+        j = json.load(z.open(item))
+        if j['isTrashed']:
+            continue
+        jlist.append(j)
+
+    jlist.sort(key=sort_key)
+
+    w = open('/home/brandon/Plain/keep', 'w')
+    sys.stdout = w
+
+    for j in jlist:
+        print()
+        if 'textContent' not in j:
+            continue
+        blips = []
+        a = blips.append
+        d1 = date_of(j['createdTimestampUsec'])
+        d2 = date_of(j['userEditedTimestampUsec'])
+        a(d1)
+        if d2 != d1:
+            a(d2)
+        if j['isPinned']:
+            a('(pinned)')
+        if j['isArchived']:
+            a('(archived)')
+        print(' '.join(blips))
+        title = j['title']
+        if title:
+            print(f'\n=== {title} ===\n')
+        print(j['textContent'].lstrip('\n').rstrip())
+        print('\n--')
+        if 'Sushi' in title:
+            break
+        #print(j)
+
+timezone = - 5 * 3600
+
+def date_of(t):
+    d = datetime.fromtimestamp(t // 1000000 + timezone)
+    return d.strftime('%Y-%b-%d')
+
+def sort_key(j):
+    #return - j['isPinned'], j['isArchived'], - j['createdTimestampUsec']
+    return - j['createdTimestampUsec']
+
+if __name__ == '__main__':
+    main()
