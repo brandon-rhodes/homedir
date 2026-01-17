@@ -80,6 +80,7 @@ for package in \
     python3 python3-dev `: for when I feel modern` \
     idle-python2.7   `: for showing IDLE and turtle to newcomers` \
     libssl-dev       `: for compiling things that need cryptography` \
+    network-manager-applet `: simple applet for choosing among networks` \
     nmap             `: for finding the IP address of printers on the LAN` \
     recordmydesktop  `: for screencasts` \
     ripgrep          `: Emacs Consult has a command that uses this` \
