@@ -1,5 +1,0 @@
-#!/bin/bash
-#
-# usage: ,blame <path> <lineno>
-
-exec xterm -fullscreen -e tig blame +$2 -- $1

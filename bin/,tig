@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Launch ‘tig’ in its own xterm, which is configured with a smaller font
+# size (and thus more history on display) than my alacritty terminal
+# windows.  I call this with an Emacs keystroke to jump into 'blame',
+# and from the command line to view logs without overwriting the shell's
+# terminal window.
+
+exec xterm -fullscreen -e tig "$@"
