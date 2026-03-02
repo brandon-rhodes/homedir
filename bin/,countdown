@@ -2,10 +2,12 @@
 
 import datetime as dt
 
-def till(name, date):
-    days = (date - today).days
+def till(target):
+    today = dt.date.today()
+    days = (target - today).days
     weeks = days / 7.0
-    print('{}: {} days = {:.1f} weeks'.format(name, days, weeks))
+    print('{} days = {:.1f} weeks'.format(days, weeks))
 
-today = dt.date.today()
-till('Grand Canyon October', dt.date(2025, 10, 12))
+target = dt.date(2026, 3, 15)
+print(f'Weeks until {target.strftime("%Y %B %d")}:')
+till(target)
