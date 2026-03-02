@@ -10,6 +10,11 @@ while [ -e "$out" ]; do
     printf -v out 'UNCOMMITTED.%d' "$(( ++number ))"
 done
 
+if [ -n "$1" ]
+then
+    exec uvx uncommitted "$@"
+fi
+
 uvx uncommitted -s -v . > $out
 
 less $out
