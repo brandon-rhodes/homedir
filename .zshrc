@@ -19,6 +19,12 @@ alias ,z='source ~/.zshrc'
 
 alias a='noglob rg --line-buffered --hidden -g !.tox -g !.git --max-columns=1000 --no-ignore-vcs --smart-case --sort path'
 
+b () {
+    pattern="$1"
+    shift
+    a \\b"${pattern}"\\b "$@"
+}
+
 # Ignore special characters like "#" and ";" when running the "ci" command.
 
 ci-helper () {
