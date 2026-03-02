@@ -82,6 +82,7 @@ for package in \
     libssl-dev       `: for compiling things that need cryptography` \
     network-manager-applet `: simple applet for choosing among networks` \
     nmap             `: for finding the IP address of printers on the LAN` \
+    plocate          `: fast file search` \
     recordmydesktop  `: for screencasts` \
     ripgrep          `: Emacs Consult has a command that uses this` \
     s3cmd            `: the cloud` \
