@@ -10,6 +10,10 @@ In git blame with ‘tig’: ‘%’ expands diff to all the files in the commit
 In fzf file search, to create new file (name already typed): C-x C-b name M-RET
 In zsh, most recently edited file: C-x m
 
+git
+
+Fetch a pull request: ,github-pr [N]
+
 Jujutsu
 
 ~/.config/jj/config.toml
@@ -41,6 +45,8 @@ bluetoothctl
 Tools
 
 Crop: gthumb
+PDF Viewer: evince
+YubiKey: ‘ykman info’
 
 Characters (convenient for cutting and pasting!) (see also: characters.txt)
 
