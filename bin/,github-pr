@@ -5,9 +5,9 @@ set -e
 if [ -z "$1" ]
 then
     git remote update --prune
-    git ls-remote | grep '/pull/.*/head'
+    git ls-remote | grep '/pull/.*/head' | sort -t/ -k2,2 -k3n
 else
-    h="$(git ls-remote -q | grep refs/pull/21/head | awk '{print$1}')"
+    h="$(git ls-remote -q | grep refs/pull/$1/head | awk '{print$1}')"
     git fetch origin $h
     git checkout -b pr"$1" $h
 fi
