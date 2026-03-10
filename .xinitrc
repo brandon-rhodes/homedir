@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 # X Windows startup file.
 #

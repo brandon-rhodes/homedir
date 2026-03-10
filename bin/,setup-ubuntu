@@ -198,7 +198,7 @@ sudo dd of=/usr/share/xsessions/xinitrc.desktop <<'EOF'
 [Desktop Entry]
 Name=xinitrc
 Comment=Run your .xinitrc file
-Exec=/bin/bash .xinitrc
+Exec=/home/brandon/.xinitrc
 Type=Application
 EOF
 
