@@ -2,5 +2,5 @@
 
 set -e
 cd ~/XEphem/GUI/xephem
-make
+make CC="ccache gcc"
 exec ./xephem "$@"
