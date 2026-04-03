@@ -202,7 +202,7 @@ AddToMenu Applications "Applications" Title
 + "&r. Retro"     Exec exec bash bin/,retro
 + "&s. Skype"     Exec exec skype
 + "&v. VirtualBox" Exec exec virtualbox
-+ "&x. Xephyr :9" Exec exec Xephyr :9 -screen 1280x1000 -no-host-grab
++ "&x. Xterm"     Exec exec xterm
 
 DestroyMenu Clipboard
 AddToMenu Clipboard "Type clipboard" Exec exec ,type-clipboard
