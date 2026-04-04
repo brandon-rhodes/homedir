@@ -36,11 +36,20 @@ Hardware
 usb-devices
 upower
 
+Device 31:DA:1C:FF:BE:02 31-DA-1C-FF-BE-02
+[bluetooth]# [NEW] Device 4D:82:F3:42:7F:89 LE-qc 35
+
 bluetoothctl
  show; scan on; pair X; connect X; disconnect X; remove X
 [bluetooth]# [NEW] Device 0C:D7:46:ED:F8:A8 Jackie Wyse-Rhodes’s Keyboard
 0C:D7:46:ED:F8:A8
 08:DF:1F:9A:50:E5
+
+bluetoothctl
+power on
+devices
+pair 08:DF:1F:9A:50:E5
+connect 08:DF:1F:9A:50:E5  <-- only command necessary once it is paired
 
 Tools
 
@@ -59,3 +68,7 @@ Characters (convenient for cutting and pasting!) (see also: characters.txt)
 Libraries
 
 browser_cookie3 for using Chrome cookies in Python.
+
+Emacs LISP
+
+(message "buffer nane %s" (buffer-name))  ; print to *Messages* for debugging
