@@ -156,6 +156,14 @@ Key Down  A 4  CursorMove  0p  1p
 Key Right A 4  CursorMove  1p  0p
 Key Left  A 4  CursorMove -1p  0p
 
+# Experiment: Win+PgUp and Win+PgDn as alternatives to the mouse wheel.
+# For the situation on my Lenovo ThinkPad X1 Carbon where a web site
+# refuses to scroll with the arrow keys, but I don't want to have to
+# keep holding down the middle mouse button to scroll.
+
+Key Prior A 4  Exec exec xdotool click 4
+Key Next  A 4  Exec exec xdotool click 5
+
 # Win + 1/2/4/5 move a window to one of the four corners of the screen.
 # Win + 3 was already taken, with nine years of muscle memory behind it,
 # to move my browser into my favorite lower-right position and size.
