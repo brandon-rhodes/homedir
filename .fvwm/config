@@ -220,6 +220,7 @@ AddToMenu Emoji "Emoji" Title
 + "&e. Embarrassed" Exec exec xdotool type --delay 30 '😳'
 + "&f. Frown" Exec exec xdotool type --delay 30 '🫤'
 + "&h. Heart" Exec exec xdotool type --delay 30 '❤️'
++ "&i. Think" Exec exec xdotool type --delay 30 '🤔'
 + "&m. Music" Exec exec xdotool type --delay 30 '♫'
 + "&o. Open-mouth" Exec exec xdotool type --delay 30 '😮'
 + "&p. Party" Exec exec xdotool type --delay 30 '🎉'
