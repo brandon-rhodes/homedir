@@ -119,3 +119,6 @@ defaultBranch = main
 [rebase]
 autoStash = true
 updateRefs = true
+
+[log]
+date = format:%Y %b %d %H:%M %z
