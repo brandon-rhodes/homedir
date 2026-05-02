@@ -54,6 +54,7 @@ connect 08:DF:1F:9A:50:E5  <-- only command necessary once it is paired
 Tools
 
 Crop: gthumb
+MP4 excerpt: ffmpeg -i input.mp4 -ss 910 -to 955 -c copy output.mp4
 PDF Viewer: evince
 YubiKey: ‘ykman info’
 
