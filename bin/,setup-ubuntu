@@ -322,6 +322,13 @@ fi
 
 sudo systemctl enable dictd
 
+# Remove broken `ls` that Ubuntu now ships with by default; otherwise,
+# my `,downloads` shell script does not work.
+
+if dpkg -s coreutils-from-uutils >/dev/null 2>&1; then
+    apt remove coreutils-from-uutils --allow-remove-essential
+fi
+
 # Remove dangling config files of uninstalled packages.  Note that this
 # is run without '-y' so that I have the chance to review the list and
 # answer 'y' or 'n'.
