@@ -21,5 +21,15 @@ def main():
     with open('/home/brandon/.aspell.en.pws', 'wb') as f:
         f.write(output)
 
+    path = '/home/brandon/.config/enchant/en_US.dic'
+    with open(path, 'rb') as f:
+        lines = list(f)
+
+    lines.sort()
+    content = b''.join(lines)
+
+    with open(path, 'wb') as f:
+        f.write(content)
+
 if __name__ == '__main__':
     main()
