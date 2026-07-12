@@ -6,7 +6,11 @@
 # terminal history; I'm usually too impatient to type `| tail` to limit
 # the output.  So let's wrap the whole maneuver up as a script, and make
 # the output especially pretty to encourage me to remember and use it!
+#
+# Usage:
+# ,downloads          prints 5 most recent
+# ,downloads N        prints N most recent
 
 ls -ort --block-size="'1" --time-style='+ %Y-%m-%d %H:%M ' ~/Downloads \
     | sed 's/-rw-rw-r--  1 brandon//' \
-    | tail -5
+    | tail -${1:-5}
