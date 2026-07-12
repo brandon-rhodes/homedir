@@ -1,4 +1,14 @@
 #!/bin/bash
 # Because I never remember the name of this command.
 
-exec seq "$@"
+options=""
+
+# If first number starts with a leading zero, then ask `seq` to zero-pad
+# all numbers to the same width.
+
+if [[ "$1" == 0* ]]
+then
+    options="-w"
+fi
+
+exec seq $options "$@"
