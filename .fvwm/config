@@ -111,7 +111,8 @@ Key Equal A 4  Exec exec $HOME/bin/,wc
 Key a A 4  Menu Applications Nop
 Key b A 4  Menu BrowserBookmarks Nop
 Key c A 4  Exec exec xterm -geometry 60x16 -T 'TOP Calculator' -e 'units'
-Key d A 4  Exec exec open $HOME/Downloads
+#Key d A 4  Exec exec $HOME/.fvwm/downloads.py
+Key d A 4  Menu DownloadsMenu
 Key e A 4  Exec exec emacs
 Key g A 4  Exec exec browser "https://github.com/notifications"
 Key i A 4  All (CurrentPage, !Iconic) Iconify
@@ -214,6 +215,15 @@ AddToMenu Applications "Applications" Title
 
 DestroyMenu Clipboard
 AddToMenu Clipboard "Type clipboard" Exec exec ,type-clipboard
+
+DestroyFunc BuildDownloadsMenu
+AddToFunc BuildDownloadsMenu
++ I DestroyMenu recreate DownloadsMenu
++ I AddToMenu DownloadsMenu "Downloads" Title
++ I PipeRead "$HOME/.fvwm/downloads.py menu"
+
+AddToMenu DownloadsMenu
++ DynamicPopUpAction BuildDownloadsMenu
 
 DestroyMenu Emoji
 AddToMenu Emoji "Emoji" Title
