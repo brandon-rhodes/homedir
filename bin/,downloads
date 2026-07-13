@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 #
 # Since I use the `~/Downloads` directory as a general-purpose 'stack'
 # (sorted by date) for moving files, I very often type `ltr ~/Downloads`
@@ -9,8 +9,37 @@
 #
 # Usage:
 # ,downloads          prints 5 most recent
-# ,downloads N        prints N most recent
+# ,downloads N        prints N most recent  (TODO: Python rewrite broke this)
 
-ls -ort --block-size="'1" --time-style='+ %Y-%m-%d %H:%M ' ~/Downloads \
-    | sed 's/-rw-rw-r--  1 brandon//' \
-    | tail -${1:-5}
+import argparse
+import datetime as dt
+import sys
+from pathlib import Path
+
+def main(argv):
+    parser = argparse.ArgumentParser(description='Download directory actions')
+    subparsers = parser.add_subparsers(dest='action')
+
+    subparsers.add_parser('list', help='List most recently modified files')
+    args = parser.parse_args(argv)
+
+    action = args.action
+    if action is None:
+        action = 'list'
+
+    if action == 'list':
+       list()
+
+def list():
+    length = 5
+    directory = Path('~/Downloads').expanduser()
+    files = [f for f in directory.iterdir() if f.is_file()]
+    files.sort(key=lambda x: x.stat().st_mtime)
+    for f in files[-length:]:
+        stat = f.stat()
+        date = dt.datetime.fromtimestamp(stat.st_mtime, tz=dt.timezone.utc)
+        datestr = date.strftime('%Y-%m-%d %H:%M')
+        print(f' {stat.st_size:11,}  {datestr}  {f.name}')
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
