@@ -46,6 +46,12 @@ done
 
 unset p
 
+# When I click on an fzf item in the terminal to copy and paste its
+# text, fzf should NOT interpret the click as selecting the item!  (Most
+# dangerously, this immediately runs any command from my zsh history.)
+
+export FZF_DEFAULT_OPTS="--no-mouse"
+
 # Load any site-specific environment variables I have defined.
 
 if [ -f "$HOME/.localenv" ]
