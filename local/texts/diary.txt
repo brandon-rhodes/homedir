@@ -7,6 +7,23 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2026 July 13 Monday ========
+
+Google Chrome was again not updating, this time with an error:
+
+   The following signatures couldn't be verified because the public key
+   is not available: ...
+
+Thus:
+
+wget https://dl.google.com/linux/linux_signing_key.pub
+gpg --dearmor linux_signing_key.pub
+sudo bash
+cat linux_signing_key.pub.gpg > /etc/apt/trusted.gpg.d/google-chrome.gpg
+
+And then in /etc/apt/sources.list.d/google-chrome.sources, I removed the
+content of “Signed-By:” and replaced it with the `*.gpg` file’s path.
+
 ======== 2026 May 21 Thursday ========
 
 My favorite laptop, my original first-generation X1 Carbon, has started
