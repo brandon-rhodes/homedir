@@ -49,6 +49,7 @@ for package in \
     exfat-fuse exfatprogs `: format USB drives so they can hold large files` \
     exuberant-ctags  `: ancient source scanning tool` \
     fvwm             `: window manager` \
+    fvwm3            `: apparently they went and made a third one` \
     fonts-inconsolata `: favorite console font` \
     fonts-sil-gentium `: font for presentation slides` \
     fzf              `: very well-designed interactive selection tool` \
