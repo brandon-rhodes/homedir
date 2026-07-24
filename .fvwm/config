@@ -412,8 +412,32 @@ AddToFunc SessionInitFunction
 
 + I Exec [ "$(hostname)" == "oldrasputin" ] && xrandr --dpi 110
 
+# Experiment: detect if a new window's size makes it nearly-full-screen,
+# in which case we don't want to give it borders.
+
+DestroyModuleConfig FvwmEvent: *
+*FvwmEvent: Cmd Function
+*FvwmEvent: enter_window XYZ
+*FvwmEvent: leave_window XYZ
+*FvwmEvent: focus_change XYZ
+*FvwmEvent: add_window XYZ
+*FvwmEvent: configure_window XYZ
+
+DestroyFunc XYZ
+AddToFunc   XYZ
++ I Echo "made it $[w.width] $[w.height] $[vp.width] $[vp.height]"
++ I PipeRead `exec /bin/bash $HOME/.fvwm/bin/decide-window-border.sh \
+              $[w.id] $[w.width] $[w.height] $[vp.width] $[vp.height]`
+
+DestroyFunc StartFunction
+AddToFunc   StartFunction
++ I Exec echo here >> /tmp/log
++ I Module FvwmEvent
++ I Exec echo there >> /tmp/log
+
 # Impose my standard X windows settings.  The commands are kept in a
 # stand-alone shell script, so I can re-run them in mid-session if they
 # get mangled or reset by an application.
 
+AddToFunc   StartFunction
 + I Exec bash /home/brandon/bin/,xset
