@@ -281,8 +281,8 @@ AddToMenu MenuFvwmWindowManagerOps
 + "$[gt.&R Reload fvwm2rc]"  Read config
 + "$[gt.  Kill lock/saver]"  Exec xset s off -dpms && killall xautolock
 + "$[gt.  Run lock/saver]"  Exec xset s on +dpms && $HOME/.fvwm/xautolock
-+ "  Restart fvwm3"  Restart fvwm3
-+ "  Restart fvwm2"  Restart fvwm2
++ "&3 Restart fvwm3"  Restart fvwm3 -v
++ "&2 Restart fvwm2"  Restart fvwm2 -v
 + "$[gt.  Quit fvwm]"    Quit
 + "" Nop
 + "$[gt.&H Hibernate]" Exec slock & systemctl hibernate
