@@ -334,6 +334,15 @@ if dpkg -s coreutils-from-uutils >/dev/null 2>&1; then
     sudo apt remove coreutils-from-uutils --allow-remove-essential
 fi
 
+# Don't have sudo show asterisks as password is typed; any motion on the
+# screen makes me panic and think it's not a password prompt.
+
+if [ ! -f /etc/sudoers.d/password-asterisks ]
+then
+    echo 'Defaults !pwfeedback' | sudo dd of=/etc/sudoers.d/password-asterisks
+    sudo chmod 0440 /etc/sudoers.d/password-asterisks
+fi
+
 # Remove dangling config files of uninstalled packages.  Note that this
 # is run without '-y' so that I have the chance to review the list and
 # answer 'y' or 'n'.
