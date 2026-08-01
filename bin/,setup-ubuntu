@@ -327,13 +327,6 @@ fi
 
 sudo systemctl enable dictd
 
-# Remove broken `ls` that Ubuntu now ships with by default; otherwise,
-# my `,downloads` shell script does not work.
-
-if dpkg -s coreutils-from-uutils >/dev/null 2>&1; then
-    sudo apt remove coreutils-from-uutils --allow-remove-essential
-fi
-
 # Don't have sudo show asterisks as password is typed; any motion on the
 # screen makes me panic and think it's not a password prompt.
 
