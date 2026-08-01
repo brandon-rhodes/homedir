@@ -218,6 +218,11 @@ alias ,p="source ~/bin/,p"
 bindkey "\eF" emacs-forward-word
 bindkey "\ef" emacs-forward-word
 
+# PgUp and PgDn.
+
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+
 # An easy keyboard shortcut to edit a long complicated command in my editor.
 
 autoload -z edit-command-line
