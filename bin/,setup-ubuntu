@@ -99,7 +99,6 @@ for package in \
     traceroute       `: when I want something quieter than mtr` \
     trayer           `: lets me click the network manager` \
     tree             `: for when ls is simply not enough` \
-    ttf-mscorefonts-installer `: for browsing the web` \
     ttf-ubuntu-font-family `: default Ubuntu font family, for emacs` \
     tzdata-legacy    `: support time zone aliases like US/Eastern` \
     units            `: desk calculator` \
