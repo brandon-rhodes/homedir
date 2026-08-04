@@ -125,7 +125,8 @@ for package in \
     automake libpcre3-dev pkg-config \
     \
     `: for building Emacs` \
-    libgnutls28-dev libx11-dev libgif-dev libgtk2.0-dev texinfo \
+    libgnutls28-dev libx11-dev libgtk2.0-dev texinfo \
+    libgif-dev libjpeg-dev libtiff-dev \
     \
     `: for building fvwm` \
     libxt-dev \
