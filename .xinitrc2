@@ -26,6 +26,12 @@ source .bashenv
 
 set -x
 
+# When I'm using my laptop at night, and the screen brightness is all
+# the way down, the cursor can be hard to spot.  Let's try out an
+# oversized cursor.
+
+export XCURSOR_SIZE=48
+
 # Establish my default X Windows settings.
 
 $HOME/bin/,xset
