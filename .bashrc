@@ -182,9 +182,9 @@ fi
 # Faster C builds.  Maybe I'll forget this is set globally, and it'll
 # get me into trouble someday?  We'll see!
 
-if [ -x /usr/bin/ccache ]
+if [[ -d /usr/lib/ccache && ":$PATH:" != *":/usr/lib/ccache:"* ]]
 then
-    export CC="ccache cc"
+    PATH=/usr/lib/ccache:$PATH
 fi
 
 # The tty should not intercept Control-S (stop) or Control-Q (start).
