@@ -7,6 +7,18 @@ Kernel: `dmesg --level=warn+` `dmidecode -q -t bios`
   `inxi -Fxxxrz`
 Networking: nm-connection-editor nmtui
 
+======== 2026 August 25 Tuesday ========
+
+I want the `,twilight` script to run immediately if its dependencies
+have already been downloaded, instead of having `uv` stop to check
+whether any dependencies have had new releases, and if so then
+downloading and installing them.  Thus:
+
+    uv lock --script ~/bin/,twilight
+
+I am checking the resulting `,twilight.lock` file into version control.
+A `uv` upgrade was necessary to earn the new `--script` option.
+
 ======== 2026 July 13 Monday ========
 
 Google Chrome was again not updating, this time with an error:
