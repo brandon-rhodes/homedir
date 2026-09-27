@@ -325,6 +325,13 @@ source ~/.bashrc
 
 ZLE_RPROMPT_INDENT=0
 
+# Display status.
+
+if [ -f ~/.status ]
+then
+    cat ~/.status
+fi
+
 # Display any anniversaries.
 
 if [ -e ~/Plain/anniversaries ]
