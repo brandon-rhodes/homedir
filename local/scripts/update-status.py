@@ -14,10 +14,7 @@ def main():
         basement['H%'], office['H%'],
     )
 
-    with open('.status.new', 'w') as f:
-        f.write(status)
-
-    os.rename('.status.new', '.status')
+    save_output(status)
 
 template = """
  Basement  Office
@@ -35,7 +32,19 @@ def fetch_reading(hostname):
         text=True,
     )
     out = result.stdout
+    if result.returncode:
+        raise RuntimeError(result.stdout)
     return dict(s.split('=') for s in out.split()[2:])
 
+def save_output(text):
+    with open('.status.new', 'w') as f:
+        f.write(text)
+
+    os.rename('.status.new', '.status')
+
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        save_output(str(e))
+        exit(1)
