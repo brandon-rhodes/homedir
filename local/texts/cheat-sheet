@@ -14,6 +14,10 @@ git
 
 Fetch a pull request: ,github-pr [N]
 
+Clipboard
+
+from stdin: ... | xclip
+
 Jujutsu
 
 ~/.config/jj/config.toml
@@ -69,6 +73,10 @@ Characters (convenient for cutting and pasting!) (see also: characters.txt)
 Libraries
 
 browser_cookie3 for using Chrome cookies in Python.
+
+NumPy
+
+np.set_printoptions(precision=15)  # print with full precision
 
 Emacs LISP
 
